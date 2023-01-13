@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Head from "next/head";
 
 const Home = () => {
@@ -8,7 +9,7 @@ const Home = () => {
       </Head>
 
       {/* Header  */}
-
+      <Header />
       {/* Hero  */}
 
       {/* About */}
