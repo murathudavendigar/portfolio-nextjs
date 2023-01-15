@@ -15,9 +15,14 @@ const Skill = ({ directionLeft }: Props) => {
         }}
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, x: 0 }}
-        src="https://camo.githubusercontent.com/22c60db64e6ede1bbc4ecb83d5e020a9039efb4df30886324c4aab9e955de7ed/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f342f34372f52656163742e7376672f3132303070782d52656163742e7376672e706e67"
-        className="rounded-full border border-gray-500 object-cover w-24 h-24 xl:w-32 xl:h-32 filter group-hover:grayscale"
+        src="https://camo.githubusercontent.com/2b6b50702c658cdfcf440cef1eb88c7e0e5a16ce0eb6ab8bc933da7697c12213/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f72656475782f72656475782d6f726967696e616c2e737667"
+        className=" object-cover w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 "
       />
+      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group hover:bg-white h-24 w-24 md:w-28 md:h-28 xl:w-32 xl:h-32 rounded-lg z-0">
+        <div className="flex items-center justify-center h-full">
+          <p className="text-3xl font-bold text-black opacity-100">100%</p>
+        </div>
+      </div>
     </div>
   );
 };
