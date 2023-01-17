@@ -9,7 +9,7 @@ const About = (props: Props) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-2-7xl px-10 justify-evenly mx-auto items-center">
+      className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
         About
       </h3>
@@ -25,21 +25,16 @@ const About = (props: Props) => {
         viewport={{ once: true }}
         src="https://pbs.twimg.com/profile_images/1589564512599932929/JuGsRJNz_400x400.jpg"
         alt=""
-        className="-mb-20 md:mb-0 flex-shrink-0 2-56 h-56 rounded-full object-cover md:rounded-lg md:h-95 md:w-64 xl:w-[500px] xl:h-[600px]"
+        className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:h-95 md:w-64 xl:w-[500px] xl:h-[600px]"
         loading="lazy"
       />
 
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold ">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi, esse!
-        </h4>
+        <h4 className="text-4xl font-semibold ">Hi, I am Murat Hüdavendigâr</h4>
         <p className="text-sm">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi,
-          itaque ea consectetur dolore accusantium iste rerum necessitatibus
-          fuga tenetur exercitationem error quaerat velit possimus, voluptatem
-          incidunt? Fuga doloremque similique aliquid amet fugit laudantium,
-          maxime quis nihil dolorum impedit, nam nemo debitis vel commodi
-          repellendus saepe esse atque tenetur voluptate porro.
+          I graduated from Full Stack Developer Bootcamp in Virginia, USA and am
+          a senior computer engineering student at Kocaeli University. I have 3+
+          years of experience in Web Development and IT.
         </p>
       </div>
     </motion.div>
