@@ -25,10 +25,11 @@ const Home = () => {
         <About />
       </section>
 
-      <section id="experience" className="snap-center">
+      {/* TODO */}
+      {/* <section id="experience" className="snap-center">
         <Experience />
-      </section>
-
+      </section> */}
+      {/* TODO */}
       <section id="skills" className="snap-start">
         <Skills />
       </section>

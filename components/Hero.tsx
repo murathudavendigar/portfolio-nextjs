@@ -8,7 +8,11 @@ type Props = {};
 
 const Hero = (props: Props) => {
   const [text, count] = useTypewriter({
-    words: ["Hi, I am Murat Hüdavendigâr", "Captain Price"],
+    words: [
+      "Hi, I am Murat Hüdavendigâr",
+      "Captain Price",
+      "This is my portfolio site",
+    ],
     loop: true,
     delaySpeed: 2000,
   });
@@ -42,9 +46,11 @@ const Hero = (props: Props) => {
           <Link href="#about">
             <button className="heroButton">About</button>
           </Link>
-          <Link href="#experience">
+          {/* TODO */}
+          {/* <Link href="#experience">
             <button className="heroButton">Experience</button>
-          </Link>
+          </Link> */}
+          {/* TODO */}
           <Link href="#skills">
             <button className="heroButton">Skills</button>
           </Link>

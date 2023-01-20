@@ -23,30 +23,32 @@ const Contact = (props: Props) => {
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-200 text-2xl ">
         Contact
       </h3>
-      <div className="flex flex-col space-y-10">
-        <h4 className="text-4xl font-semibold text-center">Contact Me</h4>
+      <div className="flex flex-col xl:flex-row xl:items-center xl:gap-10 2xl:flex-col space-y-3 md:space-y-8 ">
+        <h4 className="text-2xl xl:hidden 2xl:inline-block md:text-4xl font-semibold text-center">
+          Contact Me
+        </h4>
 
-        <div className="space-y-10">
+        <div className="space-y-2 md:space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">+90 507 467 48 24</p>
+            <p className="text-xl md:text-2xl">+90 507 467 48 24</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">Manisa / Türkiye</p>
+            <p className="text-xl md:text-2xl">Manisa / Türkiye</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">murathoncu@gmail.com</p>
+            <p className="text-xl md:text-2xl">murathoncu@gmail.com</p>
           </div>
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-2 w-fit mx-auto">
-          <div className="flex space-x-2">
+          <div className="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
             <input
               {...register("name")}
               placeholder="Name"
@@ -70,11 +72,11 @@ const Contact = (props: Props) => {
           <textarea
             {...register("message")}
             placeholder="Message"
-            className="contactInput"
+            className="contactInput resize-none"
           />
           <button
             type="submit"
-            className="bg-[#CA3E47] py-5 px-10 rounded-md text-white font-bold text-lg hover:opacity-70 transition-all duration-150">
+            className="bg-[#CA3E47] py-2 px-4 md:py-5 md:px-10 rounded-md text-white font-bold text-md md:text-lg hover:opacity-70 transition-all duration-150">
             Submit
           </button>
         </form>
