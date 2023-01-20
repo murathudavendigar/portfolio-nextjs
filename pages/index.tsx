@@ -43,7 +43,7 @@ const Home = () => {
       </section>
 
       <Link href="#hero">
-        <footer className="sticky bottom-10 md:bottom-5 w-full cursor-pointer">
+        <footer className="sticky bottom-16 md:bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
             <img
               className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
