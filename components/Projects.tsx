@@ -36,21 +36,21 @@ const Projects = (props: Props) => {
       <div className="absolute top-32 flex flex-row z-30 ">
         <button
           className={`heroButton px-4 py-1 md:px-6 md:py-2 ${
-            lang == "all" && "text-[#CA3E47]"
+            lang == "All" && "text-[#CA3E47] border-[#CA3E47]/40"
           }`}
           onClick={() => setLang("All")}>
           All Projects
         </button>
         <button
           className={`heroButton px-4 py-1 md:px-6 md:py-2 ${
-            lang == "react" && "text-[#CA3E47]"
+            lang == "React.JS" && "text-[#CA3E47] border-[#CA3E47]/40"
           }`}
           onClick={() => setLang("React.JS")}>
           React.JS
         </button>
         <button
           className={`heroButton px-4 py-1 md:px-6 md:py-2 ${
-            lang == "next" && "text-[#CA3E47]"
+            lang == "Next.JS" && "text-[#CA3E47] border-[#CA3E47]/40"
           }`}
           onClick={() => setLang("Next.JS")}>
           Next.JS

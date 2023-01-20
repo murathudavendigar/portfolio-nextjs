@@ -25,7 +25,7 @@ const About = (props: Props) => {
         viewport={{ once: true }}
         src="https://pbs.twimg.com/profile_images/1589564512599932929/JuGsRJNz_400x400.jpg"
         alt=""
-        className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-48 rounded-full object-cover md:rounded-lg md:h-95 md:w-64 xl:w-[500px] xl:h-[600px]"
+        className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-48 rounded-full object-cover md:rounded-lg md:h-96 md:w-72 2xl:w-[500px] 2xl:h-[600px]"
         loading="lazy"
       />
 
