@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { projectsData } from "../data/projectsData";
 import { Projects } from "@/types";
 import { SocialIcon } from "react-social-icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 type Props = {};
 
@@ -56,6 +57,7 @@ const Projects = (props: Props) => {
           Next.JS
         </button>
       </div>
+      <ArrowLeftIcon className="text-[#CA3E47] h-7 w-7 animate-pulse absolute top-1/2 left-[25px]" />
       <div className="relative w-full flex overflow-x-scroll everflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-200/20 scrollbar-thumb-[#CA3E47]/80">
         {showProjects.map((project, index) => (
           <div
@@ -69,6 +71,7 @@ const Projects = (props: Props) => {
                 viewport={{ once: true }}
                 src={project.img}
                 alt={project.name}
+                loading="lazy"
                 className="hidden xl:inline-block md:max-w-[400px] 2xl:max-w-[700px] mt-28"
               />
             </a>
@@ -117,7 +120,7 @@ const Projects = (props: Props) => {
           </div>
         ))}
       </div>
-
+      <ArrowRightIcon className="text-[#CA3E47] h-7 w-7 animate-pulse absolute top-1/2 right-[25px]" />
       <div className="w-full absolute top-[30%] bg-[#CA3E47]/10 left-0 h-[500px] skew-y-12" />
     </motion.div>
   );

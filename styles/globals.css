@@ -8,6 +8,6 @@
   }
 
   .contactInput {
-    @apply outline-none bg-slate-400/10 rounded-sm border-b px-3 py-2 md:px-6 md:py-4 border-[#414141] text-gray-200 placeholder-gray-500 transition-all focus:border-[#CA3E47]/40  hover:border-[#CA3E47]/40;
+    @apply outline-none bg-slate-400/10 rounded-sm border-b-2 px-3 py-2 md:px-6 md:py-4 border-[#414141] text-gray-200 placeholder-gray-500 transition-all focus:border-[#CA3E47]/80  hover:border-[#CA3E47]/40;
   }
 }
