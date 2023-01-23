@@ -81,4 +81,23 @@ export const projectsData: Projects[] = [
     language: "React.JS",
     github: "https://github.com/murathudavendigar/fireblog-app-react",
   },
+  {
+    img: "https://user-images.githubusercontent.com/109613328/205418052-65c5665b-1189-49d5-b4aa-2e3346571575.gif",
+    name: "Brawl Stars App",
+    description:
+      "A web application that I prepared to work with React JS using the Brawl Stars API.",
+    url: "https://brawl-stars-api-react.vercel.app/",
+    language: "React.JS",
+    github: "https://github.com/murathudavendigar/brawl-stars-api-react",
+  },
+  {
+    img: "https://s3.gifyu.com/images/weather-app.gif",
+
+    name: "Weather App with Pure JS",
+    description:
+      "A web application made using Pure JavaScript that shows the instant weather conditions of the cities with GIFs.",
+    url: "https://thunderous-arithmetic-1b6a1f.netlify.app/",
+    language: "JavaScript",
+    github: "https://github.com/murathudavendigar/weather-app",
+  },
 ];
