@@ -76,7 +76,7 @@ const Projects = (props: Props) => {
               />
             </a>
             <div className="space-y-6 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-2xl md:text-4xl font-semibold text-center dark:text-gray-900">
+              <h4 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center dark:text-gray-900">
                 <span className=" border-b border-[#CA3E47] ">
                   <span>{lang}</span> Study {index + 1} of {showProjects.length}
                   :{" "}
@@ -121,7 +121,7 @@ const Projects = (props: Props) => {
         ))}
       </div>
       <ArrowRightIcon className="text-[#CA3E47] h-7 w-7 animate-pulse absolute top-1/2 right-[25px]" />
-      <div className="w-full absolute top-[30%] bg-[#CA3E47]/10 left-0 h-[500px] skew-y-12" />
+      <div className="w-full absolute top-[30%] bg-[#CA3E47]/10 dark:bg-[#ca3e47]/50 left-0 h-[500px] skew-y-12" />
     </motion.div>
   );
 };

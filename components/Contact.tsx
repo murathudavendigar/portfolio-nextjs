@@ -76,7 +76,7 @@ const Contact = (props: Props) => {
           />
           <button
             type="submit"
-            className="bg-[#CA3E47] py-2 px-4 md:py-5 md:px-10 rounded-md text-white font-bold text-md md:text-lg hover:opacity-70 transition-all duration-150">
+            className="bg-[#CA3E47] dark:bg-[#414141]/90  py-2 px-4 md:py-5 md:px-10 rounded-md text-white font-bold text-md md:text-lg hover:opacity-70 transition-all duration-150">
             Submit
           </button>
         </form>
