@@ -6,7 +6,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ["Nunito Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [require("tailwind-scrollbar")],
 };
