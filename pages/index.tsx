@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className="bg-[#313131] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80">
+    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80">
       <Head>
         <title>Murat Hüdavendigâr Öncü</title>
       </Head>

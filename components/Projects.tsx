@@ -31,7 +31,7 @@ const Projects = (props: Props) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       className="h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
-      <h3 className="absolute top-20 uppercase tracking-[20px] text-gray-200 text-2xl ">
+      <h3 className="absolute top-20 uppercase tracking-[20px] text-gray-200 dark:text-gray-900 text-2xl ">
         Projects
       </h3>
       <div className="absolute top-32 flex flex-row z-30 ">
@@ -76,7 +76,7 @@ const Projects = (props: Props) => {
               />
             </a>
             <div className="space-y-6 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-2xl md:text-4xl font-semibold text-center">
+              <h4 className="text-2xl md:text-4xl font-semibold text-center dark:text-gray-900">
                 <span className=" border-b border-[#CA3E47] ">
                   <span>{lang}</span> Study {index + 1} of {showProjects.length}
                   :{" "}
@@ -97,7 +97,7 @@ const Projects = (props: Props) => {
                     fgColor="gray"
                     bgColor="transparent"
                   />
-                  <span className="uppercase hidden md:inline-flex text-sm text-gray-300">
+                  <span className="uppercase hidden md:inline-flex text-sm text-gray-300 dark:text-gray-900">
                     GitHub
                   </span>
                 </a>
@@ -111,7 +111,7 @@ const Projects = (props: Props) => {
                     fgColor="gray"
                     bgColor="transparent"
                   />{" "}
-                  <span className="uppercase hidden md:inline-flex text-sm text-gray-300">
+                  <span className="uppercase hidden md:inline-flex text-sm text-gray-300 dark:text-gray-900">
                     Project
                   </span>
                 </a>

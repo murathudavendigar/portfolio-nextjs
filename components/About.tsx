@@ -10,7 +10,7 @@ const About = (props: Props) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-200 text-2xl ">
+      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-200 dark:text-gray-700 text-2xl ">
         About
       </h3>
       <motion.img
@@ -30,7 +30,9 @@ const About = (props: Props) => {
       />
 
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold ">Hi, I am Murat Hüdavendigâr</h4>
+        <h4 className="text-4xl font-semibold dark:text-gray-900">
+          Hi, I am Murat Hüdavendigâr
+        </h4>
         <p className="text-sm">
           I graduated from Full Stack Developer Bootcamp in Virginia, USA and am
           a senior computer engineering student at Kocaeli University. I have 3+

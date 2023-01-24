@@ -29,9 +29,9 @@ const Skill = ({ directionLeft, item }: Props) => {
         }}
         transition={{ duration: 1 }}
         whileInView={{ x: 0 }}
-        className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group hover:bg-[#313131]/70 w-12 h-12 sm:h-20 sm:w-20 md:w-26 md:h-26 xl:w-30 xl:h-30 z-0">
+        className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group hover:bg-[#313131]/70 dark:hover:bg-[#bcc]/70  w-12 h-12 sm:h-20 sm:w-20 md:w-26 md:h-26 xl:w-30 xl:h-30 z-0">
         <div className="flex items-center justify-center h-full">
-          <p className="text-lg font-bold text-[#fff] opacity-100">
+          <p className="text-lg font-bold text-[#fff] dark:text-black opacity-100">
             {item.name}
           </p>
         </div>

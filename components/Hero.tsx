@@ -33,7 +33,7 @@ const Hero = (props: Props) => {
         loading="lazy"
       />
       <div className="z-20">
-        <h2 className="text-sm uppercase text-gray-200 pb-2 tracking-[15px]">
+        <h2 className="text-sm uppercase text-gray-200 dark:text-gray-900 pb-2 tracking-[15px]">
           <span>{title}</span>
           <Cursor cursorColor="#CA3E47" />
         </h2>
