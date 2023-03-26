@@ -10,7 +10,7 @@ const Hero = (props: Props) => {
   const [text, count] = useTypewriter({
     words: [
       "Hi, I am Murat Hüdavendigâr",
-      "Captain Price",
+      "John Cpt. Price",
       "This is my portfolio site",
     ],
     loop: true,
