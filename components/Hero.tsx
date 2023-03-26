@@ -17,7 +17,7 @@ const Hero = (props: Props) => {
     delaySpeed: 2000,
   });
   const [title, count2] = useTypewriter({
-    words: ["Frontend Developer", "React Developer"],
+    words: ["Frontend - React.js | Next.js", "Backend - Django | Python"],
     loop: true,
     delaySpeed: 2000,
   });
