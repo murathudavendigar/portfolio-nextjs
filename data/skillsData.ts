@@ -45,7 +45,7 @@ export const skillsData = [
   },
   {
     name: "TailwindCSS",
-    img: "https://camo.githubusercontent.com/1f0d1e1d113a468a91c2d3592ae56e702c30f85d796441956e20b776f27689c7/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f7461696c77696e646373732f7461696c77696e646373732d6f726967696e616c2d776f72646d61726b2e737667",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/tailwindcss/tailwindcss-plain.svg",
   },
   {
     name: "Material UI",
@@ -60,6 +60,14 @@ export const skillsData = [
     img: "https://camo.githubusercontent.com/6c8e86dfc77346d4388b8e064db73017a210f18e2cd18e74779ea34f2d630f4a/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6769746875622f6769746875622d6f726967696e616c2e737667",
   },
   {
+    name: "GitLab",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/gitlab/gitlab-original.svg",
+  },
+  {
+    name: "Bitbucket",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/bitbucket/bitbucket-original.svg",
+  },
+  {
     name: "Firebase",
     img: "https://camo.githubusercontent.com/5e264dc8fcb694c4183413c371048cfb251b0e8ee84b64a0e8ee76750718ca50/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f66697265626173652f66697265626173652d706c61696e2e737667",
   },
@@ -72,11 +80,28 @@ export const skillsData = [
     img: "https://camo.githubusercontent.com/5fa137d222dde7b69acd22c6572a065ce3656e6ffa1f5e88c1b5c7a935af3cc6/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f7673636f64652f7673636f64652d6f726967696e616c2e737667",
   },
   {
+    name: "Visual Studio",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/visualstudio/visualstudio-plain.svg",
+  },
+
+  {
     name: "Storybook",
     img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg",
   },
   {
     name: "PostgrSQL",
     img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "C#",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/csharp/csharp-original.svg",
+  },
+  {
+    name: ".NET",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/dot-net/dot-net-original.svg",
+  },
+  {
+    name: ".NET Core",
+    img: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/dotnetcore/dotnetcore-original.svg",
   },
 ];

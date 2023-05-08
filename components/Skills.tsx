@@ -18,7 +18,7 @@ const Skills = (props: Props) => {
       <h3 className="absolute top-[8.5rem] uppercase tracking-[3px] text-gray-200 dark:text-gray-900 text-sm">
         Hover over a skill for name
       </h3>
-      <div className="grid grid-cols-3 sm:grid-cols-4 xl:grid-cols-10 2xl:grid-cols-4 gap-5 align-middle">
+      <div className="grid grid-cols-4 lg:grid-cols-10 2xl:grid-cols-7 gap-5 align-middle mt-28 md:mt-0">
         {skillsData.map((item, index) =>
           index % 2 == 0 ? (
             <Skill key={index} item={item} />
