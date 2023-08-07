@@ -31,12 +31,12 @@ const Contact = (props: Props) => {
         <div className="space-y-2 md:space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">+90 507 467 48 24</p>
+            <p className="text-xl md:text-2xl">+30 697 562 89 18</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">Manisa / Türkiye</p>
+            <p className="text-xl md:text-2xl">Netherlands</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
