@@ -29,10 +29,12 @@ const Contact = (props: Props) => {
         </h4>
 
         <div className="space-y-2 md:space-y-10">
+          {/*
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
             <p className="text-xl md:text-2xl">+30 697 562 89 18</p>
           </div>
+          */}
 
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
