@@ -2,6 +2,32 @@ import { Projects } from "@/types";
 
 export const projectsData: Projects[] = [
   {
+    img: "",
+    name: "NextJS Amazon Clone",
+    description:
+      "Fully responsive Amazon Clone Application made using Next.js. It is a web application where a real payment system is created using Stripe checkout, the relevant orders are registered to the firestore database using webhooks, and Redux is used as global state management.",
+    url: "https://amazon-nextjs-hazel.vercel.app/",
+    language: "Next.JS",
+    github: "https://github.com/murathudavendigar/amazon-nextjs",
+  },
+  {
+    img: "",
+    name: "NextJS Instagram Clone",
+    description:
+      "A fully responsive Instagram Clone application made using Next.js, React Recoil, TailwindCSS, Firebase and Next Auth, where users can share images, write comments, like other users' photos and view other users' profiles after logging in with Google.",
+    url: "https://instagram-nextjs-johnprice.vercel.app/",
+    language: "Next.JS",
+    github: "https://github.com/murathudavendigar/instagram-nextjs",
+  },
+  {
+    img: "",
+    name: "NextJS ChatGPT",
+    description: "ChatGPT clone site made using openai API",
+    url: "https://chatgpt-nextjs.vercel.app/",
+    language: "Next.JS",
+    github: "https://github.com/murathudavendigar/chatgpt-nextjs",
+  },
+  {
     img: "https://media.licdn.com/dms/image/C4D22AQHF1VuK2OX-5Q/feedshare-shrink_2048_1536/0/1673616568442?e=1676505600&v=beta&t=2mAnfloe9vJEzTHrdft3QtqWBIjGBNb_BjdKwCpfSec",
     name: "NextJS Netflix App",
     description:

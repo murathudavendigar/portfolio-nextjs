@@ -1,5 +1,5 @@
 export type Projects = {
-  img: string;
+  img?: string;
   name: string;
   description: string;
   url: string;
