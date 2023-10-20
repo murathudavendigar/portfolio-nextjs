@@ -63,7 +63,7 @@ const Projects = (props: Props) => {
           <div
             key={index}
             className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
-            <a href={project.url} target="_blank" rel="noreferrer">
+           {/*  <a href={project.url} target="_blank" rel="noreferrer">
               <motion.img
                 initial={{ y: -300, opacity: 0 }}
                 transition={{ duration: 1.2 }}
@@ -74,7 +74,7 @@ const Projects = (props: Props) => {
                 loading="lazy"
                 className="hidden xl:inline-block md:max-w-[400px] 2xl:max-w-[700px] mt-28"
               />
-            </a>
+            </a> */}
             <div className="space-y-6 px-0 md:px-10 max-w-6xl">
               <h4 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center dark:text-gray-900">
                 <span className=" border-b border-[#CA3E47] ">
