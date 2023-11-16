@@ -23,7 +23,7 @@ const About = (props: Props) => {
         }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        src="https://media.licdn.com/dms/image/D4E03AQEur_KAqZHUOw/profile-displayphoto-shrink_400_400/0/1697803864206?e=1703116800&v=beta&t=4EipDAWa6GdeaG40nvS_BeEX3Iflz7LRBI17kKXLmxU"
+        src="https://media.licdn.com/dms/image/D4E03AQHQ-6Dp4Drb6Q/profile-displayphoto-shrink_400_400/0/1698683920371?e=1705536000&v=beta&t=rDOMJ2wecHwyPIoFozxrUuQW8ZZPnZJua6Bl7Ggg0M4"
         alt=""
         className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-48 rounded-full object-cover md:rounded-lg md:h-96 md:w-72 2xl:w-[500px] 2xl:h-[600px]"
         loading="lazy"
