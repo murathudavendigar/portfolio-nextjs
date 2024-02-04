@@ -23,9 +23,9 @@ const About = (props: Props) => {
         }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        src="https://media.licdn.com/dms/image/D4E03AQHQ-6Dp4Drb6Q/profile-displayphoto-shrink_400_400/0/1698683920371?e=1705536000&v=beta&t=rDOMJ2wecHwyPIoFozxrUuQW8ZZPnZJua6Bl7Ggg0M4"
+        src="https://avatars.githubusercontent.com/u/109613328?v=4"
         alt=""
-        className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-48 rounded-full object-cover md:rounded-lg md:h-96 md:w-72 2xl:w-[500px] 2xl:h-[600px]"
+        className="-mb-20 md:mb-0 flex-shrink-0 w-48 h-48 rounded-full object-cover md:rounded-lg md:h-96 md:w-96 2xl:w-[500px] 2xl:h-[500px]"
         loading="lazy"
       />
 

@@ -25,7 +25,7 @@ const Hero = (props: Props) => {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
       <Image
-        src="https://media.licdn.com/dms/image/D4E03AQHQ-6Dp4Drb6Q/profile-displayphoto-shrink_400_400/0/1698683920371?e=1705536000&v=beta&t=rDOMJ2wecHwyPIoFozxrUuQW8ZZPnZJua6Bl7Ggg0M4"
+        src="https://avatars.githubusercontent.com/u/109613328?v=4"
         alt="photos"
         className="relative rounded-full object-cover"
         width={128}
