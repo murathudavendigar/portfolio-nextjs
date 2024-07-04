@@ -24,7 +24,7 @@ const Contact = (props: Props) => {
         Contact
       </h3>
       <div className="flex flex-col xl:flex-row xl:items-center xl:gap-10 2xl:flex-col space-y-3 md:space-y-8 ">
-        <h4 className="text-2xl hidden text-[#313131] 3xl:text-white 2xl:inline-block md:text-4xl font-semibold text-center">
+        <h4 className="text-2xl hidden 3xl:text-white 2xl:inline-block md:text-4xl font-semibold text-center">
           Contact Me
         </h4>
 
