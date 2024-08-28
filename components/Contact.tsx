@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 type Inputs = {
   name: string;
@@ -28,9 +29,10 @@ const Contact = (props: Props) => {
         .then(
           () => {
             reset();
+            toast.success("Your message has been sent! Thank you.");
           },
           (error) => {
-            console.log("Error sending confirmation email:", error.text);
+            toast.error("Failed to send the message, please try again later.");
           }
         );
     }
