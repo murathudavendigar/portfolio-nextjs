@@ -3,6 +3,15 @@ import { Projects } from "@/types";
 export const projectsData: Projects[] = [
   {
     img: "",
+    name: "E-Price E-commerce Project",
+    description:
+      "E-Price E-Commerce is a modern, fully responsive e-commerce application built with React. It features user authentication, a dynamic shopping cart, product reviews, and order tracking. Admins can manage products, view detailed analytics, and update order statuses through an intuitive admin panel. The project integrates Firebase for authentication, database management, and storage, along with various other libraries for enhanced functionality and a seamless user experience. Ideal for developers looking to explore full-stack development with React and Firebase.",
+    url: "https://eprice-ecommerce.vercel.app/",
+    language: "React.JS",
+    github: "https://github.com/murathudavendigar/react-ecommerce",
+  },
+  {
+    img: "",
     name: "NextJS Amazon Clone",
     description:
       "Fully responsive Amazon Clone Application made using Next.js. It is a web application where a real payment system is created using Stripe checkout, the relevant orders are registered to the firestore database using webhooks, and Redux is used as global state management.",

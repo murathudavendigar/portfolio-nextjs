@@ -34,9 +34,11 @@ const About = (props: Props) => {
           Hi, I am Murat Hüdavendigâr
         </h4>
         <p className="text-sm">
-          I graduated from Full Stack Developer Bootcamp in Virginia, USA and am
-          a senior computer engineering student at Kocaeli University. I have 3+
-          years of experience in Web Development and IT.
+          I graduated from a Full Stack Developer Bootcamp in Virginia, USA, and
+          I am currently a senior Computer Engineering student at Kocaeli
+          University. I have over 3 years of experience in Web Development and
+          IT. I worked as a Backend Developer and have been working as a
+          Frontend Instructor since February 2024.
         </p>
       </div>
     </motion.div>
