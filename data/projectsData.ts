@@ -121,7 +121,7 @@ export const projectsData: Projects[] = [
     name: "Brawl Stars App",
     description:
       "A web application that I prepared to work with React JS using the Brawl Stars API.",
-    url: "https://brawl-stars-api-react.vercel.app/",
+    url: "https://brawl-stars-jp.vercel.app/",
     language: "React.JS",
     github: "https://github.com/murathudavendigar/brawl-stars-api-react",
   },
