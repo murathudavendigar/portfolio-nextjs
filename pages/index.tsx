@@ -25,11 +25,9 @@ const Home = () => {
         <About />
       </section>
 
-      {/* TODO */}
-      {/* <section id="experience" className="snap-center">
+      <section id="experience" className="snap-center">
         <Experience />
-      </section> */}
-      {/* TODO */}
+      </section>
       <section id="skills" className="snap-start">
         <Skills />
       </section>
