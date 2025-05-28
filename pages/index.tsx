@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500">
+    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
       <Head>
         <title>Murat Hüdavendigâr Öncü</title>
       </Head>
@@ -44,8 +44,8 @@ const Home = () => {
         <footer className="sticky bottom-16 md:bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
             <img
-              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
-              src="https://avatars.githubusercontent.com/u/109613328?v=4"
+              className="h-11 w-11 object-cover rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
+              src="/img/MHO.jpg"
               alt=""
             />
           </div>
