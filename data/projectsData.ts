@@ -3,6 +3,15 @@ import { Projects } from "@/types";
 export const projectsData: Projects[] = [
   {
     img: "",
+    name: "Event Manager",
+    description:
+      "Event Manager is a simple and functional tool I built to organize events more effectively. It allows users to create and edit events, sign in securely with Google or GitHub, and connect with personal calendars through iCalendar integration. One of its key features is the ability to manage both private and shared calendars with just a single link, making collaboration with multiple people straightforward. The project is still in progress, but I continue adding features to make it more useful and flexible over time.",
+    url: "https://event-manager-jp.vercel.app",
+    language: "Next.JS",
+    github: "https://github.com/murathudavendigar/calendar-app",
+  },
+  {
+    img: "",
     name: "E-Price E-commerce Project",
     description:
       "E-Price E-Commerce is a modern, fully responsive e-commerce application built with React. It features user authentication, a dynamic shopping cart, product reviews, and order tracking. Admins can manage products, view detailed analytics, and update order statuses through an intuitive admin panel. The project integrates Firebase for authentication, database management, and storage, along with various other libraries for enhanced functionality and a seamless user experience. Ideal for developers looking to explore full-stack development with React and Firebase.",
