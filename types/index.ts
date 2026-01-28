@@ -25,7 +25,9 @@ export type BlogPost = {
   description: string;
   content: string;
   imageUrl: string;
-  date: number; // Timestamp in milliseconds
+  date: number; // Timestamp in milliseconds (deprecated, use createdAt)
+  createdAt: number; // Timestamp in milliseconds
+  updatedAt?: number; // Timestamp in milliseconds
   likes?: number;
   commentCount?: number;
   author: string;

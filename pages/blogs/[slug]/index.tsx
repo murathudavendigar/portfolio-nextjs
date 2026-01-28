@@ -61,7 +61,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       description: blog.description || "",
       content: blog.content || "",
       imageUrl: blog.imageUrl || "",
-      date: blog.date || Date.now(),
+      date: blog.createdAt || blog.date || Date.now(),
+      createdAt: blog.createdAt || blog.date || Date.now(),
+      updatedAt: blog.updatedAt,
       likes: blog.likes || 0,
       author: blog.author || "Anonymous",
       slug: blog.slug || blog._id.toString(),
@@ -85,11 +87,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function BlogPost({ post }: { post: BlogPost }) {
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+  const createdDate = new Date(post.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  const updatedDate = post.updatedAt
+    ? new Date(post.updatedAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
+
+  const isUpdated =
+    post.updatedAt &&
+    new Date(post.updatedAt).getTime() !== new Date(post.createdAt).getTime();
 
   return (
     <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
@@ -160,9 +174,9 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                   </div>
                 )}
                 <time
-                  dateTime={new Date(post.date).toISOString()}
+                  dateTime={new Date(post.createdAt).toISOString()}
                   className="px-3 py-1.5 rounded-full bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300">
-                  {formattedDate}
+                  {createdDate}
                 </time>
                 {post.readTime && (
                   <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300">
@@ -205,6 +219,30 @@ export default function BlogPost({ post }: { post: BlogPost }) {
             <p className="text-base leading-relaxed text-gray-200 sm:text-lg md:text-xl dark:text-gray-700">
               {post.description}
             </p>
+
+            {/* Updated info */}
+            {isUpdated && (
+              <div className="flex items-center gap-2 px-3 py-2 mt-4 text-xs text-gray-400 border rounded-lg sm:text-sm bg-white/5 dark:bg-gray-200/30 border-white/10 dark:border-gray-300 dark:text-gray-600">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                <span>
+                  Last updated on{" "}
+                  <time dateTime={new Date(post.updatedAt!).toISOString()}>
+                    {updatedDate}
+                  </time>
+                </span>
+              </div>
+            )}
           </header>
 
           {/* Article content - Responsive */}

@@ -14,10 +14,10 @@ export async function getStaticProps() {
     const blogsCollection = db.collection("blogs");
     const commentsCollection = db.collection("comments");
 
-    // Sadece yayınlanmış blogları çek
+    // Sadece yayınlanmış blogları çek, createdAt'e göre sırala
     const blogs = await blogsCollection
       .find({ published: true })
-      .sort({ date: -1 })
+      .sort({ createdAt: -1, date: -1 })
       .toArray();
 
     // Her blog için yorum sayısını al
@@ -33,7 +33,9 @@ export async function getStaticProps() {
           description: blog.description || "",
           content: blog.content || "",
           imageUrl: blog.imageUrl || "",
-          date: blog.date || Date.now(),
+          date: blog.createdAt || blog.date || Date.now(),
+          createdAt: blog.createdAt || blog.date || Date.now(),
+          updatedAt: blog.updatedAt,
           likes: blog.likes || 0,
           commentCount,
           author: blog.author || "Anonymous",
