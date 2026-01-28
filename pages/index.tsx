@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 const Home = () => {
@@ -41,12 +42,15 @@ const Home = () => {
       </section>
 
       <Link href="#hero">
-        <footer className="sticky bottom-16 md:bottom-5 w-full cursor-pointer">
+        <footer className="sticky w-full cursor-pointer bottom-16 md:bottom-5">
           <div className="flex items-center justify-center">
-            <img
-              className="h-11 w-11 object-cover rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
+            <Image
+              className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
               src="/img/MHO.jpg"
               alt=""
+              width={44}
+              height={44}
+              loading="lazy"
             />
           </div>
         </footer>

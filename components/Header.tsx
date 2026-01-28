@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { SocialIcon } from "react-social-icons";
 
 type Props = {};
 
 const Header = (props: Props) => {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
   const [toggle, setToggle] = useState<boolean>();
+
+  // Check if we're on blogs page or blog detail page
+  const isOnBlogsPage = router.pathname.startsWith("/blogs");
+
   useEffect(() => {
     if (theme === "light") {
       setToggle(true);
@@ -18,7 +24,7 @@ const Header = (props: Props) => {
   }, [theme]);
 
   return (
-    <header className="sticky top-0 p-5 flex items-center justify-between max-w-7xl mx-auto z-20 xl:items-center ">
+    <header className="sticky top-0 z-20 flex items-center justify-between p-5 mx-auto max-w-7xl xl:items-center ">
       <motion.div
         initial={{
           x: -500,
@@ -41,7 +47,7 @@ const Header = (props: Props) => {
           bgColor="transparent"
         />
         <SocialIcon
-          url="https://twitter.com/murathoncu"
+          url="https://x.com/murathoncu"
           fgColor="gray"
           bgColor="transparent"
         />
@@ -77,7 +83,7 @@ const Header = (props: Props) => {
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
         <motion.div
           layout
-          className="bg-white w-4 h-4 md:w-8 md:h-8 rounded-full shadow-md"></motion.div>
+          className="w-4 h-4 bg-white rounded-full shadow-md md:w-8 md:h-8"></motion.div>
       </motion.div>
 
       <Link href="#contact">
@@ -95,16 +101,25 @@ const Header = (props: Props) => {
           transition={{
             duration: 1.5,
           }}
-          className="flex flex-row items-center text-gray-300  cursor-pointer">
-          <SocialIcon
-            className="cursor-pointer"
-            network="email"
-            fgColor="gray"
-            bgColor="transparent"
-          />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-300 dark:text-gray-900">
-            Get In Touch
-          </p>
+          className="flex flex-row items-center text-gray-300 cursor-pointer">
+          <Link
+            href={isOnBlogsPage ? "/" : "/blogs"}
+            className="text-gray-300 uppercase transition-colors duration-300 cursor-pointer dark:text-gray-900 hover:text-gray-500 dark:hover:text-gray-700">
+            {isOnBlogsPage ? "Home" : "Blogs"}
+          </Link>
+          {!isOnBlogsPage && (
+            <>
+              <SocialIcon
+                className="cursor-pointer"
+                network="email"
+                fgColor="gray"
+                bgColor="transparent"
+              />
+              <p className="hidden text-sm text-gray-300 uppercase md:inline-flex dark:text-gray-900">
+                Get In Touch
+              </p>
+            </>
+          )}
         </motion.div>
       </Link>
     </header>

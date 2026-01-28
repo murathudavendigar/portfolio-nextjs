@@ -1,0 +1,123 @@
+import BlogCard from "@/components/BlogCard";
+import Header from "@/components/Header";
+import clientPromise from "@/lib/mongodb";
+import type { BlogPost } from "@/types";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+
+export async function getStaticProps() {
+  try {
+    // MongoDB'den direkt blogları çek
+    const client = await clientPromise;
+    const db = client.db("portfolio-db");
+    const blogsCollection = db.collection("blogs");
+    const commentsCollection = db.collection("comments");
+
+    // Sadece yayınlanmış blogları çek
+    const blogs = await blogsCollection
+      .find({ published: true })
+      .sort({ date: -1 })
+      .toArray();
+
+    // Her blog için yorum sayısını al
+    const blogsWithComments = await Promise.all(
+      blogs.map(async (blog) => {
+        const commentCount = await commentsCollection.countDocuments({
+          blogId: blog._id.toString(),
+        });
+
+        return {
+          id: blog._id.toString(),
+          title: blog.title || "",
+          description: blog.description || "",
+          content: blog.content || "",
+          imageUrl: blog.imageUrl || "",
+          date: blog.date || Date.now(),
+          likes: blog.likes || 0,
+          commentCount,
+          author: blog.author || "Anonymous",
+          slug: blog.slug || blog._id.toString(),
+          tags: Array.isArray(blog.tags) ? blog.tags : [],
+          published: Boolean(blog.published),
+          readTime: blog.readTime || 5,
+        };
+      }),
+    );
+
+    return {
+      props: {
+        posts: blogsWithComments,
+      },
+      revalidate: 30,
+    };
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return {
+      props: {
+        posts: [],
+      },
+      revalidate: 30,
+    };
+  }
+}
+
+export default function BlogIndex({ posts }: { posts: BlogPost[] }) {
+  return (
+    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
+      <Head>
+        <title>MHO | Blogs</title>
+      </Head>
+      <Header />
+
+      <div className="min-h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center py-20">
+        <h3 className="absolute top-20 uppercase tracking-[20px] text-gray-200 dark:text-gray-700 text-2xl">
+          My Blog Posts
+        </h3>
+
+        {posts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
+            {posts.map((post) => (
+              <BlogCard
+                key={post.id}
+                title={post.title}
+                date={new Date(post.date).toLocaleDateString()}
+                slug={post.slug}
+                description={post.description}
+                imageUrl={post.imageUrl}
+                likes={post.likes}
+                commentCount={post.commentCount}
+                readTime={post.readTime}
+                tags={post.tags}
+                author={post.author}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center mt-20">
+            <div className="text-gray-400 dark:text-gray-600 text-lg mb-4">
+              No blog posts found
+            </div>
+            <p className="text-gray-500 dark:text-gray-700 text-sm">
+              Check back later for new content!
+            </p>
+          </div>
+        )}
+      </div>
+      <Link href="/">
+        <footer className="sticky bottom-16 md:bottom-5 w-full cursor-pointer">
+          <div className="flex items-center justify-center">
+            <Image
+              className="h-11 w-11 object-cover rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
+              src="/img/MHO.jpg"
+              alt=""
+              width={44}
+              height={44}
+              loading="lazy"
+            />
+          </div>
+        </footer>
+      </Link>
+    </div>
+  );
+}

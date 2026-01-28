@@ -22,12 +22,12 @@ const Hero = (props: Props) => {
     delaySpeed: 2000,
   });
   return (
-    <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
+    <div className="flex flex-col items-center justify-center h-screen space-y-8 overflow-hidden text-center">
       <BackgroundCircles />
       <Image
         src="https://avatars.githubusercontent.com/u/109613328?v=4"
         alt="photos"
-        className="relative rounded-full object-cover"
+        className="relative object-cover rounded-full"
         width={128}
         height={128}
         loading="lazy"
@@ -37,7 +37,7 @@ const Hero = (props: Props) => {
           <span>{title}</span>
           <Cursor cursorColor="#CA3E47" />
         </h2>
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10">
+        <h1 className="px-10 text-5xl font-semibold lg:text-6xl">
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#CA3E47" />
         </h1>
@@ -54,6 +54,9 @@ const Hero = (props: Props) => {
           </Link>
           <Link href="#projects">
             <button className="heroButton">Projects</button>
+          </Link>
+          <Link href="/blogs">
+            <button className="heroButton">Blogs</button>
           </Link>
         </div>
       </div>

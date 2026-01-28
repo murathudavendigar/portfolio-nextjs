@@ -1,8 +1,7 @@
-import React from "react";
+import { formatExperienceDates } from "@/functions/formatExperienceDates";
+import { Experience } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Experience } from "@/types";
-import { formatExperienceDates } from "@/functions/formatExperienceDates";
 
 type Props = {
   experience: Experience;
@@ -27,29 +26,29 @@ const ExperienceCard = ({ experience }: Props) => {
       />
 
       <div className="px-0 md:px-10">
-        <h4 className="text-2xl md:text-4xl font-light text-gray-300">
+        <h4 className="text-2xl font-light text-gray-300 md:text-4xl">
           {experience.title}
         </h4>
-        <p className="font-bold text-xl md:text-2xl mt-1 text-gray-300">
+        <p className="mt-1 text-xl font-bold text-gray-300 md:text-2xl">
           {experience.company}
         </p>
-        <div className="flex space-x-2 my-2">
+        <div className="flex my-2 space-x-2">
           {experience.usedTechnologiesImages.map((image, index) => (
             <Image
               key={index}
               src={image}
               alt=""
-              className="rounded-full w-8 h-8 md:w-10 md:h-10"
+              className="w-8 h-8 rounded-full md:w-10 md:h-10"
               width={40}
               height={40}
               loading="lazy"
             />
           ))}
         </div>
-        <p className="uppercase py-5 text-gray-300">
+        <p className="py-5 text-gray-300 uppercase">
           {formatExperienceDates(experience.startDate, experience.endDate)}
         </p>
-        <ul className="list-disc space-y-4 h-28 md:h-40 mb-10 md:mb-5 ml-5 pr-3 text-xs md:text-lg overflow-y-auto scrollbar-thin scrollbar-thumb-[#CA3E47] scrollbar-track-gray-400/20 text-gray-300">
+        <ul className="list-disc space-y-4 h-24 mb-10 md:mb-5 ml-5 pr-3 text-xs md:text-lg overflow-y-auto scrollbar-thin scrollbar-thumb-[#CA3E47] scrollbar-track-gray-400/20 text-gray-300">
           {experience.points.map((point, i) => (
             <li key={i}>{point}</li>
           ))}
