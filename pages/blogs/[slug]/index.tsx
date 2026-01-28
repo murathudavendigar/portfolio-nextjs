@@ -79,9 +79,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       description: blog.description || "",
       content: blog.content || "",
       imageUrl: blog.imageUrl || "",
-      date: blog.createdAt || blog.date || Date.now(),
-      createdAt: blog.createdAt || blog.date || Date.now(),
-      updatedAt: blog.updatedAt,
+      date:
+        typeof (blog.createdAt || blog.date) === "number"
+          ? blog.createdAt || blog.date || Date.now()
+          : (blog.createdAt || blog.date) instanceof Date
+            ? (blog.createdAt || blog.date).getTime()
+            : Date.now(),
+      createdAt:
+        typeof (blog.createdAt || blog.date) === "number"
+          ? blog.createdAt || blog.date || Date.now()
+          : (blog.createdAt || blog.date) instanceof Date
+            ? (blog.createdAt || blog.date).getTime()
+            : Date.now(),
+      updatedAt: blog.updatedAt
+        ? typeof blog.updatedAt === "number"
+          ? blog.updatedAt
+          : blog.updatedAt instanceof Date
+            ? blog.updatedAt.getTime()
+            : null
+        : null,
       likes: blog.likes || 0,
       author: blog.author || "Anonymous",
       slug: blog.slug || blog._id.toString(),
