@@ -1,6 +1,7 @@
 "use client";
 
 import type { Comment } from "@/types";
+import Logger from "dev-console-kit";
 import type React from "react";
 import { useEffect, useState } from "react";
 
@@ -32,7 +33,7 @@ export default function CommentSection({ postId }: CommentSectionProps) {
         setComments(result.data);
       }
     } catch (error) {
-      console.error("Error fetching comments:", error);
+      Logger.error("Error fetching comments:", error);
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +73,7 @@ export default function CommentSection({ postId }: CommentSectionProps) {
         alert("Failed to add comment. Please try again.");
       }
     } catch (error) {
-      console.error("Error adding comment:", error);
+      Logger.error("Error adding comment:", error);
       alert("Failed to add comment. Please try again.");
     } finally {
       setIsSubmitting(false);

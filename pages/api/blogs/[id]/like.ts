@@ -1,4 +1,5 @@
 import clientPromise from "@/lib/mongodb";
+import Logger from "dev-console-kit";
 import { ObjectId } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -60,7 +61,7 @@ export default async function handler(
       likes: currentLikes,
     });
   } catch (error) {
-    console.error("MongoDB error:", error);
+    Logger.error("MongoDB error:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",

@@ -1,5 +1,6 @@
 import type { Projects as ProjectType } from "@/types";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import Logger from "dev-console-kit";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,7 @@ const Projects = (props: Props) => {
         }
       } catch (err) {
         setError("Projeler yüklenirken bir hata oluştu");
-        console.error("Fetch error:", err);
+        Logger.error("Fetch error:", err);
       } finally {
         setLoading(false);
       }

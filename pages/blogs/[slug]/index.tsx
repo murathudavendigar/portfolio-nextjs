@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import LikeButton from "@/components/LikeButton";
 import clientPromise from "@/lib/mongodb";
 import type { BlogPost } from "@/types";
+import Logger from "dev-console-kit";
 import "highlight.js/styles/github-dark.css";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
@@ -12,6 +13,15 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // Eğer MONGODB_URI yoksa boş paths dön
+  if (!process.env.MONGODB_URI) {
+    Logger.warning("MONGODB_URI is not defined, returning empty paths");
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
+
   try {
     const client = await clientPromise;
     const db = client.db("portfolio-db");
@@ -31,7 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       fallback: "blocking",
     };
   } catch (error) {
-    console.error("Error fetching blog paths:", error);
+    Logger.error("Error fetching blog paths:", error);
     return {
       paths: [],
       fallback: "blocking",
@@ -40,6 +50,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  // Eğer MONGODB_URI yoksa 404
+  if (!process.env.MONGODB_URI) {
+    Logger.warning("MONGODB_URI is not defined");
+    return {
+      notFound: true,
+    };
+  }
+
   try {
     const slug = params?.slug as string;
     const client = await clientPromise;
@@ -79,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 10,
     };
   } catch (error) {
-    console.error("Error fetching blog post:", error);
+    Logger.error("Error fetching blog post:", error);
     return {
       notFound: true,
     };
@@ -321,7 +339,11 @@ export default function BlogPost({ post }: { post: BlogPost }) {
                   />
                 ),
                 img: ({ node, ...props }) => (
-                  <img className="w-full my-4 rounded-lg" {...props} />
+                  <img
+                    className="w-full my-4 rounded-lg"
+                    alt="Blog content image"
+                    {...props}
+                  />
                 ),
                 hr: ({ node, ...props }) => (
                   <hr

@@ -1,5 +1,6 @@
 "use client";
 
+import Logger from "dev-console-kit";
 import { useEffect, useState } from "react";
 
 interface LikeButtonProps {
@@ -61,7 +62,7 @@ export default function LikeButton({ postId, initialLikes }: LikeButtonProps) {
         }
       }
     } catch (error) {
-      console.error("Error updating likes:", error);
+      Logger.error("Error updating likes:", error);
     } finally {
       setIsLoading(false);
     }
