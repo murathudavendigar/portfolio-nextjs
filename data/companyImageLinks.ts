@@ -8,13 +8,13 @@ export const NAGE_IMAGE_LINK =
   "https://media.licdn.com/dms/image/v2/D4D0BAQEu84AYIKDXcA/company-logo_100_100/company-logo_100_100/0/1720099861960?e=1761782400&v=beta&t=XZHKCHf8qjmaxiQMv_4Q8J0qM9h9hTgMGrug0PiloLU";
 
 export const WISE_QUARTER_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/C4E0BAQHD8RxYpux89g/company-logo_200_200/company-logo_200_200/0/1653472552946/wisequarter_logo?e=1761782400&v=beta&t=YpJfnTjBcJAEFgo5iemANmGGEV9rJMePE6gRdF1xVY8";
+  "https://wisequarter.com/wp-content/uploads/2022/05/wisequarter-logo.png";
 
 export const EYPES_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/D560BAQHQnAbgFgkxoQ/company-logo_100_100/company-logo_100_100/0/1694988394782/eypes_llc_logo?e=1761782400&v=beta&t=V4aIm4M169kak5W5ZDsXlG7VrH4qpZF6j3_1VvTzx1Y";
+  "https://media.licdn.com/dms/image/v2/D560BAQHQnAbgFgkxoQ/company-logo_200_200/company-logo_200_200/0/1694988394782/eypes_llc_logo?e=2147483647&v=beta&t=Xjyt2Uub4xtgDUDeV4mfq5rRFiumLOJvig8yzJXax-o";
 
 export const ASSA_TEKNOLOJI_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/C4D0BAQFPu34RZecKCQ/company-logo_100_100/company-logo_100_100/0/1674551351243/assatekno_logo?e=1753920000&v=beta&t=94QhLoiDeuPYMTTrxwYhf6iV18jJECw-OwwZyBRHhxo";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSOdj5EFOKGqxcD_q_jo_3j9sP-K3MaZ-n0w&s";
 
 export const FREELANCE_IMAGE_LINK =
   "https://static.vecteezy.com/system/resources/previews/052/642/268/non_2x/software-developer-glyph-icon-illustration-vector.jpg";
