@@ -5,10 +5,10 @@ export const TEM_CRAFT_TECH_IMAGE_LINK =
   "https://www.temcrafttech.com/_next/image?url=%2Fimages%2Flogo-dark.png&w=128&q=75";
 
 export const NAGE_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/D4D0BAQEu84AYIKDXcA/company-logo_100_100/company-logo_100_100/0/1720099861960?e=1761782400&v=beta&t=XZHKCHf8qjmaxiQMv_4Q8J0qM9h9hTgMGrug0PiloLU";
+  "https://media.licdn.com/dms/image/v2/D4D0BAQEu84AYIKDXcA/company-logo_200_200/company-logo_200_200/0/1720099861960?e=1773878400&v=beta&t=s8jMr_otwL0vPusgtaovyovE76KMiRfV6ctj6qVX6NQ";
 
 export const WISE_QUARTER_IMAGE_LINK =
-  "https://wisequarter.com/wp-content/uploads/2022/05/wisequarter-logo.png";
+  "https://yt3.googleusercontent.com/izzuU0MPDbmWos29nVUHGT_IuxCxVcAXhfjIzUPo0qdK4MXABu28-u85LsQwzvSsmbExzN323g=s160-c-k-c0x00ffffff-no-rj";
 
 export const EYPES_IMAGE_LINK =
   "https://media.licdn.com/dms/image/v2/D560BAQHQnAbgFgkxoQ/company-logo_200_200/company-logo_200_200/0/1694988394782/eypes_llc_logo?e=2147483647&v=beta&t=Xjyt2Uub4xtgDUDeV4mfq5rRFiumLOJvig8yzJXax-o";
