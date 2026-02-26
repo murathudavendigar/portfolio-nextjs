@@ -41,7 +41,7 @@ export const experiencesData: Experience[] = [
     description:
       "Delivering comprehensive frontend training programs to aspiring developers.",
     startDate: "May 2025",
-    endDate: "Present",
+    endDate: "Feb 2026",
     points: [
       "Instructed students on HTML, CSS, JavaScript, React.js, and Next.js fundamentals.",
       "Provided real-world examples and coding exercises to reinforce learning.",

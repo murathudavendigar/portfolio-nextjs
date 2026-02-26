@@ -1,8 +1,8 @@
 export const EUROTECH_STUDY_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/D4D0BAQFUgdPrC6WFqw/company-logo_200_200/company-logo_200_200/0/1698750445816/eurotechstudy_logo?e=1761782400&v=beta&t=JjX7EiiClkiCDSTlFdZx0HdCuJzGY40cOVgXQpXWPhU";
+  "https://www.eurotechstudy.com/assets/images/Logo%20Blue_euroTech.svg";
 
 export const TEM_CRAFT_TECH_IMAGE_LINK =
-  "https://media.licdn.com/dms/image/v2/D4E0BAQHL74B2nEvIJQ/company-logo_100_100/company-logo_100_100/0/1730138028105?e=1761782400&v=beta&t=Gq6Z8lPD9SOsMXnT014tEmCvnTgqWpjTqsPFEUAepWM";
+  "https://www.temcrafttech.com/_next/image?url=%2Fimages%2Flogo-dark.png&w=128&q=75";
 
 export const NAGE_IMAGE_LINK =
   "https://media.licdn.com/dms/image/v2/D4D0BAQEu84AYIKDXcA/company-logo_100_100/company-logo_100_100/0/1720099861960?e=1761782400&v=beta&t=XZHKCHf8qjmaxiQMv_4Q8J0qM9h9hTgMGrug0PiloLU";
