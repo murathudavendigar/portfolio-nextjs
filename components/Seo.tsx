@@ -38,6 +38,12 @@ export default function Seo({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={ogImage} />
+      {image === site.defaultOgImage && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+        </>
+      )}
 
       {type === "article" && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
