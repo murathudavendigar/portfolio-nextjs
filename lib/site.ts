@@ -5,7 +5,7 @@ export const site = {
   title: "Murat Hüdavendigâr Öncü — Frontend Developer",
   description:
     "Frontend developer building fast, polished web apps with React, Next.js and TypeScript.",
-  email: "murathoncu@gmail.com",
+  email: "contact@muratoncu.com",
   defaultOgImage: "/img/og.jpg",
   twitterHandle: "@murathoncu",
   socials: {

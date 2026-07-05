@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
-import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-import { useForm, SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
+import { useRef } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 type Inputs = {
@@ -24,7 +24,7 @@ const Contact = (props: Props) => {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
           "template_4mm0dyn",
           form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
         )
         .then(
           () => {
@@ -33,7 +33,7 @@ const Contact = (props: Props) => {
           },
           (error) => {
             toast.error("Failed to send the message, please try again later.");
-          }
+          },
         );
     }
   };
@@ -61,7 +61,7 @@ const Contact = (props: Props) => {
 
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">murathoncu@gmail.com</p>
+            <p className="text-xl md:text-2xl">contact@muratoncu.com</p>
           </div>
         </div>
 
