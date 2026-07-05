@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s localhost*)",
+      "Bash(curl -s -o /dev/null *)",
+      "Bash(npm run typecheck)"
+    ]
+  }
+}

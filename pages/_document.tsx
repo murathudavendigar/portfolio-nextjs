@@ -8,7 +8,10 @@ export default function Document() {
   }
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <meta name="theme-color" content="#313131" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </Head>
       <body>
         <Main />
         <NextScript />

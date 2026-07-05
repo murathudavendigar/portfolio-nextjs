@@ -1,9 +1,9 @@
 import BlogCard from "@/components/BlogCard";
 import Header from "@/components/Header";
+import Seo from "@/components/Seo";
 import clientPromise from "@/lib/mongodb";
 import type { BlogPost } from "@/types";
 import Logger from "dev-console-kit";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -95,9 +95,11 @@ export async function getStaticProps() {
 export default function BlogIndex({ posts }: { posts: BlogPost[] }) {
   return (
     <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
-      <Head>
-        <title>MHO | Blogs</title>
-      </Head>
+      <Seo
+        title="Blog — Murat Öncü"
+        description="Writing on React, Next.js, TypeScript, Python and the frontend craft by Murat Hüdavendigâr Öncü."
+        path="/blogs"
+      />
       <Header />
 
       <div className="relative flex flex-col items-center min-h-screen px-10 py-20 mx-auto text-center md:text-left md:flex-row max-w-7xl justify-evenly">
@@ -140,7 +142,7 @@ export default function BlogIndex({ posts }: { posts: BlogPost[] }) {
             <Image
               className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
               src="/img/MHO.jpg"
-              alt=""
+              alt="Murat Hüdavendigâr Öncü — back to home"
               width={44}
               height={44}
               loading="lazy"

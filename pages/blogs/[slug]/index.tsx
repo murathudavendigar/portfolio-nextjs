@@ -1,7 +1,9 @@
 import CommentSection from "@/components/CommentSection";
 import Header from "@/components/Header";
 import LikeButton from "@/components/LikeButton";
+import Seo from "@/components/Seo";
 import clientPromise from "@/lib/mongodb";
+import { absoluteUrl, site } from "@/lib/site";
 import type { BlogPost } from "@/types";
 import Logger from "dev-console-kit";
 import "highlight.js/styles/github-dark.css";
@@ -141,9 +143,41 @@ export default function BlogPost({ post }: { post: BlogPost }) {
 
   return (
     <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
+      <Seo
+        title={`${post.title} — Murat Öncü`}
+        description={post.description}
+        path={`/blogs/${post.slug}`}
+        image={post.imageUrl || site.defaultOgImage}
+        type="article"
+        publishedTime={new Date(post.createdAt).toISOString()}
+        modifiedTime={
+          post.updatedAt ? new Date(post.updatedAt).toISOString() : undefined
+        }
+        tags={post.tags}
+      />
       <Head>
-        <title>{post.title} | MHO</title>
-        <meta name="description" content={post.description} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: post.title,
+              description: post.description,
+              image: absoluteUrl(post.imageUrl || site.defaultOgImage),
+              datePublished: new Date(post.createdAt).toISOString(),
+              ...(post.updatedAt && {
+                dateModified: new Date(post.updatedAt).toISOString(),
+              }),
+              mainEntityOfPage: `${site.url}/blogs/${post.slug}`,
+              author: {
+                "@type": "Person",
+                name: site.name,
+                url: site.url,
+              },
+            }),
+          }}
+        />
       </Head>
       <Header />
 
