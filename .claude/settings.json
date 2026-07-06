@@ -3,7 +3,10 @@
     "allow": [
       "Bash(curl -s localhost*)",
       "Bash(curl -s -o /dev/null *)",
-      "Bash(npm run typecheck)"
+      "Bash(npm run typecheck)",
+      "Bash(curl -sL *)",
+      "Bash(curl -s --max-time *)",
+      "Bash(npm run test)"
     ]
   }
 }

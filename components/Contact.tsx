@@ -1,3 +1,4 @@
+"use client";
 import emailjs from "@emailjs/browser";
 import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
 import { useRef } from "react";

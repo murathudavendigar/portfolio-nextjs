@@ -2,10 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "avatars.githubusercontent.com",
-      "www.citypng.com",
-      "icon.icepanel.io",
+    remotePatterns: [
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      { protocol: "https", hostname: "www.citypng.com" },
+      { protocol: "https", hostname: "icon.icepanel.io" },
     ],
   },
 };

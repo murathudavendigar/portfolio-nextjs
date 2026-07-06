@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 
 type Props = {};
@@ -30,14 +31,23 @@ const About = (props: Props) => {
 
       <div className="space-y-10 px-0 md:px-10">
         <h4 className="text-4xl font-semibold dark:text-gray-900">
-          Hi, I am Murat Hüdavendigâr
+          A Bit About Me
         </h4>
         <p className="text-sm">
-          I graduated from a Full Stack Developer Bootcamp in Virginia, USA, and
-          I am currently a senior Computer Engineering student at Kocaeli
-          University. I have over 3 years of experience in Web Development and
-          IT. I worked as a Backend Developer and have been working as a
-          Frontend Instructor since February 2024.
+          Senior Computer Engineering student at Kocaeli University and
+          co-founder of{" "}
+          <a
+            href="https://temcrafttech.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#CA3E47] transition-colors"
+          >
+            TemCraftTech
+          </a>
+          . I have 3+ years of experience across full-stack web development —
+          backend roots, strong frontend focus. Since February 2024 I&apos;ve
+          been teaching frontend development while building products at
+          TemCraftTech. Stack centers on React, Next.js, Django, and .NET.
         </p>
       </div>
     </motion.div>

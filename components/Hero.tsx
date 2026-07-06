@@ -1,6 +1,6 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
@@ -9,15 +9,15 @@ type Props = {};
 const Hero = (props: Props) => {
   const [text, count] = useTypewriter({
     words: [
-      "Hi, I am Murat Hüdavendigâr",
-      "John Cpt. Price",
-      "This is my portfolio site",
+      "Hi, I am Murat Hüdavendigâr Öncü",
+      "I build fast, modern web apps",
+      "Open to new opportunities",
     ],
     loop: true,
     delaySpeed: 2000,
   });
   const [title, count2] = useTypewriter({
-    words: ["Frontend - React.js | Next.js", "Backend - Django | .NET"],
+    words: ["Frontend · React / Next.js", "Backend · Django / .NET"],
     loop: true,
     delaySpeed: 2000,
   });

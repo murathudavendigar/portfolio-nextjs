@@ -1,57 +1,29 @@
+"use client";
+import projectsData from "@/data/projects.json";
 import type { Projects as ProjectType } from "@/types";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
-import Logger from "dev-console-kit";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 type Props = {};
 
+const allProjectsData = projectsData as ProjectType[];
+
 const Projects = (props: Props) => {
-  const [showProjects, setShowProjects] = useState<ProjectType[]>([]);
-  const [allProjects, setAllProjects] = useState<ProjectType[]>([]);
+  const [showProjects, setShowProjects] = useState<ProjectType[]>(
+    allProjectsData.filter((p) => p.featured === true),
+  );
   const [lang, setLang] = useState("Featured");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // MongoDB'den projeleri çek
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/api/projects");
-        const result = await response.json();
-
-        if (result.success) {
-          setAllProjects(result.data);
-          setShowProjects(result.data);
-        } else {
-          setError(result.message || "Projeler yüklenemedi");
-        }
-      } catch (err) {
-        setError("Projeler yüklenirken bir hata oluştu");
-        Logger.error("Fetch error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  // Dil filtreleme
   useEffect(() => {
     if (lang === "Featured") {
-      setShowProjects(
-        allProjects.filter((project) => project.featured === true),
-      );
+      setShowProjects(allProjectsData.filter((project) => project.featured === true));
     } else if (lang === "All") {
-      setShowProjects(allProjects);
+      setShowProjects(allProjectsData);
     } else {
-      setShowProjects(
-        allProjects.filter((project) => project.language === lang),
-      );
+      setShowProjects(allProjectsData.filter((project) => project.language === lang));
     }
-  }, [lang, allProjects]);
+  }, [lang]);
 
   return (
     <motion.div
@@ -100,17 +72,7 @@ const Projects = (props: Props) => {
         </button>
       </div>
 
-      {loading ? (
-        <div className="flex items-center justify-center h-screen">
-          <div className="text-2xl text-gray-300 dark:text-gray-900">
-            Loading...
-          </div>
-        </div>
-      ) : error ? (
-        <div className="flex items-center justify-center h-screen">
-          <div className="text-2xl text-red-500">{error}</div>
-        </div>
-      ) : showProjects.length === 0 ? (
+      {showProjects.length === 0 ? (
         <div className="flex items-center justify-center h-screen">
           <div className="text-2xl text-gray-300 dark:text-gray-900">
             No projects found
@@ -125,6 +87,16 @@ const Projects = (props: Props) => {
                 key={index}
                 className="flex flex-col items-center justify-center flex-shrink-0 w-screen h-screen p-20 space-y-5 snap-center md:p-44">
                 <div className="max-w-6xl px-0 space-y-6 md:px-10">
+                  {project.img && (
+                    <div className="flex justify-center">
+                      <img
+                        src={project.img}
+                        alt={project.name}
+                        className="w-full max-w-md h-40 object-cover rounded-lg border border-white/10 dark:border-gray-300 shadow-md"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <h4 className="text-xl font-semibold text-center md:text-2xl lg:text-4xl dark:text-gray-900">
                     <span className=" border-b border-[#CA3E47] ">
                       <span>{lang}</span> Study {index + 1} of{" "}

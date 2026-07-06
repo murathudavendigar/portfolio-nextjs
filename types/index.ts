@@ -28,8 +28,6 @@ export type BlogPost = {
   date: number; // Timestamp in milliseconds (deprecated, use createdAt)
   createdAt: number; // Timestamp in milliseconds
   updatedAt: number | null; // Timestamp in milliseconds or null
-  likes?: number;
-  commentCount?: number;
   author: string;
   slug: string;
   tags: string[];
@@ -37,11 +35,3 @@ export type BlogPost = {
   readTime: number; // in minutes
 };
 
-export type Comment = {
-  id: string;
-  blogId: string;
-  name: string;
-  email: string;
-  comment: string;
-  date: number;
-};

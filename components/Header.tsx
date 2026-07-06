@@ -1,7 +1,8 @@
+"use client";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SocialIcon } from "react-social-icons";
 
@@ -9,11 +10,11 @@ type Props = {};
 
 const Header = (props: Props) => {
   const { theme, setTheme } = useTheme();
-  const router = useRouter();
+  const pathname = usePathname();
   const [toggle, setToggle] = useState<boolean>();
 
   // Check if we're on blogs page or blog detail page
-  const isOnBlogsPage = router.pathname.startsWith("/blogs");
+  const isOnBlogsPage = pathname?.startsWith("/blogs") ?? false;
 
   useEffect(() => {
     if (theme === "light") {

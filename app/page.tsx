@@ -4,35 +4,17 @@ import Experience from "@/components/Experience";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
-import Seo from "@/components/Seo";
 import Skills from "@/components/Skills";
 import { site } from "@/lib/site";
-import Head from "next/head";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-const Home = () => {
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+export default function Home() {
   return (
     <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
-      <Seo path="/" />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: site.name,
-              url: site.url,
-              jobTitle: "Frontend Developer",
-              email: `mailto:${site.email}`,
-              image: `${site.url}/img/MHO.jpg`,
-              sameAs: Object.values(site.socials),
-            }),
-          }}
-        />
-      </Head>
-
       <Header />
 
       <section id="hero" className="snap-start">
@@ -72,8 +54,21 @@ const Home = () => {
           </div>
         </footer>
       </Link>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: site.name,
+            url: site.url,
+            jobTitle: "Frontend Developer",
+            email: `mailto:${site.email}`,
+            image: `${site.url}/img/MHO.jpg`,
+            sameAs: Object.values(site.socials),
+          }),
+        }}
+      />
     </div>
   );
-};
-
-export default Home;
+}

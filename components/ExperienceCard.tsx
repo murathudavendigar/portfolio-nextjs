@@ -1,3 +1,4 @@
+"use client";
 import { formatExperienceDates } from "@/functions/formatExperienceDates";
 import { Experience } from "@/types";
 import { motion } from "framer-motion";

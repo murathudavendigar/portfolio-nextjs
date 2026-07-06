@@ -313,7 +313,7 @@ export const site = {
   url: "https://www.muratoncu.com",
   description:
     "Frontend developer building fast, polished web apps with React, Next.js and TypeScript.",
-  email: "murathoncu@gmail.com",
+  email: "contact@muratoncu.com",
   socials: {
     github: "https://github.com/murathudavendigar",
     x: "https://x.com/murathoncu",

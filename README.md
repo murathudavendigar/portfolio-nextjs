@@ -1,13 +1,17 @@
 # Project : Portfolio Site
 
-My portfolio site that I made using Next.js, TypeScript and TailwindCSS.
+My portfolio site built with Next.js 15 (App Router), TypeScript, and TailwindCSS. Fully static — no database, no server-side runtime dependencies.
 
 ## Table of contents
 
 - [Project : Portfolio Site](#project--portfolio-site)
   - [Table of contents](#table-of-contents)
   - [The challenge](#the-challenge)
+  - [Stack](#stack)
   - [Project Skeleton](#project-skeleton)
+  - [Adding a blog post](#adding-a-blog-post)
+  - [Adding a project](#adding-a-project)
+  - [Environment variables](#environment-variables)
   - [Screenshot](#screenshot)
   - [Links](#links)
     - [Built with](#built-with)
@@ -19,73 +23,122 @@ My portfolio site that I made using Next.js, TypeScript and TailwindCSS.
 
 ## The challenge
 
-To create an portfolio site with ReactJS, NextJS, TypeScript and TailwindCSS
+To create a portfolio site with React, Next.js, TypeScript and TailwindCSS.
+
+## Stack
+
+- **Next.js 15** — App Router, fully static (`○`/`●` routes, no server functions)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 3**
+- Markdown blog — posts live as `.md` files in `content/blog/`, parsed at build time with `gray-matter`
+- Project data lives in `data/projects.json`
 
 ## Project Skeleton
 
 ```
-
-
-|----README.md
+├── README.md
+├── app
+│   ├── blogs
+│   │   ├── [slug]
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── providers.tsx
+│   ├── robots.ts
+│   └── sitemap.ts
 ├── components
-│       ├── About.tsx
-│       ├── BackgroundCircles.tsx
-│       ├── Contact.tsx
-│       ├── Experience.tsx
-│       ├── ExperienceCard.tsx
-│       ├── Header.tsx
-│       ├── Hero.tsx
-│       ├── Projects.tsx
-│       ├── Skill.tsx
-│       └── Skills.tsx
+│   ├── About.tsx
+│   ├── BackgroundCircles.tsx
+│   ├── BlogCard.tsx
+│   ├── Contact.tsx
+│   ├── Experience.tsx
+│   ├── ExperienceCard.tsx
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── MarkdownContent.tsx
+│   ├── Projects.tsx
+│   ├── Skill.tsx
+│   └── Skills.tsx
+├── content
+│   └── blog
+│       └── *.md
 ├── data
-│       ├── projectsData.ts
-│       └── skillsData.ts
-├── pages
-│       ├── api
-|       |     └── hello.js
-│       ├── _app.jsx
-│       ├── document.jsx
-│       └── index.jsx
+│   └── projects.json
+├── lib
+│   └── blog.ts
 ├── public
-│       ├── favicon.ico
-│       └── vercel.svg
-├── styles
-│       └── global.css
 ├── types
-│       └── index.ts
+│   └── index.ts
 ├── next.config.js
-├── package-lock.json
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
 └── tsconfig.json
+```
+
+## Adding a blog post
+
+Add a new post by dropping a Markdown file into `content/blog/` and pushing — no database, no ISR delay, the next deploy publishes it.
+
+Each post needs frontmatter with these keys:
+
+```md
+---
+title: "Post title"
+description: "Short summary used on the blog list and for SEO."
+date: "2026-07-07"
+updated: "2026-07-07"
+tags: ["tag-one", "tag-two"]
+readTime: 5
+image: "https://example.com/cover.jpg"
+author: "Murat Hüdavendigâr Öncü"
+---
+
+Post content in Markdown goes here.
+```
+
+**`date` is required.** It's parsed with `new Date(data.date)` and used to sort posts newest-first. If it's missing, `Date` parsing produces `NaN`, and the post will sort unpredictably (and break the sort order for the rest of the list).
+
+## Adding a project
+
+Add or edit an entry in `data/projects.json`. No rebuild step beyond a normal deploy.
+
+## Environment variables
+
+The site only needs the EmailJS keys used by the contact form:
 
 ```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=...
+```
+
+`MONGODB_URI` is no longer used — the site has no runtime database dependency.
 
 ## Screenshot
 
 <p align="center">
-<a href="https://murathudavendigar.vercel.app/"><img src="https://media.licdn.com/dms/image/C4D22AQG3wVzoU-Lvzg/feedshare-shrink_800/0/1674569569367?e=1677715200&v=beta&t=ROSec6PV0LGYVYNMPXWkZ5BUQlZY6o9lapMSYquenls" alt="screenshot"></a>
+<a href="https://www.muratoncu.com/"><img src="https://media.licdn.com/dms/image/C4D22AQG3wVzoU-Lvzg/feedshare-shrink_800/0/1674569569367?e=1677715200&v=beta&t=ROSec6PV0LGYVYNMPXWkZ5BUQlZY6o9lapMSYquenls" alt="screenshot"></a>
 </p>
 
 ## Links
 
 <hr>
-<b>Check The Live Website ➡️</b> <a href="https://murathudavendigar.vercel.app/">Live Website</a>
+<b>Check The Live Website ➡️</b> <a href="https://www.muratoncu.com/">Live Website</a>
 <hr>
 
 ### Built with
 
 - React Components, Props, States and Hooks
 - TypeScript
-- NextJS
+- Next.js (App Router)
 - React Hook Form
 - JSX Elements
 - TailwindCSS
-- Material UI
 - Framer Motion
 - React Simple TypeWriter
+- gray-matter / react-markdown (blog rendering)
 
 ### Useful resources
 
@@ -119,16 +172,16 @@ npm install
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+npm install
+npm run dev
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+Then open [http://localhost:3000](http://localhost:3000).
+
+To build and run the production static build locally:
 
 ```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+npm run build
+npm run start
 ```
