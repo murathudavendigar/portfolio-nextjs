@@ -55,7 +55,7 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <Image
               className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
-              src="/img/MHO.jpg"
+              src={site.profileImage}
               alt="Murat Hüdavendigâr Öncü — back to top"
               width={44}
               height={44}

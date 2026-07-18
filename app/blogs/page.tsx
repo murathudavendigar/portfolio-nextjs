@@ -2,6 +2,7 @@ import BlogCard from "@/components/BlogCard";
 import Header from "@/components/Header";
 import { getPosts } from "@/lib/blog";
 import { blogIndexSchema } from "@/lib/schema";
+import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,7 +62,7 @@ export default function BlogIndex() {
           <div className="flex items-center justify-center">
             <Image
               className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
-              src="/img/MHO.jpg"
+              src={site.profileImage}
               alt="Murat Hüdavendigâr Öncü — back to home"
               width={44}
               height={44}

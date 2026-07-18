@@ -87,8 +87,8 @@ const Projects = (props: Props) => {
                 key={index}
                 className="flex flex-col items-center justify-center flex-shrink-0 w-screen h-screen p-20 space-y-5 snap-center md:p-44">
                 <div className="max-w-6xl px-0 space-y-6 md:px-10">
-                  {project.img && (
-                    <div className="flex justify-center">
+                  {project.img?.trim() ? (
+                    <div className="hidden md:flex justify-center">
                       <img
                         src={project.img}
                         alt={project.name}
@@ -96,7 +96,7 @@ const Projects = (props: Props) => {
                         loading="lazy"
                       />
                     </div>
-                  )}
+                  ) : null}
                   <h4 className="text-xl font-semibold text-center md:text-2xl lg:text-4xl dark:text-gray-900">
                     <span className=" border-b border-[#CA3E47] ">
                       <span>{lang}</span> Study {index + 1} of{" "}

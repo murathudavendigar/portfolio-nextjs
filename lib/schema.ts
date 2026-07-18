@@ -66,8 +66,8 @@ export function homepageGraph() {
       {
         "@type": "ImageObject",
         "@id": profileImageId,
-        url: absoluteUrl("/img/MHO.jpg"),
-        contentUrl: absoluteUrl("/img/MHO.jpg"),
+        url: absoluteUrl(site.profileImage),
+        contentUrl: absoluteUrl(site.profileImage),
         caption: site.name,
       },
       {

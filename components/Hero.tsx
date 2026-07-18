@@ -1,4 +1,5 @@
 "use client";
+import { site } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
@@ -34,7 +35,7 @@ const Hero = () => {
     <div className="flex flex-col items-center justify-center h-screen space-y-8 overflow-hidden text-center">
       <BackgroundCircles />
       <Image
-        src="/img/MHO.jpg"
+        src={site.profileImage}
         alt="Murat Hüdavendigâr Öncü — frontend developer portrait"
         className="relative object-cover rounded-full"
         width={128}

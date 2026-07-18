@@ -1,4 +1,5 @@
 "use client";
+import { site } from "@/lib/site";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -34,7 +35,7 @@ const About = () => {
         viewport={{ once: true }}
         className="-mb-20 md:mb-0 flex-shrink-0">
         <Image
-          src="/img/MHO.jpg"
+          src={site.profileImage}
           alt="Murat Hüdavendigâr Öncü at work"
           width={500}
           height={500}

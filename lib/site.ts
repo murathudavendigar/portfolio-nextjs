@@ -7,6 +7,7 @@ export const site = {
     "Co-founder at TemCraft Tech and frontend instructor. I build React and Next.js products and teach modern web development from the Netherlands.",
   email: "contact@muratoncu.com",
   defaultOgImage: "/img/og.jpg",
+  profileImage: "/img/pp.jpeg",
   twitterHandle: "@murathoncu",
   socials: {
     github: "https://github.com/murathudavendigar",
