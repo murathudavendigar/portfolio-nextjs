@@ -5,12 +5,22 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import { homepageGraph } from "@/lib/schema";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  description: site.description,
+  openGraph: {
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    type: "profile",
+  },
+};
 
 export default function Home() {
   return (
@@ -57,16 +67,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: site.name,
-            url: site.url,
-            jobTitle: "Frontend Developer",
-            email: `mailto:${site.email}`,
-            image: `${site.url}/img/MHO.jpg`,
-            sameAs: Object.values(site.socials),
-          }),
+          __html: JSON.stringify(homepageGraph()),
         }}
       />
     </div>

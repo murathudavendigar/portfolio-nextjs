@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import MarkdownContent from "@/components/MarkdownContent";
 import { getPost, getPosts } from "@/lib/blog";
-import { absoluteUrl, site } from "@/lib/site";
+import { blogPostingGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -64,23 +64,7 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: post.title,
-            description: post.description,
-            image: absoluteUrl(post.imageUrl || site.defaultOgImage),
-            datePublished: new Date(post.createdAt).toISOString(),
-            ...(post.updatedAt && {
-              dateModified: new Date(post.updatedAt).toISOString(),
-            }),
-            mainEntityOfPage: `${site.url}/blogs/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: site.name,
-              url: site.url,
-            },
-          }),
+          __html: JSON.stringify(blogPostingGraph(post)),
         }}
       />
       <Header />

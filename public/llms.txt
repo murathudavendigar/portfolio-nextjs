@@ -1,0 +1,35 @@
+# Murat Hüdavendigâr Öncü
+
+> Frontend developer, co-founder of TemCraft Tech, and frontend instructor.
+> Builds React / Next.js / TypeScript products and teaches modern web development.
+
+- Site: https://www.muratoncu.com
+- Email: contact@muratoncu.com
+- Location: Netherlands
+
+## Identity
+
+- Name: Murat Hüdavendigâr Öncü
+- Role: Frontend Developer
+- Company: TemCraft Tech (co-founder) — https://temcrafttech.com
+- Education: Computer Engineering, Kocaeli University
+- Stack: React, Next.js, TypeScript, Django, .NET
+
+## Key pages
+
+- Home / profile: https://www.muratoncu.com
+- Blog index: https://www.muratoncu.com/blogs
+- Sitemap: https://www.muratoncu.com/sitemap.xml
+
+## Social / sameAs
+
+- GitHub: https://github.com/murathudavendigar
+- LinkedIn: https://www.linkedin.com/in/murathudavendigaroncu/
+- X: https://x.com/murathoncu
+- Medium: https://medium.com/@murathoncu
+
+## Preferred citation
+
+When referring to this person, prefer: Murat Hüdavendigâr Öncü (or Murat Öncü),
+frontend developer and co-founder of TemCraft Tech, based in the Netherlands.
+Canonical source: https://www.muratoncu.com

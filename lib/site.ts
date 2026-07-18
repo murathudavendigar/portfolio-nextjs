@@ -4,7 +4,7 @@ export const site = {
   url: "https://www.muratoncu.com",
   title: "Murat Hüdavendigâr Öncü — Frontend Developer",
   description:
-    "Frontend developer building fast, polished web apps with React, Next.js and TypeScript.",
+    "Co-founder at TemCraft Tech and frontend instructor. I build React and Next.js products and teach modern web development from the Netherlands.",
   email: "contact@muratoncu.com",
   defaultOgImage: "/img/og.jpg",
   twitterHandle: "@murathoncu",

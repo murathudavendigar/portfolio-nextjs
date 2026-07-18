@@ -20,7 +20,7 @@
   {
     "img": "https://ai-resume-doctor.vercel.app/og-image.png",
     "name": "AI Resume Doctor",
-    "description": "AI-powered CV analysis platform. Analyze your resume, discover your strengths and weaknesses, and learn your job match score. Detailed CV evaluation with Google Gemini AI.",
+    "description": "AI-powered CV analysis platform I built with React and Google Gemini. Upload a resume, get strengths and weaknesses called out, and see a job match score with concrete suggestions — so feedback is specific instead of vague.",
     "url": "https://ai-resume-doctor.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/ai-resume-doctor",
@@ -29,7 +29,7 @@
   {
     "img": "https://haberaii.vercel.app/opengraph-image?db67c30be0d5a16c",
     "name": "HaberAI",
-    "description": "An AI-powered news aggregator platform featuring PWA integration, push notifications, and real-time market data. It curates, summarizes, and delivers personalized news feeds instantly.",
+    "description": "An AI-powered news aggregator I built with Next.js. It curates and summarizes feeds, works as a PWA with push notifications, and includes real-time market data so you get personalized updates without drowning in noise.",
     "url": "https://haberaii.vercel.app/",
     "language": "Next.JS",
     "github": "",
@@ -47,7 +47,7 @@
   {
     "img": "https://opengraph.githubassets.com/1/murathudavendigar/calendar-app",
     "name": "Event Manager",
-    "description": "Event Manager is a simple and functional tool I built to organize events more effectively. It allows users to create and edit events, sign in securely with Google or GitHub, and connect with personal calendars through iCalendar integration. One of its key features is the ability to manage both private and shared calendars with just a single link, making collaboration with multiple people straightforward. The project is still in progress, but I continue adding features to make it more useful and flexible over time.",
+    "description": "A calendar tool I built to organize events more effectively. Create and edit events, sign in with Google or GitHub, sync via iCalendar, and share private or team calendars with a single link. Still in progress — I keep adding features as I use it.",
     "url": "https://event-manager-jp.vercel.app",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/calendar-app",
@@ -56,7 +56,7 @@
   {
     "img": "https://opengraph.githubassets.com/1/murathudavendigar/react-ecommerce",
     "name": "E-Price E-commerce Project",
-    "description": "E-Price E-Commerce is a modern, fully responsive e-commerce application built with React. It features user authentication, a dynamic shopping cart, product reviews, and order tracking. Admins can manage products, view detailed analytics, and update order statuses through an intuitive admin panel. The project integrates Firebase for authentication, database management, and storage, along with various other libraries for enhanced functionality and a seamless user experience. Ideal for developers looking to explore full-stack development with React and Firebase.",
+    "description": "A responsive e-commerce app I built with React and Firebase. Shoppers get auth, cart, reviews, and order tracking; admins manage products, analytics, and order statuses from one panel.",
     "url": "https://eprice-ecommerce.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/react-ecommerce",

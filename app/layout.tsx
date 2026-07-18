@@ -1,23 +1,27 @@
 import type { Metadata, Viewport } from "next";
 import Providers from "./providers";
+import { site } from "@/lib/site";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.muratoncu.com"),
+  metadataBase: new URL(site.url),
   title: {
-    default: "Murat Hüdavendigâr Öncü — Frontend Developer",
+    default: site.title,
     template: "%s — Murat Öncü",
   },
-  description:
-    "Frontend developer building fast, polished web apps with React, Next.js and TypeScript.",
+  description: site.description,
   openGraph: {
     type: "website",
-    siteName: "Murat Öncü",
-    images: [{ url: "/img/og.jpg", width: 1200, height: 630 }],
+    siteName: site.shortName,
+    title: site.title,
+    description: site.description,
+    images: [{ url: site.defaultOgImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@murathoncu",
+    site: site.twitterHandle,
+    title: site.title,
+    description: site.description,
   },
   icons: { icon: "/favicon.ico" },
 };

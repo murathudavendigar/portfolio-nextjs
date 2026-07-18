@@ -43,11 +43,10 @@ export const experiencesData: Experience[] = [
     startDate: "May 2025",
     endDate: "Feb 2026",
     points: [
-      "Instructed students on HTML, CSS, JavaScript, React.js, and Next.js fundamentals.",
-      "Provided real-world examples and coding exercises to reinforce learning.",
-      "Mentored students through project-based learning and one-on-one guidance.",
-      "Prepared assessments and hands-on tasks to track learning progress.",
-      "Fostered a collaborative and inclusive remote learning environment.",
+      "Instructed remote cohorts on HTML, CSS, JavaScript, React, and Next.js with project-based curricula.",
+      "Mentored students one-on-one through capstone builds and code reviews until they could ship independently.",
+      "Designed assessments and live coding sessions that mirrored real frontend interview and job tasks.",
+      "Turned recurring student bugs into reusable teaching examples used across later cohorts.",
     ],
   },
   {
@@ -67,11 +66,10 @@ export const experiencesData: Experience[] = [
     startDate: "Oct 2024",
     endDate: "Present",
     points: [
-      "Co-founded and grew a tech company delivering web products and client projects.",
-      "Built modern, responsive interfaces using Next.js and React.js.",
-      "Led technical decisions, architecture, and code quality standards.",
-      "Managed client relationships from requirements through delivery.",
-      "Shipped multiple products including AI-powered and SaaS applications.",
+      "Co-founded TemCraft Tech and shipped client and product work end-to-end with a React/Next.js stack.",
+      "Owned frontend architecture, code quality, and delivery timelines for SaaS and AI-assisted apps.",
+      "Translated client requirements into scoped milestones and launched production UIs on Vercel.",
+      "Built internal tooling and teaching-oriented packages (e.g. logging helpers) used with students and teams.",
     ],
   },
   {
@@ -90,11 +88,10 @@ export const experiencesData: Experience[] = [
     startDate: "Oct 2024",
     endDate: "May 2025",
     points: [
-      "Built reusable UI components and layouts in TypeScript.",
-      "Implemented data fetching strategies and optimized performance.",
-      "Collaborated with backend teams on API integration.",
-      "Participated in code reviews and agile ceremonies.",
-      "Contributed to design system and style consistency.",
+      "Shipped TypeScript/Next.js UI features against backend APIs with measurable performance budgets.",
+      "Built reusable components and layouts that reduced duplicate UI work across product surfaces.",
+      "Partnered with backend engineers on contract-first API integration and error-state UX.",
+      "Raised consistency through design-system contributions and structured code reviews.",
     ],
   },
   {

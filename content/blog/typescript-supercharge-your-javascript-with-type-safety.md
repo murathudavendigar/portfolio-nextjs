@@ -2,13 +2,15 @@
 title: "TypeScript: Supercharge Your JavaScript with Type Safety"
 description: "Discover how TypeScript adds robust static typing to JavaScript, preventing runtime errors and drastically improving your developer experience."
 date: "2023-10-16"
-updated: "2023-10-16"
+updated: "2026-07-18"
 tags: ["typescript","javascript","web-development","frontend","programming"]
-readTime: 5
+readTime: 6
 image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*TIvhR2DIhXoZSwiJMiNjvQ.jpeg"
 author: "Murat Hüdavendigâr Öncü"
 ---
 JavaScript is fantastic, but as your applications grow, its dynamic nature can sometimes lead to unexpected runtime errors. Enter TypeScript: a strict syntactical superset of JavaScript that adds optional static typing to the language.
+
+In production React and Next.js apps I ship, TypeScript is non-negotiable — it catches the same class of bugs students hit when they first move from tutorials to real components. This post is the short “why and how” I give before we type a full feature.
 
 ### Why TypeScript?
 
