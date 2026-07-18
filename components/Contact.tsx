@@ -1,7 +1,7 @@
 "use client";
 import emailjs from "@emailjs/browser";
 import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
-import { useRef } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -12,30 +12,48 @@ type Inputs = {
   message: string;
 };
 
-type Props = {};
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+const TEMPLATE_ID =
+  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_4mm0dyn";
 
-const Contact = (props: Props) => {
-  const { register, handleSubmit, reset } = useForm<Inputs>();
-  const form = useRef<HTMLFormElement>(null);
+const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const [sending, setSending] = useState(false);
 
-  const onSubmit: SubmitHandler<Inputs> = () => {
-    if (form.current) {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          "template_4mm0dyn",
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-        )
-        .then(
-          () => {
-            reset();
-            toast.success("Your message has been sent! Thank you.");
-          },
-          (error) => {
-            toast.error("Failed to send the message, please try again later.");
-          },
-        );
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    if (!SERVICE_ID || !PUBLIC_KEY) {
+      toast.error("Something went wrong. Please try again.");
+      return;
+    }
+
+    setSending(true);
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: data.name,
+          from_name: data.name,
+          email: data.email,
+          from_email: data.email,
+          reply_to: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        { publicKey: PUBLIC_KEY },
+      );
+      reset();
+      toast.success("Your message has been sent! Thank you.");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -50,11 +68,6 @@ const Contact = (props: Props) => {
         </h4>
 
         <div className="space-y-2 md:space-y-10">
-          {/* <div className="flex items-center space-x-5 justify-center">
-            <PhoneIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">+30 697 562 89 18</p>
-          </div> */}
-
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
             <p className="text-xl md:text-2xl">Netherlands</p>
@@ -62,44 +75,86 @@ const Contact = (props: Props) => {
 
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#CA3E47] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">contact@muratoncu.com</p>
+            <a
+              href="mailto:contact@muratoncu.com"
+              className="text-xl md:text-2xl hover:text-[#CA3E47] transition-colors">
+              contact@muratoncu.com
+            </a>
           </div>
         </div>
 
         <form
-          ref={form}
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-2 w-fit mx-auto">
+          className="flex flex-col space-y-2 w-fit mx-auto"
+          noValidate>
           <div className="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
+            <div className="flex flex-col">
+              <input
+                {...register("name", { required: "Name is required" })}
+                placeholder="Name"
+                className="contactInput"
+                type="text"
+                autoComplete="name"
+              />
+              {errors.name && (
+                <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                  {errors.name.message}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-col">
+              <input
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Enter a valid email",
+                  },
+                })}
+                placeholder="Email"
+                className="contactInput"
+                type="email"
+                autoComplete="email"
+              />
+              {errors.email && (
+                <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                  {errors.email.message}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col">
             <input
-              {...register("name", { required: true })}
-              placeholder="Name"
+              {...register("subject", { required: "Subject is required" })}
+              placeholder="Subject"
               className="contactInput"
               type="text"
             />
-            <input
-              {...register("email", { required: true })}
-              placeholder="Email"
-              className="contactInput"
-              type="email"
-            />
+            {errors.subject && (
+              <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                {errors.subject.message}
+              </span>
+            )}
           </div>
-          <input
-            {...register("subject", { required: true })}
-            placeholder="Subject"
-            className="contactInput"
-            type="text"
-          />
 
-          <textarea
-            {...register("message", { required: true })}
-            placeholder="Message"
-            className="contactInput resize-none"
-          />
+          <div className="flex flex-col">
+            <textarea
+              {...register("message", { required: "Message is required" })}
+              placeholder="Message"
+              className="contactInput resize-none"
+              rows={4}
+            />
+            {errors.message && (
+              <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                {errors.message.message}
+              </span>
+            )}
+          </div>
           <button
             type="submit"
-            className="bg-[#CA3E47] dark:bg-[#414141]/90 py-2 px-4 md:py-5 md:px-10 rounded-md text-white font-bold text-md md:text-lg hover:opacity-70 transition-all duration-150">
-            Submit
+            disabled={sending}
+            className="bg-[#CA3E47] dark:bg-[#414141]/90 py-2 px-4 md:py-5 md:px-10 rounded-md text-white font-bold text-md md:text-lg hover:opacity-70 transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50">
+            {sending ? "Sending…" : "Submit"}
           </button>
         </form>
       </div>
