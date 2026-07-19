@@ -50,9 +50,9 @@ export default function Home() {
         <Contact />
       </section>
 
-      <Link href="#hero">
-        <footer className="sticky w-full cursor-pointer bottom-16 md:bottom-5">
-          <div className="flex items-center justify-center">
+      <footer className="pointer-events-none sticky bottom-16 z-40 w-full md:bottom-5">
+        <div className="flex items-center justify-center">
+          <Link href="#hero" className="pointer-events-auto">
             <Image
               className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
               src={site.profileImage}
@@ -61,9 +61,9 @@ export default function Home() {
               height={44}
               loading="lazy"
             />
-          </div>
-        </footer>
-      </Link>
+          </Link>
+        </div>
+      </footer>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
