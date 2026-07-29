@@ -21,6 +21,10 @@ const ExperienceCard = ({ experience }: Props) => {
         }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        loading="lazy"
+        decoding="async"
+        width={200}
+        height={200}
         className="h-24 w-24 md:w-32 md:h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center"
         src={experience.companyImage}
         alt={`${experience.company} logo`}

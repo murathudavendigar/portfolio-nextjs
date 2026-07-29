@@ -22,6 +22,9 @@ const Skill = ({ directionLeft, item }: Props) => {
         whileInView={{ opacity: 1, x: 0 }}
         src={item.img}
         loading="lazy"
+        decoding="async"
+        width={120}
+        height={120}
         className=" object-contain w-12 h-12 sm:w-20 sm:h-20 md:w-26 md:h-26 xl:w-30 xl:h-30 filter group-hover:grayscale transition duration-300 "
       />
       <motion.div
