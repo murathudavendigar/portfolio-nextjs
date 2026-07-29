@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     type: "profile",
+    images: [{ url: site.defaultOgImage, width: 1200, height: 630 }],
   },
 };
 

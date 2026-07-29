@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     site: site.twitterHandle,
     title: site.title,
     description: site.description,
+    images: [site.defaultOgImage],
   },
   icons: { icon: "/favicon.ico" },
 };
