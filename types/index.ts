@@ -1,6 +1,7 @@
 export type Projects = {
   img?: string;
   name: string;
+  slug: string;
   description: string;
   url: string;
   language: string;

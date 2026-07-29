@@ -148,6 +148,28 @@ export function blogPostingGraph(post: BlogPost) {
   };
 }
 
+export function projectSchema(project: {
+  name: string;
+  description: string;
+  slug: string;
+  github: string;
+  url: string;
+  language: string;
+}) {
+  const pageUrl = absoluteUrl(`/projects/${project.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${pageUrl}#project`,
+    name: project.name,
+    description: project.description,
+    url: pageUrl,
+    codeRepository: project.github || undefined,
+    author: { "@id": personId },
+    isPartOf: { "@id": websiteId },
+  };
+}
+
 export function blogIndexSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",

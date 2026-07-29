@@ -3,6 +3,7 @@ import projectsData from "@/data/projects.json";
 import type { Projects as ProjectType } from "@/types";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 
 type Props = {};
@@ -98,7 +99,11 @@ const Projects = (props: Props) => {
                   <span>{lang}</span> Study {visibleProjects.indexOf(project) + 1} of{" "}
                   {visibleProjects.length}:{" "}
                 </span>
-                {project.name}
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="hover:text-[#CA3E47] transition-colors">
+                  {project.name}
+                </Link>
               </h4>
               <p className="text-sm text-center md:text-lg md:text-left max-h-32 md:max-h-40 overflow-y-auto leading-relaxed px-4 md:px-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/60">
                 {project.description}

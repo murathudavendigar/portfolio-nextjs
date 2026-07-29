@@ -1,4 +1,5 @@
 import { getPosts } from "@/lib/blog";
+import { getProjects } from "@/lib/projects";
 import { site } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
@@ -23,6 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...posts.map((p) => ({
       url: `${site.url}/blogs/${p.slug}`,
       lastModified: new Date(p.updatedAt ?? p.createdAt),
+    })),
+    ...getProjects().map((p) => ({
+      url: `${site.url}/projects/${p.slug}`,
+      lastModified: HOMEPAGE_LAST_MODIFIED,
     })),
   ];
 }
