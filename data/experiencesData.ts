@@ -109,7 +109,7 @@ export const experiencesData: Experience[] = [
     startDate: "Jun 2024",
     endDate: "Oct 2024",
     points: [
-      "Ran part-time frontend training sessions covering HTML/CSS fundamentals through React component patterns.",
+      "Ran part-time frontend training sessions covering JavaScript fundamentals through React component patterns.",
       "Paired one-on-one with junior developers to work through specific bugs in their own project code, rather than generic exercises.",
       "Reviewed student pull requests and gave line-level feedback on code structure and naming.",
       "Pushed students to deploy every project they built instead of leaving finished work local-only.",
@@ -158,7 +158,7 @@ export const experiencesData: Experience[] = [
     points: [
       "Built responsive pages with React and Tailwind, working directly from client-supplied Figma designs.",
       "Iterated on UX through client review calls, translating their feedback into layout and component changes.",
-      "Took over maintenance of existing sites, fixing bugs and adding features without a formal handoff document.",
+      "Took over maintenance of existing sites, picking up unfamiliar codebases with no prior context to fix bugs and add features.",
       "Wired up Firebase for lightweight client-side data needs (forms, content) where a full backend wasn't justified.",
       "Checked pages with browser dev tools and Lighthouse before handoff to catch obvious accessibility and performance issues early.",
     ],
@@ -201,7 +201,7 @@ export const experiencesData: Experience[] = [
     startDate: "Jul 2022",
     endDate: "Mar 2023",
     points: [
-      "Built small-business websites from scratch with Next.js and Tailwind, moving clients off page-builder templates.",
+      "Built small-business websites from scratch using Next.js and Tailwind.",
       "Added basic on-page SEO (meta tags, semantic HTML, sitemaps) and fixed obvious speed issues like unoptimized images.",
       "Walked non-technical clients through domain registration and hosting setup, since most hadn't done it before.",
       "Delivered portfolio sites, blogs, and landing pages tailored to each business rather than reused templates.",
