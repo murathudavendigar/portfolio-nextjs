@@ -103,6 +103,109 @@ for subject, grade in student_grades.items():
     print(f"Subject: {subject}, Grade: {grade}")
 ```
 
+### Checking Whether a Key Exists
+
+Before reading a value, you often need to know whether a key is even present. The `in` keyword checks key membership directly, without needing `.get()`:
+
+```python
+user = {"username": "muratoncu", "age": 29}
+
+if "username" in user:
+    print("Username is set")
+
+if "email" not in user:
+    print("No email on file")
+```
+
+`in` only checks **keys** by default, not values — `"muratoncu" in user` would be `False`, because that string is a value, not a key. To check whether a value exists anywhere in the dictionary, you'd check `"muratoncu" in user.values()` instead.
+
+### Dictionary Comprehensions
+
+Just as Python has list comprehensions, it has **dictionary comprehensions** — a compact way to build a dictionary from an iterable in a single line, instead of writing a `for` loop with manual key assignment.
+
+```python
+# The verbose way
+squares = {}
+for n in range(1, 6):
+    squares[n] = n ** 2
+
+# The comprehension way — identical result
+squares = {n: n ** 2 for n in range(1, 6)}
+print(squares)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+```
+
+Comprehensions can also filter, and they're commonly used to transform an existing dictionary — for example, keeping only students who passed:
+
+```python
+grades = {"Math": 90, "Science": 55, "History": 88}
+passing = {subject: grade for subject, grade in grades.items() if grade >= 60}
+print(passing)  # {'Math': 90, 'History': 88}
+```
+
+### How Do You Merge Two Dictionaries?
+
+Combining dictionaries comes up constantly — merging default settings with user overrides, for example. The `.update()` method merges one dictionary into another in place:
+
+```python
+defaults = {"theme": "light", "font_size": 14}
+user_prefs = {"font_size": 18}
+
+defaults.update(user_prefs)
+print(defaults)  # {'theme': 'light', 'font_size': 18}
+```
+
+Note that `.update()` mutates `defaults` directly — if you need a new dictionary without touching either original, Python 3.9+ offers the merge operator `|`, which returns a brand-new dictionary:
+
+```python
+defaults = {"theme": "light", "font_size": 14}
+user_prefs = {"font_size": 18}
+
+merged = defaults | user_prefs
+print(merged)     # {'theme': 'light', 'font_size': 18}
+print(defaults)   # unchanged: {'theme': 'light', 'font_size': 14}
+```
+
+In both cases, when the same key appears in both dictionaries, the value from the **second** (or right-hand) dictionary wins.
+
+### Nested Dictionaries
+
+Dictionary values can themselves be dictionaries, which is how you model structured, hierarchical data — a common shape for JSON responses from web APIs:
+
+```python
+company = {
+    "name": "TemCraft Tech",
+    "address": {
+        "city": "Istanbul",
+        "country": "Turkey"
+    },
+    "employees": [
+        {"name": "Murat", "role": "Developer"},
+        {"name": "Ada", "role": "Designer"}
+    ]
+}
+
+print(company["address"]["city"])          # Istanbul
+print(company["employees"][0]["name"])     # Murat
+```
+
+Reading nested data means chaining key and index access. If you're not certain a nested key exists, chaining `.get()` calls avoids a `KeyError` mid-lookup: `company.get("address", {}).get("zip_code", "Unknown")` safely returns `"Unknown"` even if `"address"` or `"zip_code"` is missing, because each `.get()` falls back to an empty dictionary or a default value rather than raising.
+
+### Dictionaries vs. Lists: When Should You Use Which?
+
+Both store collections of data, but they solve different problems:
+
+- **Use a list** when order and position matter, and you'll access items primarily by their position (`items[0]`, `items[-1]`) or iterate over all of them in sequence.
+- **Use a dictionary** when you need to look something up by a meaningful name or ID rather than a position — a user by username, a config value by setting name, a count by category.
+
+The practical difference that matters most: looking up a value in a dictionary by key is a constant-time operation on average, regardless of how many entries the dictionary holds, because Python implements dictionaries as hash tables. Searching for a value in a list (`if x in my_list`) has to check items one at a time until it finds a match, so it gets slower as the list grows. If your code frequently asks "do I have an entry for X?", a dictionary is almost always the right structure.
+
+### Common Pitfalls with Dictionaries
+
+- **Using square-bracket access instead of `.get()` for optional keys.** `user["email"]` crashes with a `KeyError` the moment the key is absent. Any time a key's presence isn't guaranteed, `.get()` is the safer default.
+- **Assuming dictionary keys can be any type.** Dictionary keys must be hashable — strings, numbers, and tuples work; lists and other dictionaries do not, and using one as a key raises a `TypeError: unhashable type`.
+- **Mutating a dictionary while iterating over it.** Adding or removing keys inside a `for key in my_dict:` loop raises a `RuntimeError: dictionary changed size during iteration`. If you need to modify a dictionary while looping, iterate over a copy of its keys instead: `for key in list(my_dict.keys()):`.
+- **Forgetting that `.pop()` without a default raises if the key is missing.** `user.pop("location")` throws `KeyError` if `"location"` was never set. `user.pop("location", None)` returns `None` instead of crashing, mirroring how `.get()` handles missing keys on read.
+
 ### Conclusion
 
-Dictionaries are essential whenever you need to map one piece of information to another. They are incredibly fast for looking up data and form the backbone of many complex operations in Python, including working with JSON data from web APIs. Master the dictionary, and you will unlock a whole new level of problem-solving in your code.
+Dictionaries are essential whenever you need to map one piece of information to another. They are incredibly fast for looking up data and form the backbone of many complex operations in Python, including working with JSON data from web APIs. Master the dictionary — key access, comprehensions, merging, and nested structures — and you will unlock a whole new level of problem-solving in your code.

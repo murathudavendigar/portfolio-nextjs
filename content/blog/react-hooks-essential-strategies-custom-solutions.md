@@ -12,7 +12,7 @@ React Hooks revolutionized the way we build web applications by allowing us to u
 
 When I teach React to new frontend developers, hooks are the first place confusion shows up — especially `useEffect` dependency arrays and “when do I need a custom hook?” This guide collects the patterns I repeat most often in class and in production Next.js work at TemCraft Tech.
 
-### The Core Hooks: Beyond the Basics
+### What Do the Core Hooks Do Beyond the Basics?
 
 Most developers start with `useState` and `useEffect`. While they seem simple, they have nuances that can significantly impact performance and bug tracking.
 
@@ -52,6 +52,60 @@ Performance optimization in React often involves preventing unnecessary re-rende
 - **useCallback**: Memoizes a function instance. This is useful when passing functions to memoized child components to prevent them from breaking the child's `React.memo` optimization.
 
 Note: Do not over-optimize. Using these hooks everywhere adds overhead. Only use them when you notice a performance bottleneck or when passing dependencies to other hooks.
+
+`React.memo` is the third piece of this trio, and it's worth being explicit about what each does, since they're frequently confused:
+
+| Tool | Memoizes | Use it when |
+|---|---|---|
+| `useMemo` | A computed **value** | An expensive calculation shouldn't re-run every render |
+| `useCallback` | A **function reference** | You're passing a callback prop to a memoized child |
+| `React.memo` | An entire **component** | A component re-renders with the same props too often |
+
+They work together, not in isolation: wrapping a child in `React.memo` only prevents re-renders if the props passed to it are stable — which is exactly what `useCallback` (for function props) and `useMemo` (for object/array props) provide.
+
+### useRef and useContext: The Other Two You'll Reach For Constantly
+
+Beyond `useState` and `useEffect`, two more hooks show up in almost every non-trivial component.
+
+`useRef` gives you a mutable box that persists across renders **without** triggering a re-render when it changes — unlike `useState`. It has two common uses: holding a reference to a DOM node, and holding any mutable value you want to survive re-renders without causing new ones.
+
+```javascript
+function TextInputWithFocusButton() {
+  const inputRef = useRef(null);
+
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <>
+      <input ref={inputRef} type="text" />
+      <button onClick={focusInput}>Focus the input</button>
+    </>
+  );
+}
+```
+
+`useContext` solves "prop drilling" — passing a prop down through five layers of components that don't use it themselves, just to get it to a deeply nested child. A context provider makes a value available to any descendant that asks for it:
+
+```javascript
+const ThemeContext = createContext('light');
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar() {
+  const theme = useContext(ThemeContext); // no props passed through Toolbar at all
+  return <div className={`toolbar-${theme}`}>...</div>;
+}
+```
+
+Reach for `useContext` when a value is genuinely global to a subtree (theme, authenticated user, locale) — not as a blanket replacement for passing props, which is still the simpler and more traceable option for most component communication.
 
 ### The Power of Custom Hooks
 
@@ -112,6 +166,82 @@ if (error) return <p>Error: {error}</p>;
 return <div>{/* Render your data here */}</div>;
 ```
 
+### A Second Custom Hook: useDebounce
+
+`useFetch` handles data loading, but a lot of real UI work involves reacting to fast-changing input — a search box that shouldn't fire an API call on every keystroke, for example. `useDebounce` is the standard pattern for that:
+
+```javascript
+import { useState, useEffect } from 'react';
+
+function useDebounce(value, delayMs) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delayMs);
+
+    return () => clearTimeout(timer); // cancel if value changes before delay elapses
+  }, [value, delayMs]);
+
+  return debouncedValue;
+}
+```
+
+Used in a search component, it lets you keep the input responsive while delaying the expensive part (the API call) until the user pauses typing:
+
+```javascript
+function SearchBox() {
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce(query, 400);
+
+  useEffect(() => {
+    if (!debouncedQuery) return;
+    fetch(`/api/search?q=${debouncedQuery}`);
+  }, [debouncedQuery]);
+
+  return <input value={query} onChange={e => setQuery(e.target.value)} />;
+}
+```
+
+Notice the shape: `query` updates on every keystroke, but `debouncedQuery` only catches up 400ms after typing pauses — because each new keystroke cancels the previous `setTimeout` via the cleanup function before it can fire.
+
+### Common Pitfalls: Stale Closures
+
+The single most confusing bug in hooks-based React is the **stale closure** — an effect or callback that captures a variable's value from the render it was created in, and keeps using that old value even after state has changed.
+
+```javascript
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log(count); // always logs 0, no matter how many times count changes
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []); // empty array means this effect (and its closure over `count`) runs once, forever
+
+  return <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>;
+}
+```
+
+Because the dependency array is `[]`, the effect runs exactly once, and the function inside it closes over the `count` value from that first render — `0` — forever. Even though `count` updates on screen with every click, the `console.log` inside the interval never sees the new value.
+
+The fix is either to include `count` in the dependency array (which restarts the interval on every count change) or, more often, to use the functional update form so the callback doesn't need to read the stale variable at all:
+
+```javascript
+useEffect(() => {
+  const timer = setInterval(() => {
+    setCount(prevCount => prevCount + 1); // reads current state via the updater, not the closure
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, []);
+```
+
+This is exactly the same functional-update pattern from the `useState` section above — it isn't a coincidence. Once you recognize that hooks close over the values present at render time, stale closures stop being mysterious and become a predictable thing to check for whenever an effect reads state without listing it as a dependency.
+
 ### Essential Strategies for Success
 
 To master hooks, follow these industry-standard rules:
@@ -127,8 +257,3 @@ React Hooks are more than just a syntax change; they represent a shift in how we
 ---
 
 Understanding the lifecycle and mental model of hooks is the hallmark of a senior React developer. Continue experimenting with different custom hook patterns to find what works best for your team's workflow.
-
-
----
-
-[Read the original full version on Medium](https://medium.com/javascript-in-plain-english/react-hooks-explored-essential-strategies-and-crafting-custom-solutions-a5ebf971b891)

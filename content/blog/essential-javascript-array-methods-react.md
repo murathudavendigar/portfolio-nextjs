@@ -126,6 +126,76 @@ const checklist = [{ task: "HTML", done: true }, { task: "CSS", done: true }];
 const isReadyToDeploy = checklist.every(item => item.done); // true
 ```
 
-### Summary
+### Bonus: forEach() — and Why It's Different
 
-By leveraging these 10 methods, you can handle almost any data manipulation task in your React applications. The golden rule to remember is: **never mutate your state directly**. Always use methods that return new arrays (`map`, `filter`, `slice`), or ensure you copy your arrays before using mutating methods (`sort`). Master these, and your React code will be cleaner, faster, and bug-free.
+`forEach()` executes a function for every element in an array, but unlike `map()`, it returns `undefined`. It exists for side effects, not transformation.
+
+```javascript
+users.forEach(user => console.log(user.name));
+```
+
+The mistake beginners make is reaching for `forEach()` when they actually want `map()`:
+
+```javascript
+// WRONG: builds nothing, listItems is always undefined
+const listItems = users.forEach(user => <li key={user.id}>{user.name}</li>);
+
+// RIGHT: map() returns the new array you need for JSX
+const listItems = users.map(user => <li key={user.id}>{user.name}</li>);
+```
+
+If you find yourself assigning the result of `forEach()` to a variable, that is a signal you meant `map()`, `filter()`, or `reduce()` instead.
+
+### A Worked Example: Chaining Methods for a Cart Summary
+
+Real components rarely use one array method in isolation — they chain several together. Here is a shopping cart component that filters out-of-stock items, maps them to display data, and reduces them to a total, all from one piece of state:
+
+```javascript
+function CartSummary({ cart }) {
+  const availableItems = cart.filter(item => item.inStock);
+
+  const total = availableItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const displayRows = availableItems.map(item => ({
+    id: item.id,
+    label: `${item.name} × ${item.quantity}`,
+    subtotal: item.price * item.quantity,
+  }));
+
+  return (
+    <div>
+      <ul>
+        {displayRows.map(row => (
+          <li key={row.id}>{row.label} — ${row.subtotal.toFixed(2)}</li>
+        ))}
+      </ul>
+      <strong>Total: ${total.toFixed(2)}</strong>
+    </div>
+  );
+}
+```
+
+Each method does exactly one job — `filter` narrows the data, `reduce` aggregates it, `map` shapes it for rendering — and none of them mutate `cart`. That separation is what keeps a component like this easy to read even as the logic around it grows.
+
+### Common Pitfalls When Using Array Methods in React
+
+- **Using the array index as a React `key`.** `users.map((user, index) => <li key={index}>...)` works until the array is reordered, filtered, or has items inserted — then React matches the wrong DOM node to the wrong data, causing subtle bugs with form inputs and animations. Always key by a stable, unique identifier from your data (`user.id`), not the position in the array.
+- **Mutating nested objects inside `map()`.** Copying the outer array without copying nested objects still leaves you mutating shared references: `products.map(p => { p.price *= 1.1; return p; })` mutates the original objects in place even though `map()` itself returns a new array. The safe version copies the object too: `products.map(p => ({ ...p, price: p.price * 1.1 }))`.
+- **Calling `.sort()` directly on state.** As covered above, `sort()` mutates in place — calling it on `prevUsers` inside a `setUsers` updater silently corrupts the previous render's array reference, which can break memoization and cause stale UI elsewhere in the component tree.
+- **Chaining methods that each re-scan the whole array when one would do.** `arr.filter(...).map(...).length` is readable, but for very large arrays doing the equivalent work in a single `reduce()` avoids two extra full passes. This rarely matters for typical UI-sized lists, so prefer readability first and only reach for `reduce()` when a genuine bottleneck shows up in profiling.
+
+### map() vs. forEach() vs. reduce(): Which One Should You Reach For?
+
+| You need to... | Use |
+|---|---|
+| Transform each item into something new (e.g., JSX, a new shape) | `map()` |
+| Run a side effect per item without producing a new array (e.g., logging, calling an API) | `forEach()` |
+| Collapse the array into a single value (a sum, an object, a boolean) | `reduce()` |
+| Remove items that don't match a condition | `filter()` |
+| Find one matching item, or check if one exists | `find()` / `some()` |
+
+When in doubt, prefer the most specific method for the job (`find` over `filter()[0]`, `some()` over `filter().length > 0`) — it communicates intent more clearly and often short-circuits earlier, stopping as soon as a match is found instead of scanning the whole array.
+
+### What's the Golden Rule for Array Methods in React?
+
+By leveraging these methods, you can handle almost any data manipulation task in your React applications. The golden rule to remember is: **never mutate your state directly**. Always use methods that return new arrays (`map`, `filter`, `slice`), or ensure you copy your arrays before using mutating methods (`sort`). Master these, and your React code will be cleaner, faster, and bug-free.

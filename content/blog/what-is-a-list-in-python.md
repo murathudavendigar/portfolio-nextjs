@@ -128,10 +128,111 @@ print(alphabet[4:])   # Output: ['E', 'F', 'G']
 print(alphabet[::2])  # Output: ['A', 'C', 'E', 'G']
 ```
 
+### Looping With enumerate()
+
+Looping over a list is common, but often you need both the item and its index at the same time — for numbering output, or for updating a specific position while iterating. Writing `for i in range(len(my_list))` works but is clunky. `enumerate()` gives you both directly:
+
+```python
+fruits = ["apple", "banana", "cherry"]
+
+for index, fruit in enumerate(fruits):
+    print(f"{index}: {fruit}")
+
+# 0: apple
+# 1: banana
+# 2: cherry
+```
+
+`enumerate()` also accepts a `start` argument if you want numbering to begin somewhere other than zero: `enumerate(fruits, start=1)`.
+
+### List Comprehensions: A Faster Way to Build Lists
+
+A huge share of Python loops exist only to build a new list from an existing one. **List comprehensions** collapse that pattern into a single, readable line:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+
+# The verbose way
+squares = []
+for n in numbers:
+    squares.append(n ** 2)
+
+# The comprehension way — same result
+squares = [n ** 2 for n in numbers]
+print(squares)  # [1, 4, 9, 16, 25]
+```
+
+Comprehensions can also filter with an `if` clause, combining transformation and filtering in one expression:
+
+```python
+even_squares = [n ** 2 for n in numbers if n % 2 == 0]
+print(even_squares)  # [4, 16]
+```
+
+Once you're comfortable reading them, comprehensions are usually preferred over an equivalent `for` loop with `.append()` — they're shorter, and because the whole operation is one expression, there's no intermediate empty list variable to accidentally forget to initialize.
+
+### sort() vs. sorted(): Which Should You Use?
+
+Python gives you two ways to sort a list, and mixing them up is a common source of bugs. `.sort()` is a list **method** that sorts in place and returns `None`. `sorted()` is a **built-in function** that returns a brand-new sorted list, leaving the original untouched.
+
+```python
+numbers = [3, 1, 4, 1, 5]
+
+# .sort() mutates in place
+numbers.sort()
+print(numbers)  # [1, 1, 3, 4, 5]
+
+# sorted() returns a new list
+original = [3, 1, 4, 1, 5]
+new_list = sorted(original)
+print(original)   # [3, 1, 4, 1, 5] — unchanged
+print(new_list)   # [1, 1, 3, 4, 5]
+```
+
+A common mistake is writing `numbers = numbers.sort()` — since `.sort()` returns `None`, this silently replaces `numbers` with `None` instead of the sorted list. If you want to keep the original list and also get a sorted copy, use `sorted()`; if you're fine mutating the list you already have, `.sort()` avoids the extra allocation.
+
+Both accept a `key` function for custom sort logic and a `reverse=True` flag:
+
+```python
+words = ["banana", "kiwi", "apple"]
+print(sorted(words, key=len))              # ['kiwi', 'apple', 'banana'] — shortest first
+print(sorted(words, reverse=True))         # ['kiwi', 'banana', 'apple'] — alphabetical, descending
+```
+
+### Copying Lists Safely
+
+Just like Python dictionaries, assigning one list variable to another doesn't create a new list — it creates a second name pointing at the same underlying list:
+
+```python
+original = [1, 2, 3]
+copy = original
+
+copy.append(4)
+print(original)  # [1, 2, 3, 4] — "original" changed too!
+```
+
+To get an actual independent copy, use slicing (`original[:]`), the `.copy()` method, or `list(original)` — all three produce an equivalent shallow copy:
+
+```python
+original = [1, 2, 3]
+copy = original[:]  # or original.copy(), or list(original)
+
+copy.append(4)
+print(original)  # [1, 2, 3] — unaffected
+```
+
+As with dictionaries, this is a **shallow** copy — if the list contains other lists or objects, those nested items are still shared by reference between the original and the copy. For a fully independent deep copy, use `copy.deepcopy()` from Python's standard library `copy` module.
+
+### Common Pitfalls with Lists
+
+- **Using a mutable list as a default function argument.** `def add_item(item, target=[]):` looks reasonable, but Python evaluates default arguments exactly once, when the function is defined — not on every call. That means every call without an explicit `target` shares and mutates the *same* list across calls, accumulating items from previous calls. The fix is `def add_item(item, target=None):` followed by `if target is None: target = []` inside the function body.
+- **Multiplying a list of lists to build a 2D grid.** `grid = [[0] * 3] * 3` looks like it creates a 3x3 grid of independent rows, but `* 3` on the outer list just repeats the *same inner list* three times by reference. Changing `grid[0][0]` changes `grid[1][0]` and `grid[2][0]` too. The correct approach is a list comprehension that creates a fresh inner list each time: `grid = [[0] * 3 for _ in range(3)]`.
+- **Modifying a list while iterating over it.** Removing items from a list inside a `for item in my_list:` loop causes Python to skip elements, because the indices shift underneath the iterator as items are removed. Iterate over a copy (`for item in my_list[:]:`) or build a new filtered list instead.
+
+### Lists vs. Tuples: A Quick Comparison
+
+Python's other core ordered sequence type is the tuple, and the choice between them usually comes down to one question: will this collection ever need to change after it's created? If yes, use a list — it's mutable and built for growing, shrinking, and reordering. If the collection represents a fixed, small group of values that should never change (coordinates, RGB values, a function returning multiple values), a tuple communicates that intent directly and is slightly more memory-efficient. When in doubt for data that changes over its lifetime, a list is almost always the right default.
+
 ### Conclusion
 
-Lists are the backbone of data manipulation in Python. They are intuitive, highly adaptable, and come packed with built-in methods that save you from writing complex loops for simple tasks. By mastering list creation, indexing, slicing, and methods, you establish a strong foundation for handling complex algorithms and data structures in your future Python projects.
-
----
-
-[Read the original full version on Medium](https://medium.com/stackademic/what-is-a-list-in-python-54f56779fec)
+Lists are the backbone of data manipulation in Python. They are intuitive, highly adaptable, and come packed with built-in methods that save you from writing complex loops for simple tasks. By mastering list creation, indexing, slicing, comprehensions, sorting, and safe copying, you establish a strong foundation for handling complex algorithms and data structures in your future Python projects.

@@ -217,6 +217,77 @@ This forces you to prioritize essential content first and layer complexity on to
 
 ---
 
+## Fluid Typography with clamp()
+
+Media query breakpoints work well for layout, but jumping font sizes abruptly at each breakpoint can look jarring. `clamp()` lets a value scale smoothly between a minimum and maximum, based on viewport width, with no media query at all:
+
+```css
+h1 {
+  /* min: 1.75rem, preferred: 4vw, max: 3.5rem */
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+```
+
+`clamp(min, preferred, max)` takes three values: the smallest the size is ever allowed to shrink to, a fluid preferred value (usually in `vw`), and the largest it's allowed to grow to. The browser does the interpolation — no `@media` blocks, no jump cuts between breakpoints. This is now the standard way to handle headline and body text sizing across the responsive range.
+
+---
+
+## Container Queries: The Next Step Beyond Media Queries
+
+Media queries respond to the **viewport's** size. But a component — a card, a sidebar widget — often needs to respond to the size of **its own container**, not the whole screen. A card might render in a wide two-column layout in one place and a narrow single-column list in another, and it needs different internal styles in each case regardless of the overall viewport width.
+
+**Container queries** solve exactly this. First, mark an element as a containment context:
+
+```css
+.card-grid {
+  container-type: inline-size;
+  container-name: card-grid;
+}
+```
+
+Then query against that container instead of the viewport:
+
+```css
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+@container card-grid (min-width: 400px) {
+  .card {
+    flex-direction: row;
+  }
+}
+```
+
+Now the `.card` component switches from a stacked to a side-by-side layout whenever *its container* is at least 400px wide — whether that container is a full-width main area or a narrow sidebar. This is a meaningful upgrade over media queries for component libraries and design systems, where the same component gets reused in layout contexts you can't predict in advance.
+
+**Media queries vs. container queries — which should you reach for?**
+
+| Use case | Reach for |
+|---|---|
+| Page-level layout (nav, overall grid, header/footer) | Media queries |
+| A reusable component that appears in different-width containers | Container queries |
+| Global preferences (dark mode, reduced motion, print) | Media queries |
+
+They aren't competitors — most 2026-era stylesheets use both: media queries for the page shell, container queries for the components that live inside it.
+
+---
+
+## Common Responsive Design Pitfalls
+
+- **Forgetting the viewport meta tag.** Without `<meta name="viewport" content="width=device-width, initial-scale=1">` in your HTML `<head>`, mobile browsers render the page at desktop width and then zoom out — every media query below `max-width: 768px` never actually triggers on a real phone, even though it looks correct in DevTools.
+- **Mixing `max-width` and `min-width` breakpoints inconsistently.** Combining desktop-first (`max-width`) rules in one stylesheet with mobile-first (`min-width`) rules in another creates specificity fights where the "wrong" rule wins depending on load order. Pick one direction for a given project and stay consistent.
+- **Testing only in the browser emulator.** DevTools' responsive mode is a good first pass, but it doesn't reproduce real touch-target sizing, actual network conditions, or OS-level font scaling. Bugs around tap targets being too small, or text overflowing at a user's custom OS font size, only show up on real hardware.
+- **Using `vh` for full-height mobile layouts.** On mobile Safari and Chrome, `100vh` includes space the browser's address bar temporarily occupies, causing content to be cut off or to overflow when the bar shows/hides on scroll. The dynamic viewport unit `100dvh` was introduced specifically to fix this — prefer it for any full-height mobile section.
+- **Not testing with real, ragged content.** A layout that looks perfect with three short placeholder words breaks the moment a real user's data has a much longer product name or a translated string. Always test breakpoints with realistic (and worst-case) content lengths, not lorem ipsum.
+
+---
+
 ## Best Practices Checklist
 
 - [x] Use `%`, `em`, `rem`, or `vw/vh` instead of fixed `px` for layout dimensions
