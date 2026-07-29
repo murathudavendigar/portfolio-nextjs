@@ -59,7 +59,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative z-0 flex h-screen flex-col items-center justify-center overflow-y-auto px-4 py-20 md:overflow-hidden md:px-10">
+    <div className="relative z-0 flex h-screen flex-col items-center justify-start overflow-y-auto px-4 py-20 md:justify-center md:overflow-hidden md:px-10">
       <h3 className="absolute top-16 uppercase tracking-[12px] text-gray-200 dark:text-gray-700 text-xl md:top-24 md:tracking-[20px] md:text-2xl">
         Contact
       </h3>

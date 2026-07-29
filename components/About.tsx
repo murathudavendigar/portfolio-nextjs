@@ -27,7 +27,7 @@ const About = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative flex flex-col items-center justify-center h-screen max-w-7xl px-6 md:px-10 mx-auto text-center md:text-left md:flex-row md:justify-evenly overflow-y-auto md:overflow-hidden">
+      className="relative flex flex-col items-center justify-start h-screen max-w-7xl px-6 md:px-10 mx-auto text-center md:text-left md:flex-row md:justify-evenly overflow-y-auto md:overflow-hidden">
       <h3 className="absolute top-16 md:top-24 uppercase tracking-[12px] md:tracking-[20px] text-gray-200 dark:text-gray-700 text-xl md:text-2xl">
         About
       </h3>
