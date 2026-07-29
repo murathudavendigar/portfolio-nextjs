@@ -20,6 +20,18 @@ const nextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "img-src 'self' data: https:",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "font-src 'self' data:",
+              "connect-src 'self' https://api.emailjs.com",
+              "frame-ancestors 'self'",
+            ].join("; "),
+          },
         ],
       },
     ];
