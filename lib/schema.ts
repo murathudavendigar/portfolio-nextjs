@@ -58,7 +58,7 @@ export function homepageGraph() {
         name: site.title,
         description: site.description,
         isPartOf: { "@id": websiteId },
-        about: { "@id": personId },
+        mainEntity: { "@id": personId },
         primaryImageOfPage: { "@id": profileImageId },
         inLanguage: "en",
       },
