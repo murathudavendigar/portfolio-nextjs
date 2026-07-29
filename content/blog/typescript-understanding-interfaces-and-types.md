@@ -200,7 +200,7 @@ This pattern — a **discriminated union**, where a shared field like `state` te
 ### Common Pitfalls
 
 - **Trying to union two Interfaces directly.** `interface A | interface B` is not valid syntax — Interfaces can only be extended, not unioned. If you need a union, define it as a `type` composed of the interfaces: `type Combined = A | B`.
-- **Forgetting that declaration merging is per-file-scope-aware but global.** Merging two same-named interfaces is powerful for extending third-party types, but it also means an accidental duplicate interface name elsewhere in a large codebase silently merges instead of erroring — which can produce a confusing shape you didn't intend.
+- **Forgetting that declaration merging still applies within the same scope.** Merging two same-named interfaces in the same module file (or in ambient/global declarations, like a `declare global` block or a non-module `.d.ts` file) is powerful for extending third-party types, but it also means an accidental duplicate interface name in one of those same scopes silently merges instead of erroring — which can produce a confusing shape you didn't intend. Ordinary same-named interfaces in two separate ES modules do not merge with each other; each module has its own scope.
 - **Assuming `readonly` protects nested objects.** Just like `Object.freeze()` in plain JavaScript, `readonly` on a property only prevents *reassigning* that property — if the property's value is itself an object, its nested fields remain fully mutable unless you mark those `readonly` too.
 
 ### Summary

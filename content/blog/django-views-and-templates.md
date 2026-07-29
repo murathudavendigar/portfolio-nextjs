@@ -180,7 +180,7 @@ STATICFILES_DIRS = [BASE_DIR / "myapp/static"]
 
 - **Forgetting `{% load static %}`.** Without it, every `{% static %}` tag in that template raises a `TemplateSyntaxError`. It has to be declared per-template, not once globally.
 - **Putting business logic in templates.** The template language deliberately cannot call arbitrary Python methods with arguments or catch exceptions. If you find yourself wanting to do real computation in a template, that is a signal the logic belongs in the view instead.
-- **Mismatched context keys.** If your view passes `{'greeting': ...}` but the template references `{{ message }}`, Django does not raise an error — it silently renders an empty string. This "fails silently" behavior is convenient in production but can hide typos during development; setting `TEMPLATE_STRING_IF_INVALID` in `DEBUG` mode surfaces these mismatches instead of hiding them.
+- **Mismatched context keys.** If your view passes `{'greeting': ...}` but the template references `{{ message }}`, Django does not raise an error — it silently renders an empty string. This "fails silently" behavior is convenient in production but can hide typos during development; setting `"string_if_invalid"` in your template engine's `OPTIONS` (inside the `TEMPLATES` list in `settings.py`) makes invalid variables render as a visible marker instead of an empty string, so mismatches jump out while you're developing.
 - **Overriding `{% block %}` names inconsistently.** If a child template's block name does not exactly match a block defined in the parent, Django simply ignores the mismatched content rather than raising an error.
 
 ### Views That Return JSON Instead of HTML
