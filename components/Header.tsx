@@ -65,26 +65,19 @@ const Header = (props: Props) => {
       </motion.div>
 
       <motion.div
-        initial={{
-          y: -500,
-          opacity: 0,
-          scale: 0.5,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          scale: 1,
-        }}
-        transition={{
-          duration: 1.5,
-        }}
-        className={`cursor-pointer w-8 h-5 md:w-16 md:h-10 flex items-center bg-gray-300 rounded-full p-1 ${
-          toggle ? "bg-red-500 justify-end" : "justify-start"
-        }`}
+        initial={{ y: -500, opacity: 0, scale: 0.5 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5 }}
+        className="min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-        <motion.div
-          layout
-          className="w-4 h-4 bg-white rounded-full shadow-md md:w-8 md:h-8"></motion.div>
+        <div
+          className={`w-8 h-5 md:w-16 md:h-10 flex items-center bg-gray-300 rounded-full p-1 ${
+            toggle ? "bg-red-500 justify-end" : "justify-start"
+          }`}>
+          <motion.div
+            layout
+            className="w-4 h-4 bg-white rounded-full shadow-md md:w-8 md:h-8"></motion.div>
+        </div>
       </motion.div>
 
       <Link href="#contact">

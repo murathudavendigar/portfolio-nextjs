@@ -80,6 +80,27 @@ const Contact = () => {
           </div>
         </div>
 
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-sm w-full">
+          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
+            <p className="font-semibold text-[#CA3E47]">Hiring?</p>
+            <p className="text-gray-300 dark:text-gray-700">
+              Frontend engineer based in the Netherlands, open to new roles.
+            </p>
+          </div>
+          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
+            <p className="font-semibold text-[#CA3E47]">Need a freelance dev?</p>
+            <p className="text-gray-300 dark:text-gray-700">
+              Co-founder at TemCraft Tech — available for scoped React/Next.js work.
+            </p>
+          </div>
+          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
+            <p className="font-semibold text-[#CA3E47]">Want the code?</p>
+            <p className="text-gray-300 dark:text-gray-700">
+              Check the <a href="https://github.com/murathudavendigar" target="_blank" rel="noreferrer" className="underline">GitHub</a> or open-source npm packages.
+            </p>
+          </div>
+        </div>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto flex w-full max-w-md flex-col space-y-2"
