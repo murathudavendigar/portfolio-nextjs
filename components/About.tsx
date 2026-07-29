@@ -7,7 +7,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Who is Murat Öncü?",
-    a: "A frontend-focused full-stack developer, co-founder of TemCraft Tech, and instructor based in the Netherlands.",
+    a: "Murat Hüdavendigâr Öncü is a frontend-focused full-stack developer, co-founder of TemCraft Tech, and a frontend instructor, based in the Netherlands. He builds with React, Next.js, and TypeScript, and teaches modern web development to students across Europe.",
   },
   {
     q: "What does he build with?",
@@ -66,13 +66,13 @@ const About = () => {
             , and a frontend instructor. I build with React and Next.js, with
             Django and .NET when products need it.
           </p>
-          <p className="hidden sm:block">
+          <p>
             Since early 2024 I&apos;ve taught frontend development while shipping
             products at TemCraft Tech — mentoring students through HTML, CSS,
             JavaScript, React, and Next.js, then applying the same craft in
             production.
           </p>
-          <p className="hidden md:block">
+          <p>
             Based in the Netherlands and open to new opportunities. If you need
             a frontend engineer who can also teach, ship, and own product
             outcomes, let&apos;s talk.
@@ -95,20 +95,21 @@ const About = () => {
             </span>
           </button>
 
-          {faqOpen && (
-            <dl className="mt-3 space-y-3 text-sm">
-              {faqs.map((item) => (
-                <div key={item.q}>
-                  <dt className="font-semibold text-gray-100 dark:text-gray-900">
-                    {item.q}
-                  </dt>
-                  <dd className="mt-1 text-gray-300 dark:text-gray-700">
-                    {item.a}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          )}
+          <dl
+            className={`space-y-3 text-sm overflow-hidden transition-[max-height,opacity,margin] duration-300 ${
+              faqOpen ? "mt-3 max-h-[600px] opacity-100" : "mt-0 max-h-0 opacity-0"
+            }`}>
+            {faqs.map((item) => (
+              <div key={item.q}>
+                <dt className="font-semibold text-gray-100 dark:text-gray-900">
+                  {item.q}
+                </dt>
+                <dd className="mt-1 text-gray-300 dark:text-gray-700">
+                  {item.a}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </motion.div>
