@@ -8,7 +8,7 @@ readTime: 5
 image: "https://images.shiksha.com/mediadata/images/articles/1723098997phpe4XpdY.jpeg"
 author: "Murat Hüdavendigâr Öncü"
 ---
-*In our previous article, we talked about tuples in Python. If you haven’t read it yet, you can read it by [clicking here](https://murathudavendigar.vercel.app/blogs/what-is-a-tuple-in-python).*
+*In our previous article, we talked about tuples in Python. If you haven’t read it yet, you can read it by [clicking here](https://www.muratoncu.com/blogs/what-is-a-tuple-in-python).*
 
 Now that you understand lists and tuples, it is time to meet one of the most powerful and widely used data structures in Python: the dictionary. While lists and tuples organize data by their position (index), dictionaries organize data by association. 
 

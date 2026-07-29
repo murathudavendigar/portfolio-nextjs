@@ -38,6 +38,16 @@ export function personSchema() {
   };
 }
 
+export function personStub() {
+  return {
+    "@id": personId,
+    "@type": "Person",
+    name: site.name,
+    url: site.url,
+    sameAs: Object.values(site.socials),
+  };
+}
+
 export function homepageGraph() {
   return {
     "@context": "https://schema.org",
@@ -126,8 +136,8 @@ export function blogPostingGraph(post: BlogPost) {
         ...(post.updatedAt && {
           dateModified: new Date(post.updatedAt).toISOString(),
         }),
-        author: { "@id": personId },
-        publisher: { "@id": personId },
+        author: personStub(),
+        publisher: personStub(),
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         url,
         isPartOf: { "@id": websiteId },

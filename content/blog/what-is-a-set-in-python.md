@@ -8,7 +8,7 @@ readTime: 4
 image: "https://i.ytimg.com/vi/t9j8lCUGZXo/maxresdefault.jpg"
 author: "Murat Hüdavendigâr Öncü"
 ---
-*In our previous article, we talked about dictionaries in Python. If you haven't read it yet, you can read it by [clicking here](https://murathudavendigar.vercel.app/blogs/what-is-a-dictionary-in-python).*
+*In our previous article, we talked about dictionaries in Python. If you haven't read it yet, you can read it by [clicking here](https://www.muratoncu.com/blogs/what-is-a-dictionary-in-python).*
 
 Now that we have covered lists, tuples, and dictionaries, it is time to look at the final built-in collection type in Python: the set. While it might look a bit like a dictionary because it uses curly braces, it serves a very different mathematical purpose.
 
