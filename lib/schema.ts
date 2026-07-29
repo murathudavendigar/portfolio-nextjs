@@ -154,7 +154,6 @@ export function projectSchema(project: {
   slug: string;
   github: string;
   url: string;
-  language: string;
 }) {
   const pageUrl = absoluteUrl(`/projects/${project.slug}`);
   return {

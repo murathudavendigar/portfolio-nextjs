@@ -102,7 +102,7 @@
   {
     "name": "NextJS Netflix App",
     "slug": "nextjs-netflix-app",
-    "img": "https://media.licdn.com/dms/image/C4D22AQHF1VuK2OX-5Q/feedshare-shrink_2048_1536/0/1673616568442?e=1676505600&v=beta&t=2mAnfloe9vJEzTHrdft3QtqWBIjGBNb_BjdKwCpfSec",
+    "img": "",
     "description": "NextJS Netflix App is a responsive web application where you can watch the trailer of the movie you want to see the information of after registering and logging in and you can create a watch list for yourself by pressing the + button.",
     "url": "https://netflix-nextjs-git-main-murathudavendigar.vercel.app/",
     "language": "Next.JS",
@@ -142,7 +142,7 @@
   {
     "name": "Movie App",
     "slug": "movie-app",
-    "img": "https://media.licdn.com/dms/image/C4D22AQG8vRoTz1pI0A/feedshare-shrink_800/0/1668135437209?e=1677110400&v=beta&t=lCMDyey6gaY_p3Mi26xBvvVJZLMeTaX31OAWZU2dlb4",
+    "img": "",
     "description": "React Movie App is a web app where you can search for movies, watch movie trailers or find recent movies after you sign up for the app.",
     "url": "https://murathudavendigar.github.io/movie-app-react/",
     "language": "React.JS",
