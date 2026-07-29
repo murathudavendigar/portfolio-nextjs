@@ -84,6 +84,8 @@ export default function MarkdownContent({ content }: { content: string }) {
           <img
             className="w-full my-4 rounded-lg"
             alt="Blog content image"
+            loading="lazy"
+            decoding="async"
             {...props}
           />
         ),

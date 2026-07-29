@@ -1,7 +1,7 @@
 export const skillsData = [
   {
     name: "React",
-    img: "./img/react.png",
+    img: "/img/react.png",
   },
   {
     name: "Next.JS",
@@ -84,7 +84,7 @@ export const skillsData = [
     img: "/img/visualstudio.png",
   },
   {
-    name: "PostgrSQL",
+    name: "PostgreSQL",
     img: "/img/postgres.png",
   },
   {
