@@ -93,7 +93,24 @@ const Projects = (props: Props) => {
                     loading="lazy"
                   />
                 </div>
-              ) : null}
+              ) : (
+                <div className="hidden md:flex justify-center">
+                  <div className="flex w-full max-w-md h-40 items-center justify-center rounded-lg border border-white/10 bg-white/5 dark:border-gray-300 dark:bg-gray-200/50">
+                    <svg
+                      className="h-12 w-12 text-white/20 dark:text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              )}
               <h4 className="text-xl font-semibold text-center md:text-2xl lg:text-4xl dark:text-gray-900">
                 <span className=" border-b border-[#CA3E47] ">
                   <span>{lang}</span> Study {visibleProjects.indexOf(project) + 1} of{" "}
