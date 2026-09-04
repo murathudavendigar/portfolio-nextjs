@@ -1,119 +1,156 @@
-"use client";
+import { getResumeHref } from "@/lib/resume";
 import { site } from "@/lib/site";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
 
-const faqs = [
-  {
-    q: "Who is Murat Öncü?",
-    a: "Murat Hüdavendigâr Öncü is a frontend-focused full-stack developer, co-founder of TemCraft Tech, and a frontend instructor, based in the Netherlands. He builds with React, Next.js, and TypeScript, and teaches modern web development to students across Europe.",
-  },
-  {
-    q: "What does he build with?",
-    a: "React, Next.js, and TypeScript on the frontend, with Django and .NET on the backend when products need it.",
-  },
-  {
-    q: "Where is he based?",
-    a: "The Netherlands, working remotely with teams and students across Europe.",
-  },
-] as const;
-
-const About = () => {
-  const [faqOpen, setFaqOpen] = useState(false);
-
+export default function About() {
+  const resumeHref = getResumeHref();
+  const facts = [
+    { label: "Based in", value: "Netherlands" },
+    {
+      label: "Company",
+      value: "TemCraft Tech",
+      href: "https://temcrafttech.com",
+    },
+    { label: "Also", value: "Frontend instructor" },
+    { label: "Builds with", value: "React, Next.js, TypeScript, React Native" },
+    { label: "Also uses", value: "Django, .NET when a product needs it" },
+    ...(resumeHref
+      ? [{ label: "Résumé", value: "PDF", href: resumeHref }]
+      : []),
+  ];
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className="relative flex flex-col items-center justify-start h-screen max-w-7xl px-6 md:px-10 mx-auto text-center md:text-left md:flex-row md:justify-evenly overflow-y-auto md:overflow-hidden">
-      <h3 className="absolute top-16 md:top-24 uppercase tracking-[12px] md:tracking-[20px] text-gray-200 dark:text-gray-700 text-xl md:text-2xl">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
         About
-      </h3>
-
-      <motion.div
-        initial={{ x: -200, opacity: 0 }}
-        transition={{ duration: 1.2 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        className="mt-20 md:mt-0 flex-shrink-0">
+      </p>
+      <div className="mt-6 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <Image
           src={site.profileImage}
-          alt="Murat Hüdavendigâr Öncü at work"
-          width={500}
-          height={500}
-          className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover md:rounded-lg md:h-80 md:w-80 lg:h-96 lg:w-96"
-          loading="lazy"
+          alt="Murat Hüdavendigâr Öncü"
+          width={640}
+          height={800}
+          priority
+          className="h-auto w-full max-w-sm rounded-lg object-cover object-top sm:max-w-md"
         />
-      </motion.div>
 
-      <div className="mt-4 mb-8 md:mb-0 md:mt-0 space-y-3 md:space-y-6 px-0 md:px-10 max-w-xl w-full">
-        <h4 className="text-2xl sm:text-3xl md:text-4xl font-semibold dark:text-gray-900">
-          A Bit About Me
-        </h4>
-        <div className="space-y-2 md:space-y-4 text-xs sm:text-sm leading-relaxed">
-          <p>
-            I&apos;m Murat Hüdavendigâr Öncü — Computer Engineering graduate
-            from Kocaeli University, co-founder of{" "}
-            <a
-              href="https://temcrafttech.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-[#CA3E47] transition-colors">
-              TemCraft Tech
-            </a>
-            , and a frontend instructor. I build with React and Next.js, with
-            Django and .NET when products need it.
-          </p>
-          <p>
-            Since early 2024 I&apos;ve taught frontend development while shipping
-            products at TemCraft Tech — mentoring students through HTML, CSS,
-            JavaScript, React, and Next.js, then applying the same craft in
-            production.
-          </p>
-          <p>
-            Based in the Netherlands and open to new opportunities. If you need
-            a frontend engineer who can also teach, ship, and own product
-            outcomes, let&apos;s talk.
-          </p>
-        </div>
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
+            I ship frontend products and teach the same craft.
+          </h1>
+          <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
+            <p>
+              Murat Hüdavendigâr Öncü is a frontend developer, co-founder of{" "}
+              <a
+                href="https://temcrafttech.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+                TemCraft Tech
+              </a>
+              , and a frontend instructor based in the Netherlands. I ship
+              React, Next.js, and iOS products and teach the same stack in
+              class.
+            </p>
+            <p>
+              The through-line is products people can actually use: Daily
+              Skyline and Courai on the App Store, npm tools I use with
+              students, and client work in React and Next.js. React Native
+              joined that list when I started shipping iOS myself. I studied
+              Computer Engineering at Kocaeli University.
+            </p>
+            <p>
+              Open to roles, scoped freelance, and teaching. If you need
+              someone who can own the frontend and explain the decisions,{" "}
+              <Link
+                href="/contact"
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+                write to me
+              </Link>
+              .
+            </p>
+          </div>
 
-        <div className="border-t border-white/10 dark:border-gray-400/40 pt-3 text-left">
-          <button
-            type="button"
-            onClick={() => setFaqOpen((open) => !open)}
-            aria-expanded={faqOpen}
-            className="flex w-full items-center justify-between gap-3 text-sm font-semibold uppercase tracking-wider text-[#CA3E47] hover:opacity-80 transition-opacity">
-            <span>Quick facts</span>
-            <span
-              aria-hidden="true"
-              className={`text-lg leading-none transition-transform duration-200 ${
-                faqOpen ? "rotate-45" : ""
-              }`}>
-              +
-            </span>
-          </button>
-
-          <dl
-            className={`space-y-3 text-sm overflow-hidden transition-[max-height,opacity,margin] duration-300 ${
-              faqOpen ? "mt-3 max-h-[600px] opacity-100" : "mt-0 max-h-0 opacity-0"
-            }`}>
-            {faqs.map((item) => (
-              <div key={item.q}>
-                <dt className="font-semibold text-gray-100 dark:text-gray-900">
-                  {item.q}
+          <dl className="mt-10 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-2 dark:border-gray-400/40">
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                  {fact.label}
                 </dt>
-                <dd className="mt-1 text-gray-300 dark:text-gray-700">
-                  {item.a}
+                <dd className="mt-1 text-sm dark:text-gray-800">
+                  {"href" in fact && fact.href ? (
+                    <a
+                      href={fact.href}
+                      {...(fact.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : { download: true })}
+                      className="hover:text-[#CA3E47] transition-colors">
+                      {fact.value}
+                    </a>
+                  ) : (
+                    fact.value
+                  )}
                 </dd>
               </div>
             ))}
           </dl>
         </div>
       </div>
-    </motion.div>
-  );
-};
 
-export default About;
+      <div className="mt-16 max-w-2xl space-y-10 lg:ml-auto lg:w-[min(100%,36rem)]">
+        <div>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
+            Who is Murat Öncü?
+          </h2>
+          <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
+            Murat Hüdavendigâr Öncü is a frontend developer, co-founder of
+            TemCraft Tech, and a frontend instructor based in the Netherlands.
+            He builds production interfaces in React, Next.js, and TypeScript,
+            and he ships iOS apps with React Native and Expo — including Daily
+            Skyline, a daily 5×5 skyscraper logic puzzle on the App Store, and
+            Courai, a CBT-based iOS app for social anxiety. He also publishes
+            npm tools he uses while teaching, such as codebrief and Dev Console
+            Kit. He studied Computer Engineering at Kocaeli University and
+            co-founded TemCraft Tech to take client and product work from scope
+            to a live UI. He teaches HTML, CSS, JavaScript, React, and Next.js
+            while using the same stack in production. He is open to frontend
+            roles in the Netherlands or remote, scoped freelance through
+            TemCraft Tech, and teaching. Notes on React, TypeScript, and
+            teaching live on this site.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
+            What does he ship?
+          </h2>
+          <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
+            Selected work includes Daily Skyline and Courai on iOS, plus
+            codebrief and Dev Console Kit on npm, and client React / Next.js
+            products at TemCraft Tech. Case studies are on the{" "}
+            <Link
+              href="/work"
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+              Work
+            </Link>{" "}
+            page.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
+            Where is he based?
+          </h2>
+          <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
+            The Netherlands. Frontend roles, remote product work, and teaching
+            are in scope —{" "}
+            <Link
+              href="/contact"
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+              contact
+            </Link>{" "}
+            is {site.email}.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

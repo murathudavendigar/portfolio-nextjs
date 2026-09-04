@@ -8,6 +8,21 @@ const nextConfig = {
       { protocol: "https", hostname: "icon.icepanel.io" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/projects/:slug*",
+        destination: "/work/:slug*",
+        permanent: true,
+      },
+      { source: "/blogs", destination: "/writing", permanent: true },
+      {
+        source: "/blogs/:slug*",
+        destination: "/writing/:slug*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

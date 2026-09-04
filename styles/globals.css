@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+}
+
 @layer components {
   .heroButton {
     @apply px-6 py-2 border border-[#525252] rounded-full uppercase text-sm tracking-widest text-gray-200 dark:text-gray-900 transition-all hover:border-[#CA3E47]/40;
@@ -9,5 +15,20 @@
 
   .contactInput {
     @apply outline-none bg-slate-400/10 dark:bg-[#bbb]/90 rounded-sm border-b-2 px-4 py-3 md:px-6 md:py-4 border-[#414141] text-gray-200 placeholder-gray-500 transition-all focus:border-[#CA3E47]/80 hover:border-[#CA3E47]/40;
+  }
+
+  .line-clamp-2,
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    -webkit-line-clamp: 3;
   }
 }

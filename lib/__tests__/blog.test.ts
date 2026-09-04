@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getPost, getPosts } from "../blog";
+import { getArchivedPosts, getFlagshipPosts, getPost, getPosts } from "../blog";
 
 describe("blog loader", () => {
   it("loads all 13 exported posts sorted newest first", () => {
@@ -23,5 +23,46 @@ describe("blog loader", () => {
   });
   it("returns undefined for unknown slug", () => {
     expect(getPost("nope-nope")).toBeUndefined();
+  });
+});
+
+describe("flagship/archive split", () => {
+  it("splits all 13 posts into flagship and archived with no overlap", () => {
+    const flagship = getFlagshipPosts();
+    const archived = getArchivedPosts();
+    expect(flagship.length + archived.length).toBe(13);
+    const archivedSlugs = new Set(archived.map((p) => p.slug));
+    for (const post of flagship) {
+      expect(archivedSlugs.has(post.slug)).toBe(false);
+    }
+  });
+
+  it("archives Python/Django tagged posts", () => {
+    const archivedSlugs = getArchivedPosts().map((p) => p.slug);
+    expect(archivedSlugs).toContain("a-beginners-guide-to-django-web-framework");
+    expect(archivedSlugs).toContain("what-is-a-tuple-in-python");
+    expect(archivedSlugs).toContain("what-is-a-list-in-python");
+    expect(archivedSlugs).toContain("what-is-a-set-in-python");
+    expect(archivedSlugs).toContain("what-is-a-dictionary-in-python");
+    expect(archivedSlugs).toContain("connecting-django-views-to-models");
+    expect(archivedSlugs).toContain("django-views-and-templates");
+  });
+
+  it("keeps React/TypeScript posts in flagship", () => {
+    const flagshipSlugs = getFlagshipPosts().map((p) => p.slug);
+    expect(flagshipSlugs).toContain(
+      "react-hooks-essential-strategies-custom-solutions",
+    );
+    expect(flagshipSlugs).toContain(
+      "typescript-supercharge-your-javascript-with-type-safety",
+    );
+  });
+});
+
+describe("writing URLs inside posts", () => {
+  it("does not point at the retired /blogs/ path", () => {
+    for (const post of getPosts()) {
+      expect(post.content).not.toMatch(/muratoncu\.com\/blogs\//);
+    }
   });
 });

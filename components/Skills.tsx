@@ -1,35 +1,57 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import Skill from "./Skill";
-import { skillsData } from "../data/skillsData";
+import { skillGroups, skillsData } from "@/data/skillsData";
 
-type Props = {};
+const byName = new Map(skillsData.map((skill) => [skill.name, skill]));
 
-const Skills = (props: Props) => {
+export default function Skills() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className="h-screen flex flex-col relative text-center md:text-left xl:flex-row max-w-[2000px] xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center">
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-200 dark:text-gray-900 text-2xl ">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
         Skills
-      </h3>
-      <h3 className="absolute top-[8.5rem] uppercase tracking-[3px] text-gray-200 dark:text-gray-900 text-sm">
-        Hover over a skill for name
-      </h3>
-      <div className="grid grid-cols-4 lg:grid-cols-10 2xl:grid-cols-7 gap-5 align-middle mt-28 md:mt-0">
-        {skillsData.map((item, index) =>
-          index % 2 == 0 ? (
-            <Skill key={index} item={item} />
-          ) : (
-            <Skill key={index} item={item} directionLeft={true} />
-          )
-        )}
-      </div>
-    </motion.div>
-  );
-};
+      </p>
+      <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
+        The stack I actually ship with
+      </h2>
+      <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+        Grouped by how I use it — not a logo wall you have to hover.
+      </p>
 
-export default Skills;
+      <div className="mt-12 space-y-12">
+        {skillGroups.map((group) => (
+          <div key={group.label}>
+            <h3 className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-gray-400 dark:text-gray-600">
+              {group.label}
+            </h3>
+            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {group.names.map((name) => {
+                const skill = byName.get(name);
+                return (
+                  <li
+                    key={name}
+                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 dark:border-gray-400/40 dark:bg-gray-200/30">
+                    {skill?.img ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={skill.img}
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="h-7 w-7 object-contain"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="flex h-7 w-7 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] text-[#CA3E47] dark:bg-gray-300/60">
+                        {name.slice(0, 2)}
+                      </span>
+                    )}
+                    <span className="text-sm dark:text-gray-900">{name}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

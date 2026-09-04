@@ -26,11 +26,26 @@ export function personSchema() {
       "React",
       "Next.js",
       "TypeScript",
+      "React Native",
       "Django",
       ".NET",
+      "iOS",
       "Frontend Development",
       "Web Development Education",
     ],
+    knowsLanguage: ["en", "tr"],
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Frontend Developer",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: "Netherlands",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "NL",
+      },
+    },
     address: {
       "@type": "PostalAddress",
       addressCountry: "NL",
@@ -44,6 +59,7 @@ export function personStub() {
     "@type": "Person",
     name: site.name,
     url: site.url,
+    jobTitle: "Frontend Developer",
     sameAs: Object.values(site.socials),
   };
 }
@@ -92,7 +108,7 @@ export function homepageGraph() {
 }
 
 export function blogPostingGraph(post: BlogPost) {
-  const url = absoluteUrl(`/blogs/${post.slug}`);
+  const url = absoluteUrl(`/writing/${post.slug}`);
   const imageUrl = absoluteUrl(post.imageUrl || site.defaultOgImage);
 
   return {
@@ -111,8 +127,8 @@ export function blogPostingGraph(post: BlogPost) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Blog",
-            item: absoluteUrl("/blogs"),
+            name: "Writing",
+            item: absoluteUrl("/writing"),
           },
           {
             "@type": "ListItem",
@@ -148,24 +164,128 @@ export function blogPostingGraph(post: BlogPost) {
   };
 }
 
-export function projectSchema(project: {
+export function workSchema(project: {
   name: string;
   description: string;
   slug: string;
   github: string;
   url: string;
+  img?: string;
+  appStoreUrl?: string;
+  language?: string;
 }) {
-  const pageUrl = absoluteUrl(`/projects/${project.slug}`);
+  const pageUrl = absoluteUrl(`/work/${project.slug}`);
+  const image = project.img?.startsWith("/")
+    ? absoluteUrl(project.img)
+    : project.img || undefined;
+  const isApp = project.language === "iOS";
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "@id": `${pageUrl}#project`,
-    name: project.name,
-    description: project.description,
-    url: pageUrl,
-    codeRepository: project.github || undefined,
-    author: { "@id": personId },
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Work",
+            item: absoluteUrl("/work"),
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project.name,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": isApp ? "SoftwareApplication" : "CreativeWork",
+        "@id": `${pageUrl}#project`,
+        name: project.name,
+        description: project.description,
+        url: pageUrl,
+        image,
+        codeRepository: project.github || undefined,
+        installUrl: project.appStoreUrl || undefined,
+        applicationCategory: isApp ? "MobileApplication" : undefined,
+        operatingSystem: isApp ? "iOS" : undefined,
+        author: { "@id": personId },
+        isPartOf: { "@id": websiteId },
+      },
+    ],
+  };
+}
+
+export function workIndexSchema(projects: { name: string; slug: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${absoluteUrl("/work")}#webpage`,
+    url: absoluteUrl("/work"),
+    name: "Work — Murat Hüdavendigâr Öncü",
+    description:
+      "Case studies and shipped projects by Murat Hüdavendigâr Öncü.",
     isPartOf: { "@id": websiteId },
+    about: { "@id": personId },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: absoluteUrl(`/work/${project.slug}`),
+        name: project.name,
+      })),
+    },
+  };
+}
+
+export function aboutPageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": `${absoluteUrl("/about")}#webpage`,
+        url: absoluteUrl("/about"),
+        name: `About — ${site.shortName}`,
+        description:
+          "Murat Hüdavendigâr Öncü — frontend developer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands.",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        mainEntity: { "@id": personId },
+        inLanguage: "en",
+      },
+      personSchema(),
+    ],
+  };
+}
+
+export function contactPageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": `${absoluteUrl("/contact")}#webpage`,
+        url: absoluteUrl("/contact"),
+        name: `Contact — ${site.shortName}`,
+        description:
+          "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands.",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        mainEntity: {
+          "@type": "Person",
+          "@id": personId,
+          name: site.name,
+          email: site.email,
+          url: site.url,
+        },
+        inLanguage: "en",
+      },
+    ],
   };
 }
 
@@ -173,11 +293,11 @@ export function blogIndexSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${absoluteUrl("/blogs")}#webpage`,
-    url: absoluteUrl("/blogs"),
-    name: "Blog — Murat Hüdavendigâr Öncü",
+    "@id": `${absoluteUrl("/writing")}#webpage`,
+    url: absoluteUrl("/writing"),
+    name: "Writing — Murat Hüdavendigâr Öncü",
     description:
-      "Writing on React, Next.js, TypeScript, Python and the frontend craft by Murat Hüdavendigâr Öncü.",
+      "Writing on React, Next.js, TypeScript and the frontend craft by Murat Hüdavendigâr Öncü.",
     isPartOf: { "@id": websiteId },
     about: { "@id": personId },
     mainEntity: {
@@ -185,7 +305,7 @@ export function blogIndexSchema(posts: BlogPost[]) {
       itemListElement: posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: absoluteUrl(`/blogs/${post.slug}`),
+        url: absoluteUrl(`/writing/${post.slug}`),
         name: post.title,
       })),
     },

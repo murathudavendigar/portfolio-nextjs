@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         custom: ["var(--font-nunito-sans)", "sans-serif"],
+        "mono-ui": ["var(--font-geist-mono)", "monospace"],
       },
     },
   },

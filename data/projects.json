@@ -1,73 +1,142 @@
 [
   {
+    "name": "Daily Skyline",
+    "slug": "daily-skyline",
+    "img": "/img/projects/daily-skyline.png",
+    "coverFit": "cover",
+    "description": "Daily Skyline is a daily 5×5 skyscraper logic puzzle. Everyone in the world gets the same grid today — read the edge clues, place buildings 1 through 5, beat your time. No ads, no account.",
+    "url": "https://dailyskyline.muratoncu.com",
+    "language": "iOS",
+    "github": "",
+    "tier": "selected",
+    "appStoreUrl": "https://apps.apple.com/app/id6791111716",
+    "stack": ["React Native", "Expo", "TypeScript", "Game Center", "Next.js"],
+    "problem": "Skyscraper puzzles usually live in books or one-off web toys. There is no shared daily board, so you cannot compare a time with anyone who played the same grid.",
+    "approach": "One deterministic 5×5 puzzle per calendar date — same clues, same difficulty, everywhere. I shipped it as an iOS app (Expo / React Native) with notes, undo, a mistake limit, on-device streaks, an archive of missed days, optional Game Center leaderboards, and a marketing site at dailyskyline.muratoncu.com.",
+    "tradeoffs": "No account means you can play immediately, but progress lives on the device — a reinstall can drop a streak. iOS shipped first; Android is not in the store yet. Difficulty ramps through the week instead of letting players pick a puzzle size.",
+    "outcome": "Live on the App Store as a five-minute daily habit. No sign-up, no ads, no IAP in the current listing."
+  },
+  {
+    "name": "Courai",
+    "slug": "courai",
+    "img": "/img/projects/courai.png",
+    "coverFit": "cover",
+    "description": "Courai is a CBT-based iOS app for social anxiety: daily micro-challenges that expand your comfort zone in small, concrete steps. Built solo in React Native with Supabase.",
+    "url": "https://courai.vercel.app",
+    "language": "iOS",
+    "github": "",
+    "tier": "selected",
+    "appStoreUrl": "https://apps.apple.com/app/courai/id6766915688",
+    "stack": ["React Native", "Expo", "TypeScript", "Supabase", "Zustand", "NativeWind", "RevenueCat"],
+    "problem": "Most social-anxiety tools are either clinical homework or vague “get out more” advice. People need small, daily, CBT-shaped steps that do not require a therapist appointment to start.",
+    "approach": "Courai is my first mobile app — built solo. Daily micro-challenges, 30-day levels, streaks, an offline action queue, and optional premium task packs. Auth and data sit on Supabase; paywall rules go through RevenueCat.",
+    "tradeoffs": "Freemium with a trial and a paywall after the free days — stated in the listing, not hidden. iOS only. Telemetry is privacy-first (PostHog) rather than a growth-hacking event firehose.",
+    "outcome": "Shipped on the App Store after years of web work. Free to try; no fake scarcity copy."
+  },
+  {
     "name": "codebrief",
     "slug": "codebrief",
-    "img": "https://opengraph.githubassets.com/1/murathudavendigar/codebrief",
+    "img": "/img/projects/codebrief.png",
     "description": "Generate CONTEXT.md, Cursor rules, and GitHub Copilot instructions for any project in seconds. Zero npm dependencies. Node.js only.",
     "url": "https://www.npmjs.com/package/codebrief",
     "language": "NPM",
     "github": "https://github.com/murathudavendigar/codebrief",
-    "featured": true
+    "tier": "selected",
+    "stack": ["Node.js", "TypeScript"],
+    "problem": "AI coding tools need project context. Most people paste random files or write Cursor rules by hand, so the model guesses the stack.",
+    "approach": "A CLI that walks a repo and writes CONTEXT.md, Cursor rules, and Copilot instructions. Zero npm runtime dependencies — Node.js only — so it installs and runs without a package-manager maze.",
+    "tradeoffs": "No GUI. Node-only on purpose: one runtime, no browser bundle, no plugin marketplace.",
+    "outcome": "Published on npm and used on my own products before I asked anyone else to try it."
   },
   {
     "name": "Dev Console Kit",
     "slug": "dev-console-kit",
-    "img": "https://opengraph.githubassets.com/1/murathudavendigar/dev-console-kit",
-    "description": "A smart, colorful, and educational logging utility designed for React & Next.js students. It helps you debug faster, understand Server/Client environments, and fix CSS layout issues instantly.",
+    "img": "/img/projects/dev-console-kit.png",
+    "description": "A colorful, educational logging utility for React and Next.js students. It helps you debug faster, tell Server from Client, and spot CSS layout issues.",
     "url": "https://www.npmjs.com/package/dev-console-kit",
     "language": "NPM",
     "github": "https://github.com/murathudavendigar/dev-console-kit",
-    "featured": true
+    "tier": "selected",
+    "stack": ["React", "Next.js", "TypeScript"],
+    "problem": "Students in my frontend courses mix server and client logs, then spend the session fighting CSS without seeing what the layout is actually doing.",
+    "approach": "A small logging kit aimed at teaching: environment-aware output, layout hints, and console output you can read in a classroom instead of a wall of Object objects.",
+    "tradeoffs": "Built for learners, not as a general-purpose observability platform. Color and copy are opinionated so the lesson lands.",
+    "outcome": "Published on npm and used while teaching React / Next.js — the same stack I ship with."
   },
   {
     "name": "AI Resume Doctor",
     "slug": "ai-resume-doctor",
-    "img": "https://ai-resume-doctor.vercel.app/og-image.png",
-    "description": "AI-powered CV analysis platform I built with React and Google Gemini. Upload a resume, get strengths and weaknesses called out, and see a job match score with concrete suggestions — so feedback is specific instead of vague.",
+    "img": "/img/projects/ai-resume-doctor.png",
+    "description": "AI-powered CV analysis I built with React and Google Gemini. Upload a resume, get strengths and weaknesses called out, and see a job match score with concrete suggestions.",
     "url": "https://ai-resume-doctor.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/ai-resume-doctor",
-    "featured": true
+    "tier": "selected",
+    "stack": ["React", "Google Gemini", "TypeScript"],
+    "problem": "Resume feedback is usually generic (“add more action verbs”). Job seekers need specific strengths, gaps, and a match against a real role.",
+    "approach": "A React app that sends the uploaded CV through Gemini and returns strengths, weaknesses, a job-match score, and concrete edits — not a paragraph of filler.",
+    "tradeoffs": "Quality depends on the model and the prompt, not a human reviewer. I did not invent placement rates or user counts around it.",
+    "outcome": "Live product with a working upload flow. Try it, then read the suggestions against your own CV."
   },
   {
     "name": "HaberAI",
     "slug": "haberai",
-    "img": "https://haberaii.vercel.app/opengraph-image?db67c30be0d5a16c",
+    "img": "/img/projects/haberai.png",
     "description": "An AI-powered news aggregator I built with Next.js. It curates and summarizes feeds, works as a PWA with push notifications, and includes real-time market data so you get personalized updates without drowning in noise.",
     "url": "https://haberaii.vercel.app/",
     "language": "Next.JS",
     "github": "",
-    "featured": true
+    "tier": "selected",
+    "stack": ["Next.js", "Groq", "Gemini", "Upstash Redis", "Web Push", "PWA"],
+    "problem": "Turkish news is split across desks, ads, and headlines that do not say what actually happened. Opening five sites to get one morning brief is the default.",
+    "approach": "HaberAI is a Next.js PWA that pulls RSS from Turkish and international desks into one feed. Groq and Gemini write short summaries and a daily digest, cached in Upstash Redis. Web Push sends the evening digest. A market widget shows BIST, USD/TRY, and gold. Bookmarks stay in the browser.",
+    "tradeoffs": "Ads-free and independent, so there is no newsroom behind it. AI summaries are labeled as AI, and the original publisher keeps the source link. Turkish-first. Push stores a subscription key, nothing else.",
+    "outcome": "Live as an installable PWA at haberaii.vercel.app, with a daily digest and optional push. No user counts claimed."
   },
   {
     "name": "Money Guardian",
     "slug": "money-guardian",
-    "img": "",
-    "description": "A smart personal finance and budget tracking application designed to help users manage their expenses, track income, and maintain financial stability through detailed insights.",
+    "img": "/img/projects/money-guardian.png",
+    "description": "A personal finance and budget tracking application I built to manage expenses, track income, and keep a clearer picture of where money actually goes.",
     "url": "https://moneyguardian.muratoncu.com/",
     "language": "Next.JS",
     "github": "",
-    "featured": true
+    "tier": "selected",
+    "stack": ["Next.js", "TypeScript", "Supabase", "Gemini", "Groq", "Recharts"],
+    "problem": "Most budget apps show what you already spent. The useful question is what you can still spend after rent, bills, and goals.",
+    "approach": "A Next.js PWA with Supabase auth, Postgres, and row-level security. A pure finance engine computes safe-to-spend and a 30-day forecast. Recurring bills, envelopes, goals, CSV export, voice entry, and receipt scanning. Gemini handles briefs and receipts; Groq parses transactions. English, Turkish, and Dutch.",
+    "tradeoffs": "You need an account. AI keys stay on the server. Built around how I budget, not as a bank. No invented user numbers.",
+    "outcome": "Live at moneyguardian.muratoncu.com as an installable PWA. I use it for my own money."
   },
   {
     "name": "Event Manager",
     "slug": "event-manager",
-    "img": "https://opengraph.githubassets.com/1/murathudavendigar/calendar-app",
+    "img": "/img/projects/event-manager.png",
     "description": "A calendar tool I built to organize events more effectively. Create and edit events, sign in with Google or GitHub, sync via iCalendar, and share private or team calendars with a single link. Still in progress — I keep adding features as I use it.",
     "url": "https://event-manager-jp.vercel.app",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/calendar-app",
-    "featured": true
+    "tier": "selected",
+    "stack": ["Next.js", "Firebase", "TypeScript", "ics"],
+    "problem": "I wanted a thin event list that still lands in Google Calendar, Outlook, or Apple Calendar, without living inside Google's full calendar UI.",
+    "approach": "A Next.js app with Firebase Auth (Google or GitHub). Create, edit, and delete events, then download a .ics file or subscribe through a URL that regenerates when the list changes.",
+    "tradeoffs": "The subscribe URL is keyed by user id, so anyone with the link can read the feed. There is no invitation or permission model. I still add features as I use it.",
+    "outcome": "Live at event-manager-jp.vercel.app. A working calendar I actually open, not a frozen course demo."
   },
   {
     "name": "E-Price E-commerce Project",
     "slug": "e-price-ecommerce-project",
-    "img": "https://opengraph.githubassets.com/1/murathudavendigar/react-ecommerce",
+    "img": "/img/projects/e-price-ecommerce-project.png",
     "description": "A responsive e-commerce app I built with React and Firebase. Shoppers get auth, cart, reviews, and order tracking; admins manage products, analytics, and order statuses from one panel.",
     "url": "https://eprice-ecommerce.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/react-ecommerce",
-    "featured": true
+    "tier": "selected",
+    "stack": ["React", "Redux Toolkit", "Firebase", "Sass", "Chart.js"],
+    "problem": "Course e-commerce demos usually stop at a product grid. I wanted a shopper flow and an admin flow in one React app.",
+    "approach": "React with Redux Toolkit and Firebase. Email or Google auth, a cart that works before login, checkout, order history, and reviews. An admin panel for products, order status, and Chart.js totals. EmailJS sends order mail.",
+    "tradeoffs": "Create React App and Firebase, not Next.js. It is a complete demo store, not a merchant with real payments.",
+    "outcome": "Live at eprice-ecommerce.vercel.app. You can walk the shopper side and the admin side in the same build."
   },
   {
     "name": "NextJS Amazon Clone",
@@ -77,7 +146,7 @@
     "url": "https://amazon-nextjs-hazel.vercel.app/",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/amazon-nextjs",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "NextJS Instagram Clone",
@@ -87,7 +156,7 @@
     "url": "https://instagram-nextjs-johnprice.vercel.app/",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/instagram-nextjs",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "NextJS ChatGPT",
@@ -97,7 +166,7 @@
     "url": "https://chatgpt-nextjs.vercel.app/",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/chatgpt-nextjs",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "NextJS Netflix App",
@@ -107,7 +176,7 @@
     "url": "https://netflix-nextjs-git-main-murathudavendigar.vercel.app/",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/netflix-nextjs",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Click Game",
@@ -117,7 +186,7 @@
     "url": "https://click-game-react.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/click-game-react",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Cheers App",
@@ -127,7 +196,7 @@
     "url": "https://reactjs-device-cafe-app.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/reactjs-cocktail-cheers-app",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Weather App with TypeScript and ReactJS",
@@ -137,7 +206,7 @@
     "url": "https://weather-app-typescript-price.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/weather-app-react-typescript",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Movie App",
@@ -147,7 +216,7 @@
     "url": "https://murathudavendigar.github.io/movie-app-react/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/movie-app-react",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Bored App",
@@ -157,7 +226,7 @@
     "url": "https://bored-api-react.netlify.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/bored-api-react",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "TypeScript Quiz App",
@@ -167,7 +236,7 @@
     "url": "https://react-typescript-quiz-app-nu.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/react-typescript-quiz-app",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Linktree Clone",
@@ -177,17 +246,17 @@
     "url": "https://linktree-nextjs-phi.vercel.app/",
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/linktree-nextjs",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Fireblog App",
     "slug": "fireblog-app",
-    "img": "https://camo.githubusercontent.com/0f30b41c5edd5f932987b7865966241537e77ca9db81b3e9f7153c26b99e3a21/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f433444323241514731544e506b5056574e68772f6665656473686172652d736872696e6b5f3830302f302f313636393832333537363632383f653d3136373539303038303026763d6265746126743d714f5a4f523978596535662d6a6d4c724176744574577851492d6f4b346d56634b3249306b6d575f327730",
+    "img": "",
     "description": "React Fireblog App is a web application where you can read and add blogs after registering with the app.",
     "url": "https://murathudavendigar.github.io/fireblog-app-react/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/fireblog-app-react",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Brawl Stars App",
@@ -197,16 +266,16 @@
     "url": "https://brawl-stars-jp.vercel.app/",
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/brawl-stars-api-react",
-    "featured": false
+    "tier": "earlier"
   },
   {
     "name": "Weather App with Pure JS",
     "slug": "weather-app-with-pure-js",
-    "img": "https://s3.gifyu.com/images/weather-app.gif",
+    "img": "",
     "description": "A web application made using Pure JavaScript that shows the instant weather conditions of the cities with GIFs.",
     "url": "https://thunderous-arithmetic-1b6a1f.netlify.app/",
     "language": "JavaScript",
     "github": "https://github.com/murathudavendigar/weather-app",
-    "featured": false
+    "tier": "earlier"
   }
 ]

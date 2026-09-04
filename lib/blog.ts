@@ -39,3 +39,17 @@ export function getPosts(): BlogPost[] {
 export function getPost(slug: string): BlogPost | undefined {
   return getPosts().find((p) => p.slug === slug);
 }
+
+const ARCHIVE_TAGS = ["python", "django"];
+
+export function isArchivedPost(post: BlogPost): boolean {
+  return post.tags.some((tag) => ARCHIVE_TAGS.includes(tag.toLowerCase()));
+}
+
+export function getFlagshipPosts(): BlogPost[] {
+  return getPosts().filter((post) => !isArchivedPost(post));
+}
+
+export function getArchivedPosts(): BlogPost[] {
+  return getPosts().filter(isArchivedPost);
+}

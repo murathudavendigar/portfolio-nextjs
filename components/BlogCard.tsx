@@ -22,7 +22,7 @@ export default function BlogCard({
   author,
 }: BlogCardProps) {
   return (
-    <Link href={`/blogs/${slug}`}>
+    <Link href={`/writing/${slug}`}>
       <article className="h-full flex flex-col overflow-hidden transition-all duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
         {imageUrl && (
           <div className="relative w-full overflow-hidden h-52">
@@ -76,7 +76,6 @@ export default function BlogCard({
             </p>
           </div>
 
-          {/* Tags */}
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {tags.slice(0, 3).map((tag) => (
@@ -89,7 +88,6 @@ export default function BlogCard({
             </div>
           )}
 
-          {/* Footer with read more */}
           <div className="flex items-center justify-between pt-4 border-t border-white/10 dark:border-gray-200">
             <div className="flex items-center text-[#CA3E47] dark:text-[#CA3E47] text-sm font-semibold group-hover:gap-2 gap-1 transition-all">
               Read more

@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#313131] px-6 py-20 text-center text-white dark:bg-[#bcc] dark:text-gray-700">
+    <main
+      id="main"
+      className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#313131] px-6 py-20 text-center text-white dark:bg-[#bcc] dark:text-gray-700">
       <p className="font-mono text-sm uppercase tracking-[6px] text-[#CA3E47]">
         Error 404
       </p>
@@ -41,18 +43,18 @@ export default function NotFound() {
           Back to homepage
         </Link>
         <Link
-          href="/blogs"
+          href="/writing"
           className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-all duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
           <NewspaperIcon className="h-4 w-4" />
-          Read the blog
+          Read the writing
         </Link>
         <Link
-          href="/#projects"
+          href="/work"
           className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-all duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
           <CodeBracketIcon className="h-4 w-4" />
           See the projects
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

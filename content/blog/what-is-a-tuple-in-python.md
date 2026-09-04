@@ -8,7 +8,7 @@ readTime: 4
 image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Kst3RGwEpCBKJKr7oRXiCQ.png"
 author: "Murat Hüdavendigâr Öncü"
 ---
-*In our previous article, we talked about lists in python. If you haven’t read it yet, you can read it by [clicking here](https://www.muratoncu.com/blogs/what-is-a-list-in-python).*
+*In our previous article, we talked about lists in python. If you haven’t read it yet, you can read it by [clicking here](/writing/what-is-a-list-in-python).*
 
 After understanding lists, the next fundamental data structure to master in Python is the tuple. At first glance, a tuple looks and behaves very similarly to a list. However, there is one massive difference that dictates exactly when and why you should use them.
 

@@ -1,6 +1,7 @@
 "use client";
+import { SOCIAL_LINKS } from "@/lib/nav";
+import { site } from "@/lib/site";
 import emailjs from "@emailjs/browser";
-import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -17,7 +18,7 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 const TEMPLATE_ID =
   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_4mm0dyn";
 
-const Contact = () => {
+const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
   const {
     register,
     handleSubmit,
@@ -50,7 +51,7 @@ const Contact = () => {
         message: data.message,
       });
       reset();
-      toast.success("Your message has been sent! Thank you.");
+      toast.success("Sent. I will get back to you.");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -59,55 +60,87 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative z-0 flex h-screen flex-col items-center justify-start overflow-y-auto px-4 py-20 md:justify-center md:overflow-hidden md:px-10">
-      <h3 className="absolute top-16 uppercase tracking-[12px] text-gray-200 dark:text-gray-700 text-xl md:top-24 md:tracking-[20px] md:text-2xl">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
         Contact
-      </h3>
+      </p>
+      <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
+        Write if you want to hire, ship, or teach.
+      </h1>
 
-      <div className="mt-8 flex w-full max-w-xl flex-col items-center space-y-4 md:mt-0 md:space-y-8">
-        <div className="space-y-2 md:space-y-4">
-          <div className="flex items-center justify-center space-x-3 md:space-x-5">
-            <MapPinIcon className="h-5 w-5 animate-pulse text-[#CA3E47] md:h-7 md:w-7" />
-            <p className="text-base md:text-2xl">Netherlands</p>
-          </div>
-          <div className="flex items-center justify-center space-x-3 md:space-x-5">
-            <EnvelopeIcon className="h-5 w-5 animate-pulse text-[#CA3E47] md:h-7 md:w-7" />
-            <a
-              href="mailto:contact@muratoncu.com"
-              className="text-base transition-colors hover:text-[#CA3E47] md:text-2xl">
-              contact@muratoncu.com
-            </a>
-          </div>
-        </div>
+      <div className="mt-12 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <div className="space-y-8">
+          <p className="max-w-md text-base leading-relaxed text-gray-300 dark:text-gray-700">
+            Frontend roles in the Netherlands or remote, scoped React / Next.js
+            work through TemCraft Tech, and teaching. No pitch deck — just say
+            what you need.
+          </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-sm w-full">
-          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
-            <p className="font-semibold text-[#CA3E47]">Hiring?</p>
-            <p className="text-gray-300 dark:text-gray-700">
-              Frontend engineer based in the Netherlands, open to new roles.
-            </p>
-          </div>
-          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
-            <p className="font-semibold text-[#CA3E47]">Need a freelance dev?</p>
-            <p className="text-gray-300 dark:text-gray-700">
-              Co-founder at TemCraft Tech — available for scoped React/Next.js work.
-            </p>
-          </div>
-          <div className="rounded-lg border border-white/10 dark:border-gray-300 p-3">
-            <p className="font-semibold text-[#CA3E47]">Want the code?</p>
-            <p className="text-gray-300 dark:text-gray-700">
-              Check the <a href="https://github.com/murathudavendigar" target="_blank" rel="noreferrer" className="underline">GitHub</a> or open-source npm packages.
-            </p>
-          </div>
+          <dl className="space-y-4">
+            <div>
+              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                Email
+              </dt>
+              <dd className="mt-1">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-lg hover:text-[#CA3E47] transition-colors">
+                  {site.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                Location
+              </dt>
+              <dd className="mt-1 text-lg">Netherlands</dd>
+            </div>
+            {resumeHref ? (
+              <div>
+                <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                  Résumé
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={resumeHref}
+                    download
+                    className="text-lg hover:text-[#CA3E47] transition-colors">
+                    Download PDF
+                  </a>
+                </dd>
+              </div>
+            ) : null}
+            <div>
+              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                Social
+              </dt>
+              <dd className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                {SOCIAL_LINKS.map((social) => (
+                  <a
+                    key={social.url}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#CA3E47] transition-colors">
+                    {social.label}
+                  </a>
+                ))}
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto flex w-full max-w-md flex-col space-y-2"
+          className="flex flex-col gap-4"
           noValidate>
-          <div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
-            <div className="flex min-w-0 flex-1 flex-col">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex min-w-0 flex-col">
+              <label htmlFor="contact-name" className="sr-only">
+                Name
+              </label>
               <input
+                id="contact-name"
                 {...register("name", { required: "Name is required" })}
                 placeholder="Name"
                 className="contactInput w-full"
@@ -115,13 +148,17 @@ const Contact = () => {
                 autoComplete="name"
               />
               {errors.name && (
-                <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                <span className="mt-1 text-xs text-[#CA3E47]">
                   {errors.name.message}
                 </span>
               )}
             </div>
-            <div className="flex min-w-0 flex-1 flex-col">
+            <div className="flex min-w-0 flex-col">
+              <label htmlFor="contact-email" className="sr-only">
+                Email
+              </label>
               <input
+                id="contact-email"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -135,7 +172,7 @@ const Contact = () => {
                 autoComplete="email"
               />
               {errors.email && (
-                <span className="mt-1 text-left text-xs text-[#CA3E47]">
+                <span className="mt-1 text-xs text-[#CA3E47]">
                   {errors.email.message}
                 </span>
               )}
@@ -143,28 +180,36 @@ const Contact = () => {
           </div>
 
           <div className="flex flex-col">
+            <label htmlFor="contact-subject" className="sr-only">
+              Subject
+            </label>
             <input
+              id="contact-subject"
               {...register("subject", { required: "Subject is required" })}
               placeholder="Subject"
               className="contactInput w-full"
               type="text"
             />
             {errors.subject && (
-              <span className="mt-1 text-left text-xs text-[#CA3E47]">
+              <span className="mt-1 text-xs text-[#CA3E47]">
                 {errors.subject.message}
               </span>
             )}
           </div>
 
           <div className="flex flex-col">
+            <label htmlFor="contact-message" className="sr-only">
+              Message
+            </label>
             <textarea
+              id="contact-message"
               {...register("message", { required: "Message is required" })}
-              placeholder="Message"
+              placeholder="What do you need?"
               className="contactInput w-full resize-none"
-              rows={3}
+              rows={6}
             />
             {errors.message && (
-              <span className="mt-1 text-left text-xs text-[#CA3E47]">
+              <span className="mt-1 text-xs text-[#CA3E47]">
                 {errors.message.message}
               </span>
             )}
@@ -173,12 +218,12 @@ const Contact = () => {
           <button
             type="submit"
             disabled={sending}
-            className="rounded-md bg-[#CA3E47] px-4 py-3 text-base font-bold text-white transition-all duration-150 hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#414141]/90 md:px-10 md:py-5 md:text-lg">
-            {sending ? "Sending…" : "Submit"}
+            className="rounded-full bg-[#CA3E47] px-6 py-3 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
+            {sending ? "Sending…" : "Send message"}
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

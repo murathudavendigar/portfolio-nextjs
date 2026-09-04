@@ -95,4 +95,51 @@ export const skillsData = [
     name: ".NET Core",
     img: "/img/dotnetcore.png",
   },
+  {
+    name: "React Native",
+    img: "",
+  },
+  {
+    name: "Expo",
+    img: "",
+  },
 ];
+
+export const skillGroups = [
+  {
+    label: "Frontend",
+    names: [
+      "React",
+      "Next.JS",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "SASS",
+      "TailwindCSS",
+      "Bootstrap",
+      "Material UI",
+      "Redux",
+    ],
+  },
+  {
+    label: "Mobile",
+    names: ["React Native", "Expo"],
+  },
+  {
+    label: "Backend",
+    names: ["Python", "Django", "C#", ".NET Core", "PostgreSQL", "Firebase"],
+  },
+  {
+    label: "Tools",
+    names: [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Bitbucket",
+      "NPM",
+      "VS Code",
+      "Visual Studio",
+    ],
+  },
+] as const;

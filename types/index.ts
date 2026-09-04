@@ -1,17 +1,26 @@
+export type ProjectTier = "selected" | "earlier";
+
 export type Projects = {
   img?: string;
+  coverFit?: "cover" | "contain";
   name: string;
   slug: string;
   description: string;
   url: string;
   language: string;
   github: string;
-  featured?: boolean;
+  tier: ProjectTier;
+  stack?: string[];
+  problem?: string;
+  approach?: string;
+  tradeoffs?: string;
+  outcome?: string;
+  appStoreUrl?: string;
 };
 
 export type Experience = {
   company: string;
-  companyImage: string;
+  companyImage?: string;
   usedTechnologiesImages: string[];
   title: string;
   description: string;
@@ -35,4 +44,3 @@ export type BlogPost = {
   published: boolean;
   readTime: number; // in minutes
 };
-

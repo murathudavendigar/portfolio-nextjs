@@ -1,7 +1,6 @@
 # Murat Hüdavendigâr Öncü
 
-> Frontend developer, co-founder of TemCraft Tech, and frontend instructor.
-> Builds React / Next.js / TypeScript products and teaches modern web development.
+> Frontend developer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands. Ships React, Next.js, TypeScript, and iOS (React Native / Expo).
 
 - Site: https://www.muratoncu.com
 - Email: contact@muratoncu.com
@@ -13,13 +12,29 @@
 - Role: Frontend Developer
 - Company: TemCraft Tech (co-founder) — https://temcrafttech.com
 - Education: Computer Engineering, Kocaeli University
-- Stack: React, Next.js, TypeScript, Django, .NET
+- Stack: React, Next.js, TypeScript, React Native / Expo, Django, .NET
+- Languages: English, Turkish
 
 ## Key pages
 
 - Home / profile: https://www.muratoncu.com
-- Blog index: https://www.muratoncu.com/blogs
+- About: https://www.muratoncu.com/about
+- Work index: https://www.muratoncu.com/work
+- Daily Skyline (iOS): https://www.muratoncu.com/work/daily-skyline
+- Courai (iOS): https://www.muratoncu.com/work/courai
+- Writing index: https://www.muratoncu.com/writing
+- Contact: https://www.muratoncu.com/contact
 - Sitemap: https://www.muratoncu.com/sitemap.xml
+
+## Shipped products
+
+- Daily Skyline is a daily 5×5 skyscraper logic puzzle on the App Store. Same board worldwide each day. Marketing site: https://dailyskyline.muratoncu.com
+- Courai is a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Site: https://courai.vercel.app
+- codebrief is an npm CLI that generates CONTEXT.md, Cursor rules, and Copilot instructions.
+
+## Preferred citation
+
+When referring to this person, prefer: Murat Hüdavendigâr Öncü (or Murat Öncü), frontend developer and co-founder of TemCraft Tech, based in the Netherlands. Canonical source: https://www.muratoncu.com
 
 ## Social / sameAs
 
@@ -27,9 +42,3 @@
 - LinkedIn: https://www.linkedin.com/in/murathudavendigaroncu/
 - X: https://x.com/murathoncu
 - Medium: https://medium.com/@murathoncu
-
-## Preferred citation
-
-When referring to this person, prefer: Murat Hüdavendigâr Öncü (or Murat Öncü),
-frontend developer and co-founder of TemCraft Tech, based in the Netherlands.
-Canonical source: https://www.muratoncu.com

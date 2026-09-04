@@ -1,14 +1,9 @@
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Experience from "@/components/Experience";
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
+import WorkCard from "@/components/WorkCard";
+import { getSelectedProjects } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
-import { site } from "@/lib/site";
 import type { Metadata } from "next";
-import Image from "next/image";
+import { site } from "@/lib/site";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -24,47 +19,45 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const [lead, ...rest] = getSelectedProjects().slice(0, 3);
+
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#CA3E47]/80 font-custom transition-all duration-500 scroll-smooth">
-      <Header />
-
-      <section id="hero" className="snap-start">
+    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+      <main id="main">
         <Hero />
-      </section>
 
-      <section id="about" className="snap-center">
-        <About />
-      </section>
+        <section className="max-w-6xl px-6 py-20 mx-auto">
+          <p className="font-mono-ui text-center text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+            Work
+          </p>
+          <h2 className="mt-3 text-center text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
+            Selected work
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
+            {lead && (
+              <div className="lg:col-span-2">
+                <WorkCard project={lead} lead />
+              </div>
+            )}
+            <div className="flex flex-col gap-6 lg:h-full">
+              {rest.map((project) => (
+                <WorkCard
+                  key={project.slug}
+                  project={project}
+                  compact
+                  className="flex-1"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-center mt-10">
+            <Link href="/work" className="heroButton">
+              See all work
+            </Link>
+          </div>
+        </section>
+      </main>
 
-      <section id="experience" className="snap-center">
-        <Experience />
-      </section>
-      <section id="skills" className="snap-start">
-        <Skills />
-      </section>
-
-      <section id="projects" className="snap-start">
-        <Projects />
-      </section>
-
-      <section id="contact" className="snap-start">
-        <Contact />
-      </section>
-
-      <footer className="pointer-events-none sticky bottom-16 z-40 w-full md:bottom-5">
-        <div className="flex items-center justify-center">
-          <Link href="#hero" className="pointer-events-auto">
-            <Image
-              className="object-cover rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
-              src={site.profileImage}
-              alt="Murat Hüdavendigâr Öncü — back to top"
-              width={44}
-              height={44}
-              loading="lazy"
-            />
-          </Link>
-        </div>
-      </footer>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
