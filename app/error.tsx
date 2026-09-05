@@ -17,8 +17,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#313131] px-6 py-20 text-center text-white dark:bg-[#bcc] dark:text-gray-700">
-      <BugAntIcon className="h-16 w-16 text-[#CA3E47]" />
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-ink px-6 py-20 text-center text-white dark:bg-paper dark:text-gray-700">
+      <BugAntIcon className="h-16 w-16 text-[var(--accent-text)]" />
 
       <div className="max-w-md space-y-2">
         <h1 className="text-2xl font-semibold md:text-3xl">

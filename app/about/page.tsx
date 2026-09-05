@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+    <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <main id="main">
         <About />
         <Experience />

@@ -27,5 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(p.updatedAt ?? p.createdAt),
     })),
     { url: `${site.url}/contact`, lastModified: STATIC_LAST_MODIFIED },
+    { url: `${site.url}/privacy`, lastModified: STATIC_LAST_MODIFIED },
   ];
 }

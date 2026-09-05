@@ -6,11 +6,30 @@
   html {
     scroll-padding-top: 4.5rem;
   }
+
+  /* WCAG AA-safe accent for text: #CA3E47 itself is ~3.4:1 on both
+     ink and paper. These shift lightness while keeping the hue, so
+     accent-colored labels/links stay readable at body-text sizes. */
+  :root {
+    --accent-text: #e2626b;
+  }
+
+  .dark {
+    --accent-text: #a8323a;
+  }
 }
 
 @layer components {
   .heroButton {
-    @apply px-6 py-2 border border-[#525252] rounded-full uppercase text-sm tracking-widest text-gray-200 dark:text-gray-900 transition-all hover:border-[#CA3E47]/40;
+    @apply px-6 py-2 border border-[#525252] rounded-lg uppercase text-sm tracking-widest text-gray-200 dark:text-gray-900 transition-all hover:border-[#CA3E47]/40;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-[#CA3E47] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#CA3E47]/20 transition-all hover:bg-[#b6353d] hover:shadow-xl hover:shadow-[#CA3E47]/25 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-gray-200 underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47] dark:text-gray-800;
   }
 
   .contactInput {

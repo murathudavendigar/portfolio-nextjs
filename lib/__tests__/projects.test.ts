@@ -6,6 +6,7 @@ import {
   getProject,
   getProjects,
   getSelectedProjects,
+  getSelectedProjectsByCategory,
   hasCaseStudy,
   projectPrimaryCta,
 } from "../projects";
@@ -86,6 +87,31 @@ describe("selected vs earlier split", () => {
       expect(project.tradeoffs?.length).toBeGreaterThan(40);
       expect(project.outcome?.length).toBeGreaterThan(20);
     }
+  });
+
+  it("groups selected work into iOS Apps, Web Products, npm Packages, covering every selected project once", () => {
+    const groups = getSelectedProjectsByCategory();
+    const categories = groups.map((g) => g.category);
+    expect(categories).toEqual(["iOS Apps", "Web Products", "npm Packages"]);
+
+    const grouped = groups.flatMap((g) => g.projects.map((p) => p.slug));
+    expect(new Set(grouped).size).toBe(grouped.length);
+    expect(grouped.sort()).toEqual(
+      getSelectedProjects()
+        .map((p) => p.slug)
+        .sort(),
+    );
+
+    const iosGroup = groups.find((g) => g.category === "iOS Apps")!;
+    expect(iosGroup.projects.map((p) => p.slug)).toEqual([
+      "daily-skyline",
+      "courai",
+    ]);
+    const npmGroup = groups.find((g) => g.category === "npm Packages")!;
+    expect(npmGroup.projects.map((p) => p.slug)).toEqual([
+      "codebrief",
+      "dev-console-kit",
+    ]);
   });
 
   it("shows Courai and Daily Skyline as App Store screenshots", () => {

@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import ProofStrip from "@/components/ProofStrip";
+import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
 import { getSelectedProjects } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
@@ -18,28 +20,43 @@ export const metadata: Metadata = {
   },
 };
 
+const PROOF_STATS = (selectedCount: number, iosCount: number, npmCount: number) => [
+  { value: String(selectedCount), label: "Shipped products & tools" },
+  { value: String(iosCount), label: "iOS apps on the App Store" },
+  { value: String(npmCount), label: "npm packages published" },
+  { value: "NL", label: "Frontend instructor & co-founder, TemCraft Tech" },
+];
+
 export default function Home() {
-  const [lead, ...rest] = getSelectedProjects().slice(0, 3);
+  const selected = getSelectedProjects();
+  const [lead, ...rest] = selected.slice(0, 3);
+  const iosCount = selected.filter((p) => p.language === "iOS").length;
+  const npmCount = selected.filter((p) => p.language === "NPM").length;
+  const stats = PROOF_STATS(selected.length, iosCount, npmCount);
 
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+    <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <main id="main">
         <Hero />
 
+        <ProofStrip stats={stats} />
+
         <section className="max-w-6xl px-6 py-20 mx-auto">
-          <p className="font-mono-ui text-center text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
-            Work
-          </p>
-          <h2 className="mt-3 text-center text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
-            Selected work
-          </h2>
+          <Reveal className="text-center">
+            <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+              Work
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
+              Selected work
+            </h2>
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
             {lead && (
-              <div className="lg:col-span-2">
+              <Reveal delay={0.1} className="lg:col-span-2">
                 <WorkCard project={lead} lead />
-              </div>
+              </Reveal>
             )}
-            <div className="flex flex-col gap-6 lg:h-full">
+            <Reveal delay={0.2} className="flex flex-col gap-6 lg:h-full">
               {rest.map((project) => (
                 <WorkCard
                   key={project.slug}
@@ -48,7 +65,7 @@ export default function Home() {
                   className="flex-1"
                 />
               ))}
-            </div>
+            </Reveal>
           </div>
           <div className="flex justify-center mt-10">
             <Link href="/work" className="heroButton">

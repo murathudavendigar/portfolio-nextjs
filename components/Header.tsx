@@ -85,7 +85,7 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-[#313131] text-white dark:border-gray-400/40 dark:bg-[#bcc] dark:text-gray-800">
+    <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-ink text-white dark:border-gray-400/40 dark:bg-paper dark:text-gray-800">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded focus:bg-[#CA3E47] focus:px-3 focus:py-2 focus:text-sm focus:text-white">
@@ -95,7 +95,7 @@ const Header = () => {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
         <Link
           href="/"
-          className="shrink-0 text-sm font-semibold uppercase tracking-widest text-gray-200 transition-colors hover:text-[#CA3E47] dark:text-gray-900">
+          className="shrink-0 text-sm font-semibold uppercase tracking-widest text-gray-200 transition-colors hover:text-[var(--accent-text)] dark:text-gray-900">
           Murat Öncü
         </Link>
 
@@ -108,8 +108,8 @@ const Header = () => {
               href={link.href}
               className={`transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] ${
                 isActive(pathname, link.href)
-                  ? "text-[#CA3E47]"
-                  : "text-gray-300 hover:text-[#CA3E47] dark:text-gray-800"
+                  ? "text-[var(--accent-text)]"
+                  : "text-gray-300 hover:text-[var(--accent-text)] dark:text-gray-800"
               }`}>
               {link.label}
             </Link>
@@ -123,7 +123,7 @@ const Header = () => {
           </div>
           <button
             type="button"
-            className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-200 transition-colors hover:text-[#CA3E47] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:text-gray-800 md:hidden"
+            className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-200 transition-colors hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:text-gray-800 md:hidden"
             aria-expanded={menuOpen}
             aria-controls={menuId}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -140,7 +140,7 @@ const Header = () => {
       {menuOpen && (
         <div
           id={menuId}
-          className="border-t border-white/10 bg-[#313131] px-4 py-4 dark:border-gray-400/40 dark:bg-[#bcc] md:hidden">
+          className="border-t border-white/10 bg-ink px-4 py-4 dark:border-gray-400/40 dark:bg-paper md:hidden">
           <nav aria-label="Mobile" className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
@@ -148,8 +148,8 @@ const Header = () => {
                 href={link.href}
                 className={`rounded-md px-2 py-3 text-sm uppercase tracking-wider transition-colors ${
                   isActive(pathname, link.href)
-                    ? "text-[#CA3E47]"
-                    : "text-gray-200 hover:text-[#CA3E47] dark:text-gray-800"
+                    ? "text-[var(--accent-text)]"
+                    : "text-gray-200 hover:text-[var(--accent-text)] dark:text-gray-800"
                 }`}>
                 {link.label}
               </Link>

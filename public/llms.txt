@@ -23,8 +23,11 @@
 - Daily Skyline (iOS): https://www.muratoncu.com/work/daily-skyline
 - Courai (iOS): https://www.muratoncu.com/work/courai
 - Writing index: https://www.muratoncu.com/writing
+- Writing archive (beginner Python/Django notes): https://www.muratoncu.com/writing/archive
 - Contact: https://www.muratoncu.com/contact
+- Privacy policy: https://www.muratoncu.com/privacy
 - Sitemap: https://www.muratoncu.com/sitemap.xml
+- RSS feed: https://www.muratoncu.com/feed.xml
 
 ## Shipped products
 

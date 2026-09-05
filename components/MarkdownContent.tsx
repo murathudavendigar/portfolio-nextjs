@@ -57,7 +57,7 @@ export default function MarkdownContent({ content }: { content: string }) {
         code: ({ node, inline, ...props }: any) =>
           inline ? (
             <code
-              className="bg-gray-800 dark:bg-gray-200 text-[#CA3E47] px-1.5 py-0.5 rounded text-xs sm:text-sm font-mono"
+              className="bg-gray-800 dark:bg-gray-200 text-[var(--accent-text)] px-1.5 py-0.5 rounded text-xs sm:text-sm font-mono"
               {...props}
             />
           ) : (
@@ -74,7 +74,7 @@ export default function MarkdownContent({ content }: { content: string }) {
         ),
         a: ({ node, ...props }) => (
           <a
-            className="text-[#CA3E47] hover:underline"
+            className="text-[var(--accent-text)] hover:underline"
             {...props}
             target="_blank"
             rel="noopener noreferrer"

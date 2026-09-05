@@ -40,10 +40,13 @@ export const metadata: Metadata = {
     images: [site.defaultOgImage],
   },
   icons: { icon: "/favicon.ico" },
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#313131",
+  themeColor: "#211d1a",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -52,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       suppressHydrationWarning
       className={`${nunitoSans.variable} ${geistMono.variable}`}>
-      <body className="flex min-h-screen flex-col bg-[#313131] font-custom text-white dark:bg-[#bcc] dark:text-gray-700">
+      <body className="flex min-h-screen flex-col bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
         <Providers>
           <Header />
           <div className="flex-1">{children}</div>

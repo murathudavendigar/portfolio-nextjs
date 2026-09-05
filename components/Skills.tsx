@@ -5,7 +5,7 @@ const byName = new Map(skillsData.map((skill) => [skill.name, skill]));
 export default function Skills() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
         Skills
       </p>
       <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
@@ -40,7 +40,7 @@ export default function Skills() {
                     ) : (
                       <span
                         aria-hidden="true"
-                        className="flex h-7 w-7 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] text-[#CA3E47] dark:bg-gray-300/60">
+                        className="flex h-7 w-7 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] text-[var(--accent-text)] dark:bg-gray-300/60">
                         {name.slice(0, 2)}
                       </span>
                     )}

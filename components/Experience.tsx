@@ -4,7 +4,7 @@ import { experiencesData } from "@/data/experiencesData";
 export default function Experience() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-8 md:px-10">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
         Experience
       </p>
       <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
@@ -33,7 +33,7 @@ export default function Experience() {
                 ) : (
                   <span
                     aria-hidden="true"
-                    className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] uppercase tracking-wider text-[#CA3E47] dark:bg-gray-300/60">
+                    className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] uppercase tracking-wider text-[var(--accent-text)] dark:bg-gray-300/60">
                     {experience.company.slice(0, 2)}
                   </span>
                 )}

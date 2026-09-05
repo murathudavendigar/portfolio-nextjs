@@ -19,6 +19,25 @@ export function getEarlierProjects(): ProjectType[] {
   return allProjects.filter((p) => p.tier === "earlier");
 }
 
+const CATEGORY_ORDER = ["iOS Apps", "Web Products", "npm Packages"] as const;
+
+function categoryFor(project: ProjectType): (typeof CATEGORY_ORDER)[number] {
+  if (project.language === "iOS") return "iOS Apps";
+  if (project.language === "NPM") return "npm Packages";
+  return "Web Products";
+}
+
+export function getSelectedProjectsByCategory(): {
+  category: (typeof CATEGORY_ORDER)[number];
+  projects: ProjectType[];
+}[] {
+  const selected = getSelectedProjects();
+  return CATEGORY_ORDER.map((category) => ({
+    category,
+    projects: selected.filter((p) => categoryFor(p) === category),
+  })).filter((group) => group.projects.length > 0);
+}
+
 export function getAdjacentProjects(slug: string): {
   prev?: ProjectType;
   next?: ProjectType;

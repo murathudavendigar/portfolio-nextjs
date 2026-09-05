@@ -1,4 +1,5 @@
 import WorkCover from "@/components/WorkCover";
+import { getRelatedPosts } from "@/lib/blog";
 import {
   getAdjacentProjects,
   hasCaseStudy,
@@ -27,17 +28,22 @@ export default function WorkDetail({ project }: WorkDetailProps) {
   const hasImage = Boolean(project.img?.trim());
   const isIos = project.language === "iOS";
   const { prev, next } = getAdjacentProjects(project.slug);
+  const relatedPosts = getRelatedPosts(project.stack);
+  const npmPackage =
+    project.language === "NPM"
+      ? project.url.match(/npmjs\.com\/package\/([^/?#]+)/)?.[1]
+      : undefined;
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
       <Link
         href="/work"
-        className="font-mono-ui text-xs uppercase tracking-[0.16em] text-gray-400 transition-colors hover:text-[#CA3E47] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] dark:text-gray-600">
+        className="font-mono-ui text-xs uppercase tracking-[0.16em] text-gray-400 transition-colors hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] dark:text-gray-600">
         ← Work
       </Link>
 
       <header className="mt-10">
-        <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+        <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
           {project.language}
           {project.tier === "selected" ? " · Selected work" : " · Earlier build"}
         </p>
@@ -58,6 +64,25 @@ export default function WorkDetail({ project }: WorkDetailProps) {
               </li>
             ))}
           </ul>
+        )}
+
+        {npmPackage && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://img.shields.io/npm/dw/${npmPackage}?style=flat-square&label=weekly%20downloads&color=CA3E47&labelColor=211d1a`}
+              alt={`${npmPackage} weekly npm downloads`}
+              height={20}
+              className="h-5 w-auto"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://img.shields.io/npm/dt/${npmPackage}?style=flat-square&label=total%20downloads&color=CA3E47&labelColor=211d1a`}
+              alt={`${npmPackage} total npm downloads`}
+              height={20}
+              className="h-5 w-auto"
+            />
+          </div>
         )}
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -113,7 +138,7 @@ export default function WorkDetail({ project }: WorkDetailProps) {
         <div className="mt-16 space-y-12">
           {sections.map(([label, key]) => (
             <section key={key}>
-              <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[#CA3E47]">
+              <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 {label}
               </h2>
               <p className="mt-3 max-w-2xl text-[17px] leading-relaxed [text-wrap:pretty] text-gray-200 dark:text-gray-800">
@@ -124,6 +149,25 @@ export default function WorkDetail({ project }: WorkDetailProps) {
         </div>
       )}
 
+      {relatedPosts.length > 0 && (
+        <div className="mt-16 border-t border-white/10 pt-10 dark:border-gray-300">
+          <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600">
+            Related writing
+          </h2>
+          <ul className="mt-4 space-y-3">
+            {relatedPosts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/writing/${post.slug}`}
+                  className="text-base font-medium underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[var(--accent-text)] dark:text-gray-900">
+                  {post.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {(prev || next) && (
         <nav
           aria-label="More work"
@@ -131,11 +175,11 @@ export default function WorkDetail({ project }: WorkDetailProps) {
           {prev ? (
             <Link
               href={`/work/${prev.slug}`}
-              className="group block hover:text-[#CA3E47] transition-colors">
+              className="group block hover:text-[var(--accent-text)] transition-colors">
               <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
                 Previous
               </p>
-              <p className="mt-1 text-lg font-semibold group-hover:text-[#CA3E47] dark:text-gray-900">
+              <p className="mt-1 text-lg font-semibold group-hover:text-[var(--accent-text)] dark:text-gray-900">
                 {prev.name}
               </p>
             </Link>
@@ -145,11 +189,11 @@ export default function WorkDetail({ project }: WorkDetailProps) {
           {next && (
             <Link
               href={`/work/${next.slug}`}
-              className="group block text-left sm:text-right hover:text-[#CA3E47] transition-colors">
+              className="group block text-left sm:text-right hover:text-[var(--accent-text)] transition-colors">
               <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
                 Next
               </p>
-              <p className="mt-1 text-lg font-semibold group-hover:text-[#CA3E47] dark:text-gray-900">
+              <p className="mt-1 text-lg font-semibold group-hover:text-[var(--accent-text)] dark:text-gray-900">
                 {next.name}
               </p>
             </Link>

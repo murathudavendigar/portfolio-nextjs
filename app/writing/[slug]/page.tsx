@@ -59,7 +59,7 @@ export default async function WritingPostPage({
     new Date(post.updatedAt).getTime() !== new Date(post.createdAt).getTime();
 
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+    <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -73,7 +73,7 @@ export default async function WritingPostPage({
             href="/writing"
             className="group inline-flex items-center gap-2 px-4 py-2 mb-8 sm:mb-10 md:mb-12 text-sm font-medium rounded-lg bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300 hover:bg-white/10 dark:hover:bg-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#CA3E47]/20">
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1 text-[#CA3E47]"
+              className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1 text-[var(--accent-text)]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ export default async function WritingPostPage({
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            <span className="text-white dark:text-gray-800 group-hover:text-[#CA3E47] transition-colors duration-300">
+            <span className="text-white dark:text-gray-800 group-hover:text-[var(--accent-text)] transition-colors duration-300">
               Back to Writing
             </span>
           </Link>
@@ -110,7 +110,7 @@ export default async function WritingPostPage({
                 {post.author && (
                   <Link
                     href="/about"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300 hover:border-[#CA3E47]/50 hover:text-[#CA3E47] transition-colors">
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300 hover:border-[#CA3E47]/50 hover:text-[var(--accent-text)] transition-colors">
                     <svg
                       className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                       fill="none"
@@ -124,7 +124,7 @@ export default async function WritingPostPage({
                       />
                     </svg>
                     <span className="font-medium">{post.author}</span>
-                    <span className="hidden sm:inline text-gray-500 dark:text-gray-600">
+                    <span className="hidden sm:inline text-gray-400 dark:text-gray-600">
                       {" "}
                       · frontend developer
                     </span>
@@ -160,7 +160,7 @@ export default async function WritingPostPage({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 font-mono-ui text-xs sm:text-sm font-medium rounded-full bg-[#CA3E47]/10 text-[#CA3E47] dark:bg-[#CA3E47]/20 border border-[#CA3E47]/30 dark:border-[#CA3E47]/40 hover:bg-[#CA3E47]/20 dark:hover:bg-[#CA3E47]/30 transition-colors duration-300">
+                    className="px-3 py-1.5 font-mono-ui text-xs sm:text-sm font-medium rounded-full bg-[#CA3E47]/10 text-[var(--accent-text)] dark:bg-[#CA3E47]/20 border border-[#CA3E47]/30 dark:border-[#CA3E47]/40 hover:bg-[#CA3E47]/20 dark:hover:bg-[#CA3E47]/30 transition-colors duration-300">
                     #{tag}
                   </span>
                 ))}

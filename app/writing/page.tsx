@@ -14,7 +14,7 @@ export default function WritingIndexPage() {
   const posts = getFlagshipPosts();
 
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+    <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <main id="main" className="flex flex-col items-center px-10 py-20 mx-auto text-center max-w-7xl">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">
           Writing on frontend development
@@ -43,7 +43,7 @@ export default function WritingIndexPage() {
 
         <Link
           href="/writing/archive"
-          className="mt-12 text-sm underline text-gray-300 dark:text-gray-700 hover:text-[#CA3E47] transition-colors">
+          className="mt-12 text-sm underline text-gray-300 dark:text-gray-700 hover:text-[var(--accent-text)] transition-colors">
           Looking for the earlier Python/Django learning notes? See the
           archive →
         </Link>

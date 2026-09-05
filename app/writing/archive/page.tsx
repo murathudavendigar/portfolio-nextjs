@@ -13,11 +13,11 @@ export default function WritingArchivePage() {
   const posts = getArchivedPosts();
 
   return (
-    <div className="bg-[#313131] dark:bg-[#bcc] text-white dark:text-gray-700 min-h-screen font-custom">
+    <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <main id="main" className="flex flex-col items-center px-10 py-20 mx-auto text-center max-w-7xl">
         <Link
           href="/writing"
-          className="self-start text-sm underline text-gray-300 dark:text-gray-700 hover:text-[#CA3E47] transition-colors mb-8">
+          className="self-start text-sm underline text-gray-300 dark:text-gray-700 hover:text-[var(--accent-text)] transition-colors mb-8">
           ← Back to Writing
         </Link>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">

@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { getArchivedPosts, getFlagshipPosts, getPost, getPosts } from "../blog";
+import {
+  getArchivedPosts,
+  getFlagshipPosts,
+  getPost,
+  getPosts,
+  getRelatedPosts,
+} from "../blog";
 
 describe("blog loader", () => {
   it("loads all 13 exported posts sorted newest first", () => {
@@ -56,6 +62,26 @@ describe("flagship/archive split", () => {
     expect(flagshipSlugs).toContain(
       "typescript-supercharge-your-javascript-with-type-safety",
     );
+  });
+});
+
+describe("getRelatedPosts", () => {
+  it("matches flagship posts by stack/tag overlap, case- and punctuation-insensitive", () => {
+    const related = getRelatedPosts(["React", "Next.js", "TypeScript"]);
+    expect(related.length).toBeGreaterThan(0);
+    expect(related.length).toBeLessThanOrEqual(2);
+    for (const post of related) {
+      expect(getArchivedPosts().map((p) => p.slug)).not.toContain(post.slug);
+    }
+  });
+
+  it("returns nothing for a stack with no topical overlap", () => {
+    expect(getRelatedPosts(["Groq", "Upstash Redis", "PWA"])).toEqual([]);
+  });
+
+  it("returns nothing for an empty stack", () => {
+    expect(getRelatedPosts([])).toEqual([]);
+    expect(getRelatedPosts()).toEqual([]);
   });
 });
 

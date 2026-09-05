@@ -52,6 +52,12 @@ describe("blogPostingGraph — writing URLs", () => {
     expect(posting.url).toBe("https://www.muratoncu.com/writing/test-post");
     const breadcrumb = graph.find((n: any) => n["@type"] === "BreadcrumbList") as any;
     expect(breadcrumb.itemListElement[1].name).toBe("Writing");
+    expect(breadcrumb.itemListElement[1].item).toBe(
+      "https://www.muratoncu.com/writing",
+    );
+    expect(breadcrumb.itemListElement[2].item).toBe(
+      "https://www.muratoncu.com/writing/test-post",
+    );
   });
 });
 

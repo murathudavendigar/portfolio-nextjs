@@ -44,7 +44,7 @@ export default async function WorkDetailPage({
   if (!project) notFound();
 
   return (
-    <div className="min-h-screen bg-[#313131] font-custom text-white dark:bg-[#bcc] dark:text-gray-700">
+    <div className="min-h-screen bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
       <main id="main">
         <WorkDetail project={project} />
       </main>

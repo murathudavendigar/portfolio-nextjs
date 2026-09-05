@@ -16,8 +16,8 @@ export default function NotFound() {
   return (
     <main
       id="main"
-      className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#313131] px-6 py-20 text-center text-white dark:bg-[#bcc] dark:text-gray-700">
-      <p className="font-mono text-sm uppercase tracking-[6px] text-[#CA3E47]">
+      className="flex min-h-screen flex-col items-center justify-center gap-6 bg-ink px-6 py-20 text-center text-white dark:bg-paper dark:text-gray-700">
+      <p className="font-mono text-sm uppercase tracking-[6px] text-[var(--accent-text)]">
         Error 404
       </p>
 

@@ -289,6 +289,21 @@ export function contactPageGraph() {
   };
 }
 
+export function privacyPageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${absoluteUrl("/privacy")}#webpage`,
+    url: absoluteUrl("/privacy"),
+    name: `Privacy Policy — ${site.shortName}`,
+    description:
+      "What muratoncu.com collects through the contact form and site analytics, and how it's used.",
+    isPartOf: { "@id": websiteId },
+    about: { "@id": personId },
+    inLanguage: "en",
+  };
+}
+
 export function blogIndexSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",

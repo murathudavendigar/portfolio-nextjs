@@ -40,7 +40,7 @@ export function getPost(slug: string): BlogPost | undefined {
   return getPosts().find((p) => p.slug === slug);
 }
 
-const ARCHIVE_TAGS = ["python", "django"];
+export const ARCHIVE_TAGS = ["python", "django"];
 
 export function isArchivedPost(post: BlogPost): boolean {
   return post.tags.some((tag) => ARCHIVE_TAGS.includes(tag.toLowerCase()));
@@ -52,4 +52,25 @@ export function getFlagshipPosts(): BlogPost[] {
 
 export function getArchivedPosts(): BlogPost[] {
   return getPosts().filter(isArchivedPost);
+}
+
+function normalizeTopic(value: string): string {
+  return value.toLowerCase().replace(/[.\s-]/g, "");
+}
+
+export function getRelatedPosts(stack: string[] = [], limit = 2): BlogPost[] {
+  const topics = new Set(stack.map(normalizeTopic));
+  if (topics.size === 0) return [];
+
+  return getFlagshipPosts()
+    .map((post) => {
+      const overlap = post.tags.filter((tag) =>
+        topics.has(normalizeTopic(tag)),
+      ).length;
+      return { post, overlap };
+    })
+    .filter((entry) => entry.overlap > 0)
+    .sort((a, b) => b.overlap - a.overlap)
+    .slice(0, limit)
+    .map((entry) => entry.post);
 }

@@ -27,8 +27,8 @@ export default function WorkCover({
   if (!src) {
     return (
       <div
-        className={`flex flex-col justify-end gap-2 bg-[#2a2a2a] px-5 py-4 dark:bg-gray-200/50 ${className}`}>
-        <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[#CA3E47]">
+        className={`flex flex-col justify-end gap-2 bg-inkDeep px-5 py-4 dark:bg-gray-200/50 ${className}`}>
+        <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
           {project.language}
         </span>
         <span className="text-lg font-semibold leading-tight [text-wrap:balance] dark:text-gray-900">
@@ -38,15 +38,15 @@ export default function WorkCover({
     );
   }
 
-  const imageClass = contain
-    ? "object-contain object-center p-4 sm:p-6"
-    : "object-cover";
+  const imageClass = `transition-transform duration-500 group-hover:scale-[1.04] ${
+    contain ? "object-contain object-center p-4 sm:p-6" : "object-cover"
+  }`;
 
   return (
     <div
       className={`relative overflow-hidden ${
         contain
-          ? "bg-[#1c1c1c] dark:bg-[#1a1a1a]"
+          ? "bg-inkDeep"
           : "bg-black/25 dark:bg-gray-200/40"
       } ${className}`}>
       {isLocal ? (

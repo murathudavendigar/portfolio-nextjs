@@ -21,7 +21,7 @@ export default function About() {
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
         About
       </p>
       <div className="mt-6 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -45,7 +45,7 @@ export default function About() {
                 href="https://temcrafttech.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
                 TemCraft Tech
               </a>
               , and a frontend instructor based in the Netherlands. I ship
@@ -64,7 +64,7 @@ export default function About() {
               someone who can own the frontend and explain the decisions,{" "}
               <Link
                 href="/contact"
-                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
                 write to me
               </Link>
               .
@@ -84,7 +84,7 @@ export default function About() {
                       {...(fact.href.startsWith("http")
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : { download: true })}
-                      className="hover:text-[#CA3E47] transition-colors">
+                      className="hover:text-[var(--accent-text)] transition-colors">
                       {fact.value}
                     </a>
                   ) : (
@@ -129,7 +129,7 @@ export default function About() {
             products at TemCraft Tech. Case studies are on the{" "}
             <Link
               href="/work"
-              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
               Work
             </Link>{" "}
             page.
@@ -144,7 +144,7 @@ export default function About() {
             are in scope —{" "}
             <Link
               href="/contact"
-              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[#CA3E47] hover:decoration-[#CA3E47]">
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
               contact
             </Link>{" "}
             is {site.email}.

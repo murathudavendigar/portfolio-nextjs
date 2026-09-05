@@ -61,7 +61,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
         Contact
       </p>
       <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
@@ -84,7 +84,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               <dd className="mt-1">
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-lg hover:text-[#CA3E47] transition-colors">
+                  className="text-lg hover:text-[var(--accent-text)] transition-colors">
                   {site.email}
                 </a>
               </dd>
@@ -104,7 +104,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
                   <a
                     href={resumeHref}
                     download
-                    className="text-lg hover:text-[#CA3E47] transition-colors">
+                    className="text-lg hover:text-[var(--accent-text)] transition-colors">
                     Download PDF
                   </a>
                 </dd>
@@ -121,7 +121,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#CA3E47] transition-colors">
+                    className="hover:text-[var(--accent-text)] transition-colors">
                     {social.label}
                   </a>
                 ))}
@@ -148,7 +148,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
                 autoComplete="name"
               />
               {errors.name && (
-                <span className="mt-1 text-xs text-[#CA3E47]">
+                <span className="mt-1 text-xs text-[var(--accent-text)]">
                   {errors.name.message}
                 </span>
               )}
@@ -172,7 +172,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
                 autoComplete="email"
               />
               {errors.email && (
-                <span className="mt-1 text-xs text-[#CA3E47]">
+                <span className="mt-1 text-xs text-[var(--accent-text)]">
                   {errors.email.message}
                 </span>
               )}
@@ -191,7 +191,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               type="text"
             />
             {errors.subject && (
-              <span className="mt-1 text-xs text-[#CA3E47]">
+              <span className="mt-1 text-xs text-[var(--accent-text)]">
                 {errors.subject.message}
               </span>
             )}
@@ -209,7 +209,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               rows={6}
             />
             {errors.message && (
-              <span className="mt-1 text-xs text-[#CA3E47]">
+              <span className="mt-1 text-xs text-[var(--accent-text)]">
                 {errors.message.message}
               </span>
             )}
