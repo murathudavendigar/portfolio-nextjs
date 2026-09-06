@@ -22,7 +22,7 @@ describe("projects loader", () => {
   it("returns neighbouring projects in JSON order", () => {
     const { prev, next } = getAdjacentProjects("courai");
     expect(prev?.slug).toBe("daily-skyline");
-    expect(next?.slug).toBe("codebrief");
+    expect(next?.slug).toBe("choose-game");
   });
 
   it("getProject finds by slug", () => {
@@ -48,7 +48,7 @@ describe("selected vs earlier split", () => {
 
   it("includes Daily Skyline and Courai as selected iOS work", () => {
     const selectedSlugs = getSelectedProjects().map((p) => p.slug);
-    expect(selectedSlugs).toHaveLength(9);
+    expect(selectedSlugs).toHaveLength(10);
     expect(selectedSlugs[0]).toBe("daily-skyline");
     expect(selectedSlugs[1]).toBe("courai");
     expect(getProject("daily-skyline")?.language).toBe("iOS");

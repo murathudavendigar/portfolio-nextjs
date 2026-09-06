@@ -34,6 +34,21 @@
     "outcome": "Shipped on the App Store after years of web work. Free to try; no fake scarcity copy."
   },
   {
+    "name": "Choose Game",
+    "slug": "choose-game",
+    "img": "/img/projects/choose-game.png",
+    "description": "CHOOSE is a bilingual quiz game that flips the format: pick the wrong answer to score, pick the right one and lose a life. Three modes, a global leaderboard, and cloud sync built with Next.js and Supabase.",
+    "url": "https://choosegame.muratoncu.com",
+    "language": "Next.JS",
+    "github": "https://github.com/murathudavendigar/choose-game",
+    "tier": "selected",
+    "stack": ["Next.js", "React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "PWA"],
+    "problem": "Every trivia app rewards the right answer — that is the whole genre. None of the ones I tried flip that incentive, and none had a real cross-player leaderboard to make a streak feel like an actual score.",
+    "approach": "CHOOSE inverts the rule: pick the wrong answer to score, pick the right one and lose a life. Three modes — Classic (ten in a row to win), Endless, and Timer — plus power-ups, combos, and daily challenges. Supabase handles email/Google auth and cloud sync so a streak survives a device switch, and a global leaderboard ranks every player. English and Turkish are both first-class from the start, not a bolted-on locale file. Shipped as a Next.js PWA with a companion Expo build.",
+    "tradeoffs": "Bilingual from day one means every copy change touches two languages, not one. Cloud sync is optional — guests can play without an account, so the leaderboard only reflects players who chose to sign in. The Expo mobile build trails the web version and is not in an app store yet.",
+    "outcome": "Live on choosegame.muratoncu.com with cloud saves, a global leaderboard, and daily challenges running today."
+  },
+  {
     "name": "codebrief",
     "slug": "codebrief",
     "img": "/img/projects/codebrief.png",
