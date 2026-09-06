@@ -8,9 +8,9 @@ import {
 } from "../blog";
 
 describe("blog loader", () => {
-  it("loads all 13 exported posts sorted newest first", () => {
+  it("loads all 14 exported posts sorted newest first", () => {
     const posts = getPosts();
-    expect(posts.length).toBe(13);
+    expect(posts.length).toBe(14);
     const times = posts.map((p) => p.createdAt);
     expect(times).toEqual([...times].sort((a, b) => b - a));
   });
@@ -33,10 +33,10 @@ describe("blog loader", () => {
 });
 
 describe("flagship/archive split", () => {
-  it("splits all 13 posts into flagship and archived with no overlap", () => {
+  it("splits all 14 posts into flagship and archived with no overlap", () => {
     const flagship = getFlagshipPosts();
     const archived = getArchivedPosts();
-    expect(flagship.length + archived.length).toBe(13);
+    expect(flagship.length + archived.length).toBe(14);
     const archivedSlugs = new Set(archived.map((p) => p.slug));
     for (const post of flagship) {
       expect(archivedSlugs.has(post.slug)).toBe(false);
@@ -61,6 +61,9 @@ describe("flagship/archive split", () => {
     );
     expect(flagshipSlugs).toContain(
       "typescript-supercharge-your-javascript-with-type-safety",
+    );
+    expect(flagshipSlugs).toContain(
+      "how-i-structure-a-nextjs-app-router-product",
     );
   });
 });
