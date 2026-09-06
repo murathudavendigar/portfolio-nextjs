@@ -27,6 +27,15 @@ function formatUpdatedDate(iso: string) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
+function firstReleaseNoteLine(notes: string): string | null {
+  const lines = notes
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !/^what['’]?s new\b/i.test(line));
+  const first = lines[0];
+  return first ? first.replace(/^[•\-*]\s*/, "") : null;
+}
+
 export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
   const primary = projectPrimaryCta(project);
   const sections = CASE_SECTIONS.filter(([, key]) => Boolean(project[key]));
@@ -112,11 +121,12 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
             <p className="font-mono-ui text-[11px] uppercase tracking-[0.14em] text-gray-400 dark:text-gray-600">
               {appStoreStats.join(" · ")}
             </p>
-            {appStoreInfo?.releaseNotes && (
-              <p className="mt-2 max-w-xl text-sm italic leading-relaxed text-gray-400 line-clamp-2 dark:text-gray-600">
-                “{appStoreInfo.releaseNotes.split("\n")[0]}”
-              </p>
-            )}
+            {appStoreInfo?.releaseNotes &&
+              firstReleaseNoteLine(appStoreInfo.releaseNotes) && (
+                <p className="mt-2 max-w-xl text-sm italic leading-relaxed text-gray-400 line-clamp-2 dark:text-gray-600">
+                  “{firstReleaseNoteLine(appStoreInfo.releaseNotes)}”
+                </p>
+              )}
           </div>
         )}
 
