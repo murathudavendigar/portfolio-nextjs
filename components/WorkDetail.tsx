@@ -1,5 +1,6 @@
 import WorkCover from "@/components/WorkCover";
 import { getRelatedPosts } from "@/lib/blog";
+import type { AppStoreInfo } from "@/lib/appStore";
 import {
   getAdjacentProjects,
   hasCaseStudy,
@@ -10,6 +11,7 @@ import Link from "next/link";
 
 type WorkDetailProps = {
   project: ProjectType;
+  appStoreInfo?: AppStoreInfo | null;
 };
 
 const CASE_SECTIONS = [
@@ -19,7 +21,13 @@ const CASE_SECTIONS = [
   ["Outcome", "outcome"],
 ] as const;
 
-export default function WorkDetail({ project }: WorkDetailProps) {
+function formatUpdatedDate(iso: string) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
   const primary = projectPrimaryCta(project);
   const sections = CASE_SECTIONS.filter(([, key]) => Boolean(project[key]));
   const caseStudy = hasCaseStudy(project);
@@ -33,6 +41,20 @@ export default function WorkDetail({ project }: WorkDetailProps) {
     project.language === "NPM"
       ? project.url.match(/npmjs\.com\/package\/([^/?#]+)/)?.[1]
       : undefined;
+
+  const appStoreStats = appStoreInfo
+    ? [
+        appStoreInfo.ratingCount > 0 && appStoreInfo.averageRating
+          ? `${appStoreInfo.averageRating.toFixed(1)}★ (${appStoreInfo.ratingCount} rating${appStoreInfo.ratingCount === 1 ? "" : "s"})`
+          : null,
+        appStoreInfo.version ? `v${appStoreInfo.version}` : null,
+        formatUpdatedDate(appStoreInfo.lastUpdated) &&
+          `updated ${formatUpdatedDate(appStoreInfo.lastUpdated)}`,
+        appStoreInfo.languageCount > 1
+          ? `${appStoreInfo.languageCount} languages`
+          : null,
+      ].filter(Boolean)
+    : [];
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
@@ -82,6 +104,19 @@ export default function WorkDetail({ project }: WorkDetailProps) {
               height={20}
               className="h-5 w-auto"
             />
+          </div>
+        )}
+
+        {appStoreStats.length > 0 && (
+          <div className="mt-4">
+            <p className="font-mono-ui text-[11px] uppercase tracking-[0.14em] text-gray-400 dark:text-gray-600">
+              {appStoreStats.join(" · ")}
+            </p>
+            {appStoreInfo?.releaseNotes && (
+              <p className="mt-2 max-w-xl text-sm italic leading-relaxed text-gray-400 line-clamp-2 dark:text-gray-600">
+                “{appStoreInfo.releaseNotes.split("\n")[0]}”
+              </p>
+            )}
           </div>
         )}
 
