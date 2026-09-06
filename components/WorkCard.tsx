@@ -1,4 +1,5 @@
 import WorkCover from "@/components/WorkCover";
+import type { AppRating } from "@/lib/appStore";
 import type { Projects as ProjectType } from "@/types";
 import Link from "next/link";
 
@@ -7,6 +8,7 @@ type WorkCardProps = {
   compact?: boolean;
   lead?: boolean;
   className?: string;
+  rating?: AppRating;
 };
 
 export default function WorkCard({
@@ -14,6 +16,7 @@ export default function WorkCard({
   compact = false,
   lead = false,
   className = "",
+  rating,
 }: WorkCardProps) {
   const coverHeight = lead
     ? "h-64 sm:h-80 lg:h-full lg:min-h-[22rem]"
@@ -31,9 +34,16 @@ export default function WorkCard({
         priority={lead}
       />
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <p className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
-          {project.language}
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
+            {project.language}
+          </p>
+          {rating && (
+            <p className="font-mono-ui text-[10px] text-gray-400 dark:text-gray-600">
+              ★ {rating.average.toFixed(1)}
+            </p>
+          )}
+        </div>
         <h3 className="text-lg font-semibold leading-snug [text-wrap:balance] dark:text-gray-900">
           {project.name}
         </h3>

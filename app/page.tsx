@@ -2,11 +2,14 @@ import Hero from "@/components/Hero";
 import ProofStrip from "@/components/ProofStrip";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
+import { getRatingsBySlug } from "@/lib/appStore";
 import { getSelectedProjects } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import Link from "next/link";
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -27,12 +30,13 @@ const PROOF_STATS = (selectedCount: number, iosCount: number, npmCount: number) 
   { value: "NL", label: "Frontend instructor & co-founder, TemCraft Tech" },
 ];
 
-export default function Home() {
+export default async function Home() {
   const selected = getSelectedProjects();
   const [lead, ...rest] = selected.slice(0, 3);
   const iosCount = selected.filter((p) => p.language === "iOS").length;
   const npmCount = selected.filter((p) => p.language === "NPM").length;
   const stats = PROOF_STATS(selected.length, iosCount, npmCount);
+  const ratings = await getRatingsBySlug([lead, ...rest].filter(Boolean));
 
   return (
     <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
@@ -53,7 +57,7 @@ export default function Home() {
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
             {lead && (
               <Reveal delay={0.1} className="lg:col-span-2">
-                <WorkCard project={lead} lead />
+                <WorkCard project={lead} lead rating={ratings[lead.slug]} />
               </Reveal>
             )}
             <Reveal delay={0.2} className="flex flex-col gap-6 lg:h-full">
@@ -63,6 +67,7 @@ export default function Home() {
                   project={project}
                   compact
                   className="flex-1"
+                  rating={ratings[project.slug]}
                 />
               ))}
             </Reveal>

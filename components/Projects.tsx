@@ -1,9 +1,11 @@
 import WorkCard from "@/components/WorkCard";
+import { getRatingsBySlug } from "@/lib/appStore";
 import { getEarlierProjects, getSelectedProjectsByCategory } from "@/lib/projects";
 
-const Projects = () => {
+const Projects = async () => {
   const groups = getSelectedProjectsByCategory();
   const earlier = getEarlierProjects();
+  const ratings = await getRatingsBySlug(groups.flatMap((g) => g.projects));
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
@@ -25,7 +27,11 @@ const Projects = () => {
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {group.projects.map((project) => (
-              <WorkCard key={project.slug} project={project} />
+              <WorkCard
+                key={project.slug}
+                project={project}
+                rating={ratings[project.slug]}
+              />
             ))}
           </div>
         </section>
