@@ -3,7 +3,7 @@ import ProofStrip from "@/components/ProofStrip";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
 import { getRatingsBySlug } from "@/lib/appStore";
-import { getSelectedProjects } from "@/lib/projects";
+import { getSelectedProjects, getPublishedNpmCount, getShippedIosCount } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
@@ -33,9 +33,11 @@ const PROOF_STATS = (selectedCount: number, iosCount: number, npmCount: number) 
 export default async function Home() {
   const selected = getSelectedProjects();
   const [lead, ...rest] = selected.slice(0, 3);
-  const iosCount = selected.filter((p) => p.language === "iOS").length;
-  const npmCount = selected.filter((p) => p.language === "NPM").length;
-  const stats = PROOF_STATS(selected.length, iosCount, npmCount);
+  const stats = PROOF_STATS(
+    selected.length,
+    getShippedIosCount(),
+    getPublishedNpmCount(),
+  );
   const ratings = await getRatingsBySlug([lead, ...rest].filter(Boolean));
 
   return (

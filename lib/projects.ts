@@ -19,6 +19,14 @@ export function getEarlierProjects(): ProjectType[] {
   return allProjects.filter((p) => p.tier === "earlier");
 }
 
+export function getPublishedNpmCount(): number {
+  return allProjects.filter((p) => p.language === "NPM").length;
+}
+
+export function getShippedIosCount(): number {
+  return allProjects.filter((p) => Boolean(p.appStoreUrl)).length;
+}
+
 const CATEGORY_ORDER = ["iOS Apps", "Web Products", "npm Packages"] as const;
 
 function categoryFor(project: ProjectType): (typeof CATEGORY_ORDER)[number] {
@@ -54,6 +62,21 @@ export function hasCaseStudy(project: ProjectType): boolean {
   return Boolean(
     project.problem || project.approach || project.tradeoffs || project.outcome,
   );
+}
+
+export type WorkMockupKind = "iphone" | "safari" | "none";
+
+export function hasWorkMedia(project: ProjectType): boolean {
+  return Boolean(project.img?.trim());
+}
+
+export function getWorkMockupKind(project: ProjectType): WorkMockupKind {
+  if (!hasWorkMedia(project)) return "none";
+  if (project.mockup) return project.mockup;
+  if (project.language === "iOS") return "iphone";
+  if (project.language === "NPM" || project.language === "Electron")
+    return "none";
+  return "safari";
 }
 
 export function projectPrimaryCta(project: ProjectType): {

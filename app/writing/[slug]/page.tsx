@@ -1,4 +1,12 @@
 import MarkdownContent from "@/components/MarkdownContent";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { getPost, getPosts } from "@/lib/blog";
 import { blogPostingGraph } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -70,25 +78,23 @@ export default async function WritingPostPage({
 
       <main id="main" className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
         <article className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
-          <Link
-            href="/writing"
-            className="group inline-flex items-center gap-2 px-4 py-2 mb-8 sm:mb-10 md:mb-12 text-sm font-medium rounded-lg bg-white/5 dark:bg-gray-200/50 border border-white/10 dark:border-gray-300 hover:bg-white/10 dark:hover:bg-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#CA3E47]/20">
-            <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1 text-[var(--accent-text)]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <span className="text-white dark:text-gray-800 group-hover:text-[var(--accent-text)] transition-colors duration-300">
-              Back to Writing
-            </span>
-          </Link>
+          <Breadcrumb className="block mb-8 sm:mb-10 md:mb-12">
+            <BreadcrumbList className="font-mono-ui gap-1.5 text-xs uppercase tracking-[0.16em] text-gray-400 sm:gap-1.5 dark:text-gray-600">
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  asChild
+                  className="hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47]">
+                  <Link href="/writing">Writing</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-gray-200 dark:text-gray-800">
+                  {post.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
           <div className="relative w-full h-48 mb-8 overflow-hidden shadow-2xl rounded-2xl sm:h-64 md:h-80 lg:h-96 group">
             <img

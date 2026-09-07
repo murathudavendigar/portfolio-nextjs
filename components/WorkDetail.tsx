@@ -1,4 +1,13 @@
-import WorkCover from "@/components/WorkCover";
+import WorkDeviceFrame from "@/components/WorkDeviceFrame";
+import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { getRelatedPosts } from "@/lib/blog";
 import type { AppStoreInfo } from "@/lib/appStore";
 import {
@@ -33,8 +42,6 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
   const caseStudy = hasCaseStudy(project);
   const secondaryLabel =
     project.appStoreUrl && project.url ? "Website" : null;
-  const hasImage = Boolean(project.img?.trim());
-  const isIos = project.language === "iOS";
   const { prev, next } = getAdjacentProjects(project.slug);
   const relatedPosts = getRelatedPosts(project.stack);
   const npmPackage =
@@ -58,11 +65,23 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
-      <Link
-        href="/work"
-        className="font-mono-ui text-xs uppercase tracking-[0.16em] text-gray-400 transition-colors hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] dark:text-gray-600">
-        ← Work
-      </Link>
+      <Breadcrumb>
+        <BreadcrumbList className="font-mono-ui gap-1.5 text-xs uppercase tracking-[0.16em] text-gray-400 sm:gap-1.5 dark:text-gray-600">
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              asChild
+              className="hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47]">
+              <Link href="/work">Work</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-gray-200 dark:text-gray-800">
+              {project.name}
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <header className="mt-10">
         <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
@@ -79,10 +98,12 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
         {project.stack && project.stack.length > 0 && (
           <ul className="mt-6 flex flex-wrap gap-2">
             {project.stack.map((item) => (
-              <li
-                key={item}
-                className="font-mono-ui rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-wider text-gray-300 dark:border-gray-400 dark:text-gray-700">
-                {item}
+              <li key={item}>
+                <Badge
+                  variant="outline"
+                  className="font-mono-ui border-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-300 dark:border-gray-400 dark:text-gray-700">
+                  {item}
+                </Badge>
               </li>
             ))}
           </ul>
@@ -144,23 +165,7 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
         </div>
       </header>
 
-      {hasImage && (
-        <figure className="mt-14 overflow-hidden rounded-lg border border-white/10 bg-black/40 dark:border-gray-300 dark:bg-gray-200/40">
-          <WorkCover
-            project={project}
-            priority
-            decorative={false}
-            variant="detail"
-            className={
-              isIos && !project.coverFit
-                ? "mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[320px]"
-                : project.coverFit === "contain"
-                  ? "mx-auto aspect-square w-full max-w-[240px]"
-                  : "min-h-[220px] sm:min-h-[320px] lg:min-h-[380px]"
-            }
-          />
-        </figure>
-      )}
+      <WorkDeviceFrame project={project} />
 
       {caseStudy && (
         <div className="mt-16 space-y-12">

@@ -7,7 +7,11 @@ import {
   getProjects,
   getSelectedProjects,
   getSelectedProjectsByCategory,
+  getShippedIosCount,
+  getPublishedNpmCount,
+  getWorkMockupKind,
   hasCaseStudy,
+  hasWorkMedia,
   projectPrimaryCta,
 } from "../projects";
 
@@ -48,11 +52,43 @@ describe("selected vs earlier split", () => {
 
   it("includes Daily Skyline and Courai as selected iOS work", () => {
     const selectedSlugs = getSelectedProjects().map((p) => p.slug);
-    expect(selectedSlugs).toHaveLength(11);
-    expect(selectedSlugs[0]).toBe("daily-skyline");
-    expect(selectedSlugs[1]).toBe("courai");
+    expect(selectedSlugs).toEqual([
+      "daily-skyline",
+      "courai",
+      "choose-game",
+      "autoinvoice-pro",
+      "codebrief",
+      "haberai",
+      "money-guardian",
+    ]);
     expect(getProject("daily-skyline")?.language).toBe("iOS");
     expect(getProject("courai")?.language).toBe("iOS");
+  });
+
+  it("counts published npm packages and App Store apps even when some sit in Earlier", () => {
+    expect(getPublishedNpmCount()).toBe(2);
+    expect(getShippedIosCount()).toBe(2);
+  });
+
+  it("keeps teaching demos and older apps in Earlier, not the hero row", () => {
+    const earlierSlugs = getEarlierProjects().map((p) => p.slug);
+    expect(earlierSlugs).toEqual(
+      expect.arrayContaining([
+        "dev-console-kit",
+        "ai-resume-doctor",
+        "event-manager",
+        "e-price-ecommerce-project",
+      ]),
+    );
+    const selected = new Set(getSelectedProjects().map((p) => p.slug));
+    for (const slug of [
+      "dev-console-kit",
+      "ai-resume-doctor",
+      "event-manager",
+      "e-price-ecommerce-project",
+    ]) {
+      expect(selected.has(slug)).toBe(false);
+    }
   });
 
   it("points iOS apps at the App Store", () => {
@@ -77,6 +113,8 @@ describe("selected vs earlier split", () => {
   it("uses a typographic cover when a remote image is gone", () => {
     expect(getProject("fireblog-app")?.img).toBe("");
     expect(getProject("weather-app-with-pure-js")?.img).toBe("");
+    expect(hasWorkMedia(getProject("fireblog-app")!)).toBe(false);
+    expect(hasWorkMedia(getProject("courai")!)).toBe(true);
   });
 
   it("gives every selected project a full case study", () => {
@@ -108,19 +146,61 @@ describe("selected vs earlier split", () => {
       "courai",
     ]);
     const npmGroup = groups.find((g) => g.category === "npm Packages")!;
-    expect(npmGroup.projects.map((p) => p.slug)).toEqual([
-      "codebrief",
-      "dev-console-kit",
+    expect(npmGroup.projects.map((p) => p.slug)).toEqual(["codebrief"]);
+    const webGroup = groups.find((g) => g.category === "Web Products")!;
+    expect(webGroup.projects.map((p) => p.slug)).toEqual([
+      "choose-game",
+      "autoinvoice-pro",
+      "haberai",
+      "money-guardian",
     ]);
+  });
+
+  it("points HaberAI outcome at the canonical domain, not the old Vercel host", () => {
+    const haberai = getProject("haberai")!;
+    expect(haberai.url).toContain("haberai.muratoncu.com");
+    expect(haberai.outcome).toContain("haberai.muratoncu.com");
+    expect(haberai.outcome).not.toContain("haberaii.vercel.app");
   });
 
   it("shows Courai and Daily Skyline as App Store screenshots", () => {
     const courai = getProject("courai")!;
     const skyline = getProject("daily-skyline")!;
     expect(courai.coverFit).toBe("cover");
-    expect(courai.img).toBe("/img/projects/courai.png");
+    expect(courai.img).toBe("/img/projects/courai.webp");
     expect(skyline.coverFit).toBe("cover");
-    expect(skyline.img).toBe("/img/projects/daily-skyline.png");
+    expect(skyline.img).toBe("/img/projects/daily-skyline.webp");
   });
 });
 
+
+describe("getWorkMockupKind", () => {
+  it("uses iPhone frames for iOS screenshots that are not already device-shaped", () => {
+    expect(getWorkMockupKind(getProject("daily-skyline")!)).toBe("iphone");
+  });
+
+  it("skips iPhone chrome when Courai's screenshot already reads as a phone", () => {
+    expect(getWorkMockupKind(getProject("courai")!)).toBe("none");
+  });
+
+  it("honors an explicit mockup override", () => {
+    const skyline = getProject("daily-skyline")!;
+    expect(getWorkMockupKind({ ...skyline, mockup: "none" })).toBe("none");
+    expect(getWorkMockupKind({ ...skyline, mockup: "safari" })).toBe("safari");
+  });
+
+  it("uses Safari frames for web product screenshots", () => {
+    expect(getWorkMockupKind(getProject("choose-game")!)).toBe("safari");
+    expect(getWorkMockupKind(getProject("haberai")!)).toBe("safari");
+  });
+
+  it("skips device frames for npm packages and empty covers", () => {
+    expect(getWorkMockupKind(getProject("codebrief")!)).toBe("none");
+    expect(getWorkMockupKind(getProject("fireblog-app")!)).toBe("none");
+    expect(getProject("fireblog-app")!.img?.trim()).toBe("");
+  });
+
+  it("skips browser chrome for desktop Electron apps", () => {
+    expect(getWorkMockupKind(getProject("autoinvoice-pro")!)).toBe("none");
+  });
+});

@@ -1,10 +1,19 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { SOCIAL_LINKS } from "@/lib/nav";
 import { site } from "@/lib/site";
 import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 type Inputs = {
   name: string;
@@ -130,97 +139,105 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
           </dl>
         </div>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4"
-          noValidate>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex min-w-0 flex-col">
-              <label htmlFor="contact-name" className="sr-only">
-                Name
-              </label>
-              <input
-                id="contact-name"
-                {...register("name", { required: "Name is required" })}
-                placeholder="Name"
-                className="contactInput w-full"
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <FieldGroup className="[&_[aria-invalid=true]]:border-destructive">
+            <div className="grid gap-7 sm:grid-cols-2">
+              <Field data-invalid={errors.name ? true : undefined}>
+                <FieldLabel htmlFor="contact-name">Name</FieldLabel>
+                <Input
+                  id="contact-name"
+                  type="text"
+                  autoComplete="name"
+                  placeholder="Ada Lovelace"
+                  aria-invalid={errors.name ? true : undefined}
+                  aria-describedby={
+                    errors.name ? "contact-name-error" : undefined
+                  }
+                  {...register("name", { required: "Name is required" })}
+                />
+                {errors.name && (
+                  <FieldError id="contact-name-error">
+                    {errors.name.message}
+                  </FieldError>
+                )}
+              </Field>
+
+              <Field data-invalid={errors.email ? true : undefined}>
+                <FieldLabel htmlFor="contact-email">Email</FieldLabel>
+                <Input
+                  id="contact-email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  aria-invalid={errors.email ? true : undefined}
+                  aria-describedby={
+                    errors.email ? "contact-email-error" : undefined
+                  }
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Enter a valid email",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <FieldError id="contact-email-error">
+                    {errors.email.message}
+                  </FieldError>
+                )}
+              </Field>
+            </div>
+
+            <Field data-invalid={errors.subject ? true : undefined}>
+              <FieldLabel htmlFor="contact-subject">Subject</FieldLabel>
+              <Input
+                id="contact-subject"
                 type="text"
-                autoComplete="name"
+                placeholder="What this is about"
+                aria-invalid={errors.subject ? true : undefined}
+                aria-describedby={
+                  errors.subject ? "contact-subject-error" : undefined
+                }
+                {...register("subject", { required: "Subject is required" })}
               />
-              {errors.name && (
-                <span className="mt-1 text-xs text-[var(--accent-text)]">
-                  {errors.name.message}
-                </span>
+              {errors.subject && (
+                <FieldError id="contact-subject-error">
+                  {errors.subject.message}
+                </FieldError>
               )}
-            </div>
-            <div className="flex min-w-0 flex-col">
-              <label htmlFor="contact-email" className="sr-only">
-                Email
-              </label>
-              <input
-                id="contact-email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Enter a valid email",
-                  },
-                })}
-                placeholder="Email"
-                className="contactInput w-full"
-                type="email"
-                autoComplete="email"
+            </Field>
+
+            <Field data-invalid={errors.message ? true : undefined}>
+              <FieldLabel htmlFor="contact-message">Message</FieldLabel>
+              <Textarea
+                id="contact-message"
+                rows={6}
+                placeholder="What do you need?"
+                className="resize-none"
+                aria-invalid={errors.message ? true : undefined}
+                aria-describedby={
+                  errors.message ? "contact-message-error" : undefined
+                }
+                {...register("message", { required: "Message is required" })}
               />
-              {errors.email && (
-                <span className="mt-1 text-xs text-[var(--accent-text)]">
-                  {errors.email.message}
-                </span>
+              {errors.message && (
+                <FieldError id="contact-message-error">
+                  {errors.message.message}
+                </FieldError>
               )}
-            </div>
-          </div>
+            </Field>
 
-          <div className="flex flex-col">
-            <label htmlFor="contact-subject" className="sr-only">
-              Subject
-            </label>
-            <input
-              id="contact-subject"
-              {...register("subject", { required: "Subject is required" })}
-              placeholder="Subject"
-              className="contactInput w-full"
-              type="text"
-            />
-            {errors.subject && (
-              <span className="mt-1 text-xs text-[var(--accent-text)]">
-                {errors.subject.message}
-              </span>
-            )}
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="contact-message" className="sr-only">
-              Message
-            </label>
-            <textarea
-              id="contact-message"
-              {...register("message", { required: "Message is required" })}
-              placeholder="What do you need?"
-              className="contactInput w-full resize-none"
-              rows={6}
-            />
-            {errors.message && (
-              <span className="mt-1 text-xs text-[var(--accent-text)]">
-                {errors.message.message}
-              </span>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={sending}
-            className="rounded-full bg-[#CA3E47] px-6 py-3 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
-            {sending ? "Sending…" : "Send message"}
-          </button>
+            <Field>
+              <Button
+                type="submit"
+                size="lg"
+                disabled={sending}
+                className="w-full rounded-full uppercase tracking-widest focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                {sending ? "Sending…" : "Send message"}
+              </Button>
+            </Field>
+          </FieldGroup>
         </form>
       </div>
     </section>

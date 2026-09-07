@@ -35,5 +35,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#extra
+# extra
 installation.txt
+
+# local editor / agent (do not ship session dumps or MCP wiring)
+.cursor/
+.mcp.json
+.playwright-mcp/

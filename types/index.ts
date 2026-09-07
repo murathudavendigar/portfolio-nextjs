@@ -3,6 +3,7 @@ export type ProjectTier = "selected" | "earlier";
 export type Projects = {
   img?: string;
   coverFit?: "cover" | "contain";
+  mockup?: "iphone" | "safari" | "none";
   name: string;
   slug: string;
   description: string;

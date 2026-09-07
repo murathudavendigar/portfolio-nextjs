@@ -7,15 +7,71 @@
     scroll-padding-top: 4.5rem;
   }
 
-  /* WCAG AA-safe accent for text: #CA3E47 itself is ~3.4:1 on both
-     ink and paper. These shift lightness while keeping the hue, so
-     accent-colored labels/links stay readable at body-text sizes. */
+  /* Both blocks below are INVERTED relative to the shadcn docs, because this
+     site's themes are inverted: next-themes `light` (no `.dark` class) is the
+     charcoal look, and next-themes `dark` (`.dark` class) is the paper look.
+     So `:root` carries the charcoal palette and `.dark` carries paper. */
+
   :root {
+    /* WCAG AA-safe accent for text: #CA3E47 itself is ~3.4:1 on both
+       ink and paper. These shift lightness while keeping the hue, so
+       accent-colored labels/links stay readable at body-text sizes. */
     --accent-text: #e2626b;
+
+    /* charcoal — ink #211d1a on white text */
+    --background: 26 11.9% 11.6%;
+    --foreground: 0 0% 100%;
+    --card: 26 11.9% 11.6%;
+    --card-foreground: 0 0% 100%;
+    --popover: 24 12.2% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 356 56.9% 51.8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 23 9.5% 16.5%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 27 11.7% 15.1%;
+    --muted-foreground: 218 10.6% 64.9%;
+    --accent: 23 9.5% 16.5%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 356 56.9% 51.8%;
+    --destructive-foreground: 0 0% 100%;
+    /* white @ 12% composited over ink, so opacity modifiers stay predictable */
+    --border: 26 6.2% 22.2%;
+    --input: 26 6.2% 22.2%;
+    --ring: 356 56.9% 51.8%;
+    --radius: 0.5rem;
+
+    /* Tailwind v4-style aliases: MagicCard reads these directly */
+    --color-background: hsl(var(--background));
+    --color-border: hsl(var(--border));
   }
 
   .dark {
     --accent-text: #a8323a;
+
+    /* paper — #f3ede4 on gray-700 text */
+    --background: 36 38.5% 92.4%;
+    --foreground: 217 19.1% 26.7%;
+    --card: 36 38.5% 92.4%;
+    --card-foreground: 217 19.1% 26.7%;
+    --popover: 36 38.5% 92.4%;
+    --popover-foreground: 217 19.1% 26.7%;
+    --primary: 356 56.9% 51.8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 35 30.6% 85.9%;
+    --secondary-foreground: 217 19.1% 26.7%;
+    --muted: 35 30.6% 85.9%;
+    --muted-foreground: 215 13.8% 34.1%;
+    --accent: 35 30.6% 85.9%;
+    --accent-foreground: 217 19.1% 26.7%;
+    --destructive: 356 56.9% 51.8%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 12.2% 83.9%;
+    --input: 216 12.2% 83.9%;
+    --ring: 356 56.9% 51.8%;
+
+    --color-background: hsl(var(--background));
+    --color-border: hsl(var(--border));
   }
 }
 
@@ -50,4 +106,12 @@
   .line-clamp-3 {
     -webkit-line-clamp: 3;
   }
+}
+
+/* Installed by @magicui/animated-theme-toggler: the component drives the
+   reveal with Element.animate(), so the default cross-fade must be off. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
