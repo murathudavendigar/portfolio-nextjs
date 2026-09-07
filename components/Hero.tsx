@@ -43,7 +43,7 @@ const Hero = () => {
       </div>
 
       <div className="relative mx-auto flex w-full max-w-xs items-center justify-center lg:max-w-none">
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <BackgroundCircles />
         </div>
         <Image

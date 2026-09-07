@@ -12,7 +12,9 @@ const BackgroundCircles = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div aria-hidden className="relative flex items-center justify-center">
+    <div
+      aria-hidden
+      className="pointer-events-none relative flex items-center justify-center">
       {RINGS.map((ring, i) => (
         <motion.div
           key={ring.size}
