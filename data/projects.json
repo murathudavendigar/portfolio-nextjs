@@ -49,6 +49,21 @@
     "outcome": "Live on choosegame.muratoncu.com with cloud saves, a global leaderboard, and daily challenges running today."
   },
   {
+    "name": "AutoInvoice Pro",
+    "slug": "autoinvoice-pro",
+    "img": "/img/projects/autoinvoice-pro.png",
+    "description": "AutoInvoice Pro is a native macOS and Windows app that reads messy PDF invoices locally and renames them into a clean, consistent format — no cloud upload, no subscription.",
+    "url": "https://murathoncu.gumroad.com/l/autoinvoicepro",
+    "language": "Electron",
+    "github": "",
+    "tier": "selected",
+    "stack": ["Electron", "TypeScript", "pdf-parse", "electron-builder", "Gumroad API"],
+    "problem": "Freelancers and accountants pile up invoice PDFs with useless export names — scan001.pdf, invoice (3).pdf — and rename each one by hand before filing.",
+    "approach": "AutoInvoice Pro reads each PDF's text locally with pdf-parse, then pattern-matches the date, amount, and company name to build a clean filename like 2026-02-22_Company_Total.pdf. Drag a folder in, get a renamed batch out — nothing leaves the machine. The free trial covers five files; a Gumroad license key, verified against Gumroad's own API, unlocks unlimited use.",
+    "tradeoffs": "Deterministic text matching, not a language model — scanned or image-only PDFs with no extractable text fail cleanly rather than guessing. Files over 5 MB are skipped in the free tier. Builds are unsigned, so first launch needs a one-time Gatekeeper bypass on macOS.",
+    "outcome": "Live as a pay-what-you-want download on Gumroad for Mac and Windows, with a working license-key unlock built on Gumroad's own verification API."
+  },
+  {
     "name": "codebrief",
     "slug": "codebrief",
     "img": "/img/projects/codebrief.png",

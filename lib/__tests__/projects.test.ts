@@ -48,7 +48,7 @@ describe("selected vs earlier split", () => {
 
   it("includes Daily Skyline and Courai as selected iOS work", () => {
     const selectedSlugs = getSelectedProjects().map((p) => p.slug);
-    expect(selectedSlugs).toHaveLength(10);
+    expect(selectedSlugs).toHaveLength(11);
     expect(selectedSlugs[0]).toBe("daily-skyline");
     expect(selectedSlugs[1]).toBe("courai");
     expect(getProject("daily-skyline")?.language).toBe("iOS");
