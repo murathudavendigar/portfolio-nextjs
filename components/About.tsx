@@ -54,10 +54,11 @@ export default function About() {
             </p>
             <p>
               The through-line is products people can actually use: Daily
-              Skyline and Courai on the App Store, npm tools I use with
-              students, and client work in React and Next.js. React Native
-              joined that list when I started shipping iOS myself. I studied
-              Computer Engineering at Kocaeli University.
+              Skyline and Courai on the App Store, Choose Game as a bilingual
+              web PWA, AutoInvoice Pro as a desktop utility, npm tools I use
+              with students, and client work in React and Next.js. React
+              Native joined that list when I started shipping iOS myself. I
+              studied Computer Engineering at Kocaeli University.
             </p>
             <p>
               Open to roles, scoped freelance, and teaching. If you need
@@ -108,9 +109,12 @@ export default function About() {
             He builds production interfaces in React, Next.js, and TypeScript,
             and he ships iOS apps with React Native and Expo — including Daily
             Skyline, a daily 5×5 skyscraper logic puzzle on the App Store, and
-            Courai, a CBT-based iOS app for social anxiety. He also publishes
-            npm tools he uses while teaching, such as codebrief and Dev Console
-            Kit. He studied Computer Engineering at Kocaeli University and
+            Courai, a CBT-based iOS app for social anxiety. He also ships
+            Choose Game, a bilingual web quiz that flips the format, and
+            AutoInvoice Pro, a desktop app that renames PDF invoices. He
+            publishes npm tools he uses while teaching, such as codebrief and
+            Dev Console Kit. He studied Computer Engineering at Kocaeli
+            University and
             co-founded TemCraft Tech to take client and product work from scope
             to a live UI. He teaches HTML, CSS, JavaScript, React, and Next.js
             while using the same stack in production. He is open to frontend
@@ -124,9 +128,10 @@ export default function About() {
             What does he ship?
           </h2>
           <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
-            Selected work includes Daily Skyline and Courai on iOS, plus
-            codebrief and Dev Console Kit on npm, and client React / Next.js
-            products at TemCraft Tech. Case studies are on the{" "}
+            Selected work includes Daily Skyline and Courai on iOS, Choose
+            Game and AutoInvoice Pro outside the App Store, codebrief and Dev
+            Console Kit on npm, and client React / Next.js products at
+            TemCraft Tech. Case studies are on the{" "}
             <Link
               href="/work"
               className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
