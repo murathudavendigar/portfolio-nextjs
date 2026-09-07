@@ -1,3 +1,4 @@
+import { site } from "@/lib/site";
 import Link from "next/link";
 
 interface BlogCardProps {
@@ -24,16 +25,14 @@ export default function BlogCard({
   return (
     <Link href={`/writing/${slug}`}>
       <article className="h-full flex flex-col overflow-hidden transition-all duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
-        {imageUrl && (
-          <div className="relative w-full overflow-hidden h-52">
-            <img
-              src={imageUrl || "/placeholder.svg"}
-              alt={title}
-              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100" />
-          </div>
-        )}
+        <div className="relative w-full overflow-hidden h-52">
+          <img
+            src={imageUrl || site.defaultOgImage}
+            alt={title}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100" />
+        </div>
 
         <div className="flex flex-col flex-1 p-6 space-y-4">
           <div className="flex-1 space-y-3">

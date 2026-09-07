@@ -1,6 +1,7 @@
 import MarkdownContent from "@/components/MarkdownContent";
 import { getPost, getPosts } from "@/lib/blog";
 import { blogPostingGraph } from "@/lib/schema";
+import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -89,16 +90,14 @@ export default async function WritingPostPage({
             </span>
           </Link>
 
-          {post.imageUrl && (
-            <div className="relative w-full h-48 mb-8 overflow-hidden shadow-2xl rounded-2xl sm:h-64 md:h-80 lg:h-96 group">
-              <img
-                src={post.imageUrl || "/placeholder.svg"}
-                alt={post.title}
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            </div>
-          )}
+          <div className="relative w-full h-48 mb-8 overflow-hidden shadow-2xl rounded-2xl sm:h-64 md:h-80 lg:h-96 group">
+            <img
+              src={post.imageUrl || site.defaultOgImage}
+              alt={post.title}
+              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
 
           <header className="mb-8 sm:mb-10 md:mb-12">
             <h1 className="mb-4 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl dark:text-gray-900 sm:mb-5 md:mb-6">
