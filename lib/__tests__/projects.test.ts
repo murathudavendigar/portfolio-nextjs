@@ -58,6 +58,7 @@ describe("selected vs earlier split", () => {
       "choose-game",
       "autoinvoice-pro",
       "codebrief",
+      "skillbrief",
       "haberai",
       "money-guardian",
     ]);
@@ -66,7 +67,7 @@ describe("selected vs earlier split", () => {
   });
 
   it("counts published npm packages and App Store apps even when some sit in Earlier", () => {
-    expect(getPublishedNpmCount()).toBe(2);
+    expect(getPublishedNpmCount()).toBe(3);
     expect(getShippedIosCount()).toBe(2);
   });
 
@@ -104,6 +105,9 @@ describe("selected vs earlier split", () => {
     const cta = projectPrimaryCta(getProject("codebrief")!);
     expect(cta?.label).toBe("NPM Package");
     expect(cta?.href).toContain("npmjs.com");
+    const skillbrief = projectPrimaryCta(getProject("skillbrief")!);
+    expect(skillbrief?.label).toBe("NPM Package");
+    expect(skillbrief?.href).toContain("npmjs.com/package/skillbrief");
   });
 
   it("labels shipped web products as Visit site", () => {
@@ -146,7 +150,10 @@ describe("selected vs earlier split", () => {
       "courai",
     ]);
     const npmGroup = groups.find((g) => g.category === "npm Packages")!;
-    expect(npmGroup.projects.map((p) => p.slug)).toEqual(["codebrief"]);
+    expect(npmGroup.projects.map((p) => p.slug)).toEqual([
+      "codebrief",
+      "skillbrief",
+    ]);
     const webGroup = groups.find((g) => g.category === "Web Products")!;
     expect(webGroup.projects.map((p) => p.slug)).toEqual([
       "choose-game",
@@ -196,6 +203,7 @@ describe("getWorkMockupKind", () => {
 
   it("skips device frames for npm packages and empty covers", () => {
     expect(getWorkMockupKind(getProject("codebrief")!)).toBe("none");
+    expect(getWorkMockupKind(getProject("skillbrief")!)).toBe("none");
     expect(getWorkMockupKind(getProject("fireblog-app")!)).toBe("none");
     expect(getProject("fireblog-app")!.img?.trim()).toBe("");
   });

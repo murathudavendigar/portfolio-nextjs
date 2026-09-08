@@ -112,8 +112,8 @@ export default function About() {
             Courai, a CBT-based iOS app for social anxiety. He also ships
             Choose Game, a bilingual web quiz that flips the format, and
             AutoInvoice Pro, a desktop app that renames PDF invoices. He
-            publishes npm tools he uses while teaching, such as codebrief and
-            Dev Console Kit. He studied Computer Engineering at Kocaeli
+            publishes npm tools he uses on his own products, such as codebrief and
+            skillbrief. He studied Computer Engineering at Kocaeli
             University and
             co-founded TemCraft Tech to take client and product work from scope
             to a live UI. He teaches HTML, CSS, JavaScript, React, and Next.js
@@ -129,8 +129,8 @@ export default function About() {
           </h2>
           <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
             Selected work includes Daily Skyline and Courai on iOS, Choose
-            Game and AutoInvoice Pro outside the App Store, codebrief and Dev
-            Console Kit on npm, and client React / Next.js products at
+            Game and AutoInvoice Pro outside the App Store, codebrief and
+            skillbrief on npm, and client React / Next.js products at
             TemCraft Tech. Case studies are on the{" "}
             <Link
               href="/work"

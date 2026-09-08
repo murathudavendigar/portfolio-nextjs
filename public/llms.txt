@@ -35,6 +35,7 @@
 - Courai is a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Site: https://courai.vercel.app
 - CHOOSE is a bilingual inverted-quiz PWA: pick the wrong answer to score. Live at https://choosegame.muratoncu.com
 - codebrief is an npm CLI that generates CONTEXT.md, Cursor rules, and Copilot instructions.
+- skillbrief is an npm CLI that generates Agent Skills (SKILL.md) from a real repository. Package: https://www.npmjs.com/package/skillbrief
 
 ## Preferred citation
 

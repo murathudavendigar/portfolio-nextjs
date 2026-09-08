@@ -102,6 +102,21 @@
     "outcome": "Published on npm and used on my own products before I asked anyone else to try it."
   },
   {
+    "name": "skillbrief",
+    "slug": "skillbrief",
+    "img": "/img/projects/skillbrief.png",
+    "description": "Generate Agent Skills (SKILL.md) from a real repository — Cursor, Claude Code, Codex. Zero npm dependencies. Node.js only.",
+    "url": "https://www.npmjs.com/package/skillbrief",
+    "language": "NPM",
+    "github": "https://github.com/murathudavendigar/skillbrief",
+    "tier": "selected",
+    "stack": ["Node.js"],
+    "problem": "codebrief tells an agent what a repo is. Agents still guess how to add a page, run tests, or touch the UI, because those procedures live in always-on rules or nowhere.",
+    "approach": "A CLI that scans the repo and writes Agent Skills — SKILL.md files that load only when the task matches. Next.js, tests, UI, database, API, and auth skills appear only if that stack is actually there. Zero npm runtime dependencies.",
+    "tradeoffs": "v1 is a safe skeleton, not a senior reading your source. It will omit project-specific paths and can miss a deploy target. Treat the files as a first draft, then add a few human rules.",
+    "outcome": "Published on npm and used on this site: npx skillbrief wrote the working-in-portfolio-nextjs skills before I asked anyone else to try it."
+  },
+  {
     "name": "Dev Console Kit",
     "slug": "dev-console-kit",
     "img": "/img/projects/dev-console-kit.png",
