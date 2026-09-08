@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { getRelatedPosts } from "@/lib/blog";
 import type { AppStoreInfo } from "@/lib/appStore";
+import { npmStatsLine, type NpmInfo } from "@/lib/npm";
 import {
   getAdjacentProjects,
   hasCaseStudy,
@@ -21,6 +22,7 @@ import Link from "next/link";
 type WorkDetailProps = {
   project: ProjectType;
   appStoreInfo?: AppStoreInfo | null;
+  npmInfo?: NpmInfo | null;
 };
 
 const CASE_SECTIONS = [
@@ -36,7 +38,11 @@ function formatUpdatedDate(iso: string) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
+export default function WorkDetail({
+  project,
+  appStoreInfo,
+  npmInfo,
+}: WorkDetailProps) {
   const primary = projectPrimaryCta(project);
   const sections = CASE_SECTIONS.filter(([, key]) => Boolean(project[key]));
   const caseStudy = hasCaseStudy(project);
@@ -44,10 +50,7 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
     project.appStoreUrl && project.url ? "Website" : null;
   const { prev, next } = getAdjacentProjects(project.slug);
   const relatedPosts = getRelatedPosts(project.stack);
-  const npmPackage =
-    project.language === "NPM"
-      ? project.url.match(/npmjs\.com\/package\/([^/?#]+)/)?.[1]
-      : undefined;
+  const npmStats = npmInfo ? npmStatsLine(npmInfo) : [];
 
   const appStoreStats = appStoreInfo
     ? [
@@ -109,23 +112,10 @@ export default function WorkDetail({ project, appStoreInfo }: WorkDetailProps) {
           </ul>
         )}
 
-        {npmPackage && (
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://img.shields.io/npm/dw/${npmPackage}?style=flat-square&label=weekly%20downloads&color=CA3E47&labelColor=211d1a`}
-              alt={`${npmPackage} weekly npm downloads`}
-              height={20}
-              className="h-5 w-auto"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://img.shields.io/npm/dt/${npmPackage}?style=flat-square&label=total%20downloads&color=CA3E47&labelColor=211d1a`}
-              alt={`${npmPackage} total npm downloads`}
-              height={20}
-              className="h-5 w-auto"
-            />
-          </div>
+        {npmStats.length > 0 && (
+          <p className="mt-4 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-gray-400 dark:text-gray-600">
+            {npmStats.join(" · ")}
+          </p>
         )}
 
         {appStoreStats.length > 0 && (

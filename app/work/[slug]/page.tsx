@@ -1,5 +1,6 @@
 import WorkDetail from "@/components/WorkDetail";
 import { appStoreIdFromUrl, getAppStoreInfo } from "@/lib/appStore";
+import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getProject, getProjects } from "@/lib/projects";
 import { workSchema } from "@/lib/schema";
 import { site, absoluteUrl } from "@/lib/site";
@@ -50,11 +51,18 @@ export default async function WorkDetailPage({
     ? appStoreIdFromUrl(project.appStoreUrl)
     : null;
   const appStoreInfo = appStoreId ? await getAppStoreInfo(appStoreId) : null;
+  const npmName =
+    project.language === "NPM" ? npmPackageFromUrl(project.url) : null;
+  const npmInfo = npmName ? await getNpmInfo(npmName) : null;
 
   return (
     <div className="min-h-screen bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
       <main id="main">
-        <WorkDetail project={project} appStoreInfo={appStoreInfo} />
+        <WorkDetail
+          project={project}
+          appStoreInfo={appStoreInfo}
+          npmInfo={npmInfo}
+        />
       </main>
       <script
         type="application/ld+json"
