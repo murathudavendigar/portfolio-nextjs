@@ -8,9 +8,9 @@ import {
 } from "../blog";
 
 describe("blog loader", () => {
-  it("loads all 14 exported posts sorted newest first", () => {
+  it("loads all 15 exported posts sorted newest first", () => {
     const posts = getPosts();
-    expect(posts.length).toBe(14);
+    expect(posts.length).toBe(15);
     const times = posts.map((p) => p.createdAt);
     expect(times).toEqual([...times].sort((a, b) => b - a));
   });
@@ -33,10 +33,10 @@ describe("blog loader", () => {
 });
 
 describe("flagship/archive split", () => {
-  it("splits all 14 posts into flagship and archived with no overlap", () => {
+  it("splits all 15 posts into flagship and archived with no overlap", () => {
     const flagship = getFlagshipPosts();
     const archived = getArchivedPosts();
-    expect(flagship.length + archived.length).toBe(14);
+    expect(flagship.length + archived.length).toBe(15);
     const archivedSlugs = new Set(archived.map((p) => p.slug));
     for (const post of flagship) {
       expect(archivedSlugs.has(post.slug)).toBe(false);
@@ -65,6 +65,7 @@ describe("flagship/archive split", () => {
     expect(flagshipSlugs).toContain(
       "how-i-structure-a-nextjs-app-router-product",
     );
+    expect(flagshipSlugs).toContain("codebrief-vs-skillbrief");
   });
 });
 
@@ -86,6 +87,13 @@ describe("getRelatedPosts", () => {
     expect(getRelatedPosts([])).toEqual([]);
     expect(getRelatedPosts()).toEqual([]);
   });
+
+  it("surfaces the codebrief vs skillbrief post next to Node.js tooling", () => {
+    const related = getRelatedPosts(["Node.js"]);
+    expect(related.map((post) => post.slug)).toContain(
+      "codebrief-vs-skillbrief",
+    );
+  });
 });
 
 describe("writing URLs inside posts", () => {
@@ -93,5 +101,12 @@ describe("writing URLs inside posts", () => {
     for (const post of getPosts()) {
       expect(post.content).not.toMatch(/muratoncu\.com\/blogs\//);
     }
+  });
+
+  it("links the codebrief vs skillbrief post to both case studies", () => {
+    const post = getPost("codebrief-vs-skillbrief");
+    expect(post).toBeDefined();
+    expect(post?.content).toContain("/work/codebrief");
+    expect(post?.content).toContain("/work/skillbrief");
   });
 });

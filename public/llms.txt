@@ -23,7 +23,10 @@
 - Daily Skyline (iOS): https://www.muratoncu.com/work/daily-skyline
 - Courai (iOS): https://www.muratoncu.com/work/courai
 - Writing index: https://www.muratoncu.com/writing
+- Always-on context vs on-demand skills: https://www.muratoncu.com/writing/codebrief-vs-skillbrief
 - Writing archive (beginner Python/Django notes): https://www.muratoncu.com/writing/archive
+- codebrief (npm CLI): https://www.muratoncu.com/work/codebrief
+- skillbrief (npm CLI): https://www.muratoncu.com/work/skillbrief
 - Contact: https://www.muratoncu.com/contact
 - Privacy policy: https://www.muratoncu.com/privacy
 - Sitemap: https://www.muratoncu.com/sitemap.xml

@@ -21,8 +21,8 @@ export default function WritingIndexPage() {
         </h1>
         <p className="max-w-2xl mt-4 text-sm leading-relaxed text-gray-300 dark:text-gray-700 sm:text-base">
           Practical notes from shipping React and Next.js products and
-          teaching the same stack — TypeScript, UI patterns, and the tools I
-          use with students and clients.
+          teaching the same stack — TypeScript, UI patterns, and the CLIs I
+          use with students, clients, and agents.
         </p>
 
         <div className="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 lg:grid-cols-3">
