@@ -11,6 +11,7 @@ import { getPost, getPosts } from "@/lib/blog";
 import { blogPostingGraph } from "@/lib/schema";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -97,11 +98,26 @@ export default async function WritingPostPage({
           </Breadcrumb>
 
           <div className="relative w-full h-48 mb-8 overflow-hidden shadow-2xl rounded-2xl sm:h-64 md:h-80 lg:h-96 group">
-            <img
-              src={post.imageUrl || site.defaultOgImage}
-              alt={post.title}
-              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-            />
+            {(() => {
+              const imageSrc = post.imageUrl || site.defaultOgImage;
+              return imageSrc.startsWith("/") ? (
+                <Image
+                  src={imageSrc}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                  priority
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={imageSrc}
+                  alt={post.title}
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                />
+              );
+            })()}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
 

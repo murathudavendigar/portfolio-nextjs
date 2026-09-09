@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BlogCardProps {
@@ -26,11 +27,25 @@ export default function BlogCard({
     <Link href={`/writing/${slug}`}>
       <article className="h-full flex flex-col overflow-hidden transition-all duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
         <div className="relative w-full overflow-hidden h-52">
-          <img
-            src={imageUrl || site.defaultOgImage}
-            alt={title}
-            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-          />
+          {(() => {
+            const imageSrc = imageUrl || site.defaultOgImage;
+            return imageSrc.startsWith("/") ? (
+              <Image
+                src={imageSrc}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={imageSrc}
+                alt={title}
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+              />
+            );
+          })()}
           <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100" />
         </div>
 

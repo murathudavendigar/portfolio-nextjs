@@ -81,6 +81,8 @@ export default function MarkdownContent({ content }: { content: string }) {
           />
         ),
         img: ({ node, ...props }) => (
+          // Markdown image URLs are author-controlled and may be external.
+          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             className="w-full my-4 rounded-lg"
             alt="Blog content image"

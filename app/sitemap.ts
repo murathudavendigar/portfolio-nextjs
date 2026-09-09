@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
 // Bump this constant whenever static-page copy/structure actually changes.
-const STATIC_LAST_MODIFIED = new Date("2026-09-04");
+const STATIC_LAST_MODIFIED = new Date("2026-09-09");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getPosts();
@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/writing/${p.slug}`,
       lastModified: new Date(p.updatedAt ?? p.createdAt),
     })),
+    { url: `${site.url}/now`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/contact`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/privacy`, lastModified: STATIC_LAST_MODIFIED },
   ];

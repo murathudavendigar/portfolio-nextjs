@@ -20,8 +20,11 @@
 - Home / profile: https://www.muratoncu.com
 - About: https://www.muratoncu.com/about
 - Work index: https://www.muratoncu.com/work
+- Now: https://www.muratoncu.com/now — maintained snapshot of shipped products, teaching, and writing (last updated 2026-09-09)
 - Daily Skyline (iOS): https://www.muratoncu.com/work/daily-skyline
 - Courai (iOS): https://www.muratoncu.com/work/courai
+- Choose Game (PWA): https://www.muratoncu.com/work/choose-game
+- AutoInvoice Pro (desktop utility): https://www.muratoncu.com/work/autoinvoice-pro
 - Writing index: https://www.muratoncu.com/writing
 - Always-on context vs on-demand skills: https://www.muratoncu.com/writing/codebrief-vs-skillbrief
 - Writing archive (beginner Python/Django notes): https://www.muratoncu.com/writing/archive
@@ -34,9 +37,10 @@
 
 ## Shipped products
 
-- Daily Skyline is a daily 5×5 skyscraper logic puzzle on the App Store. Same board worldwide each day. Marketing site: https://dailyskyline.muratoncu.com
-- Courai is a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Site: https://courai.vercel.app
-- CHOOSE is a bilingual inverted-quiz PWA: pick the wrong answer to score. Live at https://choosegame.muratoncu.com
+- Daily Skyline — shipped iOS product, currently maintained: a daily 5×5 skyscraper logic puzzle on the App Store. Same board worldwide each day. Marketing site: https://dailyskyline.muratoncu.com
+- Courai — shipped iOS product, currently maintained: a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Site: https://courai.vercel.app
+- CHOOSE / Choose Game — shipped web product, currently maintained: a bilingual inverted-quiz PWA where picking the wrong answer scores. Live at https://choosegame.muratoncu.com
+- AutoInvoice Pro — shipped desktop product, currently maintained: a native macOS and Windows app that reads PDF invoices locally and renames them consistently. Download: https://murathoncu.gumroad.com/l/autoinvoicepro
 - codebrief is an npm CLI that generates CONTEXT.md, Cursor rules, and Copilot instructions.
 - skillbrief is an npm CLI that generates Agent Skills (SKILL.md) from a real repository. Package: https://www.npmjs.com/package/skillbrief
 
