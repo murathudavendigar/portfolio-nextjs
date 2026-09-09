@@ -45,7 +45,6 @@ export const experiencesData: Experience[] = [
     points: [
       "Instructed remote cohorts on HTML, CSS, JavaScript, React, and Next.js with project-based curricula.",
       "Mentored students one-on-one through capstone builds and code reviews until they could ship independently.",
-      "Designed assessments and live coding sessions that mirrored real frontend interview and job tasks.",
       "Turned recurring student bugs into reusable teaching examples used across later cohorts.",
     ],
   },
@@ -69,7 +68,6 @@ export const experiencesData: Experience[] = [
       "Co-founded TemCraft Tech and shipped client and product work end-to-end with a React/Next.js stack.",
       "Owned frontend architecture, code quality, and delivery timelines for SaaS and AI-assisted apps.",
       "Translated client requirements into scoped milestones and launched production UIs on Vercel.",
-      "Built internal tooling and teaching-oriented packages (e.g. logging helpers) used with students and teams.",
     ],
   },
   {
@@ -91,7 +89,6 @@ export const experiencesData: Experience[] = [
       "Shipped TypeScript/Next.js UI features against backend APIs with measurable performance budgets.",
       "Built reusable components and layouts that reduced duplicate UI work across product surfaces.",
       "Partnered with backend engineers on contract-first API integration and error-state UX.",
-      "Raised consistency through design-system contributions and structured code reviews.",
     ],
   },
   {
@@ -110,9 +107,7 @@ export const experiencesData: Experience[] = [
     endDate: "Oct 2024",
     points: [
       "Ran part-time frontend training sessions covering JavaScript fundamentals through React component patterns.",
-      "Paired one-on-one with junior developers to work through specific bugs in their own project code, rather than generic exercises.",
       "Reviewed student pull requests and gave line-level feedback on code structure and naming.",
-      "Pushed students to deploy every project they built instead of leaving finished work local-only.",
       "Set up a shared Git workflow (branches, PRs, commit conventions) for students who'd only used Git solo before.",
     ],
   },
@@ -135,9 +130,7 @@ export const experiencesData: Experience[] = [
     points: [
       "Ran remote classes covering HTML, CSS, and JavaScript before progressing learners into React component patterns.",
       "Had students style with Tailwind utility classes early so they could iterate on layout without wrestling with custom CSS.",
-      "Walked learners through wiring up Firebase for auth and data storage in their course projects.",
       "Debugged learner code live in session against their own stack traces instead of pointing at generic documentation.",
-      "Set project checkpoints so learners shipped working increments rather than one large assignment at the end.",
     ],
   },
   {
@@ -159,8 +152,6 @@ export const experiencesData: Experience[] = [
       "Built responsive pages with React and Tailwind, working directly from client-supplied Figma designs.",
       "Iterated on UX through client review calls, translating their feedback into layout and component changes.",
       "Took over maintenance of existing sites, picking up unfamiliar codebases with no prior context to fix bugs and add features.",
-      "Wired up Firebase for lightweight client-side data needs (forms, content) where a full backend wasn't justified.",
-      "Checked pages with browser dev tools and Lighthouse before handoff to catch obvious accessibility and performance issues early.",
     ],
   },
   {
@@ -179,9 +170,7 @@ export const experiencesData: Experience[] = [
     endDate: "Jun 2023",
     points: [
       "Built REST endpoints in Django REST Framework, including serializers and viewsets for core data models.",
-      "Implemented backend logic in C# on ASP.NET alongside the Django services.",
       "Worked with frontend developers to define API contracts consumed by a Next.js/TypeScript client.",
-      "Added request validation and authorization checks to existing endpoints.",
       "Profiled and optimized slow database queries in the Django services.",
     ],
   },
@@ -203,9 +192,7 @@ export const experiencesData: Experience[] = [
     points: [
       "Built small-business websites from scratch using Next.js and Tailwind.",
       "Added basic on-page SEO (meta tags, semantic HTML, sitemaps) and fixed obvious speed issues like unoptimized images.",
-      "Walked non-technical clients through domain registration and hosting setup, since most hadn't done it before.",
       "Delivered portfolio sites, blogs, and landing pages tailored to each business rather than reused templates.",
-      "Kept working with several clients past the initial build for ongoing updates and small feature requests.",
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import { formatExperienceDates } from "@/functions/formatExperienceDates";
 import { experiencesData } from "@/data/experiencesData";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 export default function Experience() {
   return (
@@ -22,12 +23,12 @@ export default function Experience() {
             <div>
               <div className="flex items-start gap-3">
                 {experience.companyImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <ImageWithFallback
                     src={experience.companyImage}
-                    alt=""
+                    alt={`${experience.company} logo`}
                     width={40}
                     height={40}
+                    fallback={experience.company.slice(0, 2)}
                     className="mt-0.5 h-10 w-10 rounded object-cover bg-white"
                   />
                 ) : (
@@ -38,8 +39,13 @@ export default function Experience() {
                   </span>
                 )}
                 <div>
-                  <h3 className="text-lg font-semibold leading-snug dark:text-gray-900">
+                  <h3 className="text-lg font-semibold leading-snug flex items-center gap-2 dark:text-gray-900">
                     {experience.title}
+                    {experience.title.toLowerCase().includes("instructor") && (
+                      <span className="inline-flex items-center rounded-full bg-[var(--accent-text)]/10 px-2 py-0.5 font-mono-ui text-[9px] uppercase tracking-wider text-[var(--accent-text)] dark:bg-[#CA3E47]/10 dark:text-[#CA3E47]">
+                        Teaching
+                      </span>
+                    )}
                   </h3>
                   <p className="text-sm text-gray-300 dark:text-gray-700">
                     {experience.company}

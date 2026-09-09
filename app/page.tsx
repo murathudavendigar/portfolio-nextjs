@@ -2,7 +2,12 @@ import Hero from "@/components/Hero";
 import ProofStrip from "@/components/ProofStrip";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
+import Capabilities from "@/components/Capabilities";
+import ExperiencePreview from "@/components/ExperiencePreview";
+import WritingPreview from "@/components/WritingPreview";
+import ContactCta from "@/components/ContactCta";
 import { getRatingsBySlug } from "@/lib/appStore";
+import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getSelectedProjects, getPublishedNpmCount, getShippedIosCount } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
@@ -32,13 +37,32 @@ const PROOF_STATS = (selectedCount: number, iosCount: number, npmCount: number) 
 
 export default async function Home() {
   const selected = getSelectedProjects();
-  const [lead, ...rest] = selected.slice(0, 3);
+  const [lead, ...rest] = selected.slice(0, 5);
+  
   const stats = PROOF_STATS(
     selected.length,
     getShippedIosCount(),
     getPublishedNpmCount(),
   );
-  const ratings = await getRatingsBySlug([lead, ...rest].filter(Boolean));
+
+  const projectsToFetch = [lead, ...rest].filter(Boolean);
+  
+  // Fetch App Store ratings and NPM stats in parallel
+  const [ratings, npmStatsArray] = await Promise.all([
+    getRatingsBySlug(projectsToFetch),
+    Promise.all(
+      projectsToFetch.map(async (p) => {
+        const pkgName = npmPackageFromUrl(p.url);
+        if (!pkgName) return { slug: p.slug, stats: null };
+        const stats = await getNpmInfo(pkgName);
+        return { slug: p.slug, stats };
+      })
+    )
+  ]);
+
+  const npmStats = Object.fromEntries(
+    npmStatsArray.filter((x) => x.stats).map((x) => [x.slug, x.stats])
+  );
 
   return (
     <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
@@ -47,39 +71,47 @@ export default async function Home() {
 
         <ProofStrip stats={stats} />
 
+        <Capabilities />
+
         <section className="max-w-6xl px-6 py-20 mx-auto">
           <Reveal className="text-center">
             <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
               Work
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
-              Selected work
+              Selected projects
             </h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {lead && (
               <Reveal delay={0.1} className="lg:col-span-2">
-                <WorkCard project={lead} lead rating={ratings[lead.slug]} />
+                <WorkCard project={lead} lead rating={ratings[lead.slug]} npmStats={npmStats[lead.slug] || undefined} />
               </Reveal>
             )}
-            <Reveal delay={0.2} className="flex flex-col gap-6 lg:h-full">
-              {rest.map((project) => (
+            {rest.map((project, i) => (
+              <Reveal key={project.slug} delay={0.1 * (i + 1)}>
                 <WorkCard
-                  key={project.slug}
                   project={project}
-                  compact
-                  className="flex-1"
                   rating={ratings[project.slug]}
+                  npmStats={npmStats[project.slug] || undefined}
                 />
-              ))}
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
-          <div className="flex justify-center mt-10">
-            <Link href="/work" className="heroButton">
-              See all work
-            </Link>
-          </div>
+          <Reveal delay={0.2}>
+            <div className="mt-12 flex justify-center">
+              <Link href="/work" className="btn-secondary">
+                View all work
+              </Link>
+            </div>
+          </Reveal>
         </section>
+
+        <ExperiencePreview />
+        
+        <WritingPreview />
+
+        <ContactCta />
       </main>
 
       <script

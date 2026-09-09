@@ -6,6 +6,7 @@ export type Projects = {
   mockup?: "iphone" | "safari" | "none";
   name: string;
   slug: string;
+  category?: string;
   description: string;
   url: string;
   language: string;

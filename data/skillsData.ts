@@ -4,7 +4,7 @@ export const skillsData = [
     img: "/img/react.png",
   },
   {
-    name: "Next.JS",
+    name: "Next.js",
     img: "/img/nextjs.png",
   },
   {
@@ -32,56 +32,20 @@ export const skillsData = [
     img: "/img/css.png",
   },
   {
-    name: "SASS",
-    img: "/img/sass.png",
-  },
-  {
     name: "Django",
     img: "/img/django.png",
   },
   {
-    name: "Bootstrap",
-    img: "/img/bootstrap.png",
-  },
-  {
-    name: "TailwindCSS",
+    name: "Tailwind CSS",
     img: "/img/tailwindcss.png",
-  },
-  {
-    name: "Material UI",
-    img: "/img/mui.png",
   },
   {
     name: "Git",
     img: "/img/git.png",
   },
   {
-    name: "GitHub",
-    img: "/img/github.png",
-  },
-  {
-    name: "GitLab",
-    img: "/img/gitlab.png",
-  },
-  {
-    name: "Bitbucket",
-    img: "/img/bitbucket.png",
-  },
-  {
     name: "Firebase",
     img: "/img/firebase.png",
-  },
-  {
-    name: "NPM",
-    img: "/img/npm.png",
-  },
-  {
-    name: "VS Code",
-    img: "/img/vscode.png",
-  },
-  {
-    name: "Visual Studio",
-    img: "/img/visualstudio.png",
   },
   {
     name: "PostgreSQL",
@@ -97,49 +61,55 @@ export const skillsData = [
   },
   {
     name: "React Native",
-    img: "",
+    img: "/img/react-native.svg",
   },
   {
     name: "Expo",
-    img: "",
+    img: "/img/expo.svg",
+  },
+  {
+    name: "Supabase",
+    img: "/img/supabase.svg",
+  },
+  {
+    name: "Node.js",
+    img: "/img/nodejs.svg",
+  },
+  {
+    name: "Vercel",
+    img: "/img/vercel.svg",
   },
 ];
 
 export const skillGroups = [
   {
-    label: "Frontend",
+    label: "Frontend & Mobile",
     names: [
       "React",
-      "Next.JS",
-      "JavaScript",
+      "Next.js",
       "TypeScript",
+      "JavaScript",
+      "React Native",
+      "Expo",
+      "Tailwind CSS",
       "HTML",
       "CSS",
-      "SASS",
-      "TailwindCSS",
-      "Bootstrap",
-      "Material UI",
-      "Redux",
     ],
   },
   {
-    label: "Mobile",
-    names: ["React Native", "Expo"],
-  },
-  {
-    label: "Backend",
-    names: ["Python", "Django", "C#", ".NET Core", "PostgreSQL", "Firebase"],
-  },
-  {
-    label: "Tools",
+    label: "Backend & Data",
     names: [
-      "Git",
-      "GitHub",
-      "GitLab",
-      "Bitbucket",
-      "NPM",
-      "VS Code",
-      "Visual Studio",
+      "Node.js",
+      "Django",
+      "C#",
+      ".NET Core",
+      "Supabase",
+      "Firebase",
+      "PostgreSQL",
     ],
+  },
+  {
+    label: "Tooling & Deployment",
+    names: ["Git", "Redux", "Vercel"],
   },
 ] as const;

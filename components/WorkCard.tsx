@@ -4,6 +4,7 @@ import WorkCover from "@/components/WorkCover";
 import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import type { AppRating } from "@/lib/appStore";
+import type { NpmInfo } from "@/lib/npm";
 import type { Projects as ProjectType } from "@/types";
 import { useReducedMotion } from "framer-motion";
 import Link from "next/link";
@@ -15,6 +16,7 @@ type WorkCardProps = {
   lead?: boolean;
   className?: string;
   rating?: AppRating;
+  npmStats?: NpmInfo;
 };
 
 export default function WorkCard({
@@ -23,6 +25,7 @@ export default function WorkCard({
   lead = false,
   className = "",
   rating,
+  npmStats,
 }: WorkCardProps) {
   // `useReducedMotion()` is null on the server, so the branch below can only be
   // taken once the client has mounted or SSR and the first client render differ.
@@ -46,8 +49,13 @@ export default function WorkCard({
       />
       <div className="flex flex-1 flex-col gap-2 p-5">
         <div className="flex items-center justify-between gap-2">
-          <p className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
-            {project.language}
+          <p className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)] flex items-center gap-2">
+            {project.category || project.language}
+            {npmStats?.weeklyDownloads && (
+              <span className="text-gray-400 dark:text-gray-500 lowercase tracking-normal">
+                • {npmStats.weeklyDownloads.toLocaleString()} weekly dl
+              </span>
+            )}
           </p>
           {rating && (
             <p className="font-mono-ui text-[10px] text-gray-400 dark:text-gray-600">
@@ -55,7 +63,7 @@ export default function WorkCard({
             </p>
           )}
         </div>
-        <h3 className="text-lg font-semibold leading-snug [text-wrap:balance] dark:text-gray-900">
+        <h3 className="text-lg font-semibold leading-snug [text-wrap:balance] dark:text-gray-900 group-hover:text-[var(--accent-text)] transition-colors">
           {project.name}
         </h3>
         <p
@@ -64,19 +72,25 @@ export default function WorkCard({
           }`}>
           {project.description}
         </p>
-        {!compact && project.stack && project.stack.length > 0 && (
-          <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
-            {project.stack.slice(0, 3).map((item) => (
-              <li key={item}>
-                <Badge
-                  variant="outline"
-                  className="px-2 text-[10px] font-medium text-gray-400 dark:text-gray-600">
-                  {item}
-                </Badge>
-              </li>
-            ))}
-          </ul>
-        )}
+        
+        <div className="mt-auto pt-3">
+          {!compact && project.stack && project.stack.length > 0 && (
+            <ul className="flex flex-wrap gap-1.5 mb-4">
+              {project.stack.slice(0, 4).map((item) => (
+                <li key={item}>
+                  <Badge
+                    variant="outline"
+                    className="px-2 text-[10px] font-medium text-gray-400 dark:text-gray-600">
+                    {item}
+                  </Badge>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="font-mono-ui text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-500 group-hover:text-white dark:group-hover:text-gray-900 transition-colors">
+            {project.tier === "selected" ? "View case study →" : "View project →"}
+          </div>
+        </div>
       </div>
     </>
   );

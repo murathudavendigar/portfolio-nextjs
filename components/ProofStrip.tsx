@@ -9,21 +9,29 @@ function StatValue({ value }: { value: string }) {
   const isNumeric = /^\d+$/.test(value);
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLParagraphElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
-  const [display, setDisplay] = useState(
-    isNumeric && !reduceMotion ? "0" : value,
-  );
+  const inView = useInView(ref, { once: true, margin: "0px" });
+  const [mounted, setMounted] = useState(false);
+
+  // Always start with the real value for SSR — never render "0" on the server.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
-    if (!isNumeric || reduceMotion || !inView) return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || !isNumeric || reduceMotion || !inView) return;
     const target = parseInt(value, 10);
+    if (target === 0) return;
+    // Reset to 0 then animate up
+    setDisplay("0");
     const controls = animate(0, target, {
       duration: 1.1,
       ease: "easeOut",
       onUpdate: (v) => setDisplay(String(Math.round(v))),
     });
     return () => controls.stop();
-  }, [inView, isNumeric, reduceMotion, value]);
+  }, [mounted, inView, isNumeric, reduceMotion, value]);
 
   return (
     <p
@@ -45,7 +53,7 @@ export default function ProofStrip({ stats }: { stats: Stat[] }) {
             key={stat.label}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}>
             <StatValue value={stat.value} />
             <p className="mt-1 font-mono-ui text-[11px] uppercase leading-relaxed tracking-[0.12em] text-gray-400 dark:text-gray-600">

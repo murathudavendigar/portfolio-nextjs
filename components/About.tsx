@@ -40,12 +40,13 @@ export default function About() {
           </h1>
           <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
             <p>
-              Murat Hüdavendigâr Öncü is a frontend developer, co-founder of{" "}
+              Murat Hüdavendigâr Öncü is a frontend engineer, co-founder of{" "}
               <a
                 href="https://temcrafttech.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]"
+              >
                 TemCraft Tech
               </a>
               , and a frontend instructor based in the Netherlands. I ship
@@ -65,7 +66,8 @@ export default function About() {
               someone who can own the frontend and explain the decisions,{" "}
               <Link
                 href="/contact"
-                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]"
+              >
                 write to me
               </Link>
               .
@@ -101,58 +103,10 @@ export default function About() {
       <div className="mt-16 max-w-2xl space-y-10 lg:ml-auto lg:w-[min(100%,36rem)]">
         <div>
           <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
-            Who is Murat Öncü?
+            Teaching & Mentorship
           </h2>
           <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
-            Murat Hüdavendigâr Öncü is a frontend developer, co-founder of
-            TemCraft Tech, and a frontend instructor based in the Netherlands.
-            He builds production interfaces in React, Next.js, and TypeScript,
-            and he ships iOS apps with React Native and Expo — including Daily
-            Skyline, a daily 5×5 skyscraper logic puzzle on the App Store, and
-            Courai, a CBT-based iOS app for social anxiety. He also ships
-            Choose Game, a bilingual web quiz that flips the format, and
-            AutoInvoice Pro, a desktop app that renames PDF invoices. He
-            publishes npm tools he uses on his own products, such as codebrief and
-            skillbrief. He studied Computer Engineering at Kocaeli
-            University and
-            co-founded TemCraft Tech to take client and product work from scope
-            to a live UI. He teaches HTML, CSS, JavaScript, React, and Next.js
-            while using the same stack in production. He is open to frontend
-            roles in the Netherlands or remote, scoped freelance through
-            TemCraft Tech, and teaching. Notes on React, TypeScript, and
-            teaching live on this site.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
-            What does he ship?
-          </h2>
-          <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
-            Selected work includes Daily Skyline and Courai on iOS, Choose
-            Game and AutoInvoice Pro outside the App Store, codebrief and
-            skillbrief on npm, and client React / Next.js products at
-            TemCraft Tech. Case studies are on the{" "}
-            <Link
-              href="/work"
-              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
-              Work
-            </Link>{" "}
-            page.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
-            Where is he based?
-          </h2>
-          <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
-            The Netherlands. Frontend roles, remote product work, and teaching
-            are in scope —{" "}
-            <Link
-              href="/contact"
-              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
-              contact
-            </Link>{" "}
-            is {site.email}.
+            I&apos;ve spent hundreds of hours teaching frontend development to junior engineers and career-changers. My approach is practical: we build projects, write TypeScript, and debug stack traces together instead of reading slides. Teaching forces you to understand the &quot;why&quot; behind every line of code, and it makes me a much stronger engineer when I go back to building my own products.
           </p>
         </div>
       </div>

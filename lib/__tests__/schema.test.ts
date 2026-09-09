@@ -33,7 +33,7 @@ describe("blogPostingGraph", () => {
     const posting = graph.find((n: any) => n["@type"] === "BlogPosting") as any;
     expect(posting).toBeDefined();
     expect(posting.author.name).toBe(site.name);
-    expect(posting.author.jobTitle).toBe("Frontend Developer");
+    expect(posting.author.jobTitle).toBe("Frontend Engineer");
     expect(posting.author.sameAs).toEqual(Object.values(site.socials));
   });
 });
@@ -116,11 +116,11 @@ describe("workIndexSchema", () => {
 describe("personSchema", () => {
   it("exposes occupation, languages, and a Netherlands home location", () => {
     const person = personSchema() as any;
-    expect(person.jobTitle).toBe("Frontend Developer");
+    expect(person.jobTitle).toBe("Frontend Engineer");
     expect(person.knowsLanguage).toEqual(expect.arrayContaining(["en", "tr"]));
     expect(person.hasOccupation).toMatchObject({
       "@type": "Occupation",
-      name: "Frontend Developer",
+      name: "Frontend Engineer",
     });
     expect(person.homeLocation).toMatchObject({
       "@type": "Place",

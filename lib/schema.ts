@@ -12,7 +12,7 @@ export function personSchema() {
     "@id": personId,
     name: site.name,
     url: site.url,
-    jobTitle: "Frontend Developer",
+    jobTitle: "Frontend Engineer",
     email: site.email,
     description: site.description,
     image: { "@id": profileImageId },
@@ -36,7 +36,7 @@ export function personSchema() {
     knowsLanguage: ["en", "tr"],
     hasOccupation: {
       "@type": "Occupation",
-      name: "Frontend Developer",
+      name: "Frontend Engineer",
     },
     homeLocation: {
       "@type": "Place",
@@ -59,7 +59,7 @@ export function personStub() {
     "@type": "Person",
     name: site.name,
     url: site.url,
-    jobTitle: "Frontend Developer",
+    jobTitle: "Frontend Engineer",
     sameAs: Object.values(site.socials),
   };
 }
@@ -252,7 +252,7 @@ export function aboutPageGraph() {
         url: absoluteUrl("/about"),
         name: `About — ${site.shortName}`,
         description:
-          "Murat Hüdavendigâr Öncü — frontend developer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands.",
+          "Murat Hüdavendigâr Öncü — frontend engineer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         mainEntity: { "@id": personId },

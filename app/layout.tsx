@@ -1,5 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import CommandPalette from "@/components/CommandPalette";
+import HomeIntro from "@/components/HomeIntro";
 import { site } from "@/lib/site";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Nunito_Sans } from "next/font/google";
@@ -57,9 +59,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${nunitoSans.variable} ${geistMono.variable}`}>
       <body className="flex min-h-screen flex-col bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
         <Providers>
+          <HomeIntro />
           <Header />
           <div className="flex-1">{children}</div>
           <Footer />
+          <CommandPalette />
         </Providers>
       </body>
     </html>

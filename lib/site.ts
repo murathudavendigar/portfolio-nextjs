@@ -2,9 +2,9 @@ export const site = {
   name: "Murat Hüdavendigâr Öncü",
   shortName: "Murat Öncü",
   url: "https://www.muratoncu.com",
-  title: "Murat Hüdavendigâr Öncü — Frontend Developer",
+  title: "Murat Hüdavendigâr Öncü — Frontend Engineer",
   description:
-    "Co-founder at TemCraft Tech and frontend instructor. I ship React, Next.js, and iOS products and teach modern web development from the Netherlands.",
+    "Frontend engineer, co-founder at TemCraft Tech, and frontend instructor. I ship React, Next.js, and iOS products and teach modern web development from the Netherlands.",
   email: "contact@muratoncu.com",
   defaultOgImage: "/img/og.jpg",
   profileImage: "/img/pp.jpeg",

@@ -1,4 +1,5 @@
 import { skillGroups, skillsData } from "@/data/skillsData";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const byName = new Map(skillsData.map((skill) => [skill.name, skill]));
 
@@ -29,13 +30,17 @@ export default function Skills() {
                     key={name}
                     className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 dark:border-gray-400/40 dark:bg-gray-200/30">
                     {skill?.img ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <ImageWithFallback
                         src={skill.img}
                         alt=""
                         width={28}
                         height={28}
-                        className="h-7 w-7 object-contain"
+                        fallback={name.slice(0, 2)}
+                        className={`h-7 w-7 object-contain ${
+                          name === "Expo" || name === "Vercel"
+                            ? "invert dark:invert-0"
+                            : ""
+                        }`}
                       />
                     ) : (
                       <span
