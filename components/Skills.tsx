@@ -1,5 +1,5 @@
-import { skillGroups, skillsData } from "@/data/skillsData";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import { skillGroups, skillsData } from "@/data/skillsData";
 
 const byName = new Map(skillsData.map((skill) => [skill.name, skill]));
 

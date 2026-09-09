@@ -22,8 +22,7 @@ export default function ImageWithFallback({
     return (
       <span
         aria-hidden={alt ? undefined : true}
-        className={`inline-flex items-center justify-center overflow-hidden ${props.className ?? ""}`}
-      >
+        className={`inline-flex items-center justify-center overflow-hidden ${props.className ?? ""}`}>
         {fallback}
       </span>
     );
@@ -31,11 +30,6 @@ export default function ImageWithFallback({
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img
-      {...props}
-      src={src}
-      alt={alt}
-      onError={() => setFailed(true)}
-    />
+    <img {...props} src={src} alt={alt} onError={() => setFailed(true)} />
   );
 }

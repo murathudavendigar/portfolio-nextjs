@@ -1,6 +1,6 @@
-import { formatExperienceDates } from "@/functions/formatExperienceDates";
-import { experiencesData } from "@/data/experiencesData";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import { experiencesData } from "@/data/experiencesData";
+import { formatExperienceDates } from "@/functions/formatExperienceDates";
 
 export default function Experience() {
   return (
