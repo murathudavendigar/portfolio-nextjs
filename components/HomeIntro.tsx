@@ -11,24 +11,34 @@ export default function HomeIntro() {
   useEffect(() => {
     setIsClient(true);
     const hasSeen = sessionStorage.getItem("mho_intro_seen");
-    
+
     if (hasSeen) {
       setShouldAnimateExit(false);
       setShow(false);
-    } else {
-      // The draw animation takes 2s. We give it an extra 0.4s to pause at completion.
-      const timer = setTimeout(() => {
-        setShow(false);
-        sessionStorage.setItem("mho_intro_seen", "true");
-      }, 2400);
-      return () => clearTimeout(timer);
+      return;
     }
+
+    // Respect OS-level reduced motion preference
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setShow(false);
+      sessionStorage.setItem("mho_intro_seen", "true");
+      return;
+    }
+
+    // The draw animation takes 2s. We give it an extra 0.4s to pause at completion.
+    const timer = setTimeout(() => {
+      setShow(false);
+      sessionStorage.setItem("mho_intro_seen", "true");
+    }, 2400);
+    return () => clearTimeout(timer);
   }, []);
 
   // During Server-Side Rendering (SSR) and before hydration, render a solid block 
   // to prevent the underlying page from flashing before we check sessionStorage.
   if (!isClient) {
-    return <div className="fixed inset-0 z-[100] bg-ink" />;
+    return <div className="fixed inset-0 z-[100] bg-ink dark:bg-paper" />;
   }
 
   // If they have already seen it, return null immediately so we don't render 
@@ -42,17 +52,20 @@ export default function HomeIntro() {
           key="intro-screen"
           exit={{ y: "-100%" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink shadow-2xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink dark:bg-paper shadow-2xl"
+          aria-hidden="true"
         >
-          <div className="font-mono-ui text-2xl font-semibold flex items-center">
-            <span className="text-gray-500 mr-2 opacity-50">&lt;</span>
+          <div className="font-mono-ui text-2xl font-semibold flex items-center text-[#CA3E47]">
+            <span className="text-gray-500 dark:text-gray-400 mr-2 opacity-50">&lt;</span>
             
             <svg
+              role="img"
+              aria-label="MHO — Murat Hüdavendigâr Öncü"
               width="96"
               height="32"
               viewBox="0 0 72 24"
               fill="none"
-              stroke="#CA3E47"
+              stroke="currentColor"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -70,7 +83,7 @@ export default function HomeIntro() {
             </svg>
 
             <motion.span
-              className="w-3 h-[24px] bg-[#CA3E47] ml-[10px] inline-block"
+              className="w-3 h-[24px] bg-current ml-[10px] inline-block"
               animate={{ opacity: [1, 1, 0, 0] }}
               transition={{
                 duration: 1,
@@ -79,7 +92,7 @@ export default function HomeIntro() {
               }}
             />
 
-            <span className="text-gray-500 ml-2 opacity-50">/&gt;</span>
+            <span className="text-gray-500 dark:text-gray-400 ml-2 opacity-50">/&gt;</span>
           </div>
         </motion.div>
       )}

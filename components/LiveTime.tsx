@@ -30,7 +30,7 @@ export default function LiveTime() {
   return (
     <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-gray-400 dark:text-gray-500">
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span className="animate-ping motion-reduce:animate-none absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
       {time} CEST — Based in the Netherlands

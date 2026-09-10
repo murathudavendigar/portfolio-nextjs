@@ -8,16 +8,16 @@ export default function Loading() {
       <div
         role="status"
         aria-label="Loading"
-        className="font-mono-ui text-2xl font-semibold flex items-center"
+        className="font-mono-ui text-2xl font-semibold flex items-center text-[#CA3E47]"
       >
-        <span className="text-gray-500 mr-2 opacity-50">&lt;</span>
+        <span className="text-gray-500 dark:text-gray-400 mr-2 opacity-50">&lt;</span>
         
         <svg
           width="96"
           height="32"
           viewBox="0 0 72 24"
           fill="none"
-          stroke="#CA3E47"
+          stroke="currentColor"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -37,7 +37,7 @@ export default function Loading() {
         </svg>
 
         <motion.span
-          className="w-3 h-[24px] bg-[#CA3E47] ml-[10px] inline-block"
+          className="w-3 h-[24px] bg-current ml-[10px] inline-block"
           animate={{ opacity: [1, 1, 0, 0] }}
           transition={{
             duration: 1,
@@ -46,7 +46,7 @@ export default function Loading() {
           }}
         />
 
-        <span className="text-gray-500 ml-2 opacity-50">/&gt;</span>
+        <span className="text-gray-500 dark:text-gray-400 ml-2 opacity-50">/&gt;</span>
       </div>
     </div>
   );
