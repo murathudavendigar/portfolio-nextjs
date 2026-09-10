@@ -2,6 +2,8 @@ import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
 import { getResumeHref } from "@/lib/resume";
 import { site } from "@/lib/site";
 import Link from "next/link";
+import LiveTime from "./LiveTime";
+import EmailCopyLink from "./EmailCopyLink";
 
 const linkClass =
   "inline-block text-sm text-gray-200 transition-colors duration-300 hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] active:scale-[0.98] dark:text-gray-800";
@@ -20,11 +22,10 @@ export default function Footer() {
             Frontend engineer, co-founder of TemCraft Tech, and instructor.
             React, Next.js, TypeScript, and iOS — from the Netherlands.
           </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-8 inline-block text-2xl font-semibold tracking-tight transition-colors duration-300 hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] active:scale-[0.98] sm:text-3xl">
-            {site.email}
-          </a>
+          <EmailCopyLink />
+          <div className="mt-4">
+            <LiveTime />
+          </div>
           {resumeHref ? (
             <p className="mt-3">
               <a href={resumeHref} download className={linkClass}>
