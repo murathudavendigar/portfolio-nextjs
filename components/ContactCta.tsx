@@ -20,7 +20,7 @@ export default function ContactCta() {
           </Link>
           <a
             href="mailto:contact@muratoncu.com"
-            className="font-mono-ui text-[13px] tracking-wider text-gray-400 hover:text-[var(--accent-text)] transition-colors py-3 px-6">
+            className="font-mono-ui min-h-11 text-[13px] tracking-wider text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors py-3 px-6">
             contact@muratoncu.com
           </a>
         </div>

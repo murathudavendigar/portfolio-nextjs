@@ -3,8 +3,29 @@ import type { Projects as ProjectType } from "@/types";
 
 const allProjects = projectsData as ProjectType[];
 
+/**
+ * Homepage Featured spine = strongest shipped products that prove the brand
+ * promise (ratings, real users, clear card art). HaberAI & Money Guardian stay
+ * selected on /work but are intentionally /work-only until their card art and
+ * case-study depth match this set — prefer explicit “Featured products”
+ * labeling over promoting them into the homepage row.
+ */
+export const HOMEPAGE_FEATURED_SLUGS = [
+  "daily-skyline",
+  "courai",
+  "choose-game",
+  "autoinvoice-pro",
+  "codebrief",
+] as const;
+
 export function getProjects(): ProjectType[] {
   return allProjects;
+}
+
+export function getHomepageFeaturedProjects(): ProjectType[] {
+  return HOMEPAGE_FEATURED_SLUGS.map((slug) => getProject(slug)).filter(
+    (p): p is ProjectType => Boolean(p),
+  );
 }
 
 export function getProject(slug: string): ProjectType | undefined {

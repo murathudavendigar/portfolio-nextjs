@@ -4,32 +4,34 @@ import { site } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const LAST_UPDATED = "2026-09-09";
-const LAST_UPDATED_LABEL = "September 9, 2026";
+/** Keep this in sync when the page content changes (Europe/Amsterdam). */
+const LAST_UPDATED = "2026-09-23";
+const LAST_UPDATED_LABEL = "September 23, 2026";
 
 export const metadata: Metadata = {
   title: "Now",
   description:
-    "A maintained snapshot of the products Murat Hüdavendigâr Öncü ships, teaches, and writes about.",
+    "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
   alternates: { canonical: "/now" },
   openGraph: {
     title: `Now — ${site.shortName}`,
     description:
-      "A maintained snapshot of the products Murat Hüdavendigâr Öncü ships, teaches, and writes about.",
+      "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
     url: `${site.url}/now`,
     type: "website",
   },
 };
 
-const CURRENT_PROJECTS = [
+const SHIPPING = [
   "daily-skyline",
   "courai",
   "choose-game",
   "autoinvoice-pro",
+  "codebrief",
 ];
 
 export default function NowPage() {
-  const projects = CURRENT_PROJECTS.map((slug) => getProject(slug)).filter(
+  const shipping = SHIPPING.map((slug) => getProject(slug)).filter(
     (project): project is NonNullable<typeof project> => Boolean(project),
   );
 
@@ -61,9 +63,9 @@ export default function NowPage() {
             What I&apos;m focused on
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-gray-300 dark:text-gray-700">
-            A maintained snapshot of shipped products, teaching, and writing.
-            Last updated{" "}
-            <time dateTime={LAST_UPDATED}>{LAST_UPDATED_LABEL}</time>.
+            A short, honest snapshot — not a blog. Last updated{" "}
+            <time dateTime={LAST_UPDATED}>{LAST_UPDATED_LABEL}</time>{" "}
+            (Europe/Amsterdam).
           </p>
         </Reveal>
 
@@ -71,29 +73,47 @@ export default function NowPage() {
           <Reveal>
             <section>
               <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
-                Maintaining shipped products
+                Currently shipping
               </h2>
-              <ul className="mt-6 space-y-6">
-                {projects.map((project) => (
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+                Maintaining live products: App Store updates for Daily Skyline
+                and Courai, Choose Game as a PWA, AutoInvoice Pro on Gumroad,
+                and codebrief on npm.
+              </p>
+              <ul className="mt-6 space-y-4">
+                {shipping.map((project) => (
                   <li key={project.slug}>
                     <Link
                       href={`/work/${project.slug}`}
-                      className="group block rounded-lg border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-[var(--accent-text)]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-text)] dark:border-gray-400/40 dark:bg-gray-200/30">
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <h3 className="font-semibold text-white group-hover:text-[var(--accent-text)] dark:text-gray-900">
-                          {project.name}
-                        </h3>
-                        <span className="font-mono-ui text-[10px] uppercase tracking-wider text-gray-400 dark:text-gray-600">
-                          Shipped · maintaining
-                        </span>
-                      </div>
-                      <p className="mt-2 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-                        {project.description}
-                      </p>
+                      className="group flex min-h-11 flex-wrap items-baseline justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-5 py-4 transition-colors hover:border-[var(--accent-text)]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-text)] dark:border-gray-400/40 dark:bg-gray-200/30">
+                      <span className="font-semibold text-white group-hover:text-[var(--accent-text)] dark:text-gray-900">
+                        {project.name}
+                      </span>
+                      <span className="font-mono-ui text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+                        {project.category || project.language}
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
+              <Link
+                href="/work"
+                className="mt-5 inline-flex min-h-11 items-center font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)] underline decoration-white/20 underline-offset-4 hover:decoration-[var(--accent-text)]">
+                Full work index →
+              </Link>
+            </section>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <section>
+              <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
+                Building
+              </h2>
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+                Polishing this portfolio&apos;s case studies and card system so
+                hiring managers can scan shipped work in seconds. Small
+                product-side fixes on the live apps above as feedback comes in.
+              </p>
             </section>
           </Reveal>
 
@@ -105,7 +125,20 @@ export default function NowPage() {
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 Helping frontend learners build stronger fundamentals through
                 practical React, Next.js, and TypeScript projects at TemCraft
-                Tech.
+                Tech — the same stack I ship with.
+              </p>
+            </section>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <section>
+              <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
+                Learning
+              </h2>
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+                Deeper React Native / Expo release discipline (TestFlight → App
+                Store), and keeping TypeScript and Next.js App Router patterns
+                current for both products and classroom demos.
               </p>
             </section>
           </Reveal>
@@ -113,17 +146,47 @@ export default function NowPage() {
           <Reveal delay={0.2}>
             <section>
               <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
-                Writing
+                Reading / writing
               </h2>
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-                Writing clear notes about frontend architecture, JavaScript,
-                React, and the lessons that only show up after shipping.
+                Notes on frontend architecture, JavaScript, and React — lessons
+                that only show up after shipping. Short posts over long essays.
               </p>
               <Link
                 href="/writing"
-                className="mt-5 inline-block font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)] hover:underline">
+                className="mt-5 inline-flex min-h-11 items-center font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)] underline decoration-white/20 underline-offset-4 hover:decoration-[var(--accent-text)]">
                 Read the writing →
               </Link>
+            </section>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <section>
+              <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
+                Location & availability
+              </h2>
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+                Based in the Netherlands. Open to frontend roles (NL / EU /
+                remote), freelance product work, and teaching engagements.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-5 inline-flex min-h-11 items-center font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)] underline decoration-white/20 underline-offset-4 hover:decoration-[var(--accent-text)]">
+                Get in touch →
+              </Link>
+            </section>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <section>
+              <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
+                Deliberately not doing
+              </h2>
+              <ul className="mt-6 max-w-2xl list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+                <li>New greenfield side projects before the live apps are solid.</li>
+                <li>Promoting learning clones into Featured work.</li>
+                <li>Chasing every AI hype demo that is not a real product.</li>
+              </ul>
             </section>
           </Reveal>
         </div>

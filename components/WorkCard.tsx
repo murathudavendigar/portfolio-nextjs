@@ -35,10 +35,14 @@ export default function WorkCard({
   const skipMagic = mounted && Boolean(reduceMotion);
 
   const coverHeight = lead
-    ? "h-64 sm:h-80 lg:h-full lg:min-h-[22rem]"
+    ? "h-64 sm:h-72 lg:h-full lg:min-h-[20rem]"
     : compact
       ? "h-36"
       : "h-52 sm:h-56";
+
+  const linkLayout = lead
+    ? "group grid h-full overflow-hidden rounded-lg lg:grid-cols-2"
+    : "group flex h-full flex-col overflow-hidden rounded-lg";
 
   const body = (
     <>
@@ -47,23 +51,31 @@ export default function WorkCard({
         className={coverHeight}
         priority={lead}
       />
-      <div className="flex flex-1 flex-col gap-2 p-5">
+      <div className="flex flex-1 flex-col gap-2 p-5 lg:justify-center">
         <div className="flex items-center justify-between gap-2">
           <p className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)] flex items-center gap-2">
             {project.category || project.language}
             {npmStats?.weeklyDownloads && (
-              <span className="text-gray-400 dark:text-gray-500 lowercase tracking-normal">
+              <span className="lowercase tracking-normal text-[var(--text-muted)]">
                 • {npmStats.weeklyDownloads.toLocaleString()} weekly dl
               </span>
             )}
           </p>
           {rating && (
-            <p className="font-mono-ui text-[10px] text-gray-400 dark:text-gray-600">
-              ★ {rating.average.toFixed(1)}
+            <p className="shrink-0 font-mono-ui text-[10px] tabular-nums text-[var(--text-muted)]">
+              <span aria-hidden>★</span>{" "}
+              <span className="sr-only">Rated </span>
+              {rating.average.toFixed(1)}
+              {rating.count > 0 && (
+                <span>
+                  {" "}
+                  · {rating.count} rating{rating.count === 1 ? "" : "s"}
+                </span>
+              )}
             </p>
           )}
         </div>
-        <h3 className="text-lg font-semibold leading-snug [text-wrap:balance] dark:text-gray-900 group-hover:text-[var(--accent-text)] transition-colors">
+        <h3 className="text-lg font-semibold leading-snug [text-wrap:balance] dark:text-gray-900 group-hover:text-[var(--accent-text)] transition-colors sm:text-xl">
           {project.name}
         </h3>
         <p
@@ -73,21 +85,21 @@ export default function WorkCard({
           {project.description}
         </p>
         
-        <div className="mt-auto pt-3">
+        <div className="mt-auto pt-3 lg:mt-4">
           {!compact && project.stack && project.stack.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 mb-4">
               {project.stack.slice(0, 4).map((item) => (
                 <li key={item}>
                   <Badge
                     variant="outline"
-                    className="px-2 text-[10px] font-medium text-gray-400 dark:text-gray-600">
+                    className="px-2 text-[10px] font-medium text-[var(--text-muted)]">
                     {item}
                   </Badge>
                 </li>
               ))}
             </ul>
           )}
-          <div className="font-mono-ui text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-500 group-hover:text-white dark:group-hover:text-gray-900 transition-colors">
+          <div className="font-mono-ui text-[10px] uppercase tracking-wider text-[var(--text-muted)] group-hover:text-white dark:group-hover:text-gray-900 transition-colors">
             {project.tier === "selected" ? "View case study →" : "View project →"}
           </div>
         </div>
@@ -101,7 +113,7 @@ export default function WorkCard({
     return (
       <Link
         href={`/work/${project.slug}`}
-        className={`group flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-0.5 hover:border-[#CA3E47]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-300 dark:bg-gray-200/30 ${className}`}>
+        className={`${linkLayout} border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-0.5 hover:border-[#CA3E47]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-300 dark:bg-gray-200/30 ${className}`}>
         {body}
       </Link>
     );
@@ -121,7 +133,7 @@ export default function WorkCard({
       className={`h-full rounded-lg transition-transform duration-300 hover:-translate-y-0.5 [&>div:last-child]:h-full ${className}`}>
       <Link
         href={`/work/${project.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-lg bg-white/[0.03] transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#CA3E47] dark:bg-gray-200/30">
+        className={`${linkLayout} bg-white/[0.03] transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#CA3E47] dark:bg-gray-200/30`}>
         {body}
       </Link>
     </MagicCard>

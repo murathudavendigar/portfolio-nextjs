@@ -14,13 +14,17 @@ const BackgroundCircles = () => {
   return (
     <div
       aria-hidden
-      className="pointer-events-none relative flex items-center justify-center">
+      className="pointer-events-none relative flex max-w-full items-center justify-center">
       {RINGS.map((ring, i) => (
         <motion.div
           key={ring.size}
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: reduceMotion ? ring.opacity : 0, scale: reduceMotion ? 1 : 0.9 }}
           animate={{ opacity: ring.opacity, scale: 1 }}
-          transition={{ duration: 0.8, delay: reduceMotion ? 0 : i * 0.1, ease: "easeOut" }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.8,
+            delay: reduceMotion ? 0 : i * 0.1,
+            ease: "easeOut",
+          }}
           className="absolute rounded-full border border-[#CA3E47]/40"
           style={{ height: ring.size, width: ring.size }}
         />

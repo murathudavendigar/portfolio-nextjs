@@ -39,16 +39,18 @@ const Hero = () => {
           </Link>
         </div>
 
-        <p className="mt-8 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+        <p className="mt-8 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
           React · Next.js · TypeScript · React Native
         </p>
 
-        <p className="mt-3 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+        <p className="mt-3 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
           Open to frontend roles (NL / EU / remote) · freelance · teaching
         </p>
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-xs items-center justify-center lg:max-w-none">
+      {/* overflow-hidden clips decorative rings (up to 680px) so they cannot
+          expand document scrollWidth — root cause of page-wide horizontal scroll */}
+      <div className="relative mx-auto flex w-full max-w-xs items-center justify-center overflow-hidden lg:max-w-none">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <BackgroundCircles />
         </div>

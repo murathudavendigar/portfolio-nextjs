@@ -3,6 +3,7 @@ import projectsData from "@/data/projects.json";
 import {
   getAdjacentProjects,
   getEarlierProjects,
+  getHomepageFeaturedProjects,
   getProject,
   getProjects,
   getSelectedProjects,
@@ -12,6 +13,7 @@ import {
   getWorkMockupKind,
   hasCaseStudy,
   hasWorkMedia,
+  HOMEPAGE_FEATURED_SLUGS,
   projectPrimaryCta,
 } from "../projects";
 
@@ -48,6 +50,17 @@ describe("selected vs earlier split", () => {
     for (const project of selected) {
       expect(earlierSlugs.has(project.slug)).toBe(false);
     }
+  });
+
+  it("keeps HaberAI and Money Guardian selected on /work but off the homepage Featured spine", () => {
+    const featured = getHomepageFeaturedProjects().map((p) => p.slug);
+    expect(featured).toEqual([...HOMEPAGE_FEATURED_SLUGS]);
+    expect(featured).not.toContain("haberai");
+    expect(featured).not.toContain("money-guardian");
+    expect(featured).not.toContain("skillbrief");
+    const selected = new Set(getSelectedProjects().map((p) => p.slug));
+    expect(selected.has("haberai")).toBe(true);
+    expect(selected.has("money-guardian")).toBe(true);
   });
 
   it("includes Daily Skyline and Courai as selected iOS work", () => {
@@ -197,8 +210,17 @@ describe("getWorkMockupKind", () => {
   });
 
   it("uses Safari frames for web product screenshots", () => {
-    expect(getWorkMockupKind(getProject("choose-game")!)).toBe("safari");
     expect(getWorkMockupKind(getProject("haberai")!)).toBe("safari");
+  });
+
+  it("frames Choose Game as a phone mock for mobile PWA gameplay art", () => {
+    expect(getWorkMockupKind(getProject("choose-game")!)).toBe("iphone");
+    expect(getProject("choose-game")!.coverFit).toBe("contain");
+  });
+
+  it("keeps codebrief on product terminal art, not GitHub OG", () => {
+    expect(getProject("codebrief")!.img).toBe("/img/projects/codebrief.png");
+    expect(getProject("codebrief")!.coverFit).toBe("contain");
   });
 
   it("skips device frames for npm packages and empty covers", () => {

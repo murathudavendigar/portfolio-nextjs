@@ -78,18 +78,18 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-col gap-2 border-t border-white/10 px-4 py-4 dark:border-gray-400/40 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p className="font-mono-ui text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-700">
+        <p className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)]">
           © {new Date().getFullYear()} {site.name}
         </p>
         <nav aria-label="Legal" className="flex items-center gap-4">
           <Link
             href="/privacy"
-            className="font-mono-ui text-[11px] uppercase tracking-wider text-gray-400 transition-colors hover:text-[var(--accent-text)] dark:text-gray-700">
+            className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
             Privacy
           </Link>
           <a
             href="/feed.xml"
-            className="font-mono-ui text-[11px] uppercase tracking-wider text-gray-400 transition-colors hover:text-[var(--accent-text)] dark:text-gray-700">
+            className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
             RSS
           </a>
         </nav>

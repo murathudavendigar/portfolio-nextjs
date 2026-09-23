@@ -8,7 +8,7 @@ import WritingPreview from "@/components/WritingPreview";
 import ContactCta from "@/components/ContactCta";
 import { getRatingsBySlug } from "@/lib/appStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
-import { getSelectedProjects, getPublishedNpmCount, getShippedIosCount } from "@/lib/projects";
+import { getHomepageFeaturedProjects, getPublishedNpmCount, getSelectedProjects, getShippedIosCount } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
@@ -36,16 +36,17 @@ const PROOF_STATS = (selectedCount: number, iosCount: number, npmCount: number) 
 ];
 
 export default async function Home() {
-  const selected = getSelectedProjects();
-  const [lead, ...rest] = selected.slice(0, 5);
+  // Explicit Featured spine — not “all selected”; HaberAI / Money Guardian stay /work-only.
+  const featured = getHomepageFeaturedProjects();
+  const [lead, ...rest] = featured;
   
   const stats = PROOF_STATS(
-    selected.length,
+    getSelectedProjects().length,
     getShippedIosCount(),
     getPublishedNpmCount(),
   );
 
-  const projectsToFetch = [lead, ...rest].filter(Boolean);
+  const projectsToFetch = featured;
   
   // Fetch App Store ratings and NPM stats in parallel
   const [ratings, npmStatsArray] = await Promise.all([
@@ -76,11 +77,21 @@ export default async function Home() {
         <section className="max-w-6xl px-6 py-20 mx-auto">
           <Reveal className="text-center">
             <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
-              Work
+              Featured products
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
-              Selected projects
+              Shipped apps and tools
             </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+              The strongest products that prove the brand promise. Full index —
+              including selected web apps and earlier builds — lives on{" "}
+              <Link
+                href="/work"
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
+                Work
+              </Link>
+              .
+            </p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {lead && (

@@ -56,7 +56,7 @@ export default function ProofStrip({ stats }: { stats: Stat[] }) {
             viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}>
             <StatValue value={stat.value} />
-            <p className="mt-1 font-mono-ui text-[11px] uppercase leading-relaxed tracking-[0.12em] text-gray-400 dark:text-gray-600">
+            <p className="mt-1 font-mono-ui text-[11px] uppercase leading-relaxed tracking-[0.12em] text-[var(--text-muted)]">
               {stat.label}
             </p>
           </motion.div>

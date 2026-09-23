@@ -26,11 +26,8 @@ export default function WorkDeviceFrame({
   // has to come from the figcaption instead of an alt attribute.
   if (kind === "iphone") {
     return (
-      <figure className="mt-14">
-        <Iphone
-          src={project.img}
-          className="mx-auto w-full max-w-[280px] sm:max-w-[320px]"
-        />
+      <figure className="mx-auto w-full max-w-[280px] lg:ml-auto lg:mr-0">
+        <Iphone src={project.img} className="w-full" />
         <figcaption className="sr-only">{project.name} screenshot</figcaption>
       </figure>
     );
@@ -38,7 +35,7 @@ export default function WorkDeviceFrame({
 
   if (kind === "safari") {
     return (
-      <figure className="mt-14">
+      <figure className="w-full min-w-0">
         <Safari
           imageSrc={project.img}
           url={displayHost(project.url)}
@@ -50,7 +47,7 @@ export default function WorkDeviceFrame({
   }
 
   return (
-    <figure className="mt-14 overflow-hidden rounded-lg border border-white/10 bg-black/40 dark:border-gray-300 dark:bg-gray-200/40">
+    <figure className="w-full min-w-0 overflow-hidden rounded-lg border border-white/10 bg-inkDeep dark:border-gray-300 dark:bg-gray-200/40">
       <WorkCover
         project={project}
         priority
@@ -58,12 +55,15 @@ export default function WorkDeviceFrame({
         variant="detail"
         className={
           isIos
-            ? "mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[320px]"
-            : project.coverFit === "contain"
-              ? "mx-auto aspect-square w-full max-w-[240px]"
-              : "min-h-[220px] sm:min-h-[320px] lg:min-h-[380px]"
+            ? "mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]"
+            : project.coverFit === "contain" ||
+                project.language === "NPM" ||
+                project.language === "Electron"
+              ? "aspect-[16/10] w-full"
+              : "min-h-[220px] sm:min-h-[280px]"
         }
       />
+      <figcaption className="sr-only">{project.name} screenshot</figcaption>
     </figure>
   );
 }

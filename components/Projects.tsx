@@ -13,16 +13,17 @@ const Projects = async () => {
         Work
       </p>
       <h1 className="mt-3 text-center text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">
-        Selected work, then earlier builds
+        Featured products, then the full index
       </h1>
       <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-        Shipped products and tools first, grouped by kind. Learning clones and
-        older experiments stay listed, clearly labeled, underneath.
+        Selected work first — including HaberAI and Money Guardian here, even
+        when they stay off the homepage Featured row. Learning clones and older
+        experiments stay under Earlier builds.
       </p>
 
       {groups.map((group) => (
         <section key={group.category} className="mt-16">
-          <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600">
+          <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
             {group.category}
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,10 +39,10 @@ const Projects = async () => {
       ))}
 
       <section className="mt-24">
-        <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-600">
+        <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
           Earlier builds
         </h2>
-        <p className="mt-2 max-w-xl text-sm text-gray-400 dark:text-gray-600">
+        <p className="mt-2 max-w-xl text-sm text-[var(--text-muted)]">
           Course projects and clones from when I was learning the stack. Kept
           for the record — not the work I lead with.
         </p>
