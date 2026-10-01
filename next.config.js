@@ -10,7 +10,36 @@ const nextConfig = {
     ],
   },
   async redirects() {
+    const prunedWorkSlugs = [
+      "nextjs-amazon-clone",
+      "nextjs-instagram-clone",
+      "nextjs-chatgpt",
+      "nextjs-netflix-app",
+      "click-game",
+      "cheers-app",
+      "weather-app-with-typescript-and-reactjs",
+      "movie-app",
+      "bored-app",
+      "typescript-quiz-app",
+      "linktree-clone",
+      "fireblog-app",
+      "brawl-stars-app",
+      "weather-app-with-pure-js",
+    ];
+
     return [
+      ...prunedWorkSlugs.flatMap((slug) => [
+        {
+          source: `/work/${slug}`,
+          destination: "/work",
+          permanent: true,
+        },
+        {
+          source: `/projects/${slug}`,
+          destination: "/work",
+          permanent: true,
+        },
+      ]),
       {
         source: "/projects/:slug*",
         destination: "/work/:slug*",

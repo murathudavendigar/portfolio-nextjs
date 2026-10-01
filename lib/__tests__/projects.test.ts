@@ -86,23 +86,28 @@ describe("selected vs earlier split", () => {
 
   it("keeps teaching demos and older apps in Earlier, not the hero row", () => {
     const earlierSlugs = getEarlierProjects().map((p) => p.slug);
-    expect(earlierSlugs).toEqual(
-      expect.arrayContaining([
-        "dev-console-kit",
-        "ai-resume-doctor",
-        "event-manager",
-        "e-price-ecommerce-project",
-      ]),
-    );
-    const selected = new Set(getSelectedProjects().map((p) => p.slug));
-    for (const slug of [
+    expect(earlierSlugs).toEqual([
       "dev-console-kit",
       "ai-resume-doctor",
       "event-manager",
       "e-price-ecommerce-project",
-    ]) {
+    ]);
+    const selected = new Set(getSelectedProjects().map((p) => p.slug));
+    for (const slug of earlierSlugs) {
       expect(selected.has(slug)).toBe(false);
     }
+  });
+
+  it("gives every earlier project a case study and drops stub clones", () => {
+    for (const project of getEarlierProjects()) {
+      expect(hasCaseStudy(project)).toBe(true);
+      expect(project.problem?.length).toBeGreaterThan(40);
+      expect(project.approach?.length).toBeGreaterThan(40);
+      expect(project.outcome?.length).toBeGreaterThan(20);
+    }
+    expect(getProject("nextjs-amazon-clone")).toBeUndefined();
+    expect(getProject("fireblog-app")).toBeUndefined();
+    expect(getProject("bored-app")).toBeUndefined();
   });
 
   it("points iOS apps at the App Store", () => {
@@ -127,11 +132,10 @@ describe("selected vs earlier split", () => {
     expect(projectPrimaryCta(getProject("haberai")!)?.label).toBe("Visit site");
   });
 
-  it("uses a typographic cover when a remote image is gone", () => {
-    expect(getProject("fireblog-app")?.img).toBe("");
-    expect(getProject("weather-app-with-pure-js")?.img).toBe("");
-    expect(hasWorkMedia(getProject("fireblog-app")!)).toBe(false);
+  it("keeps local covers on selected and earlier work that still ships media", () => {
     expect(hasWorkMedia(getProject("courai")!)).toBe(true);
+    expect(hasWorkMedia(getProject("dev-console-kit")!)).toBe(true);
+    expect(hasWorkMedia(getProject("event-manager")!)).toBe(true);
   });
 
   it("gives every selected project a full case study", () => {
@@ -223,11 +227,10 @@ describe("getWorkMockupKind", () => {
     expect(getProject("codebrief")!.coverFit).toBe("contain");
   });
 
-  it("skips device frames for npm packages and empty covers", () => {
+  it("skips device frames for npm packages", () => {
     expect(getWorkMockupKind(getProject("codebrief")!)).toBe("none");
     expect(getWorkMockupKind(getProject("skillbrief")!)).toBe("none");
-    expect(getWorkMockupKind(getProject("fireblog-app")!)).toBe("none");
-    expect(getProject("fireblog-app")!.img?.trim()).toBe("");
+    expect(getWorkMockupKind(getProject("dev-console-kit")!)).toBe("none");
   });
 
   it("skips browser chrome for desktop Electron apps", () => {

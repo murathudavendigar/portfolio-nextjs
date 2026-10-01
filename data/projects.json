@@ -11,7 +11,13 @@
     "github": "",
     "tier": "selected",
     "appStoreUrl": "https://apps.apple.com/app/id6791111716",
-    "stack": ["React Native", "Expo", "TypeScript", "Game Center", "Next.js"],
+    "stack": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Game Center",
+      "Next.js"
+    ],
     "problem": "Skyscraper puzzles usually live in books or one-off web toys. There is no shared daily board, so you cannot compare a time with anyone who played the same grid.",
     "approach": "One deterministic 5×5 puzzle per calendar date — same clues, same difficulty, everywhere. I shipped it as an iOS app (Expo / React Native) with notes, undo, a mistake limit, on-device streaks, an archive of missed days, optional Game Center leaderboards, and a marketing site at dailyskyline.muratoncu.com.",
     "tradeoffs": "No account means you can play immediately, but progress lives on the device — a reinstall can drop a streak. iOS shipped first; Android is not in the store yet. Difficulty ramps through the week instead of letting players pick a puzzle size.",
@@ -104,7 +110,10 @@
     "language": "NPM",
     "github": "https://github.com/murathudavendigar/codebrief",
     "tier": "selected",
-    "stack": ["Node.js", "TypeScript"],
+    "stack": [
+      "Node.js",
+      "TypeScript"
+    ],
     "problem": "AI coding tools need project context. Most people paste random files or write Cursor rules by hand, so the model guesses the stack.",
     "approach": "A CLI that walks a repo and writes CONTEXT.md, Cursor rules, and Copilot instructions. Zero npm runtime dependencies — Node.js only — so it installs and runs without a package-manager maze.",
     "tradeoffs": "No GUI. Node-only on purpose: one runtime, no browser bundle, no plugin marketplace.",
@@ -120,7 +129,9 @@
     "language": "NPM",
     "github": "https://github.com/murathudavendigar/skillbrief",
     "tier": "selected",
-    "stack": ["Node.js"],
+    "stack": [
+      "Node.js"
+    ],
     "problem": "codebrief tells an agent what a repo is. Agents still guess how to add a page, run tests, or touch the UI, because those procedures live in always-on rules or nowhere.",
     "approach": "A CLI that scans the repo and writes Agent Skills — SKILL.md files that load only when the task matches. Next.js, tests, UI, database, API, and auth skills appear only if that stack is actually there. Zero npm runtime dependencies.",
     "tradeoffs": "v1 is a safe skeleton, not a senior reading your source. It will omit project-specific paths and can miss a deploy target. Treat the files as a first draft, then add a few human rules.",
@@ -135,7 +146,11 @@
     "language": "NPM",
     "github": "https://github.com/murathudavendigar/dev-console-kit",
     "tier": "earlier",
-    "stack": ["React", "Next.js", "TypeScript"],
+    "stack": [
+      "React",
+      "Next.js",
+      "TypeScript"
+    ],
     "problem": "Students in my frontend courses mix server and client logs, then spend the session fighting CSS without seeing what the layout is actually doing.",
     "approach": "A small logging kit aimed at teaching: environment-aware output, layout hints, and console output you can read in a classroom instead of a wall of Object objects.",
     "tradeoffs": "Built for learners, not as a general-purpose observability platform. Color and copy are opinionated so the lesson lands.",
@@ -150,7 +165,11 @@
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/ai-resume-doctor",
     "tier": "earlier",
-    "stack": ["React", "Google Gemini", "TypeScript"],
+    "stack": [
+      "React",
+      "Google Gemini",
+      "TypeScript"
+    ],
     "problem": "Resume feedback is usually generic (“add more action verbs”). Job seekers need specific strengths, gaps, and a match against a real role.",
     "approach": "A React app that sends the uploaded CV through Gemini and returns strengths, weaknesses, a job-match score, and concrete edits — not a paragraph of filler.",
     "tradeoffs": "Quality depends on the model and the prompt, not a human reviewer. I did not invent placement rates or user counts around it.",
@@ -166,7 +185,14 @@
     "language": "Next.JS",
     "github": "",
     "tier": "selected",
-    "stack": ["Next.js", "Groq", "Gemini", "Upstash Redis", "Web Push", "PWA"],
+    "stack": [
+      "Next.js",
+      "Groq",
+      "Gemini",
+      "Upstash Redis",
+      "Web Push",
+      "PWA"
+    ],
     "problem": "Turkish news is split across desks, ads, and headlines that do not say what actually happened. Opening five sites to get one morning brief is the default.",
     "approach": "HaberAI is a Next.js PWA that pulls RSS from Turkish and international desks into one feed. Groq and Gemini write short summaries and a daily digest, cached in Upstash Redis. Web Push sends the evening digest. A market widget shows BIST, USD/TRY, and gold. Bookmarks stay in the browser.",
     "tradeoffs": "Ads-free and independent, so there is no newsroom behind it. AI summaries are labeled as AI, and the original publisher keeps the source link. Turkish-first. Push stores a subscription key, nothing else.",
@@ -204,7 +230,12 @@
     "language": "Next.JS",
     "github": "https://github.com/murathudavendigar/calendar-app",
     "tier": "earlier",
-    "stack": ["Next.js", "Firebase", "TypeScript", "ics"],
+    "stack": [
+      "Next.js",
+      "Firebase",
+      "TypeScript",
+      "ics"
+    ],
     "problem": "I wanted a thin event list that still lands in Google Calendar, Outlook, or Apple Calendar, without living inside Google's full calendar UI.",
     "approach": "A Next.js app with Firebase Auth (Google or GitHub). Create, edit, and delete events, then download a .ics file or subscribe through a URL that regenerates when the list changes.",
     "tradeoffs": "The subscribe URL is keyed by user id, so anyone with the link can read the feed. There is no invitation or permission model. I still add features as I use it.",
@@ -219,150 +250,16 @@
     "language": "React.JS",
     "github": "https://github.com/murathudavendigar/react-ecommerce",
     "tier": "earlier",
-    "stack": ["React", "Redux Toolkit", "Firebase", "Sass", "Chart.js"],
+    "stack": [
+      "React",
+      "Redux Toolkit",
+      "Firebase",
+      "Sass",
+      "Chart.js"
+    ],
     "problem": "Course e-commerce demos usually stop at a product grid. I wanted a shopper flow and an admin flow in one React app.",
     "approach": "React with Redux Toolkit and Firebase. Email or Google auth, a cart that works before login, checkout, order history, and reviews. An admin panel for products, order status, and Chart.js totals. EmailJS sends order mail.",
     "tradeoffs": "Create React App and Firebase, not Next.js. It is a complete demo store, not a merchant with real payments.",
     "outcome": "Live at eprice-ecommerce.vercel.app. You can walk the shopper side and the admin side in the same build."
-  },
-  {
-    "name": "NextJS Amazon Clone",
-    "slug": "nextjs-amazon-clone",
-    "img": "",
-    "description": "Fully responsive Amazon Clone Application made using Next.js. It is a web application where a real payment system is created using Stripe checkout, the relevant orders are registered to the firestore database using webhooks, and Redux is used as global state management.",
-    "url": "https://amazon-nextjs-hazel.vercel.app/",
-    "language": "Next.JS",
-    "github": "https://github.com/murathudavendigar/amazon-nextjs",
-    "tier": "earlier"
-  },
-  {
-    "name": "NextJS Instagram Clone",
-    "slug": "nextjs-instagram-clone",
-    "img": "",
-    "description": "A fully responsive Instagram Clone application made using Next.js, React Recoil, TailwindCSS, Firebase and Next Auth, where users can share images, write comments, like other users' photos and view other users' profiles after logging in with Google.",
-    "url": "https://instagram-nextjs-johnprice.vercel.app/",
-    "language": "Next.JS",
-    "github": "https://github.com/murathudavendigar/instagram-nextjs",
-    "tier": "earlier"
-  },
-  {
-    "name": "NextJS ChatGPT",
-    "slug": "nextjs-chatgpt",
-    "img": "",
-    "description": "ChatGPT clone site made using openai API",
-    "url": "https://chatgpt-nextjs.vercel.app/",
-    "language": "Next.JS",
-    "github": "https://github.com/murathudavendigar/chatgpt-nextjs",
-    "tier": "earlier"
-  },
-  {
-    "name": "NextJS Netflix App",
-    "slug": "nextjs-netflix-app",
-    "img": "",
-    "description": "NextJS Netflix App is a responsive web application where you can watch the trailer of the movie you want to see the information of after registering and logging in and you can create a watch list for yourself by pressing the + button.",
-    "url": "https://netflix-nextjs-git-main-murathudavendigar.vercel.app/",
-    "language": "Next.JS",
-    "github": "https://github.com/murathudavendigar/netflix-nextjs",
-    "tier": "earlier"
-  },
-  {
-    "name": "Click Game",
-    "slug": "click-game",
-    "img": "https://user-images.githubusercontent.com/109613328/206291099-e430a978-3add-44ee-b1d7-713aca2c8662.gif",
-    "description": "Challenge your clicking capacity and also improve your gaming skills. Practice as much you can to become the king in your gaming community.",
-    "url": "https://click-game-react.vercel.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/click-game-react",
-    "tier": "earlier"
-  },
-  {
-    "name": "Cheers App",
-    "slug": "cheers-app",
-    "img": "https://user-images.githubusercontent.com/100320309/204961075-9f2b7dcd-1b10-447d-8c09-bd3b16f077a9.gif",
-    "description": "By taking the location information of the device in your hand, it will show you the closest place to the cocktail you want to drink.",
-    "url": "https://reactjs-device-cafe-app.vercel.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/reactjs-cocktail-cheers-app",
-    "tier": "earlier"
-  },
-  {
-    "name": "Weather App with TypeScript and ReactJS",
-    "slug": "weather-app-with-typescript-and-reactjs",
-    "img": "https://user-images.githubusercontent.com/109613328/211223378-ed67d12b-aae8-4a64-9b62-10baeea02e75.gif",
-    "description": "This Weather App is using ReactJS, TypeScript and TailwindCSS.",
-    "url": "https://weather-app-typescript-price.vercel.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/weather-app-react-typescript",
-    "tier": "earlier"
-  },
-  {
-    "name": "Movie App",
-    "slug": "movie-app",
-    "img": "",
-    "description": "React Movie App is a web app where you can search for movies, watch movie trailers or find recent movies after you sign up for the app.",
-    "url": "https://murathudavendigar.github.io/movie-app-react/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/movie-app-react",
-    "tier": "earlier"
-  },
-  {
-    "name": "Bored App",
-    "slug": "bored-app",
-    "img": "https://user-images.githubusercontent.com/109613328/205906176-255864ce-32b9-4f58-9217-a5bdc2326f9b.gif",
-    "description": "React Bored App is a web application that when you're bored, randomly recommends activities based on your chosen criteria.",
-    "url": "https://bored-api-react.netlify.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/bored-api-react",
-    "tier": "earlier"
-  },
-  {
-    "name": "TypeScript Quiz App",
-    "slug": "typescript-quiz-app",
-    "img": "https://user-images.githubusercontent.com/109613328/208204716-ce99c3af-0e59-4dae-bdfa-0a19e7a8ac44.gif",
-    "description": "React TypeScript Quiz App is a fun application that uses TypeScript in its construction, consists of 10 questions and each correct answer earns 1 point.",
-    "url": "https://react-typescript-quiz-app-nu.vercel.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/react-typescript-quiz-app",
-    "tier": "earlier"
-  },
-  {
-    "name": "Linktree Clone",
-    "slug": "linktree-clone",
-    "img": "https://user-images.githubusercontent.com/109613328/213595256-f89568d3-3a9f-4d9e-93b9-9ba84287f6f5.png",
-    "description": "Linktree clone website with Next.JS",
-    "url": "https://linktree-nextjs-phi.vercel.app/",
-    "language": "Next.JS",
-    "github": "https://github.com/murathudavendigar/linktree-nextjs",
-    "tier": "earlier"
-  },
-  {
-    "name": "Fireblog App",
-    "slug": "fireblog-app",
-    "img": "",
-    "description": "React Fireblog App is a web application where you can read and add blogs after registering with the app.",
-    "url": "https://murathudavendigar.github.io/fireblog-app-react/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/fireblog-app-react",
-    "tier": "earlier"
-  },
-  {
-    "name": "Brawl Stars App",
-    "slug": "brawl-stars-app",
-    "img": "https://user-images.githubusercontent.com/109613328/205418052-65c5665b-1189-49d5-b4aa-2e3346571575.gif",
-    "description": "A web application that I prepared to work with React JS using the Brawl Stars API.",
-    "url": "https://brawl-stars-jp.vercel.app/",
-    "language": "React.JS",
-    "github": "https://github.com/murathudavendigar/brawl-stars-api-react",
-    "tier": "earlier"
-  },
-  {
-    "name": "Weather App with Pure JS",
-    "slug": "weather-app-with-pure-js",
-    "img": "",
-    "description": "A web application made using Pure JavaScript that shows the instant weather conditions of the cities with GIFs.",
-    "url": "https://thunderous-arithmetic-1b6a1f.netlify.app/",
-    "language": "JavaScript",
-    "github": "https://github.com/murathudavendigar/weather-app",
-    "tier": "earlier"
   }
 ]

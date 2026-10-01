@@ -184,7 +184,7 @@ export default function NowPage() {
               </h2>
               <ul className="mt-6 max-w-2xl list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 <li>New greenfield side projects before the live apps are solid.</li>
-                <li>Promoting learning clones into Featured work.</li>
+                <li>Putting thin demo clones back on /work.</li>
                 <li>Chasing every AI hype demo that is not a real product.</li>
               </ul>
             </section>
