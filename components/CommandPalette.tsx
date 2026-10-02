@@ -27,6 +27,7 @@ export default function CommandPalette({ resumeHref }: { resumeHref: string | nu
     { name: "Go to About", category: "Navigation", action: () => router.push("/about") },
     { name: "Go to Writing", category: "Navigation", action: () => router.push("/writing") },
     { name: "Go to Uses", category: "Navigation", action: () => router.push("/uses") },
+    { name: "Go to Lab", category: "Navigation", action: () => router.push("/lab") },
     { name: "Go to Hire", category: "Navigation", action: () => router.push("/hire") },
     { name: "Go to Contact", category: "Navigation", action: () => router.push("/contact") },
     { name: "Go to Now", category: "Navigation", action: () => router.push("/now") },

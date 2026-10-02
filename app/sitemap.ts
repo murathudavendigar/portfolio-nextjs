@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${site.url}/now`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/uses`, lastModified: STATIC_LAST_MODIFIED },
+    { url: `${site.url}/lab`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/hire`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/contact`, lastModified: STATIC_LAST_MODIFIED },
     { url: `${site.url}/privacy`, lastModified: STATIC_LAST_MODIFIED },

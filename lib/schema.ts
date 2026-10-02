@@ -309,6 +309,26 @@ export function hirePageGraph() {
   };
 }
 
+export function labPageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${absoluteUrl("/lab")}#webpage`,
+        url: absoluteUrl("/lab"),
+        name: `Lab — ${site.shortName}`,
+        description:
+          "Interactive demos from Murat Öncü’s shipped products, including a CHOOSE mini-round.",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        inLanguage: "en",
+      },
+      personStub(),
+    ],
+  };
+}
+
 export function privacyPageGraph() {
   return {
     "@context": "https://schema.org",
