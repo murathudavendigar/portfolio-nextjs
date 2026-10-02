@@ -204,55 +204,86 @@ export default function ChooseLab() {
         {phase === "intro" ? (
           <motion.div
             key="intro"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.42, ease: EASE_OUT }}
+            initial={
+              reduceMotion
+                ? false
+                : { opacity: 0, transform: "translateY(18px) scale(0.96)" }
+            }
+            animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
+            exit={
+              reduceMotion
+                ? undefined
+                : { opacity: 0, transform: "translateY(-12px) scale(0.98)" }
+            }
+            transition={{ duration: 0.45, ease: EASE_OUT }}
             className="text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[#CA3E47]/40 bg-[#CA3E47]/10">
+            <motion.div
+              className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[#CA3E47]/40 bg-[#CA3E47]/10"
+              initial={
+                reduceMotion
+                  ? false
+                  : { transform: "scale(0.7) rotate(-18deg)", opacity: 0 }
+              }
+              animate={{ transform: "scale(1) rotate(0deg)", opacity: 1 }}
+              transition={{ ...SPRING_POP, delay: 0.08 }}>
               <span className="font-mono-ui text-lg font-semibold tracking-widest text-[#CA3E47]">
                 ✕
               </span>
-            </div>
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight dark:text-gray-900 sm:text-4xl">
+            </motion.div>
+            <motion.h2
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.15 }}
+              className="mt-6 text-3xl font-semibold tracking-tight dark:text-gray-900 sm:text-4xl">
               Wrong is right
-            </h2>
-            <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+            </motion.h2>
+            <motion.p
+              initial={reduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.25 }}
+              className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-gray-300 dark:text-gray-700">
               The CHOOSE rule, compressed: tap the{" "}
               <span className="text-white dark:text-gray-900">incorrect</span>{" "}
               option to score. Tap the correct one — or run out of time — and
               you burn a life. Combos reward streaks.
-            </p>
+            </motion.p>
             <ul className="mx-auto mt-6 grid max-w-xs gap-2 text-left text-sm text-gray-400 dark:text-gray-600">
-              <li className="flex justify-between border-t border-white/10 pt-2 dark:border-gray-400/40">
-                <span>Rounds</span>
-                <span className="tabular-nums text-gray-200 dark:text-gray-800">
-                  {total}
-                </span>
-              </li>
-              <li className="flex justify-between border-t border-white/10 pt-2 dark:border-gray-400/40">
-                <span>Lives</span>
-                <span className="tabular-nums text-gray-200 dark:text-gray-800">
-                  {CHOOSE_LAB_LIVES}
-                </span>
-              </li>
-              <li className="flex justify-between border-t border-white/10 pt-2 dark:border-gray-400/40">
-                <span>Timer</span>
-                <span className="tabular-nums text-gray-200 dark:text-gray-800">
-                  {CHOOSE_LAB_SECONDS}s / round
-                </span>
-              </li>
+              {(
+                [
+                  ["Rounds", String(total)],
+                  ["Lives", String(CHOOSE_LAB_LIVES)],
+                  ["Timer", `${CHOOSE_LAB_SECONDS}s / round`],
+                ] as const
+              ).map(([label, value], i) => (
+                <motion.li
+                  key={label}
+                  initial={
+                    reduceMotion
+                      ? false
+                      : { opacity: 0, transform: "translateX(-8px)" }
+                  }
+                  animate={{ opacity: 1, transform: "translateX(0px)" }}
+                  transition={{
+                    duration: 0.35,
+                    ease: EASE_OUT,
+                    delay: 0.3 + i * 0.07,
+                  }}
+                  className="flex justify-between border-t border-white/10 pt-2 dark:border-gray-400/40">
+                  <span>{label}</span>
+                  <span className="tabular-nums text-gray-200 dark:text-gray-800">
+                    {value}
+                  </span>
+                </motion.li>
+              ))}
             </ul>
-            <button type="button" onClick={start} className="btn-primary mt-8">
-              Play the demo
-            </button>
-            <p className="mt-5 text-sm text-gray-500 dark:text-gray-600">
-              <Link
-                href="/work/choose-game"
-                className="underline decoration-white/20 underline-offset-4 transition-colors hover:text-[var(--accent-text)]">
-                Full CHOOSE case study →
-              </Link>
-            </p>
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.52 }}>
+              <button type="button" onClick={start} className="btn-primary mt-8">
+                Play the demo
+              </button>
+            </motion.div>
           </motion.div>
         ) : null}
 

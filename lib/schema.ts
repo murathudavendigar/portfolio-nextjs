@@ -1,3 +1,4 @@
+import { getLabExperiments } from "@/data/lab";
 import { absoluteUrl, site } from "@/lib/site";
 import type { BlogPost } from "@/types";
 
@@ -310,19 +311,30 @@ export function hirePageGraph() {
 }
 
 export function labPageGraph() {
+  const experiments = getLabExperiments();
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
+        "@type": "CollectionPage",
         "@id": `${absoluteUrl("/lab")}#webpage`,
         url: absoluteUrl("/lab"),
         name: `Lab — ${site.shortName}`,
         description:
-          "Interactive demos from Murat Öncü’s shipped products, including a CHOOSE mini-round.",
+          "Interactive demos from Murat Öncü’s shipped products — CHOOSE, Daily Skyline, and more.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         inLanguage: "en",
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: experiments.map((exp, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            url: absoluteUrl(`/lab/${exp.slug}`),
+            name: exp.title,
+          })),
+        },
       },
       personStub(),
     ],

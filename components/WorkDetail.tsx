@@ -9,6 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { getLabByWorkSlug } from "@/data/lab";
 import { getRelatedPosts } from "@/lib/blog";
 import type { AppStoreInfo } from "@/lib/appStore";
 import { npmStatsLine, type NpmInfo } from "@/lib/npm";
@@ -81,6 +82,7 @@ export default function WorkDetail({
   const relatedPosts = getRelatedPosts(project.stack);
   const npmStats = npmInfo ? npmStatsLine(npmInfo) : [];
   const showMedia = hasWorkMedia(project);
+  const labExperiment = getLabByWorkSlug(project.slug);
 
   const ratingLine = appStoreInfo ? formatRatingLine(appStoreInfo) : null;
   const appStoreMeta = appStoreInfo
@@ -177,6 +179,11 @@ export default function WorkDetail({
                 {primary.label}
               </a>
             )}
+            {labExperiment ? (
+              <Link href={`/lab/${labExperiment.slug}`} className="heroButton min-h-11">
+                {labExperiment.status === "live" ? "Try in Lab" : "Lab preview"}
+              </Link>
+            ) : null}
             {secondaryLabel && (
               <a
                 href={project.url}
