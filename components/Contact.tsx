@@ -2,6 +2,7 @@
 import ContactFormPanel from "@/components/ContactFormPanel";
 import { SOCIAL_LINKS } from "@/lib/nav";
 import { introBookingHref, site } from "@/lib/site";
+import Link from "next/link";
 
 const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
   const bookingHref = introBookingHref();
@@ -44,6 +45,16 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               React / Next.js workshops and mentoring.
             </li>
           </ul>
+
+          <p className="max-w-md text-sm leading-relaxed text-gray-400 dark:text-gray-600">
+            Want the full process first?{" "}
+            <Link
+              href="/hire"
+              className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-[var(--accent-text)]">
+              See how we work
+            </Link>
+            .
+          </p>
 
           <a
             href={bookingHref}

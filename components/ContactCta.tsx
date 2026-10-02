@@ -29,6 +29,11 @@ export default function ContactCta() {
             Book a 15-min intro
           </a>
           <Link
+            href="/hire"
+            className="font-mono-ui min-h-11 text-[13px] tracking-wider text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors py-3 px-6">
+            How we work
+          </Link>
+          <Link
             href="/contact"
             className="font-mono-ui min-h-11 text-[13px] tracking-wider text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors py-3 px-6">
             Or send a message

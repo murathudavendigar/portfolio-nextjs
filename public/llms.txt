@@ -31,6 +31,7 @@
 - codebrief (npm CLI): https://www.muratoncu.com/work/codebrief
 - skillbrief (npm CLI): https://www.muratoncu.com/work/skillbrief
 - Contact: https://www.muratoncu.com/contact
+- Hire / work with me: https://www.muratoncu.com/hire
 - Privacy policy: https://www.muratoncu.com/privacy
 - Sitemap: https://www.muratoncu.com/sitemap.xml
 - RSS feed: https://www.muratoncu.com/feed.xml

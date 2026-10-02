@@ -289,6 +289,26 @@ export function contactPageGraph() {
   };
 }
 
+export function hirePageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${absoluteUrl("/hire")}#webpage`,
+        url: absoluteUrl("/hire"),
+        name: `Hire — ${site.shortName}`,
+        description:
+          "How to work with Murat Hüdavendigâr Öncü — frontend roles, scoped product work through TemCraft, and teaching.",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        inLanguage: "en",
+      },
+      personStub(),
+    ],
+  };
+}
+
 export function privacyPageGraph() {
   return {
     "@context": "https://schema.org",

@@ -16,6 +16,8 @@ type WorkCardProps = {
   project: ProjectType;
   compact?: boolean;
   lead?: boolean;
+  /** Editorial surface without MagicCard spotlight — preferred on homepage Featured. */
+  quiet?: boolean;
   className?: string;
   rating?: AppRating;
   npmStats?: NpmInfo;
@@ -25,6 +27,7 @@ export default function WorkCard({
   project,
   compact = false,
   lead = false,
+  quiet = false,
   className = "",
   rating,
   npmStats,
@@ -34,7 +37,7 @@ export default function WorkCard({
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const reduceMotion = useReducedMotion();
-  const skipMagic = mounted && Boolean(reduceMotion);
+  const skipMagic = quiet || (mounted && Boolean(reduceMotion));
   const router = useRouter();
   const href = `/work/${project.slug}`;
 
@@ -101,7 +104,7 @@ export default function WorkCard({
         </p>
 
         <div className="mt-auto pt-3 lg:mt-4">
-          {!compact && project.stack && project.stack.length > 0 && (
+          {!quiet && !compact && project.stack && project.stack.length > 0 && (
             <ul className="mb-4 flex flex-wrap gap-1.5">
               {project.stack.slice(0, 4).map((item) => (
                 <li key={item}>
@@ -124,12 +127,13 @@ export default function WorkCard({
     </>
   );
 
+  const quietClass = quiet
+    ? `${linkLayout} border border-white/10 bg-transparent transition duration-300 hover:border-[#CA3E47]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-400/50 ${className}`
+    : `${linkLayout} border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-0.5 hover:border-[#CA3E47]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-300 dark:bg-gray-200/30 ${className}`;
+
   if (skipMagic) {
     return (
-      <Link
-        href={href}
-        onClick={onNavigate}
-        className={`${linkLayout} border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-0.5 hover:border-[#CA3E47]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-300 dark:bg-gray-200/30 ${className}`}>
+      <Link href={href} onClick={onNavigate} className={quietClass}>
         {body}
       </Link>
     );
