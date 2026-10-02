@@ -1,0 +1,236 @@
+/** HTML email bodies for the contact form (bundled — do not read from disk on Vercel). */
+
+export const NOTIFY_ME_HTML = `<html>
+  <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+      <h2 style="color: #CA3E47; text-align: center;">New portfolio contact</h2>
+
+      <p style="font-size: 16px; color: #333;">
+        You received a new message from the contact form on
+        <a href="https://www.muratoncu.com/" style="color: #CA3E47; text-decoration: none;">muratoncu.com</a>.
+      </p>
+
+      <hr style="border-top: 1px solid #CA3E47; margin: 20px 0;" />
+
+      <p style="font-size: 16px; color: #333;"><strong>Name:</strong> {{name}}</p>
+      <p style="font-size: 16px; color: #333;"><strong>Email:</strong> {{email}}</p>
+      <p style="font-size: 16px; color: #333;"><strong>Subject:</strong> {{subject}}</p>
+      <p style="font-size: 16px; color: #333;"><strong>Message:</strong></p>
+      <p style="font-size: 16px; color: #555; background-color: #f9f9f9; padding: 15px; border-radius: 5px; white-space: pre-wrap;">{{message}}</p>
+
+      <hr style="border-top: 1px solid #CA3E47; margin: 20px 0;" />
+
+      <p style="font-size: 14px; color: #777;">
+        Reply directly to {{email}}.
+      </p>
+    </div>
+  </body>
+</html>
+`;
+
+export const AUTO_REPLY_HTML = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Thanks for reaching out</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    ">
+    <table
+      role="presentation"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      style="background-color: #1a1a1a; padding: 40px 16px">
+      <tr>
+        <td align="center">
+          <table
+            role="presentation"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            style="
+              max-width: 560px;
+              background-color: #313131;
+              border: 1px solid #414141;
+              border-radius: 12px;
+              overflow: hidden;
+            ">
+            <tr>
+              <td style="height: 4px; background-color: #ca3e47; font-size: 0; line-height: 0">
+                &nbsp;
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 36px 32px 24px 32px; text-align: center">
+                <img
+                  src="https://www.muratoncu.com/img/pp.jpeg"
+                  width="72"
+                  height="72"
+                  alt="Murat Hüdavendigâr Öncü"
+                  style="
+                    display: block;
+                    margin: 0 auto 16px auto;
+                    border-radius: 999px;
+                    border: 2px solid #525252;
+                    object-fit: cover;
+                  " />
+                <p
+                  style="
+                    margin: 0 0 6px 0;
+                    font-size: 11px;
+                    letter-spacing: 0.28em;
+                    text-transform: uppercase;
+                    color: #a3a3a3;
+                  ">
+                  Murat Öncü
+                </p>
+                <h1
+                  style="
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: 600;
+                    line-height: 1.3;
+                    color: #ffffff;
+                  ">
+                  Thanks for reaching out
+                </h1>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 32px 8px 32px">
+                <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #e5e5e5">
+                  Hi {{name}},
+                </p>
+                <p style="margin: 0 0 24px 0; font-size: 16px; line-height: 1.6; color: #c4c4c4">
+                  I got your message and will get back to you soon. In the meantime,
+                  feel free to browse my work or reply to this email if you want to
+                  add anything.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 32px 28px 32px">
+                <table
+                  role="presentation"
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="
+                    background-color: #3a3a3a;
+                    border: 1px solid #525252;
+                    border-radius: 8px;
+                  ">
+                  <tr>
+                    <td style="padding: 20px 22px">
+                      <p
+                        style="
+                          margin: 0 0 8px 0;
+                          font-size: 11px;
+                          letter-spacing: 0.2em;
+                          text-transform: uppercase;
+                          color: #ca3e47;
+                        ">
+                        Your message
+                      </p>
+                      <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.5; color: #ffffff">
+                        <strong style="color: #a3a3a3; font-weight: 500">Subject</strong><br />
+                        {{subject}}
+                      </p>
+                      <p
+                        style="
+                          margin: 0;
+                          font-size: 15px;
+                          line-height: 1.6;
+                          color: #d4d4d4;
+                          white-space: pre-wrap;
+                        ">
+                        {{message}}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 0 32px 36px 32px; text-align: center">
+                <a
+                  href="https://www.muratoncu.com/"
+                  style="
+                    display: inline-block;
+                    background-color: #ca3e47;
+                    color: #ffffff;
+                    font-size: 14px;
+                    font-weight: 700;
+                    text-decoration: none;
+                    letter-spacing: 0.04em;
+                    padding: 14px 28px;
+                    border-radius: 6px;
+                  ">
+                  Visit portfolio
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td
+                style="
+                  padding: 24px 32px;
+                  border-top: 1px solid #414141;
+                  text-align: center;
+                  background-color: #2a2a2a;
+                ">
+                <p style="margin: 0 0 6px 0; font-size: 15px; color: #ffffff">
+                  Murat Hüdavendigâr Öncü
+                </p>
+                <p style="margin: 0 0 12px 0; font-size: 13px; color: #a3a3a3">
+                  Frontend engineer · Netherlands
+                </p>
+                <p style="margin: 0; font-size: 13px">
+                  <a
+                    href="mailto:contact@muratoncu.com"
+                    style="color: #ca3e47; text-decoration: none">
+                    contact@muratoncu.com
+                  </a>
+                  <span style="color: #525252"> · </span>
+                  <a
+                    href="https://www.muratoncu.com/"
+                    style="color: #ca3e47; text-decoration: none">
+                    muratoncu.com
+                  </a>
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <p
+            style="
+              margin: 24px 0 0 0;
+              font-size: 12px;
+              line-height: 1.5;
+              color: #737373;
+              text-align: center;
+            ">
+            You’re receiving this because you contacted me via the form on muratoncu.com.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+`;
