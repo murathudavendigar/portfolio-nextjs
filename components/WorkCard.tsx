@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import type { AppRating } from "@/lib/appStore";
 import type { NpmInfo } from "@/lib/npm";
-import { navigateWithViewTransition } from "@/lib/view-transition";
+import { navigateWithViewTransition } from "@/lib/navigate-with-view-transition";
 import type { Projects as ProjectType } from "@/types";
 import { useReducedMotion } from "framer-motion";
 import Link from "next/link";
