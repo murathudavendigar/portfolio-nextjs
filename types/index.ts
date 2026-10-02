@@ -17,6 +17,7 @@ export type Projects = {
   approach?: string;
   tradeoffs?: string;
   outcome?: string;
+  lessons?: string;
   appStoreUrl?: string;
 };
 

@@ -18,10 +18,11 @@
       "Game Center",
       "Next.js"
     ],
-    "problem": "Skyscraper puzzles usually live in books or one-off web toys. There is no shared daily board, so you cannot compare a time with anyone who played the same grid.",
-    "approach": "One deterministic 5×5 puzzle per calendar date — same clues, same difficulty, everywhere. I shipped it as an iOS app (Expo / React Native) with notes, undo, a mistake limit, on-device streaks, an archive of missed days, optional Game Center leaderboards, and a marketing site at dailyskyline.muratoncu.com.",
-    "tradeoffs": "No account means you can play immediately, but progress lives on the device — a reinstall can drop a streak. iOS shipped first; Android is not in the store yet. Difficulty ramps through the week instead of letting players pick a puzzle size.",
-    "outcome": "Live on the App Store as a five-minute daily habit. No sign-up, no ads, no IAP in the current listing."
+    "problem": "Skyscraper puzzles usually live in books or one-off web toys. There is no shared daily board, so you cannot compare a time with anyone who played the same grid.\n\nI wanted something closer to Wordle for logic: five minutes, one puzzle per day, same clues for everyone. Ads, accounts, and endless puzzle catalogs all fight that habit.",
+    "approach": "One deterministic 5×5 puzzle per calendar date — same clues, same difficulty, everywhere. The seed is the date, so any two installs agree without a server-side puzzle API.\n\nI shipped it as an iOS app on Expo / React Native: notes, undo, a mistake limit, on-device streaks, an archive of missed days, and optional Game Center leaderboards. Marketing sits on a Next.js site at dailyskyline.muratoncu.com so App Store traffic has a place to land.",
+    "tradeoffs": "No account means you can play immediately, but progress lives on the device — a reinstall can drop a streak. That was intentional: lower friction beat cloud sync for a daily puzzle.\n\niOS shipped first; Android is not in the store yet. Difficulty ramps through the week instead of letting players pick a puzzle size, so the “shared board” promise stays intact. No ads and no IAP keep the listing honest, and also mean there is no monetization layer to hide behind.",
+    "outcome": "Live on the App Store as a five-minute daily habit. No sign-up, no ads, no IAP in the current listing. Ratings and version metadata on the case study come from the live App Store listing, not invented numbers.",
+    "lessons": "A daily product needs a boring constraint more than a feature list. Fixing the board to the calendar date removed a dozen product debates (difficulty pickers, puzzle packs, “random forever” modes).\n\nExpo got me to TestFlight fast; Game Center was enough social proof without building accounts. What I would change next: a careful Android port that keeps the same date seed, and a clearer first-run that teaches skyscraper rules without a wall of text."
   },
   {
     "name": "Courai",
@@ -45,10 +46,11 @@
       "NativeWind",
       "RevenueCat"
     ],
-    "problem": "Most social-anxiety tools are either clinical homework or vague “get out more” advice. People need small, daily, CBT-shaped steps that do not require a therapist appointment to start.",
-    "approach": "Courai is my first mobile app — built solo. Daily micro-challenges, 30-day levels, streaks, an offline action queue, and optional premium task packs. Auth and data sit on Supabase; paywall rules go through RevenueCat.",
-    "tradeoffs": "Freemium with a trial and a paywall after the free days — stated in the listing, not hidden. iOS only. Telemetry is privacy-first (PostHog) rather than a growth-hacking event firehose.",
-    "outcome": "Shipped on the App Store after years of web work. Free to try; no fake scarcity copy."
+    "problem": "Most social-anxiety tools are either clinical homework or vague “get out more” advice. People need small, daily, CBT-shaped steps that do not require a therapist appointment to start.\n\nI also wanted to prove I could ship a real iOS product end-to-end — auth, offline behavior, paywall, privacy — not only web apps and course demos.",
+    "approach": "Courai is my first mobile app, built solo. Daily micro-challenges, 30-day levels, streaks, an offline action queue, and optional premium task packs.\n\nAuth and data sit on Supabase. Client state uses Zustand. Styling is NativeWind. Paywall rules go through RevenueCat so store receipts stay out of my own backend. Telemetry is privacy-first with PostHog — enough to see where people stall, not a growth-hacking event firehose.",
+    "tradeoffs": "Freemium with a trial and a paywall after the free days — stated in the listing, not hidden. iOS only for now; I would rather ship one solid platform than a half-broken second.\n\nCBT content is carefully framed as self-help practice, not therapy. That constraint shapes copy, onboarding, and what the app refuses to claim. Offline queueing makes the daily habit work on a train, but it also means conflict rules when the device comes back online.",
+    "outcome": "Shipped on the App Store after years of web work. Free to try; no fake scarcity copy. The marketing site and App Store listing stay aligned on what the free days cover.",
+    "lessons": "Solo mobile is mostly product judgment under App Store rules: privacy labels, paywall clarity, and content that does not overclaim. RevenueCat saved weeks versus hand-rolling receipt validation.\n\nWhat broke early: assuming “always online” for challenge completion. The offline queue forced clearer domain events. What I would deepen next: better first-week coaching in-app, and Android only after the iOS loop feels boring in a good way."
   },
   {
     "name": "Choose Game",
@@ -114,10 +116,11 @@
       "Node.js",
       "TypeScript"
     ],
-    "problem": "AI coding tools need project context. Most people paste random files or write Cursor rules by hand, so the model guesses the stack.",
-    "approach": "A CLI that walks a repo and writes CONTEXT.md, Cursor rules, and Copilot instructions. Zero npm runtime dependencies — Node.js only — so it installs and runs without a package-manager maze.",
-    "tradeoffs": "No GUI. Node-only on purpose: one runtime, no browser bundle, no plugin marketplace.",
-    "outcome": "Published on npm and used on my own products before I asked anyone else to try it."
+    "problem": "AI coding tools need project context. Most people paste random files or write Cursor rules by hand, so the model guesses the stack — wrong package manager, invented folders, “fixes” that fight the theme.\n\nI needed a repeatable first draft of *what this repo is* that I would trust on my own products before asking anyone else to try it.",
+    "approach": "codebrief is a Node.js CLI that walks a repository and writes the always-on layer: CONTEXT.md, Cursor rules, and GitHub Copilot instructions. Zero npm runtime dependencies on purpose — one runtime, no plugin marketplace, no GUI.\n\nThe job is identity, not procedure. Always-on context should stay short enough that every chat can afford it. I use it on my own apps; if it cannot describe a repo I already understand, it is not ready.",
+    "tradeoffs": "No GUI and Node-only means a smaller audience than a VS Code extension, and a clearer install story. The generator will miss project-specific truths a scan cannot see — catalog paths, theme inversion, deploy host — so the workflow is generate, then edit three lines a stranger would need.\n\nI deliberately did not stuff procedures into the same file. That is why skillbrief exists as a second package instead of one mega-rules dump.",
+    "outcome": "Published on npm and used on my own products, including this site, before I asked anyone else to try it. Live download and version stats on the case study come from the npm registry when available — not invented counts.",
+    "lessons": "One rules file that tries to answer both “what is this?” and “how do I work here?” gets longer every week and worse at both jobs.\n\nShip the identity layer first. Keep it editable. Measure success by whether an agent stops inventing a second stack — not by how many files the CLI emits. Longer write-up: Always-On Context vs On-Demand Skills on /writing."
   },
   {
     "name": "skillbrief",
@@ -132,10 +135,11 @@
     "stack": [
       "Node.js"
     ],
-    "problem": "codebrief tells an agent what a repo is. Agents still guess how to add a page, run tests, or touch the UI, because those procedures live in always-on rules or nowhere.",
-    "approach": "A CLI that scans the repo and writes Agent Skills — SKILL.md files that load only when the task matches. Next.js, tests, UI, database, API, and auth skills appear only if that stack is actually there. Zero npm runtime dependencies.",
-    "tradeoffs": "v1 is a safe skeleton, not a senior reading your source. It will omit project-specific paths and can miss a deploy target. Treat the files as a first draft, then add a few human rules.",
-    "outcome": "Published on npm and used on this site: npx skillbrief wrote the working-in-portfolio-nextjs skills before I asked anyone else to try it."
+    "problem": "codebrief tells an agent what a repo is. Agents still guess how to add a page, run tests, or touch the UI, because those procedures live in always-on rules or nowhere.\n\nStuffing every procedure into Cursor rules makes every chat pay for tokens it does not need. Skipping procedures makes the model invent npm scripts and folder layouts.",
+    "approach": "skillbrief scans a repository and writes Agent Skills — SKILL.md files that load only when the task matches. Next.js, tests, UI, database, API, and auth skills appear only if that stack is actually there. Zero npm runtime dependencies.\n\nOn this portfolio, `npx skillbrief` produced working-in-portfolio-nextjs skills plus more specific ones for tests, styling, and Next.js. The committed copy lives under `.agents/skills/` so agents and humans share the same source.",
+    "tradeoffs": "v1 is a safe skeleton, not a senior reading your source. It will omit project-specific paths and can miss a deploy target. Treat the files as a first draft, then add a few human rules.\n\nA second CLI is more to explain than one “AI setup” button. The split is the product: always-on context stays short; skills stay optional and editable.",
+    "outcome": "Published on npm and used on this site before I asked anyone else to try it. The human pass here was small and specific: theme inversion, catalog location in data/projects.json, and a note that Vercel is the host.",
+    "lessons": "Skills are procedures. Always-on context is identity. If you only remember one thing from shipping both tools, keep those jobs apart.\n\nGenerate, then write the three rules a scan will never see. If you commit the skeleton unchanged, you taught the agent a generic Next.js app — not yours. Pair with the codebrief case study and the writing post that compares them."
   },
   {
     "name": "Dev Console Kit",

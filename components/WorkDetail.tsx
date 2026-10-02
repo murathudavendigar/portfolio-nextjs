@@ -31,6 +31,7 @@ const CASE_SECTIONS = [
   ["Approach", "approach"],
   ["Tradeoffs", "tradeoffs"],
   ["Outcome", "outcome"],
+  ["What I learned", "lessons"],
 ] as const;
 
 function formatUpdatedDate(iso: string) {
@@ -44,6 +45,25 @@ function formatRatingLine(info: AppStoreInfo): string | null {
   return `${info.averageRating.toFixed(1)} · ${info.ratingCount} rating${
     info.ratingCount === 1 ? "" : "s"
   }`;
+}
+
+function CaseParagraphs({ text }: { text: string }) {
+  const paragraphs = text
+    .split(/\n\n+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  return (
+    <div className="mt-3 space-y-4">
+      {paragraphs.map((paragraph, index) => (
+        <p
+          key={index}
+          className="text-[17px] leading-relaxed [text-wrap:pretty] text-gray-200 dark:text-gray-800">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  );
 }
 
 export default function WorkDetail({
@@ -191,9 +211,7 @@ export default function WorkDetail({
               <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
                 {label}
               </h2>
-              <p className="mt-3 text-[17px] leading-relaxed [text-wrap:pretty] text-gray-200 dark:text-gray-800">
-                {project[key]}
-              </p>
+              <CaseParagraphs text={project[key]!} />
             </section>
           ))}
         </div>

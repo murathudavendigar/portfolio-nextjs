@@ -148,6 +148,29 @@ describe("selected vs earlier split", () => {
     }
   });
 
+  it("deepens priority featured case studies with lessons and multi-paragraph depth", () => {
+    for (const slug of [
+      "daily-skyline",
+      "courai",
+      "codebrief",
+      "skillbrief",
+    ] as const) {
+      const project = getProject(slug)!;
+      expect(project.lessons?.length).toBeGreaterThan(80);
+      const body = [
+        project.problem,
+        project.approach,
+        project.tradeoffs,
+        project.outcome,
+        project.lessons,
+      ]
+        .filter(Boolean)
+        .join(" ");
+      expect(body.split(/\s+/).length).toBeGreaterThan(200);
+      expect(project.problem).toMatch(/\n\n/);
+    }
+  });
+
   it("groups selected work into iOS Apps, Web Products, npm Packages, covering every selected project once", () => {
     const groups = getSelectedProjectsByCategory();
     const categories = groups.map((g) => g.category);

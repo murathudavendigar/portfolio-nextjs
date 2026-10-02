@@ -107,12 +107,15 @@ Add or edit an entry in `data/projects.json`. No rebuild step beyond a normal de
 
 ## Environment variables
 
-The site only needs the EmailJS keys used by the contact form:
+The site needs EmailJS for the contact form. Optional: a Cal.com (or similar) booking URL.
 
 ```
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=...
+NEXT_PUBLIC_CAL_URL=https://cal.com/your-username/15min
 ```
+
+If `NEXT_PUBLIC_CAL_URL` is unset, “Book a 15-min intro” falls back to a prefilled mailto.
 
 `MONGODB_URI` is no longer used — the site has no runtime database dependency.
 

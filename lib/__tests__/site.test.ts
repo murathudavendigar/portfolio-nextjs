@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { experiencesData } from "@/data/experiencesData";
 import robots from "../../app/robots";
 import { getResumeHref } from "../resume";
+import { introBookingHref, site } from "../site";
 
 describe("getResumeHref", () => {
   it("returns the public PDF path when the résumé file exists", () => {
@@ -12,6 +13,14 @@ describe("getResumeHref", () => {
 
   it("returns null when the résumé file is missing", () => {
     expect(getResumeHref(false)).toBeNull();
+  });
+});
+
+describe("intro booking", () => {
+  it("falls back to a prefilled mailto when Cal.com is not configured", () => {
+    expect(site.calUrl).toBe("");
+    expect(introBookingHref()).toContain(`mailto:${site.email}`);
+    expect(introBookingHref()).toContain("15-min");
   });
 });
 

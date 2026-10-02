@@ -81,7 +81,11 @@ export function getAdjacentProjects(slug: string): {
 
 export function hasCaseStudy(project: ProjectType): boolean {
   return Boolean(
-    project.problem || project.approach || project.tradeoffs || project.outcome,
+    project.problem ||
+      project.approach ||
+      project.tradeoffs ||
+      project.outcome ||
+      project.lessons,
   );
 }
 

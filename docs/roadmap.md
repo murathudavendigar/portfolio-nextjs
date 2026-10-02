@@ -267,10 +267,10 @@ Do not optimize for vanity PageSpeed score alone.
 | Decision | Options | Choice | Date |
 |----------|---------|--------|------|
 | Product analytics | Cloudflare only / +GA4 / +Plausible / +Vercel | _TBD_ | |
-| Booking link | Cal.com / other / form-only | _TBD_ | |
+| Booking link | Cal.com / other / form-only | Mailto intro CTA live; set `NEXT_PUBLIC_CAL_URL` for Cal.com | 2026-10-02 |
 | Teaching URL | About section vs `/teaching` | _TBD_ | |
 | Hero one-liner final copy | Draft in §2 vs rewrite | _TBD_ | |
-| First two case studies | codebrief + AI Resume Doctor vs other | _TBD_ | |
+| First two case studies | codebrief + AI Resume Doctor vs other | Daily Skyline, Courai, codebrief, skillbrief deepened | 2026-10-02 |
 
 ---
 
@@ -278,6 +278,7 @@ Do not optimize for vanity PageSpeed score alone.
 
 | Date | Change |
 |------|--------|
+| 2026-10-02 | Pruned stub /work clones; deepened Skyline/Courai/codebrief/skillbrief; booking CTA + `/uses` sitemap; Google SEO setup doc |
 | 2026-07-29 | Initial roadmap after SEO foundation + PageSpeed `NO_LCP` discussion |
 
 ---

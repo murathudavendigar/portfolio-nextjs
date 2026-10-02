@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SOCIAL_LINKS } from "@/lib/nav";
-import { site } from "@/lib/site";
+import { introBookingHref, site } from "@/lib/site";
 import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -35,6 +35,8 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
     formState: { errors },
   } = useForm<Inputs>();
   const [sending, setSending] = useState(false);
+  const bookingHref = introBookingHref();
+  const bookingIsCal = Boolean(site.calUrl);
 
   useEffect(() => {
     if (PUBLIC_KEY) {
@@ -81,9 +83,39 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
         <div className="space-y-8">
           <p className="max-w-md text-base leading-relaxed text-gray-300 dark:text-gray-700">
             Frontend roles in the Netherlands or remote, scoped React / Next.js
-            work through TemCraft Tech, and teaching. No pitch deck — just say
-            what you need.
+            work through TemCraft Tech, and teaching. Prefer a short call? Book
+            an intro — or send a note with what you need.
           </p>
+
+          <ul className="max-w-md space-y-3 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
+            <li>
+              <span className="font-medium text-white dark:text-gray-900">
+                Hire —
+              </span>{" "}
+              frontend / Next.js roles (NL, EU, remote).
+            </li>
+            <li>
+              <span className="font-medium text-white dark:text-gray-900">
+                Build —
+              </span>{" "}
+              product UI, MVPs, and ownership through TemCraft.
+            </li>
+            <li>
+              <span className="font-medium text-white dark:text-gray-900">
+                Teach —
+              </span>{" "}
+              React / Next.js workshops and mentoring.
+            </li>
+          </ul>
+
+          <a
+            href={bookingHref}
+            {...(bookingIsCal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            Book a 15-min intro
+          </a>
 
           <dl className="space-y-4">
             <div>
