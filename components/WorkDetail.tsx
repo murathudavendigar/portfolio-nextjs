@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import WorkDeviceFrame from "@/components/WorkDeviceFrame";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -207,12 +208,14 @@ export default function WorkDetail({
       {caseStudy && (
         <div className="mt-16 grid max-w-3xl gap-12">
           {sections.map(([label, key]) => (
-            <section key={key}>
-              <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
-                {label}
-              </h2>
-              <CaseParagraphs text={project[key]!} />
-            </section>
+            <Reveal key={key}>
+              <section>
+                <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
+                  {label}
+                </h2>
+                <CaseParagraphs text={project[key]!} />
+              </section>
+            </Reveal>
           ))}
         </div>
       )}

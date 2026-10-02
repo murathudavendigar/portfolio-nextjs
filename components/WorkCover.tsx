@@ -1,8 +1,10 @@
 import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
 import { getWorkMockupKind } from "@/lib/projects";
+import { workCoverTransitionName } from "@/lib/view-transition";
 import type { Projects as ProjectType } from "@/types";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 type WorkCoverProps = {
   project: ProjectType;
@@ -42,10 +44,14 @@ export default function WorkCover({
   const contain =
     project.coverFit === "contain" ||
     (variant === "detail" && isIos && !project.coverFit);
+  const coverStyle = {
+    viewTransitionName: workCoverTransitionName(project.slug),
+  } as CSSProperties;
 
   if (!src) {
     return (
       <div
+        style={coverStyle}
         className={`flex flex-col justify-end gap-2 bg-inkDeep px-5 py-4 dark:bg-gray-200/50 ${className}`}>
         <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
           {project.language}
@@ -63,7 +69,9 @@ export default function WorkCover({
 
     if (kind === "iphone") {
       return (
-        <div className={`${well} flex items-end justify-center px-5 pt-5 sm:px-6 sm:pt-6`}>
+        <div
+          style={coverStyle}
+          className={`${well} flex items-end justify-center px-5 pt-5 sm:px-6 sm:pt-6`}>
           <Iphone
             src={src}
             className="w-[58%] max-w-[190px] transition-transform duration-500 group-hover:scale-[1.03] sm:max-w-[210px]"
@@ -74,7 +82,9 @@ export default function WorkCover({
 
     if (kind === "safari") {
       return (
-        <div className={`${well} flex items-center justify-center p-4 sm:p-5`}>
+        <div
+          style={coverStyle}
+          className={`${well} flex items-center justify-center p-4 sm:p-5`}>
           <Safari
             imageSrc={src}
             url={displayHost(project.url)}
@@ -93,7 +103,7 @@ export default function WorkCover({
           : "object-cover object-top";
 
     return (
-      <div className={well}>
+      <div style={coverStyle} className={well}>
         {isLocal ? (
           <Image
             src={src}
@@ -123,6 +133,7 @@ export default function WorkCover({
 
   return (
     <div
+      style={coverStyle}
       className={`relative overflow-hidden ${
         contain ? "bg-inkDeep" : "bg-black/25 dark:bg-gray-200/40"
       } ${className}`}>

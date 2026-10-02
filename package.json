@@ -12,7 +12,6 @@
     "indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-label": "^2.1.15",
@@ -38,6 +37,7 @@
     "react-social-icons": "^6.24.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
+    "resend": "^6.32.0",
     "sonner": "^2.0.8",
     "tailwind-merge": "^3.6.0"
   },

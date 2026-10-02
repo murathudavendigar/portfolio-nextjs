@@ -107,13 +107,15 @@ Add or edit an entry in `data/projects.json`. No rebuild step beyond a normal de
 
 ## Environment variables
 
-The site needs EmailJS for the contact form. Optional: a Cal.com (or similar) booking URL.
+The contact form sends mail through Resend, from `contact@muratoncu.com`. The domain must be verified in Resend before messages deliver. Optional: a Cal.com (or similar) booking URL.
 
 ```
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=...
+RESEND_API_KEY=...
+CONTACT_INBOX=you@gmail.com
 NEXT_PUBLIC_CAL_URL=https://cal.com/your-username/15min
 ```
+
+`CONTACT_INBOX` is the mailbox that receives form messages. Mail to `contact@muratoncu.com` is only a Cloudflare forward, so Resend can report “delivered” before that forward reaches an inbox. Leave `CONTACT_INBOX` unset to send to `contact@muratoncu.com`.
 
 If `NEXT_PUBLIC_CAL_URL` is unset, “Book a 15-min intro” falls back to a prefilled mailto.
 

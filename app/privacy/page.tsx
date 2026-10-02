@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         <article className="max-w-3xl px-4 mx-auto prose prose-invert dark:prose sm:px-6 lg:px-8">
           <h1>Privacy Policy</h1>
           <p className="font-mono-ui text-sm text-gray-400 dark:text-gray-600">
-            Last updated: September 2026
+            Last updated: October 2026
           </p>
 
           <p>
@@ -39,16 +39,17 @@ export default function PrivacyPage() {
 
           <h2>Contact form</h2>
           <p>
-            The contact form on <a href="/contact">/contact</a> is handled by{" "}
+            The contact form on <a href="/contact">/contact</a> is delivered by{" "}
             <a
-              href="https://www.emailjs.com/legal/privacy-policy/"
+              href="https://resend.com/legal/privacy-policy"
               target="_blank"
               rel="noopener noreferrer">
-              EmailJS
+              Resend
             </a>
-            . Whatever you type — name, email, and message — is sent through
-            EmailJS directly to {site.email}. It isn&apos;t stored in a
-            database on this site, and it&apos;s only used to reply to you.
+            . Whatever you type — name, email, subject, and message — is sent
+            to {site.email}. A short confirmation is also sent to the email
+            address you entered. It isn&apos;t stored in a database on this
+            site, and it&apos;s only used to reply to you.
           </p>
 
           <h2>Theme preference</h2>

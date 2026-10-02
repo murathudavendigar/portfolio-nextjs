@@ -26,19 +26,20 @@ export default function WritingIndexPage() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <BlogCard
-              key={post.id}
-              title={post.title}
-              date={new Date(post.date).toLocaleDateString()}
-              slug={post.slug}
-              description={post.description}
-              imageUrl={post.imageUrl}
-              readTime={post.readTime}
-              tags={post.tags}
-              author={post.author}
-            />
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post, index) => (
+            <Reveal key={post.id} delay={Math.min(index, 8) * 0.06}>
+              <BlogCard
+                title={post.title}
+                date={new Date(post.date).toLocaleDateString()}
+                slug={post.slug}
+                description={post.description}
+                imageUrl={post.imageUrl}
+                readTime={post.readTime}
+                tags={post.tags}
+                author={post.author}
+              />
+            </Reveal>
           ))}
         </div>
 

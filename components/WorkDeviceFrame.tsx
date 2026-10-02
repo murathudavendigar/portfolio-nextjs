@@ -2,7 +2,9 @@ import WorkCover from "@/components/WorkCover";
 import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
 import { getWorkMockupKind, hasWorkMedia } from "@/lib/projects";
+import { workCoverTransitionName } from "@/lib/view-transition";
 import type { Projects as ProjectType } from "@/types";
+import type { CSSProperties } from "react";
 
 function displayHost(url: string) {
   try {
@@ -21,12 +23,15 @@ export default function WorkDeviceFrame({
 
   const kind = getWorkMockupKind(project);
   const isIos = project.language === "iOS";
+  const coverStyle = {
+    viewTransitionName: workCoverTransitionName(project.slug),
+  } as CSSProperties;
 
   // Iphone and Safari render their own decorative <img>, so the accessible name
   // has to come from the figcaption instead of an alt attribute.
   if (kind === "iphone") {
     return (
-      <figure className="mx-auto w-full max-w-[280px] lg:ml-auto lg:mr-0">
+      <figure style={coverStyle} className="mx-auto w-full max-w-[280px] lg:ml-auto lg:mr-0">
         <Iphone src={project.img} className="w-full" />
         <figcaption className="sr-only">{project.name} screenshot</figcaption>
       </figure>
@@ -35,7 +40,7 @@ export default function WorkDeviceFrame({
 
   if (kind === "safari") {
     return (
-      <figure className="w-full min-w-0">
+      <figure style={coverStyle} className="w-full min-w-0">
         <Safari
           imageSrc={project.img}
           url={displayHost(project.url)}

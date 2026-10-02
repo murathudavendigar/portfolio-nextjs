@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -95,6 +96,7 @@ function ThemeToggle() {
 const Header = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -118,18 +120,40 @@ const Header = () => {
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 text-sm uppercase tracking-wider md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] ${
-                isActive(pathname, link.href)
-                  ? "text-[var(--accent-text)]"
-                  : "text-gray-300 hover:text-[var(--accent-text)] dark:text-gray-800"
-              }`}>
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = isActive(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative pb-1 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#CA3E47] ${
+                  active
+                    ? "text-[var(--accent-text)]"
+                    : "text-gray-300 hover:text-[var(--accent-text)] dark:text-gray-800"
+                }`}>
+                {link.label}
+                {active ? (
+                  reduceMotion ? (
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 -bottom-0.5 h-px bg-[var(--accent-text)]"
+                    />
+                  ) : (
+                    <motion.span
+                      layoutId="nav-active"
+                      aria-hidden
+                      className="absolute inset-x-0 -bottom-0.5 h-px bg-[var(--accent-text)]"
+                      transition={{
+                        type: "spring",
+                        duration: 0.35,
+                        bounce: 0.15,
+                      }}
+                    />
+                  )
+                ) : null}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
