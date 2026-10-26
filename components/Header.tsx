@@ -113,6 +113,7 @@ const Header = () => {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
         <Link
           href="/"
+          data-site-logo
           className="shrink-0 text-sm font-semibold uppercase tracking-widest text-gray-200 transition-colors hover:text-[var(--accent-text)] dark:text-gray-900">
           Murat Öncü
         </Link>

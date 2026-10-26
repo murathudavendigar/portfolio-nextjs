@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import CommandPalette from "@/components/CommandPalette";
-import HomeIntro from "@/components/HomeIntro";
+import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
 import DynamicTitle from "@/components/DynamicTitle";
 import { site, defaultOgImages } from "@/lib/site";
@@ -62,6 +62,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       suppressHydrationWarning
       className={`${nunitoSans.variable} ${geistMono.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introBootScript }} />
+      </head>
       <body className="flex min-h-screen flex-col bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
         <Providers>
           <ConsoleGreeting />
