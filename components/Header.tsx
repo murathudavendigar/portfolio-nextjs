@@ -7,6 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { PRIMARY_NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
+import { site } from "@/lib/site";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -114,8 +115,19 @@ const Header = () => {
         <Link
           href="/"
           data-site-logo
+          aria-label={site.shortName}
           className="shrink-0 text-sm font-semibold uppercase tracking-widest text-gray-200 transition-colors hover:text-[var(--accent-text)] dark:text-gray-900">
-          Murat Öncü
+          {/* One span per letter so the MHO intro can grow the name out of its initials. */}
+          <span aria-hidden="true">
+            {Array.from(site.shortName).map((char, i) => (
+              <span
+                key={i}
+                className="inline-block whitespace-pre"
+                data-logo-char={i === 0 ? "m" : char === "Ö" ? "o" : ""}>
+                {char}
+              </span>
+            ))}
+          </span>
         </Link>
 
         <nav

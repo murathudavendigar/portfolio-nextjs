@@ -135,7 +135,11 @@ describe("selected vs earlier split", () => {
   it("keeps local covers on selected and earlier work that still ships media", () => {
     expect(hasWorkMedia(getProject("courai")!)).toBe(true);
     expect(hasWorkMedia(getProject("dev-console-kit")!)).toBe(true);
-    expect(hasWorkMedia(getProject("event-manager")!)).toBe(true);
+    expect(hasWorkMedia(getProject("ai-resume-doctor")!)).toBe(true);
+  });
+
+  it("uses the typographic cover when a project has no real screenshot", () => {
+    expect(hasWorkMedia(getProject("event-manager")!)).toBe(false);
   });
 
   it("gives every selected project a full case study", () => {
