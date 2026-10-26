@@ -229,7 +229,7 @@
   {
     "name": "Event Manager",
     "slug": "event-manager",
-    "img": "/img/projects/event-manager.png",
+    "img": "",
     "description": "A calendar tool I built to organize events more effectively. Create and edit events, sign in with Google or GitHub, sync via iCalendar, and share private or team calendars with a single link. Still in progress — I keep adding features as I use it.",
     "url": "https://event-manager-jp.vercel.app",
     "language": "Next.JS",

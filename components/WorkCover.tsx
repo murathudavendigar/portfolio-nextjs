@@ -48,6 +48,28 @@ export default function WorkCover({
     viewTransitionName: workCoverTransitionName(project.slug),
   } as CSSProperties;
 
+  if (!src && variant === "card") {
+    // No screenshot: a monogram cover instead of repeating the card text.
+    const initials = project.name
+      .split(/\s+/)
+      .map((word) => word[0])
+      .join("")
+      .slice(0, 2);
+    return (
+      <div
+        style={coverStyle}
+        aria-hidden="true"
+        className={`flex flex-col justify-between bg-inkDeep px-5 py-4 dark:bg-paperDeep ${className}`}>
+        <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+          {project.language}
+        </span>
+        <span className="font-mono-ui text-6xl font-semibold tracking-tight text-[var(--accent-text)]">
+          {initials}
+        </span>
+      </div>
+    );
+  }
+
   if (!src) {
     return (
       <div
@@ -98,9 +120,12 @@ export default function WorkCover({
     const imageClass =
       contain || project.language === "NPM" || project.language === "Electron"
         ? "object-contain object-center p-5 sm:p-6"
-        : isIos
-          ? "object-contain object-bottom p-4 sm:p-5"
-          : "object-cover object-top";
+        : isIos && project.coverFit === "cover"
+          ? // Already framed store art (headline + phone): fill the well, showing the app screen
+            "object-cover object-[center_40%]"
+          : isIos
+            ? "object-contain object-bottom p-4 sm:p-5"
+            : "object-cover object-top";
 
     return (
       <div style={coverStyle} className={well}>
