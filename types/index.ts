@@ -19,6 +19,7 @@ export type Projects = {
   outcome?: string;
   lessons?: string;
   appStoreUrl?: string;
+  playStoreUrl?: string;
 };
 
 export type Experience = {

@@ -4,7 +4,7 @@ import CommandPalette from "@/components/CommandPalette";
 import HomeIntro from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
 import DynamicTitle from "@/components/DynamicTitle";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import { getResumeHref } from "@/lib/resume";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Nunito_Sans } from "next/font/google";
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: site.shortName,
     title: site.title,
     description: site.description,
-    images: [{ url: site.defaultOgImage, width: 1200, height: 630 }],
+    images: defaultOgImages,
   },
   twitter: {
     card: "summary_large_image",

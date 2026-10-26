@@ -1,7 +1,7 @@
 import LabIndex from "@/components/lab/LabIndex";
 import { getLabExperiments } from "@/data/lab";
 import { labPageGraph } from "@/lib/schema";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Tap first, read later — interactive slices of Murat Öncü’s shipped products.",
   alternates: { canonical: "/lab" },
   openGraph: {
+    images: defaultOgImages,
     title: `Lab — ${site.shortName}`,
     description:
       "Compressed loops from real products. Play the rule, then open the case study.",

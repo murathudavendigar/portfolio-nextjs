@@ -19,6 +19,14 @@ export const site = {
   },
 } as const;
 
+/**
+ * Default share image. Next.js replaces (not merges) a parent's `openGraph`,
+ * so every page that sets its own `openGraph` must pass this back in.
+ */
+export const defaultOgImages = [
+  { url: site.defaultOgImage, width: 1200, height: 630 },
+];
+
 export const absoluteUrl = (path: string) =>
   path.startsWith("http") ? path : `${site.url}${path}`;
 

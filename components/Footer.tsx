@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-gray-300 dark:text-gray-700">
             Frontend engineer and co-founder of TemCraft Tech.
-            React, Next.js, TypeScript, and iOS — from the Netherlands.
+            React, Next.js, TypeScript, and React Native — from the Netherlands.
           </p>
           <EmailCopyLink />
           <div className="mt-4">

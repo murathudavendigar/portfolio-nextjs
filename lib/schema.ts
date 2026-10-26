@@ -173,6 +173,7 @@ export function workSchema(project: {
   url: string;
   img?: string;
   appStoreUrl?: string;
+  playStoreUrl?: string;
   language?: string;
 }) {
   const pageUrl = absoluteUrl(`/work/${project.slug}`);
@@ -212,7 +213,11 @@ export function workSchema(project: {
         codeRepository: project.github || undefined,
         installUrl: project.appStoreUrl || undefined,
         applicationCategory: isApp ? "MobileApplication" : undefined,
-        operatingSystem: isApp ? "iOS" : undefined,
+        operatingSystem: isApp
+          ? project.playStoreUrl
+            ? "iOS, Android"
+            : "iOS"
+          : undefined,
         author: { "@id": personId },
         isPartOf: { "@id": websiteId },
       },
