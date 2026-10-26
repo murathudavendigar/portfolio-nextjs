@@ -19,8 +19,8 @@ export default function Footer() {
             {site.shortName}
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-            Frontend engineer, co-founder of TemCraft Tech, and instructor.
-            React, Next.js, TypeScript, and iOS — from the Netherlands.
+            Frontend engineer and co-founder of TemCraft Tech.
+            React, Next.js, TypeScript, and React Native — from the Netherlands.
           </p>
           <EmailCopyLink />
           <div className="mt-4">

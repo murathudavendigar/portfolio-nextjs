@@ -1,6 +1,6 @@
 import LabShell from "@/components/lab/LabShell";
 import { getLabExperiment } from "@/data/lab";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Courai lab demo coming soon — read the case study in the meantime.",
   alternates: { canonical: `/lab/${SLUG}` },
   openGraph: {
+    images: defaultOgImages,
     title: `Lab · Courai — ${site.shortName}`,
     url: `${site.url}/lab/${SLUG}`,
     type: "website",

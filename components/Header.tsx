@@ -6,7 +6,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
+import { PRIMARY_NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -113,6 +113,7 @@ const Header = () => {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
         <Link
           href="/"
+          data-site-logo
           className="shrink-0 text-sm font-semibold uppercase tracking-widest text-gray-200 transition-colors hover:text-[var(--accent-text)] dark:text-gray-900">
           Murat Öncü
         </Link>
@@ -120,7 +121,7 @@ const Header = () => {
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 text-sm uppercase tracking-wider md:flex">
-          {NAV_LINKS.map((link) => {
+          {PRIMARY_NAV_LINKS.map((link) => {
             const active = isActive(pathname, link.href);
             return (
               <Link
@@ -176,7 +177,7 @@ const Header = () => {
               <SheetTitle className="sr-only">Menu</SheetTitle>
 
               <nav aria-label="Mobile" className="mt-6 flex flex-col gap-1">
-                {NAV_LINKS.map((link) => (
+                {PRIMARY_NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

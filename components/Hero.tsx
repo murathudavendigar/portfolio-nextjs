@@ -1,9 +1,11 @@
 import { site } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
+import { getSelectedProjects } from "@/lib/projects";
 import BackgroundCircles from "./BackgroundCircles";
 
 const Hero = () => {
+  const liveProducts = getSelectedProjects().length;
   return (
     <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16 lg:py-28">
       <div>
@@ -14,7 +16,7 @@ const Hero = () => {
           {site.shortName}
         </h1>
         <p className="mt-5 max-w-md text-xl font-semibold leading-snug tracking-tight [text-wrap:balance] text-gray-200 dark:text-gray-800 sm:text-2xl">
-          Building web &amp; mobile products — and teaching the same craft.
+          I build products people actually use&nbsp;— on the web and in the app stores.
         </p>
         <p className="mt-5 max-w-lg text-base leading-relaxed text-gray-300 [text-wrap:pretty] dark:text-gray-700">
           Co-founder of{" "}
@@ -25,8 +27,8 @@ const Hero = () => {
             className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
             TemCraft Tech
           </a>
-          . React, Next.js, TypeScript, and React Native — shipped on the App
-          Store, npm, and the web.
+          . React, Next.js, TypeScript, and React Native — {liveProducts}{" "}
+          products live today on the App Store, Google Play, npm, and the web.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">

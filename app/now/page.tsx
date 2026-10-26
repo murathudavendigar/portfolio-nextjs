@@ -1,12 +1,12 @@
 import Reveal from "@/components/Reveal";
 import { getProject } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 /** Keep this in sync when the page content changes (Europe/Amsterdam). */
-const LAST_UPDATED = "2026-09-23";
-const LAST_UPDATED_LABEL = "September 23, 2026";
+const LAST_UPDATED = "2026-10-26";
+const LAST_UPDATED_LABEL = "26 Oct 2026";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
   alternates: { canonical: "/now" },
   openGraph: {
+    images: defaultOgImages,
     title: `Now — ${site.shortName}`,
     description:
       "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
@@ -76,8 +77,8 @@ export default function NowPage() {
                 Currently shipping
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-                Maintaining live products: App Store updates for Daily Skyline
-                and Courai, Choose Game as a PWA, AutoInvoice Pro on Gumroad,
+                Maintaining live products: Daily Skyline on the App Store and,
+                since 26 October, Google Play; Courai on the App Store; Choose Game as a PWA, AutoInvoice Pro on Gumroad,
                 and codebrief on npm.
               </p>
               <ul className="mt-6 space-y-4">
@@ -110,25 +111,13 @@ export default function NowPage() {
                 Building
               </h2>
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-                Polishing this portfolio&apos;s case studies and card system so
-                hiring managers can scan shipped work in seconds. Small
-                product-side fixes on the live apps above as feedback comes in.
+                Daily Skyline&apos;s Android launch: watching first Play reviews
+                and fixing what new players hit. Refreshing this portfolio so
+                hiring managers can scan shipped work in seconds.
               </p>
             </section>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <section>
-              <h2 className="border-b border-white/10 pb-4 text-xl font-semibold dark:border-gray-400/40 dark:text-gray-900">
-                Teaching
-              </h2>
-              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-                Helping frontend learners build stronger fundamentals through
-                practical React, Next.js, and TypeScript projects at TemCraft
-                Tech — the same stack I ship with.
-              </p>
-            </section>
-          </Reveal>
 
           <Reveal delay={0.15}>
             <section>
@@ -138,7 +127,7 @@ export default function NowPage() {
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 Deeper React Native / Expo release discipline (TestFlight → App
                 Store), and keeping TypeScript and Next.js App Router patterns
-                current for both products and classroom demos.
+                current across the products above.
               </p>
             </section>
           </Reveal>
@@ -167,7 +156,7 @@ export default function NowPage() {
               </h2>
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 Based in the Netherlands. Open to frontend roles (NL / EU /
-                remote), freelance product work, and teaching engagements.
+                remote) and freelance product work.
               </p>
               <Link
                 href="/contact"

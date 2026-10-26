@@ -1,3 +1,4 @@
+import { formatPostDate } from "@/lib/utils";
 import BlogCard from "@/components/BlogCard";
 import Reveal from "@/components/Reveal";
 import { getFlagshipPosts } from "@/lib/blog";
@@ -22,7 +23,7 @@ export default function WritingIndexPage() {
             Writing on frontend development
           </h1>
           <p className="max-w-2xl mt-4 text-sm leading-relaxed text-gray-300 dark:text-gray-700 sm:text-base">
-            Practical notes from shipping React and Next.js products and teaching the same stack — TypeScript, UI patterns, and the CLIs I use with students, clients, and agents.
+            Practical notes from shipping React and Next.js products — TypeScript, UI patterns, and the CLIs I use with clients and agents.
           </p>
         </Reveal>
 
@@ -31,7 +32,7 @@ export default function WritingIndexPage() {
             <Reveal key={post.id} delay={Math.min(index, 8) * 0.06}>
               <BlogCard
                 title={post.title}
-                date={new Date(post.date).toLocaleDateString()}
+                date={formatPostDate(post.date)}
                 slug={post.slug}
                 description={post.description}
                 imageUrl={post.imageUrl}

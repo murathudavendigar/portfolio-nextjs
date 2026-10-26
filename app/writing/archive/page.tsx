@@ -1,3 +1,4 @@
+import { formatPostDate } from "@/lib/utils";
 import BlogCard from "@/components/BlogCard";
 import { getArchivedPosts } from "@/lib/blog";
 import Link from "next/link";
@@ -33,7 +34,7 @@ export default function WritingArchivePage() {
             <BlogCard
               key={post.id}
               title={post.title}
-              date={new Date(post.date).toLocaleDateString()}
+              date={formatPostDate(post.date)}
               slug={post.slug}
               description={post.description}
               imageUrl={post.imageUrl}

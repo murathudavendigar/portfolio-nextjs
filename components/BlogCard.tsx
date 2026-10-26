@@ -1,4 +1,3 @@
-import { site } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +27,23 @@ export default function BlogCard({
       <article className="h-full flex flex-col overflow-hidden transition-all duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
         <div className="relative w-full overflow-hidden h-52">
           {(() => {
-            const imageSrc = imageUrl || site.defaultOgImage;
+            if (!imageUrl) {
+              // No cover image: a typographic cover, so posts never share one.
+              return (
+                <div
+                  aria-hidden="true"
+                  className="flex h-full flex-col justify-between bg-inkDeep p-6 transition-transform duration-500 group-hover:scale-105 dark:bg-paperDeep">
+                  <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                    Writing{readTime ? ` · ${readTime} min` : ""}
+                  </p>
+                  <p className="truncate font-mono-ui text-5xl font-semibold lowercase tracking-tight text-[var(--accent-text)]">
+                    <span className="opacity-50">#</span>
+                    {tags[0] ?? "notes"}
+                  </p>
+                </div>
+              );
+            }
+            const imageSrc = imageUrl;
             return imageSrc.startsWith("/") ? (
               <Image
                 src={imageSrc}

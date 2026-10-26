@@ -179,6 +179,15 @@ export default function WorkDetail({
                 {primary.label}
               </a>
             )}
+            {project.playStoreUrl && (
+              <a
+                href={project.playStoreUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="heroButton min-h-11">
+                Google Play
+              </a>
+            )}
             {labExperiment ? (
               <Link href={`/lab/${labExperiment.slug}`} className="heroButton min-h-11">
                 {labExperiment.status === "live" ? "Try in Lab" : "Lab preview"}

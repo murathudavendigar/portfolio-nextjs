@@ -9,12 +9,8 @@ import WritingPreview from "@/components/WritingPreview";
 import ContactCta from "@/components/ContactCta";
 import { getRatingsBySlug } from "@/lib/appStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
-import {
-  getHomepageFeaturedProjects,
-  getPublishedNpmCount,
-  getSelectedProjects,
-  getShippedIosCount,
-} from "@/lib/projects";
+import { getLiveStats } from "@/lib/liveStats";
+import { getHomepageFeaturedProjects } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
@@ -34,27 +30,12 @@ export const metadata: Metadata = {
   },
 };
 
-const PROOF_STATS = (
-  selectedCount: number,
-  iosCount: number,
-  npmCount: number,
-) => [
-  { value: String(selectedCount), label: "Shipped products & tools" },
-  { value: String(iosCount), label: "iOS apps on the App Store" },
-  { value: String(npmCount), label: "npm packages published" },
-  { value: "NL", label: "Frontend instructor & co-founder, TemCraft Tech" },
-];
-
 export default async function Home() {
   // Explicit Featured spine — not “all selected”; HaberAI / Money Guardian stay /work-only.
   const featured = getHomepageFeaturedProjects();
   const [lead, ...rest] = featured;
 
-  const stats = PROOF_STATS(
-    getSelectedProjects().length,
-    getShippedIosCount(),
-    getPublishedNpmCount(),
-  );
+  const live = await getLiveStats();
 
   const projectsToFetch = featured;
 
@@ -79,7 +60,7 @@ export default async function Home() {
       <main id="main">
         <Hero />
 
-        <ProofStrip stats={stats} />
+        <ProofStrip stats={live.stats} isLive={live.isLive} />
 
         {/* Product proof before capability grid — brand → evidence → skills */}
         <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">

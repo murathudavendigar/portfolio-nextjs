@@ -16,8 +16,8 @@ export default function ContactCta() {
           Let&apos;s build something useful.
         </h2>
         <p className="mt-6 text-base leading-relaxed text-gray-300 dark:text-gray-700 sm:text-lg max-w-2xl mx-auto">
-          Frontend roles, scoped product work through TemCraft, or teaching —
-          book a short intro or write with what you need.
+          Frontend roles or scoped product work through TemCraft — book a
+          short intro or write with what you need.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a

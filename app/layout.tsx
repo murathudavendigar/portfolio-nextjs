@@ -1,10 +1,10 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import CommandPalette from "@/components/CommandPalette";
-import HomeIntro from "@/components/HomeIntro";
+import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
 import DynamicTitle from "@/components/DynamicTitle";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import { getResumeHref } from "@/lib/resume";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Nunito_Sans } from "next/font/google";
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: site.shortName,
     title: site.title,
     description: site.description,
-    images: [{ url: site.defaultOgImage, width: 1200, height: 630 }],
+    images: defaultOgImages,
   },
   twitter: {
     card: "summary_large_image",
@@ -62,6 +62,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       suppressHydrationWarning
       className={`${nunitoSans.variable} ${geistMono.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introBootScript }} />
+      </head>
       <body className="flex min-h-screen flex-col bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
         <Providers>
           <ConsoleGreeting />

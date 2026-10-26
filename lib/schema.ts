@@ -173,6 +173,7 @@ export function workSchema(project: {
   url: string;
   img?: string;
   appStoreUrl?: string;
+  playStoreUrl?: string;
   language?: string;
 }) {
   const pageUrl = absoluteUrl(`/work/${project.slug}`);
@@ -212,7 +213,11 @@ export function workSchema(project: {
         codeRepository: project.github || undefined,
         installUrl: project.appStoreUrl || undefined,
         applicationCategory: isApp ? "MobileApplication" : undefined,
-        operatingSystem: isApp ? "iOS" : undefined,
+        operatingSystem: isApp
+          ? project.playStoreUrl
+            ? "iOS, Android"
+            : "iOS"
+          : undefined,
         author: { "@id": personId },
         isPartOf: { "@id": websiteId },
       },
@@ -253,7 +258,7 @@ export function aboutPageGraph() {
         url: absoluteUrl("/about"),
         name: `About — ${site.shortName}`,
         description:
-          "Murat Hüdavendigâr Öncü — frontend engineer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands.",
+          "Murat Hüdavendigâr Öncü — frontend engineer and co-founder of TemCraft Tech, based in the Netherlands.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         mainEntity: { "@id": personId },
@@ -300,7 +305,7 @@ export function hirePageGraph() {
         url: absoluteUrl("/hire"),
         name: `Hire — ${site.shortName}`,
         description:
-          "How to work with Murat Hüdavendigâr Öncü — frontend roles, scoped product work through TemCraft, and teaching.",
+          "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped product work through TemCraft.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         inLanguage: "en",

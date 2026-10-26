@@ -1,5 +1,5 @@
 import { privacyPageGraph } from "@/lib/schema";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import type { Metadata } from "next";
 
 const description =
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/privacy" },
   openGraph: {
+    images: defaultOgImages,
     title: `Privacy Policy — ${site.shortName}`,
     description,
     url: `${site.url}/privacy`,

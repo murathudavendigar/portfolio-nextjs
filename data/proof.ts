@@ -28,7 +28,7 @@ export const PROOF_SIGNALS: ProofSignal[] = [
   {
     label: "Teaching",
     detail:
-      "Frontend instructor at euroTech Study GmbH and Wise Quarter — React, Next.js, and project-based curricula.",
+      "Taught frontend at euroTech Study GmbH and Wise Quarter (2024–2026) — React, Next.js, and project-based curricula.",
   },
   {
     label: "App Store",

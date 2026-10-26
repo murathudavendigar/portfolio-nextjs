@@ -1,16 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
-
+/**
+ * Page enter animation in CSS, so content is visible even before (or
+ * without) JavaScript. Skipped for reduced motion in styles/globals.css.
+ */
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="page-enter">{children}</div>;
 }

@@ -19,8 +19,8 @@ export default function Hire() {
           How we can work together
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-300 dark:text-gray-700">
-          Frontend roles, scoped product work through TemCraft, or teaching.
-          Pick the path that matches — then book a short intro or write with
+          A frontend role, or scoped product work through TemCraft. Pick the
+          path that matches — then book a short intro or write with
           what you need.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -43,7 +43,7 @@ export default function Hire() {
         </div>
       </Reveal>
 
-      <div className="mt-16 grid gap-8 lg:grid-cols-3">
+      <div className="mt-16 grid gap-8 lg:grid-cols-2">
         {HIRE_ENGAGEMENTS.map((engagement, index) => (
           <Reveal key={engagement.id} delay={Math.min(index, 2) * 0.05}>
             <article className="flex h-full flex-col border-t border-white/10 pt-6 dark:border-gray-400/40">

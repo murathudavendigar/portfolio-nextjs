@@ -1,5 +1,5 @@
 export type HireEngagement = {
-  id: "hire" | "build" | "teach";
+  id: "hire" | "build";
   title: string;
   summary: string;
   fit: string[];
@@ -44,22 +44,6 @@ export const HIRE_ENGAGEMENTS: HireEngagement[] = [
       "What you are shipping and for whom",
       "Rough scope and deadline",
       "Budget range if you have one",
-    ],
-  },
-  {
-    id: "teach",
-    title: "Teach — workshops & mentoring",
-    summary:
-      "React / Next.js workshops, cohort teaching, and 1:1 mentoring — the same stack I ship with.",
-    fit: [
-      "Students or teams learning by building, not only watching slides",
-      "Curriculum that ends in a shipped project",
-      "Remote or NL-based sessions",
-    ],
-    send: [
-      "Audience level and size",
-      "Topics and format (workshop, cohort, mentoring)",
-      "Dates or cadence",
     ],
   },
 ];

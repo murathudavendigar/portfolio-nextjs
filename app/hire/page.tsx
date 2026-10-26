@@ -1,17 +1,18 @@
 import Hire from "@/components/Hire";
 import { hirePageGraph } from "@/lib/schema";
-import { site } from "@/lib/site";
+import { site, defaultOgImages } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Hire",
   description:
-    "How to work with Murat Hüdavendigâr Öncü — frontend roles, scoped React/Next.js work through TemCraft, and teaching. What to send and what happens next.",
+    "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped React/Next.js work through TemCraft. What to send and what happens next.",
   alternates: { canonical: "/hire" },
   openGraph: {
+    images: defaultOgImages,
     title: `Hire — ${site.shortName}`,
     description:
-      "How to work with Murat Hüdavendigâr Öncü — frontend roles, scoped product work, and teaching.",
+      "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped product work.",
     url: `${site.url}/hire`,
     type: "website",
   },
