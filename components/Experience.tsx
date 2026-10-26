@@ -11,7 +11,7 @@ export default function Experience() {
           Experience
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
-          Teaching, shipping, repeating
+          Building products, and teaching along the way
         </h2>
       </Reveal>
 

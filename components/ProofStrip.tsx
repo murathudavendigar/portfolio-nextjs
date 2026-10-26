@@ -1,6 +1,7 @@
 "use client";
 
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
+import Reveal from "@/components/Reveal";
+import { animate, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 type Stat = { value: string; label: string };
@@ -42,26 +43,33 @@ function StatValue({ value }: { value: string }) {
   );
 }
 
-export default function ProofStrip({ stats }: { stats: Stat[] }) {
+export default function ProofStrip({
+  stats,
+  isLive = false,
+}: {
+  stats: Stat[];
+  isLive?: boolean;
+}) {
   return (
     <section
       aria-label="At a glance"
       className="border-y border-white/10 dark:border-gray-300">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-10 sm:grid-cols-4">
         {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px" }}
-            transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}>
+          <Reveal key={stat.label} delay={i * 0.08}>
             <StatValue value={stat.value} />
             <p className="mt-1 font-mono-ui text-[11px] uppercase leading-relaxed tracking-[0.12em] text-[var(--text-muted)]">
               {stat.label}
             </p>
-          </motion.div>
+          </Reveal>
         ))}
       </div>
+      {isLive && (
+        <p className="mx-auto max-w-6xl px-6 pb-6 font-mono-ui text-[10px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+          <span aria-hidden="true" className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 align-middle" />
+          Live from the App Store and npm · refreshed daily
+        </p>
+      )}
     </section>
   );
 }

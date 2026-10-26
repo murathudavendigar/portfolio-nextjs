@@ -15,12 +15,11 @@ const Projects = async () => {
           Work
         </p>
         <h1 className="mt-3 text-center text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">
-          Featured products, then the full index
+          Things I&apos;ve built and shipped
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-          Selected work first — including HaberAI and Money Guardian here, even
-          when they stay off the homepage Featured row. Teaching tools and older
-          shipped apps sit under Earlier builds.
+          Apps, web products, and developer tools that are live today — each
+          with a short case study. Older and smaller builds are at the bottom.
         </p>
       </Reveal>
 
@@ -49,8 +48,8 @@ const Projects = async () => {
             Earlier builds
           </h2>
           <p className="mt-2 max-w-xl text-sm text-[var(--text-muted)]">
-            Teaching tools and earlier shipped apps with a real problem and
-            outcome. Kept for context — not the work I lead with.
+            Smaller and older projects — teaching tools and early apps, each
+            built to solve a real problem.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {earlier.map((project) => (

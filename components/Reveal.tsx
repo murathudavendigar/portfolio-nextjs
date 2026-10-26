@@ -1,8 +1,15 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
+const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+/**
+ * Fades content in as it scrolls into view. The server always renders it
+ * visible; only blocks that start below the fold are hidden (before first
+ * paint) and revealed, so nothing is blank while JavaScript loads.
+ */
 export default function Reveal({
   children,
   className,
@@ -13,17 +20,23 @@ export default function Reveal({
   delay?: number;
 }) {
   const reduceMotion = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const [armed, setArmed] = useState(false);
 
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  useIsoLayoutEffect(() => {
+    if (reduceMotion || !ref.current) return;
+    if (ref.current.getBoundingClientRect().top > window.innerHeight) setArmed(true);
+  }, [reduceMotion]);
+
+  const show = !armed || inView;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
+      ref={ref}
+      initial={false}
+      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={show ? { duration: 0.5, ease: "easeOut", delay } : { duration: 0 }}
       className={className}>
       {children}
     </motion.div>

@@ -27,28 +27,6 @@ import {
 
 export const experiencesData: Experience[] = [
   {
-    company: "euroTech Study GmbH",
-    companyImage: EUROTECH_STUDY_IMAGE_LINK,
-    usedTechnologiesImages: [
-      HTML_IMAGE_LINK,
-      CSS_IMAGE_LINK,
-      JS_IMAGE_LINK,
-      TS_IMAGE_LINK,
-      REACT_IMAGE_LINK,
-      NEXT_IMAGE_LINK,
-    ],
-    title: "Frontend Instructor",
-    description:
-      "Delivering comprehensive frontend training programs to aspiring developers.",
-    startDate: "May 2025",
-    endDate: "Feb 2026",
-    points: [
-      "Instructed remote cohorts on HTML, CSS, JavaScript, React, and Next.js with project-based curricula.",
-      "Mentored students one-on-one through capstone builds and code reviews until they could ship independently.",
-      "Turned recurring student bugs into reusable teaching examples used across later cohorts.",
-    ],
-  },
-  {
     company: "TemCraft Tech",
     companyImage: TEM_CRAFT_TECH_IMAGE_LINK,
     usedTechnologiesImages: [
@@ -68,6 +46,28 @@ export const experiencesData: Experience[] = [
       "Co-founded TemCraft Tech and shipped client and product work end-to-end with a React/Next.js stack.",
       "Owned frontend architecture, code quality, and delivery timelines for SaaS and AI-assisted apps.",
       "Translated client requirements into scoped milestones and launched production UIs on Vercel.",
+    ],
+  },
+  {
+    company: "euroTech Study GmbH",
+    companyImage: EUROTECH_STUDY_IMAGE_LINK,
+    usedTechnologiesImages: [
+      HTML_IMAGE_LINK,
+      CSS_IMAGE_LINK,
+      JS_IMAGE_LINK,
+      TS_IMAGE_LINK,
+      REACT_IMAGE_LINK,
+      NEXT_IMAGE_LINK,
+    ],
+    title: "Frontend Instructor",
+    description:
+      "Delivering comprehensive frontend training programs to aspiring developers.",
+    startDate: "May 2025",
+    endDate: "Feb 2026",
+    points: [
+      "Instructed remote cohorts on HTML, CSS, JavaScript, React, and Next.js with project-based curricula.",
+      "Mentored students one-on-one through capstone builds and code reviews until they could ship independently.",
+      "Turned recurring student bugs into reusable teaching examples used across later cohorts.",
     ],
   },
   {
