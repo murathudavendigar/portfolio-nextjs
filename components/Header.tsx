@@ -6,6 +6,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { OPEN_COMMAND_PALETTE } from "@/components/CommandPalette";
 import { PRIMARY_NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { Bars3Icon } from "@heroicons/react/24/outline";
@@ -45,6 +46,26 @@ function SocialLinks({ size = 32 }: { size?: number }) {
         />
       ))}
     </div>
+  );
+}
+
+/** Opens the command palette; shows the right shortcut for the platform. */
+function CommandHint() {
+  const [mac, setMac] = useState(true);
+
+  useEffect(() => {
+    setMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
+  }, []);
+
+  return (
+    <button
+      type="button"
+      onClick={() => window.dispatchEvent(new Event(OPEN_COMMAND_PALETTE))}
+      aria-label="Open command menu"
+      aria-keyshortcuts={mac ? "Meta+K" : "Control+K"}
+      className="mr-1 hidden h-8 items-center rounded-md border border-white/15 px-2 font-mono-ui text-[11px] tracking-wider text-[var(--text-muted)] transition-colors hover:border-[var(--accent-text)] hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-400/50 md:inline-flex">
+      {mac ? "⌘K" : "Ctrl K"}
+    </button>
   );
 }
 
@@ -170,7 +191,10 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <SocialLinks />
+          <CommandHint />
+          <div className="hidden sm:block">
+            <SocialLinks />
+          </div>
           <div className="hidden sm:block">
             <ThemeToggle />
           </div>
@@ -205,7 +229,14 @@ const Header = () => {
               </nav>
 
               <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4 dark:border-gray-400/40">
-                <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                  Elsewhere
+                </p>
+                <SocialLinks size={40} />
+              </div>
+
+              <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4 dark:border-gray-400/40">
+                <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
                   Appearance
                 </p>
                 <ThemeToggle />

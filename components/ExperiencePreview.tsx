@@ -28,20 +28,22 @@ export default function ExperiencePreview() {
 
       <ul className="mt-8 space-y-6">
         {topExperiences.map((experience, i) => (
-          <Reveal key={`${experience.company}-${experience.startDate}`} delay={i * 0.05}>
-            <li className="grid gap-3 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-10">
-              <p className="font-mono-ui text-[11px] uppercase tracking-wider text-gray-400 sm:pt-1 dark:text-gray-600">
-                {formatExperienceDates(experience.startDate, experience.endDate)}
+          <Reveal
+            key={`${experience.company}-${experience.startDate}`}
+            as="li"
+            delay={i * 0.05}
+            className="grid gap-3 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-10">
+            <p className="font-mono-ui text-[11px] uppercase tracking-wider text-gray-400 sm:pt-1 dark:text-gray-600">
+              {formatExperienceDates(experience.startDate, experience.endDate)}
+            </p>
+            <div>
+              <h3 className="text-base font-medium leading-snug dark:text-gray-900">
+                {experience.title}
+              </h3>
+              <p className="text-sm text-gray-400 dark:text-gray-600">
+                {experience.company}
               </p>
-              <div>
-                <h3 className="text-base font-medium leading-snug dark:text-gray-900">
-                  {experience.title}
-                </h3>
-                <p className="text-sm text-gray-400 dark:text-gray-600">
-                  {experience.company}
-                </p>
-              </div>
-            </li>
+            </div>
           </Reveal>
         ))}
       </ul>

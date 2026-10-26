@@ -130,7 +130,7 @@ export default function LabShell({
                     : { opacity: 0, transform: "translateY(12px)" }
                 }
                 transition={{ duration: 0.4, ease: EASE, delay: 0.32 }}
-                className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[#CA3E47]">
+                className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
                 {experiment.eyebrow}
               </motion.p>
               <h1 className="mt-3 overflow-hidden font-mono-ui text-4xl font-semibold tracking-tight [text-wrap:balance] sm:text-5xl md:text-6xl dark:text-gray-900">

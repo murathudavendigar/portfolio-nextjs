@@ -13,6 +13,9 @@ type Command = {
   action: () => void;
 };
 
+/** Window event that opens the palette (dispatched by the header button). */
+export const OPEN_COMMAND_PALETTE = "open-command-palette";
+
 export default function CommandPalette({ resumeHref }: { resumeHref: string | null }) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -75,6 +78,13 @@ export default function CommandPalette({ resumeHref }: { resumeHref: string | nu
   useEffect(() => {
     setSelectedIndex(0);
   }, [search]);
+
+  // The header's ⌘K button opens the palette with this event.
+  useEffect(() => {
+    const openPalette = () => setOpen(true);
+    window.addEventListener(OPEN_COMMAND_PALETTE, openPalette);
+    return () => window.removeEventListener(OPEN_COMMAND_PALETTE, openPalette);
+  }, []);
 
   // Handle Global open/close and keyboard navigation
   useEffect(() => {

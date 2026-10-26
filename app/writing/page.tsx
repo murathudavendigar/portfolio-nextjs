@@ -49,7 +49,7 @@ export default function WritingIndexPage() {
             href="https://medium.com/@murathudavendigar"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-500 hover:text-[var(--accent-text)] transition-colors"
+            className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors"
           >
             Looking for the earlier Python/Django learning notes? See the archive →
           </Link>

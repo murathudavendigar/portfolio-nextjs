@@ -1,4 +1,4 @@
-import { introBookingHref, site } from "@/lib/site";
+import { introBookingHref, site, introBookingLabel } from "@/lib/site";
 import Link from "next/link";
 import Reveal from "./Reveal";
 
@@ -26,7 +26,7 @@ export default function ContactCta() {
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
             className="btn-primary w-full sm:w-auto">
-            Book a 15-min intro
+            {introBookingLabel()}
           </a>
           <Link
             href="/hire"

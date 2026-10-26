@@ -1,7 +1,7 @@
 import Reveal from "@/components/Reveal";
 import { HIRE_ENGAGEMENTS, HIRE_STEPS } from "@/data/hire";
 import { getResumeHref } from "@/lib/resume";
-import { introBookingHref, site } from "@/lib/site";
+import { introBookingHref, site, introBookingLabel } from "@/lib/site";
 import Link from "next/link";
 
 export default function Hire() {
@@ -30,7 +30,7 @@ export default function Hire() {
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
             className="btn-primary">
-            Book a 15-min intro
+            {introBookingLabel()}
           </a>
           <Link href="/contact" className="btn-secondary">
             Send a message

@@ -219,7 +219,7 @@ function LiveStation({
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:gap-12 md:px-10 md:py-16">
         <div className="min-w-0 flex-1">
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[#CA3E47]">
+          <p className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
             {exp.eyebrow}
           </p>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight dark:text-gray-900 sm:text-5xl">
@@ -338,7 +338,7 @@ export default function LabIndex({
                   : { opacity: 0, transform: "translateY(14px)" }
               }
               transition={{ duration: 0.45, ease: EASE, delay: 0.4 }}
-              className="font-mono-ui text-[12px] uppercase tracking-[0.28em] text-[#CA3E47]">
+              className="font-mono-ui text-[12px] uppercase tracking-[0.28em] text-[var(--accent-text)]">
               Leave the résumé voice
             </motion.p>
 
@@ -496,7 +496,7 @@ export default function LabIndex({
                 <SoonRow key={exp.slug} exp={exp} />
               ))}
             </ul>
-            <p className="mt-12 text-sm text-gray-500 dark:text-gray-600">
+            <p className="mt-12 text-sm text-[var(--text-muted)]">
               Prefer the write-ups?{" "}
               <Link
                 href="/work"
