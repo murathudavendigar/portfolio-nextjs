@@ -42,7 +42,7 @@ const PROOF_STATS = (
   { value: String(selectedCount), label: "Shipped products & tools" },
   { value: String(iosCount), label: "iOS apps on the App Store" },
   { value: String(npmCount), label: "npm packages published" },
-  { value: "NL", label: "Frontend instructor & co-founder, TemCraft Tech" },
+  { value: "NL", label: "Based in the Netherlands · co-founder, TemCraft Tech" },
 ];
 
 export default async function Home() {

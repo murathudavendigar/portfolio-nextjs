@@ -13,7 +13,7 @@ export default function About() {
       value: "TemCraft Tech",
       href: "https://temcrafttech.com",
     },
-    { label: "Also", value: "Frontend instructor" },
+    { label: "Previously", value: "Frontend instructor (2024–2026)" },
     { label: "Builds with", value: "React, Next.js, TypeScript, React Native" },
     { label: "Also uses", value: "Django, .NET when a product needs it" },
     ...(resumeHref
@@ -38,7 +38,7 @@ export default function About() {
 
           <div>
             <h1 className="text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
-              I ship frontend products and teach the same craft.
+              I ship frontend products for web and iOS.
             </h1>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
               <p>
@@ -50,15 +50,15 @@ export default function About() {
                   className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
                   TemCraft Tech
                 </a>
-                , and a frontend instructor based in the Netherlands. I ship
-                React, Next.js, and iOS products and teach the same stack in
-                class.
+                , based in the Netherlands. I ship React, Next.js, and React
+                Native products, and spent two years teaching the same stack
+                as a frontend instructor.
               </p>
               <p>
                 The through-line is products people can actually use: Daily
                 Skyline and Courai on the App Store, Choose Game as a bilingual
-                web PWA, AutoInvoice Pro as a desktop utility, npm tools I use
-                with students, and client work in React and Next.js. React
+                web PWA, AutoInvoice Pro as a desktop utility, npm tools I built
+                for students, and client work in React and Next.js. React
                 Native joined that list when I started shipping iOS myself. I
                 studied Computer Engineering at Kocaeli University.
               </p>
@@ -107,12 +107,12 @@ export default function About() {
             Teaching & Mentorship
           </h2>
           <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
-            I&apos;ve spent hundreds of hours teaching frontend development to
-            junior engineers and career-changers. My approach is practical: we
-            build projects, write TypeScript, and debug stack traces together
-            instead of reading slides. Teaching forces you to understand the
-            &quot;why&quot; behind every line of code, and it makes me a much
-            stronger engineer when I go back to building my own products.
+            I spent hundreds of hours teaching frontend development to
+            junior engineers and career-changers. My approach was practical: we
+            built projects, wrote TypeScript, and debugged stack traces together
+            instead of reading slides. Teaching forced me to understand the
+            &quot;why&quot; behind every line of code, and it made me a much
+            stronger engineer for building my own products.
           </p>
         </div>
       </Reveal>

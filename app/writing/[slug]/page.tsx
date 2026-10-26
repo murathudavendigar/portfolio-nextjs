@@ -1,3 +1,4 @@
+import { formatPostDate } from "@/lib/utils";
 import MarkdownContent from "@/components/MarkdownContent";
 import {
   Breadcrumb,
@@ -50,18 +51,10 @@ export default async function WritingPostPage({
   const post = getPost((await params).slug);
   if (!post) notFound();
 
-  const createdDate = new Date(post.createdAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const createdDate = formatPostDate(post.createdAt);
 
   const updatedDate = post.updatedAt
-    ? new Date(post.updatedAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
+    ? formatPostDate(post.updatedAt)
     : null;
 
   const isUpdated =

@@ -253,7 +253,7 @@ export function aboutPageGraph() {
         url: absoluteUrl("/about"),
         name: `About — ${site.shortName}`,
         description:
-          "Murat Hüdavendigâr Öncü — frontend engineer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands.",
+          "Murat Hüdavendigâr Öncü — frontend engineer and co-founder of TemCraft Tech, based in the Netherlands.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         mainEntity: { "@id": personId },

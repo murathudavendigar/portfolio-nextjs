@@ -18,7 +18,7 @@ export default function UsesPage() {
             What I use
           </h1>
           <p className="mt-6 text-base leading-relaxed text-gray-300 dark:text-gray-700">
-            A somewhat comprehensive list of the tools, apps, and hardware I use to build frontend products and teach.
+            A somewhat comprehensive list of the tools, apps, and hardware I use to build frontend products.
           </p>
         </Reveal>
 

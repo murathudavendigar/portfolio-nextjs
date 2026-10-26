@@ -4,7 +4,7 @@ export const site = {
   url: "https://www.muratoncu.com",
   title: "Murat Hüdavendigâr Öncü — Frontend Engineer",
   description:
-    "Frontend engineer, co-founder at TemCraft Tech, and frontend instructor. I ship React, Next.js, and iOS products and teach modern web development from the Netherlands.",
+    "Frontend engineer and co-founder at TemCraft Tech. I ship React, Next.js, and React Native products from the Netherlands.",
   email: "contact@muratoncu.com",
   /** Set NEXT_PUBLIC_CAL_URL to a Cal.com (or similar) booking link. */
   calUrl: process.env.NEXT_PUBLIC_CAL_URL?.trim() || "",

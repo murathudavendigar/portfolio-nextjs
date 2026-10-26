@@ -1,3 +1,4 @@
+import { formatPostDate } from "@/lib/utils";
 import { getFlagshipPosts } from "@/lib/blog";
 import Link from "next/link";
 import Reveal from "./Reveal";
@@ -33,7 +34,7 @@ export default function WritingPreview() {
           <Reveal key={post.id} delay={i * 0.1}>
             <BlogCard
               title={post.title}
-              date={new Date(post.date).toLocaleDateString()}
+              date={formatPostDate(post.date)}
               slug={post.slug}
               description={post.description}
               imageUrl={post.imageUrl}

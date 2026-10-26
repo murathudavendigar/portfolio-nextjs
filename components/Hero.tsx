@@ -14,7 +14,7 @@ const Hero = () => {
           {site.shortName}
         </h1>
         <p className="mt-5 max-w-md text-xl font-semibold leading-snug tracking-tight [text-wrap:balance] text-gray-200 dark:text-gray-800 sm:text-2xl">
-          Building web &amp; mobile products — and teaching the same craft.
+          Building web &amp; mobile products, end to end.
         </p>
         <p className="mt-5 max-w-lg text-base leading-relaxed text-gray-300 [text-wrap:pretty] dark:text-gray-700">
           Co-founder of{" "}

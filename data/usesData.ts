@@ -5,7 +5,7 @@ export const USES_CATEGORIES = [
       {
         name: "MacBook Pro",
         description:
-          "2.4 GHz quad-core Intel Core i5, 16GB 2133 MHz LPDDR3, and Intel Iris Plus Graphics 655. My main machine for frontend development and teaching.",
+          "2.4 GHz quad-core Intel Core i5, 16GB 2133 MHz LPDDR3, and Intel Iris Plus Graphics 655. My main machine for frontend development.",
       },
       {
         name: 'Medion 27" Monitor',
