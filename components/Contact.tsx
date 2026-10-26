@@ -14,14 +14,14 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
         Contact
       </p>
       <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
-        Write if you want to hire, ship, or teach.
+        Write if you want to hire or ship something together.
       </h1>
 
       <div className="mt-12 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div className="space-y-8">
           <p className="max-w-md text-base leading-relaxed text-gray-300 dark:text-gray-700">
             Frontend roles in the Netherlands or remote, scoped React / Next.js
-            work through TemCraft Tech, and teaching. Prefer a short call? Book
+            work through TemCraft Tech. Prefer a short call? Book
             an intro — or send a note with what you need.
           </p>
 
@@ -37,12 +37,6 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
                 Build —
               </span>{" "}
               product UI, MVPs, and ownership through TemCraft.
-            </li>
-            <li>
-              <span className="font-medium text-white dark:text-gray-900">
-                Teach —
-              </span>{" "}
-              React / Next.js workshops and mentoring.
             </li>
           </ul>
 

@@ -7,13 +7,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles, freelance React/Next.js work, and teaching.",
+    "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles and freelance React/Next.js work.",
   alternates: { canonical: "/contact" },
   openGraph: {
     images: defaultOgImages,
     title: `Contact — ${site.shortName}`,
     description:
-      "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles, freelance React/Next.js work, and teaching.",
+      "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles and freelance React/Next.js work.",
     url: `${site.url}/contact`,
     type: "website",
   },

@@ -63,7 +63,7 @@ export default function About() {
                 studied Computer Engineering at Kocaeli University.
               </p>
               <p>
-                Open to roles, scoped freelance, and teaching. If you need
+                Open to frontend roles and scoped freelance work. If you need
                 someone who can own the frontend and explain the decisions,{" "}
                 <Link
                   href="/contact"

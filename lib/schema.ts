@@ -305,7 +305,7 @@ export function hirePageGraph() {
         url: absoluteUrl("/hire"),
         name: `Hire — ${site.shortName}`,
         description:
-          "How to work with Murat Hüdavendigâr Öncü — frontend roles, scoped product work through TemCraft, and teaching.",
+          "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped product work through TemCraft.",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         inLanguage: "en",

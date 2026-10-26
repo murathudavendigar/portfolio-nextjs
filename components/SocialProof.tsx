@@ -17,8 +17,8 @@ export default function SocialProof() {
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-gray-300 dark:text-gray-700">
           {hasQuotes
-            ? "Quotes with permission, plus the public places you can verify shipping and teaching."
-            : "No invented testimonials — verify teaching roles, App Store listings, and npm packages yourself."}
+            ? "Quotes with permission, plus the public places you can verify my work."
+            : "No invented testimonials — check the App Store listings, npm packages, and past roles yourself."}
         </p>
       </Reveal>
 
