@@ -1,3 +1,4 @@
+import CaseToc from "@/components/CaseToc";
 import Reveal from "@/components/Reveal";
 import WorkDeviceFrame from "@/components/WorkDeviceFrame";
 import { Badge } from "@/components/ui/badge";
@@ -222,17 +223,26 @@ export default function WorkDetail({
       </div>
 
       {caseStudy && (
-        <div className="mt-16 grid max-w-3xl gap-12">
-          {sections.map(([label, key]) => (
-            <Reveal key={key}>
-              <section>
-                <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
-                  {label}
-                </h2>
-                <CaseParagraphs text={project[key]!} />
-              </section>
-            </Reveal>
-          ))}
+        <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,48rem)_11rem] lg:justify-between lg:gap-12">
+          <div className="lg:order-2 lg:h-full">
+            <CaseToc
+              sections={sections.map(([label, key]) => ({ id: key, label }))}
+            />
+          </div>
+          <div className="grid max-w-3xl gap-12 lg:order-1">
+            {sections.map(([label, key]) => (
+              <Reveal key={key}>
+                <section id={key} aria-labelledby={`${key}-title`}>
+                  <h2
+                    id={`${key}-title`}
+                    className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
+                    {label}
+                  </h2>
+                  <CaseParagraphs text={project[key]!} />
+                </section>
+              </Reveal>
+            ))}
+          </div>
         </div>
       )}
 

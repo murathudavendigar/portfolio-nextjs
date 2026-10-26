@@ -14,13 +14,16 @@ export default function Reveal({
   children,
   className,
   delay = 0,
+  as = "div",
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Render as a list item when Reveal sits directly inside a <ul>/<ol>. */
+  as?: "div" | "li";
 }) {
   const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   const [armed, setArmed] = useState(false);
 
@@ -31,13 +34,19 @@ export default function Reveal({
 
   const show = !armed || inView;
 
-  return (
-    <motion.div
-      ref={ref}
-      initial={false}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-      transition={show ? { duration: 0.5, ease: "easeOut", delay } : { duration: 0 }}
-      className={className}>
+  const props = {
+    initial: false as const,
+    animate: show ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+    transition: show ? { duration: 0.5, ease: "easeOut" as const, delay } : { duration: 0 },
+    className,
+  };
+
+  return as === "li" ? (
+    <motion.li ref={ref as React.Ref<HTMLLIElement>} {...props}>
+      {children}
+    </motion.li>
+  ) : (
+    <motion.div ref={ref as React.Ref<HTMLDivElement>} {...props}>
       {children}
     </motion.div>
   );

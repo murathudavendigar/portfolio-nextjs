@@ -376,7 +376,7 @@ export default function ChooseLab() {
                           initial={reduceMotion ? false : { scale: 0.5, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={SPRING_POP}
-                          className="font-mono-ui text-[10px] uppercase tracking-wider text-[#CA3E47]">
+                          className="font-mono-ui text-[10px] uppercase tracking-wider text-[var(--accent-text)]">
                           +1
                         </motion.span>
                       ) : null}

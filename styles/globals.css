@@ -15,8 +15,9 @@
   :root {
     /* WCAG AA-safe accent for text: #CA3E47 itself is ~3.4:1 on both
        ink and paper. These shift lightness while keeping the hue, so
-       accent-colored labels/links stay readable at body-text sizes. */
-    --accent-text: #e2626b;
+       accent-colored labels/links stay readable at body-text sizes.
+       ≥4.5:1 on ink, inkDeep, cards and the accent-tinted chips. */
+    --accent-text: #eb7d85;
 
     /* Secondary / muted copy — ≥4.5:1 on ink (#211d1a) and inkDeep */
     --text-muted: #b8b0a8;

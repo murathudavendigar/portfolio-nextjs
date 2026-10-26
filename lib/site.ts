@@ -30,6 +30,11 @@ export const defaultOgImages = [
 export const absoluteUrl = (path: string) =>
   path.startsWith("http") ? path : `${site.url}${path}`;
 
+/** Label for the intro button: only promise a booking when a calendar exists. */
+export function introBookingLabel(): string {
+  return site.calUrl ? "Book a 15-min intro" : "Email me";
+}
+
 export function introBookingHref(): string {
   if (site.calUrl) return site.calUrl;
   const subject = encodeURIComponent("15-min intro");

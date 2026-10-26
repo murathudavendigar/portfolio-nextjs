@@ -1,7 +1,7 @@
 "use client";
 import ContactFormPanel from "@/components/ContactFormPanel";
 import { SOCIAL_LINKS } from "@/lib/nav";
-import { introBookingHref, site } from "@/lib/site";
+import { introBookingHref, site, introBookingLabel } from "@/lib/site";
 import Link from "next/link";
 
 const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
@@ -56,7 +56,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
             className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            Book a 15-min intro
+            {introBookingLabel()}
           </a>
 
           <dl className="space-y-4">
