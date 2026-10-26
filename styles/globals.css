@@ -116,11 +116,7 @@ html[data-intro] .mho-intro {
   display: flex;
   animation: mho-intro-failsafe 0s linear 4s forwards;
 }
-html [data-site-logo] {
-  transition-property: color, opacity;
-  transition-duration: 300ms;
-}
-html[data-intro] [data-site-logo] {
+html[data-intro] [data-logo-char] {
   opacity: 0;
   animation: mho-logo-failsafe 0s linear 4s forwards;
 }
