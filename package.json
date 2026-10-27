@@ -24,6 +24,7 @@
     "date-fns": "^4.1.0",
     "eslint": "^8.57.1",
     "framer-motion": "^12.42.2",
+    "google-play-scraper": "^10.1.4",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.42.0",
     "motion": "^13.2.0",

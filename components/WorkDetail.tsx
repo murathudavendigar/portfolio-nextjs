@@ -13,6 +13,7 @@ import {
 import { getLabByWorkSlug } from "@/data/lab";
 import { getRelatedPosts } from "@/lib/blog";
 import type { AppStoreInfo } from "@/lib/appStore";
+import type { PlayStoreInfo } from "@/lib/playStore";
 import { npmStatsLine, type NpmInfo } from "@/lib/npm";
 import {
   getAdjacentProjects,
@@ -26,6 +27,7 @@ import Link from "next/link";
 type WorkDetailProps = {
   project: ProjectType;
   appStoreInfo?: AppStoreInfo | null;
+  playStoreInfo?: PlayStoreInfo | null;
   npmInfo?: NpmInfo | null;
 };
 
@@ -72,6 +74,7 @@ function CaseParagraphs({ text }: { text: string }) {
 export default function WorkDetail({
   project,
   appStoreInfo,
+  playStoreInfo,
   npmInfo,
 }: WorkDetailProps) {
   const primary = projectPrimaryCta(project);
@@ -96,6 +99,17 @@ export default function WorkDetail({
           : null,
       ].filter(Boolean)
     : [];
+  const playStoreLine = playStoreInfo
+    ? [
+        "Google Play",
+        playStoreInfo.installs && `${playStoreInfo.installs} installs`,
+        playStoreInfo.averageRating && playStoreInfo.ratingCount > 0
+          ? `★ ${playStoreInfo.averageRating.toFixed(1)} (${playStoreInfo.ratingCount})`
+          : null,
+      ]
+        .filter(Boolean)
+        .join(" · ")
+    : null;
 
   return (
     <article className="mx-auto max-w-5xl px-6 py-16 md:px-10 md:py-24">
@@ -167,6 +181,12 @@ export default function WorkDetail({
           {appStoreMeta.length > 0 && (
             <p className="mt-2 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
               {appStoreMeta.join(" · ")}
+            </p>
+          )}
+
+          {playStoreLine && (
+            <p className="mt-2 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+              {playStoreLine}
             </p>
           )}
 
