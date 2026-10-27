@@ -1,5 +1,6 @@
 import WorkDetail from "@/components/WorkDetail";
 import { appStoreIdFromUrl, getAppStoreInfo } from "@/lib/appStore";
+import { getPlayStoreInfo, playStoreIdFromUrl } from "@/lib/playStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getProject, getProjects } from "@/lib/projects";
 import { workSchema } from "@/lib/schema";
@@ -51,6 +52,10 @@ export default async function WorkDetailPage({
     ? appStoreIdFromUrl(project.appStoreUrl)
     : null;
   const appStoreInfo = appStoreId ? await getAppStoreInfo(appStoreId) : null;
+  const playStoreId = project.playStoreUrl
+    ? playStoreIdFromUrl(project.playStoreUrl)
+    : null;
+  const playStoreInfo = playStoreId ? await getPlayStoreInfo(playStoreId) : null;
   const npmName =
     project.language === "NPM" ? npmPackageFromUrl(project.url) : null;
   const npmInfo = npmName ? await getNpmInfo(npmName) : null;
@@ -61,6 +66,7 @@ export default async function WorkDetailPage({
         <WorkDetail
           project={project}
           appStoreInfo={appStoreInfo}
+          playStoreInfo={playStoreInfo}
           npmInfo={npmInfo}
         />
       </main>
