@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 /** Keep this in sync when the page content changes (Europe/Amsterdam). */
-const LAST_UPDATED = "2026-10-26";
-const LAST_UPDATED_LABEL = "26 Oct 2026";
+const LAST_UPDATED = "2026-10-27";
+const LAST_UPDATED_LABEL = "27 Oct 2026";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -27,6 +27,7 @@ const SHIPPING = [
   "daily-skyline",
   "courai",
   "choose-game",
+  "nodezero",
   "autoinvoice-pro",
   "codebrief",
 ];
@@ -78,8 +79,9 @@ export default function NowPage() {
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 Maintaining live products: Daily Skyline on the App Store and,
-                since 26 October, Google Play; Courai on the App Store; Choose Game as a PWA, AutoInvoice Pro on Gumroad,
-                and codebrief on npm.
+                since 26 October, Google Play; Courai on the App Store; NODEZERO,
+                a free Windows coach for CS2 and Dota 2; Choose Game as a PWA;
+                AutoInvoice Pro on Gumroad; and codebrief on npm.
               </p>
               <ul className="mt-6 space-y-4">
                 {shipping.map((project) => (

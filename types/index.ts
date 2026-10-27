@@ -20,6 +20,8 @@ export type Projects = {
   lessons?: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
+  /** Label for the main button when it is not the App Store (e.g. "Download for Windows"). */
+  ctaLabel?: string;
 };
 
 export type Experience = {
