@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { experiencesData } from "@/data/experiencesData";
 import robots from "../../app/robots";
 import { getResumeHref } from "../resume";
-import { introBookingHref, introBookingLabel, site } from "../site";
+import { introBookingHref, site } from "../site";
 
 describe("getResumeHref", () => {
   it("returns the public PDF path when the résumé file exists", () => {
@@ -17,10 +17,10 @@ describe("getResumeHref", () => {
 });
 
 describe("intro booking", () => {
-  it("books the 15-min intro on Cal.com by default", () => {
-    expect(site.calUrl).toBe("https://cal.com/murat-hudavendigar-oncu/15min");
-    expect(introBookingHref()).toBe(site.calUrl);
-    expect(introBookingLabel()).toBe("Book a 15-min intro");
+  it("falls back to a prefilled mailto when Cal.com is not configured", () => {
+    expect(site.calUrl).toBe("");
+    expect(introBookingHref()).toContain(`mailto:${site.email}`);
+    expect(introBookingHref()).toContain("15-min");
   });
 });
 
