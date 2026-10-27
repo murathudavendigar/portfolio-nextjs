@@ -16,6 +16,7 @@ export const HOMEPAGE_FEATURED_SLUGS = [
   "choose-game",
   "autoinvoice-pro",
   "codebrief",
+  "nodezero",
 ] as const;
 
 export function getProjects(): ProjectType[] {
@@ -48,10 +49,21 @@ export function getShippedIosCount(): number {
   return allProjects.filter((p) => Boolean(p.appStoreUrl)).length;
 }
 
-const CATEGORY_ORDER = ["iOS Apps", "Web Products", "npm Packages"] as const;
+const CATEGORY_ORDER = [
+  "iOS Apps",
+  "Desktop Apps",
+  "Web Products",
+  "npm Packages",
+] as const;
+
+/** Native desktop apps (Electron or Tauri). */
+export function isDesktopApp(project: ProjectType): boolean {
+  return project.language === "Electron" || project.language === "Tauri";
+}
 
 function categoryFor(project: ProjectType): (typeof CATEGORY_ORDER)[number] {
   if (project.language === "iOS") return "iOS Apps";
+  if (isDesktopApp(project)) return "Desktop Apps";
   if (project.language === "NPM") return "npm Packages";
   return "Web Products";
 }
@@ -99,8 +111,7 @@ export function getWorkMockupKind(project: ProjectType): WorkMockupKind {
   if (!hasWorkMedia(project)) return "none";
   if (project.mockup) return project.mockup;
   if (project.language === "iOS") return "iphone";
-  if (project.language === "NPM" || project.language === "Electron")
-    return "none";
+  if (project.language === "NPM" || isDesktopApp(project)) return "none";
   return "safari";
 }
 
@@ -112,6 +123,7 @@ export function projectPrimaryCta(project: ProjectType): {
     return { href: project.appStoreUrl, label: "App Store" };
   }
   if (!project.url) return null;
+  if (project.ctaLabel) return { href: project.url, label: project.ctaLabel };
   if (project.language === "NPM") {
     return { href: project.url, label: "NPM Package" };
   }

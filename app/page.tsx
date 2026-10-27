@@ -94,16 +94,24 @@ export default async function Home() {
                 />
               </Reveal>
             )}
-            {rest.map((project, i) => (
-              <Reveal key={project.slug} delay={0.06 * (i + 1)}>
-                <WorkCard
-                  project={project}
-                  quiet
-                  rating={ratings[project.slug]}
-                  npmStats={npmStats[project.slug] || undefined}
-                />
-              </Reveal>
-            ))}
+            {rest.map((project, i) => {
+              // With an odd count the last card would sit alone: make it wide.
+              const wide = rest.length % 2 === 1 && i === rest.length - 1;
+              return (
+                <Reveal
+                  key={project.slug}
+                  delay={0.06 * (i + 1)}
+                  className={wide ? "lg:col-span-2" : undefined}>
+                  <WorkCard
+                    project={project}
+                    lead={wide}
+                    quiet
+                    rating={ratings[project.slug]}
+                    npmStats={npmStats[project.slug] || undefined}
+                  />
+                </Reveal>
+              );
+            })}
           </div>
           <Reveal delay={0.12}>
             <div className="mt-10">

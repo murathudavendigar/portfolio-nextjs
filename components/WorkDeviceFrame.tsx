@@ -1,7 +1,7 @@
 import WorkCover from "@/components/WorkCover";
 import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
-import { getWorkMockupKind, hasWorkMedia } from "@/lib/projects";
+import { getWorkMockupKind, hasWorkMedia, isDesktopApp } from "@/lib/projects";
 import { workCoverTransitionName } from "@/lib/view-transition";
 import type { Projects as ProjectType } from "@/types";
 import type { CSSProperties } from "react";
@@ -63,7 +63,7 @@ export default function WorkDeviceFrame({
             ? "mx-auto aspect-[9/19.5] w-full max-w-[280px] sm:max-w-[300px]"
             : project.coverFit === "contain" ||
                 project.language === "NPM" ||
-                project.language === "Electron"
+                isDesktopApp(project)
               ? "aspect-[16/10] w-full"
               : "min-h-[220px] sm:min-h-[280px]"
         }

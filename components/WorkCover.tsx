@@ -1,6 +1,6 @@
 import { Iphone } from "@/components/ui/iphone";
 import { Safari } from "@/components/ui/safari";
-import { getWorkMockupKind } from "@/lib/projects";
+import { getWorkMockupKind, isDesktopApp } from "@/lib/projects";
 import { workCoverTransitionName } from "@/lib/view-transition";
 import type { Projects as ProjectType } from "@/types";
 import Image from "next/image";
@@ -118,7 +118,7 @@ export default function WorkCover({
 
     // Desktop window / terminal / already-framed phone art
     const imageClass =
-      contain || project.language === "NPM" || project.language === "Electron"
+      contain || project.language === "NPM" || isDesktopApp(project)
         ? "object-contain object-center p-5 sm:p-6"
         : isIos && project.coverFit === "cover"
           ? // Already framed store art (headline + phone): fill the well, showing the app screen

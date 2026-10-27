@@ -6,8 +6,10 @@ export const site = {
   description:
     "Frontend engineer and co-founder at TemCraft Tech. I ship React, Next.js, and React Native products from the Netherlands.",
   email: "contact@muratoncu.com",
-  /** Set NEXT_PUBLIC_CAL_URL to a Cal.com (or similar) booking link. */
-  calUrl: process.env.NEXT_PUBLIC_CAL_URL?.trim() || "",
+  /** Booking link. NEXT_PUBLIC_CAL_URL overrides it (e.g. for a different event). */
+  calUrl:
+    process.env.NEXT_PUBLIC_CAL_URL?.trim() ||
+    "https://cal.com/murat-hudavendigar-oncu/15min",
   defaultOgImage: "/img/og.jpg",
   profileImage: "/img/pp.jpeg",
   twitterHandle: "@murathoncu",

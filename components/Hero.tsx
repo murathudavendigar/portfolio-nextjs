@@ -28,7 +28,8 @@ const Hero = () => {
             TemCraft Tech
           </a>
           . React, Next.js, TypeScript, and React Native — {liveProducts}{" "}
-          products live today on the App Store, Google Play, npm, and the web.
+          products live today on the App Store, Google Play, Windows, npm, and
+          the web.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">

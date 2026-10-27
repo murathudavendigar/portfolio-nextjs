@@ -28,7 +28,7 @@ describe("projects loader", () => {
   it("returns neighbouring projects in JSON order", () => {
     const { prev, next } = getAdjacentProjects("courai");
     expect(prev?.slug).toBe("daily-skyline");
-    expect(next?.slug).toBe("choose-game");
+    expect(next?.slug).toBe("nodezero");
   });
 
   it("getProject finds by slug", () => {
@@ -68,6 +68,7 @@ describe("selected vs earlier split", () => {
     expect(selectedSlugs).toEqual([
       "daily-skyline",
       "courai",
+      "nodezero",
       "choose-game",
       "autoinvoice-pro",
       "codebrief",
@@ -128,6 +129,15 @@ describe("selected vs earlier split", () => {
     expect(skillbrief?.href).toContain("npmjs.com/package/skillbrief");
   });
 
+  it("labels the NODEZERO download and frames it as a desktop window", () => {
+    const nodezero = getProject("nodezero")!;
+    expect(projectPrimaryCta(nodezero)).toEqual({
+      href: "https://github.com/murathudavendigar/nodezero-releases/releases/latest",
+      label: "Download for Windows",
+    });
+    expect(getWorkMockupKind(nodezero)).toBe("none");
+  });
+
   it("labels shipped web products as Visit site", () => {
     expect(projectPrimaryCta(getProject("haberai")!)?.label).toBe("Visit site");
   });
@@ -156,6 +166,7 @@ describe("selected vs earlier split", () => {
     for (const slug of [
       "daily-skyline",
       "courai",
+      "nodezero",
       "codebrief",
       "skillbrief",
     ] as const) {
@@ -175,10 +186,15 @@ describe("selected vs earlier split", () => {
     }
   });
 
-  it("groups selected work into iOS Apps, Web Products, npm Packages, covering every selected project once", () => {
+  it("groups selected work into iOS, Desktop, Web, npm, covering every selected project once", () => {
     const groups = getSelectedProjectsByCategory();
     const categories = groups.map((g) => g.category);
-    expect(categories).toEqual(["iOS Apps", "Web Products", "npm Packages"]);
+    expect(categories).toEqual([
+      "iOS Apps",
+      "Desktop Apps",
+      "Web Products",
+      "npm Packages",
+    ]);
 
     const grouped = groups.flatMap((g) => g.projects.map((p) => p.slug));
     expect(new Set(grouped).size).toBe(grouped.length);
@@ -198,10 +214,14 @@ describe("selected vs earlier split", () => {
       "codebrief",
       "skillbrief",
     ]);
+    const desktopGroup = groups.find((g) => g.category === "Desktop Apps")!;
+    expect(desktopGroup.projects.map((p) => p.slug)).toEqual([
+      "nodezero",
+      "autoinvoice-pro",
+    ]);
     const webGroup = groups.find((g) => g.category === "Web Products")!;
     expect(webGroup.projects.map((p) => p.slug)).toEqual([
       "choose-game",
-      "autoinvoice-pro",
       "haberai",
       "money-guardian",
     ]);

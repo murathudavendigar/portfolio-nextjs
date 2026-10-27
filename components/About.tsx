@@ -57,7 +57,7 @@ export default function About() {
               <p>
                 The through-line is products people can actually use: Daily
                 Skyline and Courai on the App Store, Choose Game as a bilingual
-                web PWA, AutoInvoice Pro as a desktop utility, npm tools I built
+                web PWA, AutoInvoice Pro and NODEZERO as desktop apps, npm tools I built
                 for students, and client work in React and Next.js. React
                 Native joined that list when I started shipping iOS myself. I
                 studied Computer Engineering at Kocaeli University.
