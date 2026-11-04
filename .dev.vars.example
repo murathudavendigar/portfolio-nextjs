@@ -1,0 +1,5 @@
+# Cloudflare local preview variables.
+# Use real values only in an untracked .dev.vars file.
+CONTACT_INBOX=your-inbox@example.com
+NEXT_PUBLIC_CAL_URL=https://cal.com/your-handle/15min
+RESEND_API_KEY=replace-with-resend-api-key

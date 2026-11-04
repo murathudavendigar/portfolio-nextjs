@@ -11,6 +11,8 @@
 # next.js
 /.next/
 /out/
+/.open-next/
+/.wrangler/
 
 # production
 /build
@@ -27,6 +29,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
 
 # vercel
 .vercel
@@ -42,3 +47,7 @@ installation.txt
 .cursor/
 .mcp.json
 .playwright-mcp/
+.vscode/mcp.json
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.superpowers/

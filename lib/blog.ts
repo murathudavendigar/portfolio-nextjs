@@ -3,16 +3,22 @@ import matter from "gray-matter";
 import fs from "node:fs";
 import path from "node:path";
 
-const BLOG_DIR = path.join(process.cwd(), "content/blog");
+const LOCAL_BLOG_DIR = path.join(process.cwd(), "content/blog");
+const WORKER_BLOG_DIR = "/bundle/blog";
+
+function getBlogDirectory(): string {
+  return fs.existsSync(WORKER_BLOG_DIR) ? WORKER_BLOG_DIR : LOCAL_BLOG_DIR;
+}
 
 export function getPosts(): BlogPost[] {
+  const blogDirectory = getBlogDirectory();
   return fs
-    .readdirSync(BLOG_DIR)
+    .readdirSync(blogDirectory)
     .filter((f) => f.endsWith(".md"))
     .map((f) => {
       const slug = f.replace(/\.md$/, "");
       const { data, content } = matter(
-        fs.readFileSync(path.join(BLOG_DIR, f), "utf8"),
+        fs.readFileSync(path.join(blogDirectory, f), "utf8"),
       );
       const createdAt = new Date(data.date as string).getTime();
       return {
