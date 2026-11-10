@@ -59,8 +59,8 @@ describe("llms.txt", () => {
       join(process.cwd(), "public", "llms.txt"),
       "utf8",
     );
-    expect(text).toContain("https://www.muratoncu.com/work");
-    expect(text).toContain("https://www.muratoncu.com/writing");
+    expect(text).toContain("https://muratoncu.com/work");
+    expect(text).toContain("https://muratoncu.com/writing");
     expect(text).not.toMatch(/muratoncu\.com\/blogs/);
     expect(text).toContain("Daily Skyline");
     expect(text).toContain("Courai");

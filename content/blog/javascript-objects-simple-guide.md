@@ -5,7 +5,7 @@ date: "2025-10-01"
 updated: "2025-10-01"
 tags: ["javascript","programming","web development","coding tips"]
 readTime: 4
-image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*ykmSYLK-LYZLxGBIfUkCgQ.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 When you first start your journey into JavaScript, objects might seem like a complex hurdle. However, they are simply a way to group related data and functionality together. Think of an object as a digital container that helps you organize information just like you would in the real world.

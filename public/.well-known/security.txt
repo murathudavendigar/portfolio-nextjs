@@ -1,0 +1,4 @@
+Contact: mailto:contact@muratoncu.com
+Expires: 2027-11-11T00:00:00.000Z
+Preferred-Languages: en, tr
+Canonical: https://muratoncu.com/.well-known/security.txt

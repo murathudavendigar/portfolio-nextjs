@@ -37,6 +37,7 @@ export function getPosts(): BlogPost[] {
         tags: (data.tags as string[]) ?? [],
         published: true,
         readTime: (data.readTime as number) ?? 5,
+        projects: (data.projects as string[]) ?? [],
       };
     })
     .sort((a, b) => b.createdAt - a.createdAt);
@@ -64,11 +65,23 @@ function normalizeTopic(value: string): string {
   return value.toLowerCase().replace(/[.\s-]/g, "");
 }
 
-export function getRelatedPosts(stack: string[] = [], limit = 2): BlogPost[] {
+/**
+ * Posts for a case study: ones that name the project in frontmatter first,
+ * then flagship posts that share the most stack tags.
+ */
+export function getRelatedPosts(
+  stack: string[] = [],
+  limit = 2,
+  projectSlug?: string,
+): BlogPost[] {
   const topics = new Set(stack.map(normalizeTopic));
-  if (topics.size === 0) return [];
 
-  return getFlagshipPosts()
+  const explicit = projectSlug
+    ? getPosts().filter((post) => post.projects.includes(projectSlug))
+    : [];
+
+  const byStack = getFlagshipPosts()
+    .filter((post) => !explicit.includes(post))
     .map((post) => {
       const overlap = post.tags.filter((tag) =>
         topics.has(normalizeTopic(tag)),
@@ -77,6 +90,7 @@ export function getRelatedPosts(stack: string[] = [], limit = 2): BlogPost[] {
     })
     .filter((entry) => entry.overlap > 0)
     .sort((a, b) => b.overlap - a.overlap)
-    .slice(0, limit)
     .map((entry) => entry.post);
+
+  return [...explicit, ...byStack].slice(0, limit);
 }

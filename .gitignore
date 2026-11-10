@@ -51,3 +51,5 @@ installation.txt
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
 .superpowers/
+# generated share cards (npm run og)
+/public/og/

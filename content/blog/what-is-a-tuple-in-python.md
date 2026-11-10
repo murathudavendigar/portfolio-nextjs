@@ -5,7 +5,7 @@ date: "2022-12-13"
 updated: "2022-12-13"
 tags: ["python","programming","data-structures","coding-basics","backend"]
 readTime: 4
-image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Kst3RGwEpCBKJKr7oRXiCQ.png"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 *In our previous article, we talked about lists in python. If you haven’t read it yet, you can read it by [clicking here](/writing/what-is-a-list-in-python).*

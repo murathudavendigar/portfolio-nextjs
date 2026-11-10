@@ -5,7 +5,7 @@ date: "2023-10-25"
 updated: "2023-10-25"
 tags: ["react","javascript","web-development","arrays","frontend"]
 readTime: 7
-image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*-WihZRKnVJ-b2I6xCZHqIg.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 React is a declarative library, which means you spend less time telling the browser exactly how to update the DOM, and more time describing what the UI should look like based on your data. Because most of that data lives in arrays, mastering JavaScript array methods is non-negotiable for React developers.

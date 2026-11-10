@@ -1,3 +1,5 @@
+import { absoluteUrl, site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import { formatPostDate } from "@/lib/utils";
 import BlogCard from "@/components/BlogCard";
 import Reveal from "@/components/Reveal";
@@ -10,6 +12,12 @@ export const metadata: Metadata = {
   title: "Writing",
   description: "Writing on frontend development, React, Next.js, and TypeScript.",
   alternates: { canonical: "/writing" },
+  openGraph: {
+    title: `Writing — ${site.shortName}`,
+    description: "Writing on frontend development, React, Next.js, and TypeScript.",
+    url: absoluteUrl("/writing"),
+    images: pageOgImages("writing"),
+  },
 };
 
 export default function WritingIndexPage() {
@@ -46,9 +54,7 @@ export default function WritingIndexPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://medium.com/@murathudavendigar"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/writing/archive"
             className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors"
           >
             Looking for the earlier Python/Django learning notes? See the archive →

@@ -135,6 +135,7 @@ describe("selected vs earlier split", () => {
       href: "https://github.com/murathudavendigar/nodezero-releases/releases/latest",
       label: "Download for Windows",
     });
+    expect(nodezero.url).toBe("https://nodezero.muratoncu.com");
     expect(getWorkMockupKind(nodezero)).toBe("none");
   });
 

@@ -110,7 +110,7 @@ export function homepageGraph() {
 
 export function blogPostingGraph(post: BlogPost) {
   const url = absoluteUrl(`/writing/${post.slug}`);
-  const imageUrl = absoluteUrl(post.imageUrl || site.defaultOgImage);
+  const imageUrl = absoluteUrl(post.imageUrl || `/og/writing/${post.slug}.png`);
 
   return {
     "@context": "https://schema.org",

@@ -49,14 +49,14 @@ describe("blogPostingGraph — writing URLs", () => {
       tags: ["test"],
     } as any)["@graph"];
     const posting = graph.find((n: any) => n["@type"] === "BlogPosting") as any;
-    expect(posting.url).toBe("https://www.muratoncu.com/writing/test-post");
+    expect(posting.url).toBe("https://muratoncu.com/writing/test-post");
     const breadcrumb = graph.find((n: any) => n["@type"] === "BreadcrumbList") as any;
     expect(breadcrumb.itemListElement[1].name).toBe("Writing");
     expect(breadcrumb.itemListElement[1].item).toBe(
-      "https://www.muratoncu.com/writing",
+      "https://muratoncu.com/writing",
     );
     expect(breadcrumb.itemListElement[2].item).toBe(
-      "https://www.muratoncu.com/writing/test-post",
+      "https://muratoncu.com/writing/test-post",
     );
   });
 });
@@ -78,7 +78,7 @@ describe("workSchema", () => {
     expect(breadcrumb.itemListElement[1].item).toContain("/work");
 
     const work = graph.find((n) => n["@type"] === "CreativeWork") as any;
-    expect(work.url).toBe("https://www.muratoncu.com/work/codebrief");
+    expect(work.url).toBe("https://muratoncu.com/work/codebrief");
   });
 
   it("marks iOS products as SoftwareApplication", () => {
@@ -97,7 +97,7 @@ describe("workSchema", () => {
     expect(app.operatingSystem).toBe("iOS");
     expect(app.installUrl).toContain("apps.apple.com");
     expect(app.image).toBe(
-      "https://www.muratoncu.com/img/projects/daily-skyline.png",
+      "https://muratoncu.com/img/projects/daily-skyline.png",
     );
   });
 });
@@ -108,7 +108,7 @@ describe("workIndexSchema", () => {
       { name: "codebrief", slug: "codebrief" },
     ]);
     expect(schema.mainEntity.itemListElement[0].url).toBe(
-      "https://www.muratoncu.com/work/codebrief",
+      "https://muratoncu.com/work/codebrief",
     );
   });
 });
@@ -133,7 +133,7 @@ describe("aboutPageGraph", () => {
   it("marks /about as an AboutPage whose main entity is the person", () => {
     const graph = aboutPageGraph()["@graph"] as any[];
     const page = graph.find((node) => node["@type"] === "AboutPage");
-    expect(page.url).toBe("https://www.muratoncu.com/about");
+    expect(page.url).toBe("https://muratoncu.com/about");
     expect(page.mainEntity).toEqual({
       "@id": expect.stringContaining("#person"),
     });
@@ -144,7 +144,7 @@ describe("contactPageGraph", () => {
   it("marks /contact as a ContactPage with the site email", () => {
     const graph = contactPageGraph()["@graph"] as any[];
     const page = graph.find((node) => node["@type"] === "ContactPage");
-    expect(page.url).toBe("https://www.muratoncu.com/contact");
+    expect(page.url).toBe("https://muratoncu.com/contact");
     expect(page.mainEntity.email).toBe(site.email);
   });
 });

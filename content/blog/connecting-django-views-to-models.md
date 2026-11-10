@@ -5,7 +5,7 @@ date: "2023-11-03"
 updated: "2023-11-03"
 tags: ["django","python","web development","database","backend"]
 readTime: 6
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GbxMC6aVMiBsBzso6Xsf8Q.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 Data is at the heart of many web applications, and in Django, models serve as the gatekeepers to your application's data. In this article, we'll explore how to connect Django views to models and databases, empowering your project to create, read, update, and delete data. We'll provide comprehensive code examples to illustrate this essential aspect of web development.

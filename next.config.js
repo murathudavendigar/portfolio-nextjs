@@ -1,3 +1,28 @@
+const cspEnforced = [
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
+
+const cspReportOnly = [
+  "default-src 'self'",
+  // Next.js inlines its RSC payload; static pages cannot carry a nonce.
+  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://cloudflareinsights.com",
+  "frame-src 'none'",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join("; ");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -58,6 +83,17 @@ const nextConfig = {
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000",
+          },
+          // Enforced: directives that cannot block the site's own scripts.
+          { key: "Content-Security-Policy", value: cspEnforced },
+          // Full policy in report-only mode. A strict script-src broke client JS
+          // once (commit 1db1709), so watch the browser console for violations
+          // on production before moving any of this into the enforced header.
+          { key: "Content-Security-Policy-Report-Only", value: cspReportOnly },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {

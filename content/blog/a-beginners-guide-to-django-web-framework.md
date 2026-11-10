@@ -5,7 +5,7 @@ date: "2023-10-30"
 updated: "2023-10-30"
 tags: ["python","django","web-development","backend","programming"]
 readTime: 7
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HVKOLLX7wprRbHTl2IPDcQ.png"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 If you are looking to build robust, scalable, and secure web applications rapidly, you have likely heard of Django. Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.

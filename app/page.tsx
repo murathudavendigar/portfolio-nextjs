@@ -14,6 +14,7 @@ import { getHomepageFeaturedProjects } from "@/lib/projects";
 import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { homeOgImages } from "@/lib/og-pages";
 import Link from "next/link";
 
 export const revalidate = 86400;
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     type: "profile",
-    images: [{ url: site.defaultOgImage, width: 1200, height: 630 }],
+    images: homeOgImages,
   },
 };
 

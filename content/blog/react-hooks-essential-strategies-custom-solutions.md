@@ -5,7 +5,7 @@ date: "2024-01-10"
 updated: "2026-07-18"
 tags: ["react","javascript","web-development","hooks","frontend"]
 readTime: 9
-image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*byF4YDSMRBwtKi0wWgiqAQ.png"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 React Hooks revolutionized the way we build web applications by allowing us to use state and other React features without writing a class. Since their introduction, they have become the standard for functional components. Understanding the core hooks is only the first step; the real power lies in knowing when to use them and how to extract logic into custom hooks for cleaner, more maintainable code.

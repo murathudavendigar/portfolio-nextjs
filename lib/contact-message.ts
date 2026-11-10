@@ -55,7 +55,7 @@ export function senderConfirmationText(message: ContactMessage): string {
     "Murat Hüdavendigâr Öncü",
     "Frontend engineer · Netherlands",
     "contact@muratoncu.com",
-    "https://www.muratoncu.com/",
+    "https://muratoncu.com/",
   ].join("\n");
 }
 

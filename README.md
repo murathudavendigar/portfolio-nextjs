@@ -124,13 +124,13 @@ If `NEXT_PUBLIC_CAL_URL` is unset, “Book a 15-min intro” falls back to a pre
 ## Screenshot
 
 <p align="center">
-<a href="https://www.muratoncu.com/"><img src="https://media.licdn.com/dms/image/C4D22AQG3wVzoU-Lvzg/feedshare-shrink_800/0/1674569569367?e=1677715200&v=beta&t=ROSec6PV0LGYVYNMPXWkZ5BUQlZY6o9lapMSYquenls" alt="screenshot"></a>
+<a href="https://muratoncu.com/"><img src="https://media.licdn.com/dms/image/C4D22AQG3wVzoU-Lvzg/feedshare-shrink_800/0/1674569569367?e=1677715200&v=beta&t=ROSec6PV0LGYVYNMPXWkZ5BUQlZY6o9lapMSYquenls" alt="screenshot"></a>
 </p>
 
 ## Links
 
 <hr>
-<b>Check The Live Website ➡️</b> <a href="https://www.muratoncu.com/">Live Website</a>
+<b>Check The Live Website ➡️</b> <a href="https://muratoncu.com/">Live Website</a>
 <hr>
 
 ### Built with

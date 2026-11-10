@@ -5,7 +5,7 @@ date: "2022-12-10"
 updated: "2022-12-10"
 tags: ["python","programming","data-structures","coding-basics","backend"]
 readTime: 5
-image: "https://miro.medium.com/v2/resize:fit:640/format:webp/1*7UMUvnlIBkD99PaOjDlwBg.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 If you are starting your journey in Python, one of the very first data structures you will encounter is the list. A list in Python is exactly what it sounds like: a container that holds a collection of items in a specific order. 

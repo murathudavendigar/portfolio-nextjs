@@ -122,10 +122,41 @@ export function projectPrimaryCta(project: ProjectType): {
   if (project.appStoreUrl) {
     return { href: project.appStoreUrl, label: "App Store" };
   }
+  if (project.downloadUrl) {
+    return { href: project.downloadUrl, label: project.ctaLabel ?? "Download" };
+  }
   if (!project.url) return null;
   if (project.ctaLabel) return { href: project.url, label: project.ctaLabel };
   if (project.language === "NPM") {
     return { href: project.url, label: "NPM Package" };
   }
   return { href: project.url, label: "Visit site" };
+}
+
+const normalizeTopic = (value: string) => value.toLowerCase().replace(/[.\s-]/g, "");
+
+/**
+ * Case studies for a post: the ones named in its `projects` frontmatter first,
+ * then selected work whose stack overlaps the post's tags.
+ */
+export function getRelatedWork(
+  post: { projects: string[]; tags: string[] },
+  limit = 2,
+): ProjectType[] {
+  const explicit = post.projects
+    .map((slug) => getProject(slug))
+    .filter((p): p is ProjectType => Boolean(p));
+
+  const tags = new Set(post.tags.map(normalizeTopic));
+  const byStack = getSelectedProjects()
+    .filter((p) => !explicit.includes(p))
+    .map((p) => ({
+      p,
+      overlap: (p.stack ?? []).filter((s) => tags.has(normalizeTopic(s))).length,
+    }))
+    .filter((entry) => entry.overlap > 0)
+    .sort((a, b) => b.overlap - a.overlap)
+    .map((entry) => entry.p);
+
+  return [...explicit, ...byStack].slice(0, limit);
 }

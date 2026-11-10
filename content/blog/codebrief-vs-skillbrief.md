@@ -4,6 +4,7 @@ description: "codebrief writes what a repo is. skillbrief writes how to work in 
 date: "2026-09-08"
 tags: ["nodejs", "typescript", "cli", "agents", "cursor"]
 readTime: 6
+projects: ["codebrief", "skillbrief"]
 image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
@@ -62,7 +63,7 @@ You can run only codebrief. Plenty of repos only need a decent `CONTEXT.md`. ski
 
 ## What I actually did on this site
 
-I ran both against [muratoncu.com](https://www.muratoncu.com). codebrief’s job was identity: npm, App Router, Tailwind, work in JSON, writing in markdown. skillbrief’s job was the day-to-day: `npm run test`, not a second package manager; components in `/components`; do not invent a second projects file.
+I ran both against [muratoncu.com](https://muratoncu.com). codebrief’s job was identity: npm, App Router, Tailwind, work in JSON, writing in markdown. skillbrief’s job was the day-to-day: `npm run test`, not a second package manager; components in `/components`; do not invent a second projects file.
 
 The human pass was small and specific. Theme inversion. Catalog location. A line that Vercel is the host. That is the useful part of the workflow — generate, then write the three rules a scan will never see.
 

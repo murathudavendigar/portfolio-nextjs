@@ -7,7 +7,7 @@ export const NOTIFY_ME_HTML = `<html>
 
       <p style="font-size: 16px; color: #333;">
         You received a new message from the contact form on
-        <a href="https://www.muratoncu.com/" style="color: #CA3E47; text-decoration: none;">muratoncu.com</a>.
+        <a href="https://muratoncu.com/" style="color: #CA3E47; text-decoration: none;">muratoncu.com</a>.
       </p>
 
       <hr style="border-top: 1px solid #CA3E47; margin: 20px 0;" />
@@ -75,7 +75,7 @@ export const AUTO_REPLY_HTML = `<!DOCTYPE html>
             <tr>
               <td style="padding: 36px 32px 24px 32px; text-align: center">
                 <img
-                  src="https://www.muratoncu.com/img/pp.jpeg"
+                  src="https://muratoncu.com/img/pp.jpeg"
                   width="72"
                   height="72"
                   alt="Murat Hüdavendigâr Öncü"
@@ -170,7 +170,7 @@ export const AUTO_REPLY_HTML = `<!DOCTYPE html>
             <tr>
               <td style="padding: 0 32px 36px 32px; text-align: center">
                 <a
-                  href="https://www.muratoncu.com/"
+                  href="https://muratoncu.com/"
                   style="
                     display: inline-block;
                     background-color: #ca3e47;
@@ -209,7 +209,7 @@ export const AUTO_REPLY_HTML = `<!DOCTYPE html>
                   </a>
                   <span style="color: #525252"> · </span>
                   <a
-                    href="https://www.muratoncu.com/"
+                    href="https://muratoncu.com/"
                     style="color: #ca3e47; text-decoration: none">
                     muratoncu.com
                   </a>

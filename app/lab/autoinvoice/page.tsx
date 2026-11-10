@@ -1,6 +1,7 @@
 import LabShell from "@/components/lab/LabShell";
 import { getLabExperiment } from "@/data/lab";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "AutoInvoice Pro lab demo coming soon — read the case study in the meantime.",
   alternates: { canonical: `/lab/${SLUG}` },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("lab-autoinvoice"),
     title: `Lab · AutoInvoice Pro — ${site.shortName}`,
     url: `${site.url}/lab/${SLUG}`,
     type: "website",

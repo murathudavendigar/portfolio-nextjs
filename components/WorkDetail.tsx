@@ -81,9 +81,11 @@ export default function WorkDetail({
   const sections = CASE_SECTIONS.filter(([, key]) => Boolean(project[key]));
   const caseStudy = hasCaseStudy(project);
   const secondaryLabel =
-    project.appStoreUrl && project.url ? "Website" : null;
+    (project.appStoreUrl || project.downloadUrl) && project.url
+      ? "Website"
+      : null;
   const { prev, next } = getAdjacentProjects(project.slug);
-  const relatedPosts = getRelatedPosts(project.stack);
+  const relatedPosts = getRelatedPosts(project.stack, 2, project.slug);
   const npmStats = npmInfo ? npmStatsLine(npmInfo) : [];
   const showMedia = hasWorkMedia(project);
   const labExperiment = getLabByWorkSlug(project.slug);

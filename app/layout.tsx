@@ -4,7 +4,8 @@ import CommandPalette from "@/components/CommandPalette";
 import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
 import DynamicTitle from "@/components/DynamicTitle";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { homeOgImages } from "@/lib/og-pages";
 import { getResumeHref } from "@/lib/resume";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Nunito_Sans } from "next/font/google";
@@ -35,16 +36,13 @@ export const metadata: Metadata = {
     siteName: site.shortName,
     title: site.title,
     description: site.description,
-    images: defaultOgImages,
+    images: homeOgImages,
   },
   twitter: {
     card: "summary_large_image",
     site: site.twitterHandle,
-    title: site.title,
-    description: site.description,
-    images: [site.defaultOgImage],
+    creator: site.twitterHandle,
   },
-  icons: { icon: "/favicon.ico" },
   alternates: {
     types: { "application/rss+xml": "/feed.xml" },
   },

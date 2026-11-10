@@ -2,7 +2,8 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import { aboutPageGraph } from "@/lib/schema";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     "Murat Hüdavendigâr Öncü — frontend developer and co-founder of TemCraft Tech, based in the Netherlands.",
   alternates: { canonical: "/about" },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("about"),
     title: `About — ${site.shortName}`,
     description:
       "Murat Hüdavendigâr Öncü — frontend developer and co-founder of TemCraft Tech, based in the Netherlands.",

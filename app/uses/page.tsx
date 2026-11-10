@@ -1,9 +1,18 @@
+import { absoluteUrl, site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import { USES_CATEGORIES } from "@/data/usesData";
 import Reveal from "@/components/Reveal";
 
 export const metadata = {
   title: "Uses",
   description: "The hardware and software Murat Hüdavendigâr Öncü uses on a daily basis.",
+  alternates: { canonical: "/uses" },
+  openGraph: {
+    title: `Uses — ${site.shortName}`,
+    description: "The hardware and software Murat Hüdavendigâr Öncü uses on a daily basis.",
+    url: absoluteUrl("/uses"),
+    images: pageOgImages("uses"),
+  },
 };
 
 export default function UsesPage() {

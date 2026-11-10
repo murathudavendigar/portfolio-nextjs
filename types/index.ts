@@ -9,6 +9,8 @@ export type Projects = {
   category?: string;
   description: string;
   url: string;
+  /** Direct installer/download link; when set it becomes the primary CTA and url becomes "Website". */
+  downloadUrl?: string;
   language: string;
   github: string;
   tier: ProjectTier;
@@ -49,4 +51,6 @@ export type BlogPost = {
   tags: string[];
   published: boolean;
   readTime: number; // in minutes
+  /** Work slugs this post is about (frontmatter `projects`). */
+  projects: string[];
 };

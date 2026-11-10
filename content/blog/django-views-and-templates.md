@@ -5,7 +5,7 @@ date: "2023-11-01"
 updated: "2023-11-01"
 tags: ["django","python","web development","templates","backend"]
 readTime: 4
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*hq6Po-SIC5PQyel5-xizWw.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 In the world of web development, creating dynamic and interactive web pages is a fundamental requirement. Django, a popular web framework, simplifies this process through the use of views and templates. In this article, we'll explore Django views and templates, understanding how they work together to craft the web pages of your application. We'll provide simple and clear examples to illustrate their use.

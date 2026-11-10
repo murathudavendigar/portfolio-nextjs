@@ -5,7 +5,7 @@ date: "2022-12-17"
 updated: "2022-12-17"
 tags: ["python","programming","data-structures","coding-basics","backend"]
 readTime: 5
-image: "https://images.shiksha.com/mediadata/images/articles/1723098997phpe4XpdY.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 *In our previous article, we talked about tuples in Python. If you haven’t read it yet, you can read it by [clicking here](/writing/what-is-a-tuple-in-python).*

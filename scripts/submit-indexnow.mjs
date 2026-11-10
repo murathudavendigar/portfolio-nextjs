@@ -1,5 +1,5 @@
 const KEY = "e652f460f0874aa1a935ff460744260e";
-const HOST = "www.muratoncu.com";
+const HOST = "muratoncu.com";
 
 async function main() {
   const sitemapRes = await fetch(`https://${HOST}/sitemap.xml`);

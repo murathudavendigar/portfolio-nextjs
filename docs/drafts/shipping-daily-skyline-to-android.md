@@ -4,6 +4,7 @@ description: "Porting a daily puzzle from iOS to Google Play took less code than
 date: "2026-11-02"
 tags: ["react-native", "expo", "android", "google-play"]
 readTime: 6
+projects: ["daily-skyline"]
 image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---

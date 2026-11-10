@@ -5,7 +5,7 @@ date: "2023-10-16"
 updated: "2026-07-18"
 tags: ["typescript","javascript","web-development","frontend","programming"]
 readTime: 6
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*TIvhR2DIhXoZSwiJMiNjvQ.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 JavaScript is fantastic, but as your applications grow, its dynamic nature can sometimes lead to unexpected runtime errors. Enter TypeScript: a strict syntactical superset of JavaScript that adds optional static typing to the language.

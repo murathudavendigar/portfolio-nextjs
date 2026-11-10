@@ -9,8 +9,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { getPost, getPosts } from "@/lib/blog";
+import { getRelatedWork } from "@/lib/projects";
 import { blogPostingGraph } from "@/lib/schema";
 import { site } from "@/lib/site";
+import { writingOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +40,7 @@ export async function generateMetadata({
         modifiedTime: new Date(post.updatedAt).toISOString(),
       }),
       tags: post.tags,
-      images: [{ url: post.imageUrl || "/img/og.jpg" }],
+      images: writingOgImages(post.slug, post.title),
     },
   };
 }
@@ -52,6 +54,7 @@ export default async function WritingPostPage({
   if (!post) notFound();
 
   const createdDate = formatPostDate(post.createdAt);
+  const relatedWork = getRelatedWork(post);
 
   const updatedDate = post.updatedAt
     ? formatPostDate(post.updatedAt)
@@ -90,9 +93,10 @@ export default async function WritingPostPage({
             </BreadcrumbList>
           </Breadcrumb>
 
+          {post.imageUrl && (
           <div className="relative w-full h-48 mb-8 overflow-hidden shadow-2xl rounded-2xl sm:h-64 md:h-80 lg:h-96 group">
             {(() => {
-              const imageSrc = post.imageUrl || site.defaultOgImage;
+              const imageSrc = post.imageUrl;
               return imageSrc.startsWith("/") ? (
                 <Image
                   src={imageSrc}
@@ -113,6 +117,7 @@ export default async function WritingPostPage({
             })()}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
+          )}
 
           <header className="mb-8 sm:mb-10 md:mb-12">
             <h1 className="mb-4 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl dark:text-gray-900 sm:mb-5 md:mb-6">
@@ -212,6 +217,33 @@ export default async function WritingPostPage({
           <div className="mb-12 prose-sm prose prose-invert sm:prose-base md:prose-lg dark:prose max-w-none">
             <MarkdownContent content={post.content} />
           </div>
+
+          {relatedWork.length > 0 && (
+            <section className="mt-12 border-t border-white/20 pt-8 dark:border-gray-300">
+              <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+                Related work
+              </h2>
+              <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+                {relatedWork.map((project) => (
+                  <li key={project.slug}>
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="group block h-full rounded-xl border border-white/10 p-5 transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
+                      <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)]">
+                        {project.category ?? "Case study"}
+                      </p>
+                      <p className="mt-2 text-lg font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
+                        {project.name}
+                      </p>
+                      <p className="mt-1 line-clamp-2 text-sm text-gray-400 dark:text-gray-600">
+                        {project.description}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <footer className="pt-6 mt-12 border-t sm:pt-8 border-white/20 dark:border-gray-300">
             <Link

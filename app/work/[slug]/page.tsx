@@ -5,6 +5,7 @@ import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getProject, getProjects } from "@/lib/projects";
 import { workSchema } from "@/lib/schema";
 import { site, absoluteUrl } from "@/lib/site";
+import { workOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -22,9 +23,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  const ogImage = project.img?.startsWith("/")
-    ? project.img
-    : project.img || site.defaultOgImage;
   return {
     title: project.name,
     description: project.description,
@@ -34,7 +32,7 @@ export async function generateMetadata({
       description: project.description,
       url: absoluteUrl(`/work/${slug}`),
       type: "website",
-      images: [{ url: ogImage }],
+      images: workOgImages(slug, project.name),
     },
   };
 }

@@ -5,7 +5,7 @@ date: "2026-02-26"
 updated: "2026-07-18"
 tags: ["css","responsive design","web design","frontend","html"]
 readTime: 8
-image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ji0465mWJv9RmCIe3BCFUg.png"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 In 2026, users access websites from an ever-growing range of devices — foldable phones, ultra-wide monitors, smartwatches, and everything in between. If your website only looks good on one screen size, you're leaving a huge portion of your audience with a broken experience. Responsive web design (RWD) is no longer a nice-to-have. It's the baseline.

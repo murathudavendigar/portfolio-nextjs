@@ -1,7 +1,8 @@
 import ChooseLab from "@/components/lab/ChooseLab";
 import LabShell from "@/components/lab/LabShell";
 import { getLabExperiment } from "@/data/lab";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "Play a timed CHOOSE mini — wrong answers score, timers burn lives. Then read the case study.",
   alternates: { canonical: `/lab/${SLUG}` },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("lab-choose"),
     title: `Lab · CHOOSE — ${site.shortName}`,
     description:
       "Interactive CHOOSE demo: inverted quiz rule with timer and combos.",

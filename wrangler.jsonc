@@ -5,6 +5,9 @@
   "compatibility_date": "2026-11-04",
   "compatibility_flags": ["nodejs_compat"],
   "find_additional_modules": true,
+  // keep_names injects __name() into functions next-themes inlines via
+  // toString(), which throws in the browser and breaks the theme script.
+  "keep_names": false,
   "base_dir": "content",
   "rules": [
     {

@@ -1,7 +1,8 @@
 import Contact from "@/components/Contact";
 import { getResumeHref } from "@/lib/resume";
 import { contactPageGraph } from "@/lib/schema";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles and freelance React/Next.js work.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("contact"),
     title: `Contact — ${site.shortName}`,
     description:
       "Get in touch with Murat Hüdavendigâr Öncü — frontend engineer based in the Netherlands, open to roles and freelance React/Next.js work.",

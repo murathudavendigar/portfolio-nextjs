@@ -1,6 +1,7 @@
 import Reveal from "@/components/Reveal";
 import { getProject } from "@/lib/projects";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
   alternates: { canonical: "/now" },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("now"),
     title: `Now — ${site.shortName}`,
     description:
       "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",

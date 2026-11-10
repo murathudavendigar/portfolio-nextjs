@@ -5,7 +5,7 @@ date: "2022-12-20"
 updated: "2022-12-20"
 tags: ["python","programming","data-structures","coding-basics","backend"]
 readTime: 4
-image: "https://i.ytimg.com/vi/t9j8lCUGZXo/maxresdefault.jpg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 *In our previous article, we talked about dictionaries in Python. If you haven't read it yet, you can read it by [clicking here](/writing/what-is-a-dictionary-in-python).*

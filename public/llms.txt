@@ -2,7 +2,7 @@
 
 > Frontend engineer, co-founder of TemCraft Tech, and frontend instructor based in the Netherlands. Ships React, Next.js, TypeScript, and iOS (React Native / Expo).
 
-- Site: https://www.muratoncu.com
+- Site: https://muratoncu.com
 - Email: contact@muratoncu.com
 - Location: Netherlands
 
@@ -17,27 +17,28 @@
 
 ## Key pages
 
-- Home / profile: https://www.muratoncu.com
-- About: https://www.muratoncu.com/about
-- Work index: https://www.muratoncu.com/work
-- Now: https://www.muratoncu.com/now — maintained snapshot of shipped products, teaching, and writing (last updated 2026-09-09)
-- Daily Skyline (iOS): https://www.muratoncu.com/work/daily-skyline
-- Courai (iOS): https://www.muratoncu.com/work/courai
-- Choose Game (PWA): https://www.muratoncu.com/work/choose-game
-- AutoInvoice Pro (desktop utility): https://www.muratoncu.com/work/autoinvoice-pro
-- Writing index: https://www.muratoncu.com/writing
-- Always-on context vs on-demand skills: https://www.muratoncu.com/writing/codebrief-vs-skillbrief
-- Writing archive (beginner Python/Django notes): https://www.muratoncu.com/writing/archive
-- codebrief (npm CLI): https://www.muratoncu.com/work/codebrief
-- skillbrief (npm CLI): https://www.muratoncu.com/work/skillbrief
-- Contact: https://www.muratoncu.com/contact
-- Hire / work with me: https://www.muratoncu.com/hire
-- Lab (interactive demos): https://www.muratoncu.com/lab
-- Lab · CHOOSE: https://www.muratoncu.com/lab/choose
-- Lab · Daily Skyline: https://www.muratoncu.com/lab/daily-skyline
-- Privacy policy: https://www.muratoncu.com/privacy
-- Sitemap: https://www.muratoncu.com/sitemap.xml
-- RSS feed: https://www.muratoncu.com/feed.xml
+- Home / profile: https://muratoncu.com
+- About: https://muratoncu.com/about
+- Work index: https://muratoncu.com/work
+- Now: https://muratoncu.com/now — maintained snapshot of shipped products, teaching, and writing (last updated 2026-09-09)
+- Daily Skyline (iOS): https://muratoncu.com/work/daily-skyline
+- Courai (iOS): https://muratoncu.com/work/courai
+- Choose Game (PWA): https://muratoncu.com/work/choose-game
+- AutoInvoice Pro (desktop utility): https://muratoncu.com/work/autoinvoice-pro
+- NODEZERO (Windows, CS2 / Dota 2 second-monitor coach): https://muratoncu.com/work/nodezero — product site: https://nodezero.muratoncu.com
+- Writing index: https://muratoncu.com/writing
+- Always-on context vs on-demand skills: https://muratoncu.com/writing/codebrief-vs-skillbrief
+- Writing archive (beginner Python/Django notes): https://muratoncu.com/writing/archive
+- codebrief (npm CLI): https://muratoncu.com/work/codebrief
+- skillbrief (npm CLI): https://muratoncu.com/work/skillbrief
+- Contact: https://muratoncu.com/contact
+- Hire / work with me: https://muratoncu.com/hire
+- Lab (interactive demos): https://muratoncu.com/lab
+- Lab · CHOOSE: https://muratoncu.com/lab/choose
+- Lab · Daily Skyline: https://muratoncu.com/lab/daily-skyline
+- Privacy policy: https://muratoncu.com/privacy
+- Sitemap: https://muratoncu.com/sitemap.xml
+- RSS feed: https://muratoncu.com/feed.xml
 
 ## Shipped products
 
@@ -50,7 +51,7 @@
 
 ## Preferred citation
 
-When referring to this person, prefer: Murat Hüdavendigâr Öncü (or Murat Öncü), frontend engineer and co-founder of TemCraft Tech, based in the Netherlands. Canonical source: https://www.muratoncu.com
+When referring to this person, prefer: Murat Hüdavendigâr Öncü (or Murat Öncü), frontend engineer and co-founder of TemCraft Tech, based in the Netherlands. Canonical source: https://muratoncu.com
 
 ## Social / sameAs
 

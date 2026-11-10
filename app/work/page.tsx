@@ -1,7 +1,8 @@
 import Projects from "@/components/Projects";
 import { getProjects } from "@/lib/projects";
 import { workIndexSchema } from "@/lib/schema";
-import { site, defaultOgImages } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "Case studies and shipped projects by Murat Hüdavendigâr Öncü — iOS, React, Next.js, and TypeScript.",
   alternates: { canonical: "/work" },
   openGraph: {
-    images: defaultOgImages,
+    images: pageOgImages("work"),
     title: `Work — ${site.shortName}`,
     description:
       "Case studies and shipped projects by Murat Hüdavendigâr Öncü — iOS, React, Next.js, and TypeScript.",

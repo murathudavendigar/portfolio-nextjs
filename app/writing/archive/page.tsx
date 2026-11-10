@@ -1,3 +1,5 @@
+import { absoluteUrl, site } from "@/lib/site";
+import { pageOgImages } from "@/lib/og-pages";
 import { formatPostDate } from "@/lib/utils";
 import BlogCard from "@/components/BlogCard";
 import { getArchivedPosts } from "@/lib/blog";
@@ -8,6 +10,12 @@ export const metadata = {
   description:
     "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing.",
   alternates: { canonical: "/writing/archive" },
+  openGraph: {
+    title: `Learning Archive — ${site.shortName}`,
+    description: "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing.",
+    url: absoluteUrl("/writing/archive"),
+    images: pageOgImages("archive"),
+  },
 };
 
 export default function WritingArchivePage() {

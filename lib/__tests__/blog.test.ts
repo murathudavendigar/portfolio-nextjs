@@ -110,3 +110,25 @@ describe("writing URLs inside posts", () => {
     expect(post?.content).toContain("/work/skillbrief");
   });
 });
+
+describe("post ↔ case study links", () => {
+  it("puts posts that name a project first on its case study", () => {
+    const related = getRelatedPosts(["Node.js"], 2, "skillbrief");
+    expect(related[0]?.slug).toBe("codebrief-vs-skillbrief");
+  });
+
+  it("links a post to the case studies in its frontmatter", async () => {
+    const { getRelatedWork } = await import("../projects");
+    const post = getPost("codebrief-vs-skillbrief")!;
+    expect(getRelatedWork(post).map((p) => p.slug)).toEqual([
+      "codebrief",
+      "skillbrief",
+    ]);
+  });
+
+  it("falls back to selected work that shares the post's stack", async () => {
+    const { getRelatedWork } = await import("../projects");
+    const work = getRelatedWork({ projects: [], tags: ["react-native", "expo"] });
+    expect(work.length).toBeGreaterThan(0);
+  });
+});

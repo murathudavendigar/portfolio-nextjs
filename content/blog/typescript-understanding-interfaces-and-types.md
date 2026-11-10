@@ -5,7 +5,7 @@ date: "2023-12-18"
 updated: "2023-12-18"
 tags: ["typescript","javascript","web-development","programming-tips","frontend"]
 readTime: 7
-image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*wFRHhVlHr4lYV22N1gkaIg.jpeg"
+image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
 One of the most common questions for developers transitioning from JavaScript to TypeScript is: should I use an Interface or a Type alias? While they often achieve the same results, understanding their subtle differences and specific use cases is key to writing clean, maintainable, and scalable TypeScript code.
