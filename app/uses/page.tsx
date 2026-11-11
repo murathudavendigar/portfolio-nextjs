@@ -11,6 +11,7 @@ export const metadata = {
     title: `Uses · My Dev Setup, Hardware and Tools — ${site.shortName}`,
     description: "The hardware, editors, terminal tools, and apps Murat Hüdavendigâr Öncü uses every day to design, build, and ship web and mobile products.",
     url: absoluteUrl("/uses"),
+    type: "website",
     images: pageOgImages("uses"),
   },
 };

@@ -1,7 +1,9 @@
 ---
 archived: true
 title: "React Hooks Explored: Essential Strategies and Crafting Custom Solutions"
+seoTitle: "React Hooks: Strategies and Custom Hooks"
 description: "An in-depth exploration of React Hooks, covering core mechanics, performance optimization with useMemo/useCallback, and a complete guide to building reusable custom hooks."
+metaDescription: "A guide to React Hooks: how they work, when useMemo and useCallback help performance, and how to build reusable custom hooks."
 date: "2024-01-10"
 updated: "2026-07-18"
 tags: ["react","javascript","web-development","hooks","frontend"]
@@ -159,7 +161,7 @@ export default useFetch;
 Now, you can use this across your entire application like this:
 
 ```javascript
-const { data, loading, error } = useFetch('[https://api.example.com/items](https://api.example.com/items)');
+const { data, loading, error } = useFetch('https://api.example.com/items');
 
 if (loading) return <p>Loading...</p>;
 if (error) return <p>Error: {error}</p>;

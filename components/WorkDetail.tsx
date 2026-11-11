@@ -19,6 +19,7 @@ import {
   getAdjacentProjects,
   hasCaseStudy,
   hasWorkMedia,
+  liveUrl,
   projectPrimaryCta,
 } from "@/lib/projects";
 import type { Projects as ProjectType } from "@/types";
@@ -81,7 +82,7 @@ export default function WorkDetail({
   const sections = CASE_SECTIONS.filter(([, key]) => Boolean(project[key]));
   const caseStudy = hasCaseStudy(project);
   const secondaryLabel =
-    (project.appStoreUrl || project.downloadUrl) && project.url
+    (project.appStoreUrl || project.downloadUrl) && liveUrl(project)
       ? "Website"
       : null;
   const { prev, next } = getAdjacentProjects(project.slug);
@@ -218,7 +219,7 @@ export default function WorkDetail({
             ) : null}
             {secondaryLabel && (
               <a
-                href={project.url}
+                href={liveUrl(project)}
                 target="_blank"
                 rel="noreferrer"
                 className="heroButton min-h-11">

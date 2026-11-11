@@ -1,6 +1,7 @@
 ---
 title: "Shipping Daily Skyline to Android"
 description: "Porting a daily puzzle from iOS to Google Play took less code than I expected and more process. What the date seed saved me, what Google's 14-day closed test caught, and why every version now ships on both stores."
+metaDescription: "What porting Daily Skyline from iOS to Google Play took: a shared date seed, Google's 14-day closed test, and shipping both stores together."
 date: "2026-11-02"
 tags: ["react-native", "expo", "android", "google-play"]
 readTime: 6
@@ -64,7 +65,7 @@ It is a good reminder that "porting" is not only code. Store rules shape the pro
 
 ## One release, two stores
 
-Since version 1.29, every version ships on iOS and Android together, with the same features. No "Android gets it later." That decision changed how I work more than any line of code:
+Since version 1.29, every version ships on iOS and Android together, with the same free game; only Pro stays iOS-only for now. No "Android gets it later." That decision changed how I work more than any line of code:
 
 - Every release gets tagged per store build, so I always know which commit is on which store.
 - Rollouts are staged on both: iOS phased release over a week, and Android from 20% to 50% to 100% with a clean day between steps. Google's first production release cannot be staged, so that was the only one that went straight to 100%.

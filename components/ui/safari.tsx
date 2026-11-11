@@ -18,12 +18,15 @@ type SafariMode = "default" | "simple";
 export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
   url?: string;
   imageSrc?: string;
+  /** Alt text for the screenshot. Empty = decorative. */
+  imageAlt?: string;
   videoSrc?: string;
   mode?: SafariMode;
 }
 
 export function Safari({
   imageSrc,
+  imageAlt = "",
   videoSrc,
   url,
   mode = "default",
@@ -76,7 +79,7 @@ export function Safari({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageSrc}
-            alt=""
+            alt={imageAlt}
             className="block size-full object-cover object-top"
           />
         </div>

@@ -216,7 +216,10 @@ export function workSchema(project: {
         url: pageUrl,
         image,
         codeRepository: project.github || undefined,
-        installUrl: project.appStoreUrl || undefined,
+        installUrl:
+          [project.appStoreUrl, project.playStoreUrl].filter(Boolean).length > 1
+            ? [project.appStoreUrl, project.playStoreUrl]
+            : project.appStoreUrl || project.playStoreUrl || undefined,
         applicationCategory: isApp ? "MobileApplication" : undefined,
         operatingSystem: isApp
           ? project.playStoreUrl

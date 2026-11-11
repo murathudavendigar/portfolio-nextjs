@@ -1,5 +1,6 @@
 ---
 title: "Django Views and Templates: Crafting Web Pages with Python"
+seoTitle: "Django Views and Templates"
 description: "Learn how Django views and templates work together to craft dynamic web pages using Python, with simple step-by-step examples."
 date: "2023-11-01"
 updated: "2023-11-01"

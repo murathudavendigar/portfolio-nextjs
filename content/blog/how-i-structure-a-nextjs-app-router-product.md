@@ -1,6 +1,7 @@
 ---
 title: "How I Structure a Next.js App Router Product"
 description: "A practical breakdown of how I organize routes, data, and metadata in production Next.js App Router apps, using this portfolio's own single-page-to-multi-page migration as the working example."
+metaDescription: "How I organize routes, data, and metadata in a production Next.js App Router app, using this portfolio's own migration as the example."
 date: "2026-09-06"
 tags: ["nextjs", "react", "typescript", "architecture", "frontend"]
 readTime: 6

@@ -96,6 +96,7 @@ export default function WorkCover({
           className={`${well} flex items-end justify-center px-5 pt-5 sm:px-6 sm:pt-6`}>
           <Iphone
             src={src}
+            alt={alt}
             className="w-[58%] max-w-[190px] transition-transform duration-500 group-hover:scale-[1.03] sm:max-w-[210px]"
           />
         </div>
@@ -109,6 +110,7 @@ export default function WorkCover({
           className={`${well} flex items-center justify-center p-4 sm:p-5`}>
           <Safari
             imageSrc={src}
+            imageAlt={alt}
             url={displayHost(project.url)}
             className="w-full max-w-md transition-transform duration-500 group-hover:scale-[1.02]"
           />

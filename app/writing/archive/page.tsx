@@ -14,6 +14,7 @@ export const metadata = {
     title: `Learning Archive · Early Code Notes — ${site.shortName}`,
     description: "Early learning notes from Murat Hüdavendigâr Öncü: Python and Django basics, JavaScript objects and arrays, TypeScript types, React hooks, and responsive CSS.",
     url: absoluteUrl("/writing/archive"),
+    type: "website",
     images: pageOgImages("archive"),
   },
 };

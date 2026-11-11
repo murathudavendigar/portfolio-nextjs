@@ -22,7 +22,9 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return {};
   const title = `${project.name} · ${project.category ?? "Case Study"}`;
-  const description = metaDescription(project.description);
+  const description = metaDescription(
+    project.metaDescription ?? project.description,
+  );
   return {
     title,
     description,

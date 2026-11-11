@@ -25,6 +25,8 @@ export function getPosts(): BlogPost[] {
         id: slug,
         title: (data.title as string) ?? "",
         description: (data.description as string) ?? "",
+        metaDescription: (data.metaDescription as string) || undefined,
+        seoTitle: (data.seoTitle as string) || undefined,
         content,
         imageUrl: (data.image as string) ?? "",
         date: createdAt,

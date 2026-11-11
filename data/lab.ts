@@ -23,8 +23,8 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     summary:
       "Timed mini-run of the inverted quiz rule — wrong answers score, correct ones burn lives, combos stack.",
     status: "live",
-    productUrl: "https://choosegame.muratoncu.com",
-    productLabel: "Play full CHOOSE",
+    // choosegame.muratoncu.com is down (Vercel DEPLOYMENT_DISABLED); add back
+    // productUrl "https://choosegame.muratoncu.com" / "Play full CHOOSE" when live.
   },
   {
     slug: "daily-skyline",

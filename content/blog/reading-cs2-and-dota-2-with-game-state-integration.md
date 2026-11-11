@@ -1,6 +1,8 @@
 ---
 title: "Reading CS2 and Dota 2 Without Touching the Game"
+seoTitle: "Reading CS2 and Dota 2 Game State Data"
 description: "NODEZERO coaches you from a second monitor using only Valve's Game State Integration: a config file, a local HTTP port, and JSON the game already sends. How the receiver works, what the data can and cannot tell you, and why the limits made the product better."
+metaDescription: "How NODEZERO reads CS2 and Dota 2 through Valve's Game State Integration, what that data can and cannot tell you, and why its limits helped."
 date: "2026-11-11"
 tags: ["rust", "tauri", "typescript", "gaming", "desktop"]
 readTime: 7

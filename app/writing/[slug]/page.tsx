@@ -30,12 +30,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = getPost((await params).slug);
   if (!post) return {};
+  const description = metaDescription(post.metaDescription ?? post.description);
+  const title = post.seoTitle ?? post.title;
   return {
-    title: post.title,
-    description: metaDescription(post.description),
+    title,
+    description,
     alternates: { canonical: `/writing/${post.slug}` },
     openGraph: {
       type: "article",
+      title: `${title} — ${site.shortName}`,
+      description,
+      url: `${site.url}/writing/${post.slug}`,
       publishedTime: new Date(post.createdAt).toISOString(),
       ...(post.updatedAt && {
         modifiedTime: new Date(post.updatedAt).toISOString(),

@@ -1,5 +1,6 @@
 ---
 title: "Connecting Django Views to Models: Building Data-Driven Web Applications"
+seoTitle: "Connecting Django Views to Models"
 description: "Learn how to connect Django views to models and databases to build data-driven web applications with full CRUD functionality."
 date: "2023-11-03"
 updated: "2023-11-03"

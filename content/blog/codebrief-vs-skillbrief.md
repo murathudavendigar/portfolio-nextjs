@@ -1,6 +1,7 @@
 ---
 title: "Always-On Context vs On-Demand Skills"
 description: "codebrief writes what a repo is. skillbrief writes how to work in it. Why I shipped two zero-dependency CLIs instead of stuffing one rules file with everything an agent might need."
+metaDescription: "codebrief writes what a repo is; skillbrief writes how to work in it. Why I shipped two zero-dependency CLIs instead of one big rules file."
 date: "2026-09-08"
 tags: ["nodejs", "typescript", "cli", "agents", "cursor"]
 readTime: 6

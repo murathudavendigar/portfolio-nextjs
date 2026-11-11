@@ -139,8 +139,13 @@ describe("selected vs earlier split", () => {
     expect(getWorkMockupKind(nodezero)).toBe("none");
   });
 
-  it("labels shipped web products as Visit site", () => {
-    expect(projectPrimaryCta(getProject("haberai")!)?.label).toBe("Visit site");
+  it("hides the site button while a project is marked offline", () => {
+    const haberai = getProject("haberai")!;
+    expect(haberai.offline).toBe(true);
+    expect(projectPrimaryCta(haberai)).toBeNull();
+    expect(
+      projectPrimaryCta({ ...haberai, offline: false })?.label,
+    ).toBe("Visit site");
   });
 
   it("keeps local covers on selected and earlier work that still ships media", () => {

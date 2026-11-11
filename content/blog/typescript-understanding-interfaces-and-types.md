@@ -2,6 +2,7 @@
 archived: true
 title: "TypeScript: Understanding Interfaces and Types"
 description: "A comprehensive deep dive into the differences between Interfaces and Type aliases in TypeScript, including code examples and best practices for modern development."
+metaDescription: "The differences between interfaces and type aliases in TypeScript, with code examples and guidance on when to use each."
 date: "2023-12-18"
 updated: "2023-12-18"
 tags: ["typescript","javascript","web-development","programming-tips","frontend"]

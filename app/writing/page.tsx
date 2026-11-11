@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: `Writing · React, Next.js and TypeScript — ${site.shortName}`,
     description: "Articles by Murat Öncü on frontend development: React, Next.js, TypeScript, and how real products are structured, built, and shipped.",
     url: absoluteUrl("/writing"),
+    type: "website",
     images: pageOgImages("writing"),
   },
 };

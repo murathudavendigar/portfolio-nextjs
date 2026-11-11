@@ -27,13 +27,14 @@ export default function WorkDeviceFrame({
     viewTransitionName: workCoverTransitionName(project.slug),
   } as CSSProperties;
 
-  // Iphone and Safari render their own decorative <img>, so the accessible name
-  // has to come from the figcaption instead of an alt attribute.
   if (kind === "iphone") {
     return (
       <figure style={coverStyle} className="mx-auto w-full max-w-[280px] lg:ml-auto lg:mr-0">
-        <Iphone src={project.img} className="w-full" />
-        <figcaption className="sr-only">{project.name} screenshot</figcaption>
+        <Iphone
+          src={project.img}
+          alt={`${project.name} screenshot`}
+          className="w-full"
+        />
       </figure>
     );
   }
@@ -43,10 +44,10 @@ export default function WorkDeviceFrame({
       <figure style={coverStyle} className="w-full min-w-0">
         <Safari
           imageSrc={project.img}
+          imageAlt={`${project.name} screenshot`}
           url={displayHost(project.url)}
           className="w-full"
         />
-        <figcaption className="sr-only">{project.name} screenshot</figcaption>
       </figure>
     );
   }
@@ -68,7 +69,6 @@ export default function WorkDeviceFrame({
               : "min-h-[220px] sm:min-h-[280px]"
         }
       />
-      <figcaption className="sr-only">{project.name} screenshot</figcaption>
     </figure>
   );
 }

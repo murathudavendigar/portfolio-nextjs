@@ -8,7 +8,14 @@ export type Projects = {
   slug: string;
   category?: string;
   description: string;
+  /** Short, complete sentence (≤155 chars) for meta/OG when `description` is longer. */
+  metaDescription?: string;
   url: string;
+  /**
+   * The live site is down (e.g. a disabled Vercel deployment). Hides every
+   * link to `url` until the site is back. Remove the flag to show them again.
+   */
+  offline?: boolean;
   /** Direct installer/download link; when set it becomes the primary CTA and url becomes "Website". */
   downloadUrl?: string;
   language: string;
@@ -41,6 +48,10 @@ export type BlogPost = {
   id: string;
   title: string;
   description: string;
+  /** Frontmatter `seoTitle`: shorter <title> when `title` runs past 60 chars. */
+  seoTitle?: string;
+  /** Frontmatter `metaDescription`: short meta/OG text when `description` is long. */
+  metaDescription?: string;
   content: string;
   imageUrl: string;
   date: number; // Timestamp in milliseconds (deprecated, use createdAt)

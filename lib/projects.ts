@@ -49,6 +49,11 @@ export function getShippedIosCount(): number {
   return allProjects.filter((p) => Boolean(p.appStoreUrl)).length;
 }
 
+/** The project's site URL, or "" while the site is marked offline. */
+export function liveUrl(project: ProjectType): string {
+  return project.offline ? "" : project.url;
+}
+
 const CATEGORY_ORDER = [
   "Mobile Apps",
   "Desktop Apps",
@@ -125,7 +130,7 @@ export function projectPrimaryCta(project: ProjectType): {
   if (project.downloadUrl) {
     return { href: project.downloadUrl, label: project.ctaLabel ?? "Download" };
   }
-  if (!project.url) return null;
+  if (!liveUrl(project)) return null;
   if (project.ctaLabel) return { href: project.url, label: project.ctaLabel };
   if (project.language === "NPM") {
     return { href: project.url, label: "NPM Package" };

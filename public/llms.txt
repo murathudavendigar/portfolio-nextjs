@@ -43,8 +43,8 @@
 ## Shipped products
 
 - Daily Skyline — shipped mobile product, currently maintained: a daily 5×5 skyscraper logic puzzle on the App Store and Google Play. Same board worldwide each day. Marketing site: https://dailyskyline.muratoncu.com
-- Courai — shipped iOS product, currently maintained: a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Site: https://courai.vercel.app
-- CHOOSE / Choose Game — shipped web product, currently maintained: a bilingual inverted-quiz PWA where picking the wrong answer scores. Live at https://choosegame.muratoncu.com
+- Courai — shipped iOS product, currently maintained: a CBT-based iOS app for social anxiety, built solo in React Native with Supabase. Case study: https://muratoncu.com/work/courai
+- CHOOSE / Choose Game — shipped web product, currently maintained: a bilingual inverted-quiz PWA where picking the wrong answer scores. Case study: https://muratoncu.com/work/choose-game
 - AutoInvoice Pro — shipped desktop product, currently maintained: a native macOS and Windows app that reads PDF invoices locally and renames them consistently. Download: https://murathoncu.gumroad.com/l/autoinvoicepro
 - codebrief is an npm CLI that generates CONTEXT.md, Cursor rules, and Copilot instructions.
 - skillbrief is an npm CLI that generates Agent Skills (SKILL.md) from a real repository. Package: https://www.npmjs.com/package/skillbrief
