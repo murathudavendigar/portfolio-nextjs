@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import BackToTop from "@/components/BackToTop";
 import CommandPalette from "@/components/CommandPalette";
 import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <div className="flex-1">{children}</div>
           <Footer />
+          <BackToTop />
           <CommandPalette resumeHref={resumeHref} />
         </Providers>
       </body>
