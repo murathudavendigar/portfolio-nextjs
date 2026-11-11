@@ -191,7 +191,7 @@ describe("selected vs earlier split", () => {
     const groups = getSelectedProjectsByCategory();
     const categories = groups.map((g) => g.category);
     expect(categories).toEqual([
-      "iOS Apps",
+      "Mobile Apps",
       "Desktop Apps",
       "Web Products",
       "npm Packages",
@@ -205,7 +205,7 @@ describe("selected vs earlier split", () => {
         .sort(),
     );
 
-    const iosGroup = groups.find((g) => g.category === "iOS Apps")!;
+    const iosGroup = groups.find((g) => g.category === "Mobile Apps")!;
     expect(iosGroup.projects.map((p) => p.slug)).toEqual([
       "daily-skyline",
       "courai",

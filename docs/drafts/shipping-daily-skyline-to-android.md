@@ -14,11 +14,16 @@ DRAFT, not published. To publish: check every fact below, edit in your
 own voice, then move this file to content/blog/ (the date sets the order).
 Facts come from the Daily Skyline repo (docs/roadmap/launches.md,
 shipped.md, decisions.md and the archived todo list).
+
+Fact-checked 2026-11-11 against daily-skyline-ios/docs (launches.md,
+decisions.md, PLAY_PRODUCTION_APPLICATION.md). Still for you to confirm:
+- The exact day the closed test opened (docs show builds to it 8-12 Oct).
+- "I expected those two weeks to be a formality": only you know that.
 -->
 
-Daily Skyline went live on Google Play on 26 October 2026. It had been on the App Store for a while, and people kept asking the same question in replies: "Android when?" The honest answer was that the code was mostly ready a long time before the store was.
+Daily Skyline went live on Google Play on 26 October 2026. It had been on the App Store for a while, and the code was mostly ready a long time before the store was.
 
-This is what the port actually took.
+This is what the port took.
 
 ## The date seed did the hard part
 
@@ -26,9 +31,9 @@ Daily Skyline is one 5×5 skyscraper puzzle per calendar date. The puzzle is gen
 
 I made that choice for iOS, to avoid running a puzzle API. It paid off again on Android: there was nothing to sync, migrate or keep consistent between platforms. An Android player and an iPhone player get the same board on the same day because the math says so, not because a server says so.
 
-The app is Expo and React Native, so the board, the reducer, the streak logic and the archive were already shared. Most of the Android work was in the places where the two platforms are genuinely different.
+The app is Expo and React Native, so the board, the reducer, the streak logic and the archive were already shared. Most of the Android work was in the places where the two platforms are different.
 
-## Where the platforms actually differ
+## Where the platforms differ
 
 **Store identity.** Game Center on iOS, Google Play Games on Android. Achievements and boards had to exist twice, and the global leaderboard I built later takes the player's name from whichever one they use.
 
@@ -42,17 +47,21 @@ None of this is hard. It is just work that does not exist until you ship the sec
 
 The part I did not plan well was the process. A new personal developer account on Google Play cannot go straight to production. You need at least 12 testers in a closed test, kept for 14 consecutive days, and then you apply.
 
-So Android shipped twice: first to a closed test, to a small group of real people I recruited, and only after two weeks to everyone. The closed test opened on 14 October, I applied on 25 October, and access was granted the next day.
+So Android shipped twice: first to a closed test, to a small group of real people I recruited, and only after two weeks to everyone. The closed test ran through October, I applied on 25 October, and access was granted the next day.
 
-I expected those two weeks to be a formality. They were not.
+I expected those two weeks to be a formality. They were not. I shipped seven builds to the testers between 8 and 12 October.
 
 ## What the closed test caught
 
-A tester sent a screen recording of the completion screen. It flickered once a second, and the "top %" line was wrong. I fixed it the same day and shipped a new build to the testers.
+A tester sent a screen recording of the results screen. It flickered after a solve, and the "top %" line said the opposite of the player's real standing. That was fixed in the next build.
 
-When I looked closer, the same bug existed on iOS, and on iOS it was worse. The Android test found an iPhone bug that real iPhone players had been seeing. That fix went into the next iOS build too.
+Google's pre-launch report found a crash before any tester did: leaving a puzzle while the pause dialog was closing. Its robots tap through the app on real devices. I fixed it, and Sentry has recorded no events of it since.
 
-The early builds also had a crash that only showed up with testers using the app every day. Sentry caught it, I fixed it, and the next build ran clean while the closed testers were active.
+The rest came from people:
+
+- On very short screens the board covered the header and hid the number pad.
+- Turkish testers noticed the app mixed formal and informal address. All Turkish text now uses one informal form.
+- Testers asked for Google Play Games achievements and leaderboards, like the iPhone version has with Game Center.
 
 Fourteen days of real people opening the app every morning is a better test than anything I would have scripted for a daily game.
 
@@ -60,7 +69,7 @@ Fourteen days of real people opening the app every morning is a better test than
 
 Google Play shows a personal developer's address on the store listing once the account sells in-app products. I did not want my home address on a puzzle game.
 
-So Pro is hidden on Android for now. It is behind a remote switch, so I can turn it on later without a new build once the account setup allows it. The free game is the same on both platforms.
+So Pro is hidden on Android for now. First I hid it with a remote switch. Since 1.31 the Android build does not include billing at all, so bringing Pro back will take a new build. The free game is the same on both platforms.
 
 It is a good reminder that "porting" is not only code. Store rules shape the product.
 
@@ -77,6 +86,6 @@ Since version 1.29, every version ships on iOS and Android together, with the sa
 1. **Make the core platform-independent first.** The date seed meant the riskiest part of the game needed no Android work at all.
 2. **Start the closed test early.** Fourteen days is fixed. Start it when the build is "good enough for testers", not when you think it is finished.
 3. **Read the store rules before building store features.** The address rule changed my paywall plan more than any API did.
-4. **Treat the second platform as a free QA pass for the first.** The worst bug Android found was an iOS bug.
+4. **Read the pre-launch report.** Google's robots found a crash before any of my testers did.
 
 Daily Skyline is now on [the App Store](https://apps.apple.com/app/id6791111716) and [Google Play](https://play.google.com/store/apps/details?id=com.dailyskyline.app). Same puzzle for everyone, every day, whatever phone they carry. The case study is on the [work page](/work/daily-skyline).

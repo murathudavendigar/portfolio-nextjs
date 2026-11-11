@@ -31,9 +31,9 @@ export const PROOF_SIGNALS: ProofSignal[] = [
       "Taught frontend at euroTech Study GmbH and Wise Quarter (2024–2026) — React, Next.js, and project-based curricula.",
   },
   {
-    label: "App Store",
+    label: "App stores",
     detail:
-      "Daily Skyline and Courai shipped on the App Store; ratings on case studies come from the live listing.",
+      "Daily Skyline shipped on the App Store and Google Play, Courai on the App Store; ratings and installs on case studies come from the live listings.",
   },
   {
     label: "Open source",

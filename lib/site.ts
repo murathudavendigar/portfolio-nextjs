@@ -11,6 +11,15 @@ export const site = {
   defaultOgImage: "/og/home.png",
   profileImage: "/img/pp.jpeg",
   twitterHandle: "@murathoncu",
+  /**
+   * Spoken languages. Edit here only: the About page and the Person schema
+   * both read this list. `code` is the ISO 639-1 code; `level` is shown as-is.
+   */
+  languages: [
+    { name: "Turkish", code: "tr", level: "Native" },
+    { name: "English", code: "en", level: "B1" },
+    { name: "Dutch", code: "nl", level: "A2" },
+  ],
   socials: {
     github: "https://github.com/murathudavendigar",
     x: "https://x.com/murathoncu",

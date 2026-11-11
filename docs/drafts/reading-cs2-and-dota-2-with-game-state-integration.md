@@ -16,6 +16,12 @@ DRAFT, not published. Written from the second-monitor-app repo
 - Check the numbers against the current release (port, throttle, heartbeat,
   economy values, the ~0.2% CPU figure from the README).
 - Move this file to content/blog/ to publish.
+
+Fact-checked 2026-11-11 against second-monitor-app: port, token, 405/401,
+2 MB cap, catch_unwind, throttle/heartbeat (CS2 10 s, Dota 30 s), data
+blocks, economy values and calls, bomb timer off by default with the
+FACEIT note in Setup, below-normal priority, 0.2% CPU (README) all match.
+Receiver (parse_payload + serve) is ~70 lines, not 50.
 -->
 
 NODEZERO is a Windows app for your second monitor. While you play Counter-Strike 2 or Dota 2, it shows the next buy, the money you will have next round, rune and Roshan timers, and your own history. It does all of that without reading game memory, injecting anything, or drawing an overlay. The game sends the data to it, because Valve built a way for that.
@@ -57,7 +63,7 @@ NODEZERO writes the file for you from Setup. The CS2 version looks like this:
 
 `throttle` keeps the game from posting more than twice a second. `heartbeat` makes it post at least every 10 seconds even when nothing changes, so a quiet freeze time still looks alive. Dota 2 gets a 30-second heartbeat and a different `data` block: `player`, `hero`, `abilities`, `items`, `events`, and `buildings`.
 
-## The receiver is about 50 lines of Rust
+## The receiver is about 70 lines of Rust
 
 On the app side there is a plain HTTP listener on `127.0.0.1:47321`, built on `tiny_http` and running on its own thread. Every request goes through the same few checks:
 
@@ -69,7 +75,7 @@ On the app side there is a plain HTTP listener on `127.0.0.1:47321`, built on `t
 
 The token exists because the port is open to every program on the PC. Without it, anything local could post a fake game state. It is generated on first run and stored in the app's data folder, and the same value is written into the config file.
 
-The other thing I learned the hard way: one bad payload must not kill the listener. Each request is handled inside `catch_unwind`, so a panic turns into a `500` for that request and the next one is read as usual. A second monitor that silently goes blank mid-match is worse than one that skips a frame.
+The other rule: one bad payload must not kill the listener. Each request is handled inside `catch_unwind`, so a panic turns into a `500` for that request and the next one is read as usual. A second monitor that silently goes blank mid-match is worse than one that skips a frame.
 
 ## What the game does not tell you
 

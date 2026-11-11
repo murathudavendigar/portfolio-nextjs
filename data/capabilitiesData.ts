@@ -5,9 +5,9 @@ export const CAPABILITIES = [
       "React, Next.js, TypeScript, and Tailwind CSS. Server components, App Router, and production deployment on Vercel.",
   },
   {
-    label: "Mobile & iOS",
+    label: "Mobile",
     description:
-      "React Native and Expo — from prototype to App Store. Daily Skyline and Courai are live iOS products.",
+      "React Native and Expo — from prototype to the App Store and Google Play. Daily Skyline is live on both; Courai is live on iOS.",
   },
   {
     label: "Backend & Data",
@@ -17,6 +17,6 @@ export const CAPABILITIES = [
   {
     label: "Product & Shipping",
     description:
-      "App Store Connect, RevenueCat, npm publishing, CI/CD, and the full lifecycle from scope to production.",
+      "App Store Connect, Google Play Console, RevenueCat, npm publishing, CI/CD, and the full lifecycle from scope to production.",
   },
 ];

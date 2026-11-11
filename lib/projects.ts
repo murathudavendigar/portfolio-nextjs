@@ -50,7 +50,7 @@ export function getShippedIosCount(): number {
 }
 
 const CATEGORY_ORDER = [
-  "iOS Apps",
+  "Mobile Apps",
   "Desktop Apps",
   "Web Products",
   "npm Packages",
@@ -62,7 +62,7 @@ export function isDesktopApp(project: ProjectType): boolean {
 }
 
 function categoryFor(project: ProjectType): (typeof CATEGORY_ORDER)[number] {
-  if (project.language === "iOS") return "iOS Apps";
+  if (project.language === "iOS") return "Mobile Apps";
   if (isDesktopApp(project)) return "Desktop Apps";
   if (project.language === "NPM") return "npm Packages";
   return "Web Products";

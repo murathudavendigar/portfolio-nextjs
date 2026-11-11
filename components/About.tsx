@@ -14,8 +14,12 @@ export default function About() {
       href: "https://temcrafttech.com",
     },
     { label: "Previously", value: "Frontend instructor (2024–2026)" },
-    { label: "Builds with", value: "React, Next.js, TypeScript, React Native" },
+    { label: "Builds with", value: "React, Next.js, TypeScript, React Native, Tauri" },
     { label: "Also uses", value: "Django, .NET when a product needs it" },
+    {
+      label: "Languages",
+      value: site.languages.map((l) => `${l.name} (${l.level})`).join(", "),
+    },
     ...(resumeHref
       ? [{ label: "Résumé", value: "PDF", href: resumeHref }]
       : []),
@@ -38,7 +42,7 @@ export default function About() {
 
           <div>
             <h1 className="text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
-              I ship frontend products for web and iOS.
+              I ship frontend products for web, mobile, and desktop.
             </h1>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
               <p>
@@ -56,10 +60,11 @@ export default function About() {
               </p>
               <p>
                 The through-line is products people can actually use: Daily
-                Skyline and Courai on the App Store, Choose Game as a bilingual
-                web PWA, AutoInvoice Pro and NODEZERO as desktop apps, npm tools I built
-                for students, and client work in React and Next.js. React
-                Native joined that list when I started shipping iOS myself. I
+                Skyline on the App Store and Google Play, Courai on the App
+                Store, Choose Game as a bilingual web PWA, AutoInvoice Pro and
+                NODEZERO as desktop apps, npm CLIs for developers and AI coding
+                agents, and client work in React and Next.js. React Native
+                joined that list when I started shipping mobile apps myself. I
                 studied Computer Engineering at Kocaeli University.
               </p>
               <p>

@@ -43,9 +43,9 @@ export const experiencesData: Experience[] = [
     startDate: "Oct 2024",
     endDate: "Present",
     points: [
-      "Co-founded TemCraft Tech and shipped client and product work end-to-end with a React/Next.js stack.",
-      "Owned frontend architecture, code quality, and delivery timelines for SaaS and AI-assisted apps.",
-      "Translated client requirements into scoped milestones and launched production UIs on Vercel.",
+      "Co-founded TemCraft Tech and shipped client and product work with React and Next.js.",
+      "Owned the frontend: architecture, code quality, and delivery dates for SaaS and AI-assisted apps.",
+      "Turned client requests into scoped milestones and launched production UIs on Vercel.",
     ],
   },
   {
@@ -65,9 +65,9 @@ export const experiencesData: Experience[] = [
     startDate: "May 2025",
     endDate: "Feb 2026",
     points: [
-      "Instructed remote cohorts on HTML, CSS, JavaScript, React, and Next.js with project-based curricula.",
-      "Mentored students one-on-one through capstone builds and code reviews until they could ship independently.",
-      "Turned recurring student bugs into reusable teaching examples used across later cohorts.",
+      "Taught remote cohorts HTML, CSS, JavaScript, React, and Next.js through project-based curricula.",
+      "Mentored students one-on-one through capstone projects and code reviews until they could ship on their own.",
+      "Turned bugs students kept hitting into teaching examples for later cohorts.",
     ],
   },
   {
@@ -86,9 +86,9 @@ export const experiencesData: Experience[] = [
     startDate: "Oct 2024",
     endDate: "May 2025",
     points: [
-      "Shipped TypeScript/Next.js UI features against backend APIs with measurable performance budgets.",
-      "Built reusable components and layouts that reduced duplicate UI work across product surfaces.",
-      "Partnered with backend engineers on contract-first API integration and error-state UX.",
+      "Built TypeScript and Next.js UI features against backend APIs, with an eye on performance.",
+      "Built reusable components and layouts shared across product screens.",
+      "Worked contract-first with backend engineers on API integration and error states.",
     ],
   },
   {
@@ -106,9 +106,9 @@ export const experiencesData: Experience[] = [
     startDate: "Jun 2024",
     endDate: "Oct 2024",
     points: [
-      "Ran part-time frontend training sessions covering JavaScript fundamentals through React component patterns.",
-      "Reviewed student pull requests and gave line-level feedback on code structure and naming.",
-      "Set up a shared Git workflow (branches, PRs, commit conventions) for students who'd only used Git solo before.",
+      "Taught part-time frontend classes, from JavaScript fundamentals to React components.",
+      "Set up a shared Git workflow (branches, pull requests, commit conventions) and reviewed student PRs line by line.",
+      "Required every student project to be deployed, not just run locally.",
     ],
   },
   {
@@ -128,9 +128,9 @@ export const experiencesData: Experience[] = [
     startDate: "Feb 2024",
     endDate: "Oct 2024",
     points: [
-      "Ran remote classes covering HTML, CSS, and JavaScript before progressing learners into React component patterns.",
-      "Had students style with Tailwind utility classes early so they could iterate on layout without wrestling with custom CSS.",
-      "Debugged learner code live in session against their own stack traces instead of pointing at generic documentation.",
+      "Taught remote classes: HTML, CSS, and JavaScript first, then React and Tailwind.",
+      "Used Firebase for auth and data in lessons and course projects.",
+      "Debugged student code live in class, starting from their own stack traces.",
     ],
   },
   {
@@ -149,9 +149,9 @@ export const experiencesData: Experience[] = [
     startDate: "Aug 2023",
     endDate: "Feb 2024",
     points: [
-      "Built responsive pages with React and Tailwind, working directly from client-supplied Figma designs.",
-      "Iterated on UX through client review calls, translating their feedback into layout and component changes.",
-      "Took over maintenance of existing sites, picking up unfamiliar codebases with no prior context to fix bugs and add features.",
+      "Built responsive React and Tailwind pages from client Figma designs.",
+      "Changed layouts and components after client review calls.",
+      "Took over existing sites to fix bugs and add features.",
     ],
   },
   {
@@ -169,9 +169,9 @@ export const experiencesData: Experience[] = [
     startDate: "Mar 2023",
     endDate: "Jun 2023",
     points: [
-      "Built REST endpoints in Django REST Framework, including serializers and viewsets for core data models.",
-      "Worked with frontend developers to define API contracts consumed by a Next.js/TypeScript client.",
-      "Profiled and optimized slow database queries in the Django services.",
+      "Built REST endpoints in Django REST Framework and C# on ASP.NET.",
+      "Agreed API contracts with frontend developers for a Next.js and TypeScript client.",
+      "Found and sped up slow database queries in the Django services.",
     ],
   },
   {
@@ -190,9 +190,9 @@ export const experiencesData: Experience[] = [
     startDate: "Jul 2022",
     endDate: "Mar 2023",
     points: [
-      "Built small-business websites from scratch using Next.js and Tailwind.",
-      "Added basic on-page SEO (meta tags, semantic HTML, sitemaps) and fixed obvious speed issues like unoptimized images.",
-      "Delivered portfolio sites, blogs, and landing pages tailored to each business rather than reused templates.",
+      "Built small-business websites from scratch with Next.js and Tailwind.",
+      "Added basic on-page SEO (meta tags, semantic HTML, sitemaps), set up hosting, and fixed slow images.",
+      "Made portfolio sites, blogs, and landing pages for each business instead of reusing templates.",
     ],
   },
 ];

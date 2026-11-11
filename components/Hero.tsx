@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSelectedProjects } from "@/lib/projects";
 import BackgroundCircles from "./BackgroundCircles";
+import PortraitTilt from "./PortraitTilt";
 
 const Hero = () => {
   const liveProducts = getSelectedProjects().length;
@@ -43,21 +44,24 @@ const Hero = () => {
       </div>
 
       {/* overflow-hidden clips decorative rings so they cannot expand scrollWidth */}
-      <div className="relative mx-auto flex w-full max-w-xs items-center justify-center overflow-hidden lg:max-w-none">
+      {/* py-4 leaves room for the portrait's tilt corners inside the clip */}
+      <div className="relative mx-auto flex w-full max-w-xs items-center justify-center overflow-hidden py-4 lg:max-w-none">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <BackgroundCircles />
         </div>
-        <Image
-          src={site.profileImage}
-          alt={`${site.name} — frontend engineer portrait`}
-          width={480}
-          height={600}
-          priority
-          fetchPriority="high"
-          sizes="(min-width: 1024px) 384px, 280px"
-          quality={75}
-          className="relative w-full max-w-[280px] rounded-2xl object-cover shadow-2xl shadow-black/40 lg:max-w-sm"
-        />
+        <PortraitTilt>
+          <Image
+            src={site.profileImage}
+            alt={`${site.name} — frontend engineer portrait`}
+            width={480}
+            height={600}
+            priority
+            fetchPriority="high"
+            sizes="(min-width: 1024px) 384px, 280px"
+            quality={75}
+            className="relative w-full rounded-2xl object-cover shadow-2xl shadow-black/40"
+          />
+        </PortraitTilt>
       </div>
     </div>
   );

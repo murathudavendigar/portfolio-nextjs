@@ -79,6 +79,14 @@ export const skillsData = [
     name: "Vercel",
     img: "/img/vercel.svg",
   },
+  {
+    name: "Tauri",
+    img: "/img/tauri.svg",
+  },
+  {
+    name: "Cloudflare",
+    img: "/img/cloudflare.svg",
+  },
 ];
 
 export const skillGroups = [
@@ -91,6 +99,7 @@ export const skillGroups = [
       "JavaScript",
       "React Native",
       "Expo",
+      "Tauri",
       "Tailwind CSS",
       "HTML",
       "CSS",
@@ -110,6 +119,6 @@ export const skillGroups = [
   },
   {
     label: "Tooling & Deployment",
-    names: ["Git", "Redux", "Vercel"],
+    names: ["Git", "Redux", "Vercel", "Cloudflare"],
   },
 ] as const;
