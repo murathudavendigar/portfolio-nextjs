@@ -17,8 +17,6 @@ import { site } from "@/lib/site";
 import { homeOgImages } from "@/lib/og-pages";
 import Link from "next/link";
 
-export const revalidate = 86400;
-
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   description: site.description,

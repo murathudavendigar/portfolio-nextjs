@@ -30,5 +30,6 @@ export const getPlayStoreInfo = unstable_cache(
     }
   },
   ["play-store-info"],
-  { revalidate: 86400 },
+  // Build time only; see open-next.config.ts.
+  { revalidate: false },
 );

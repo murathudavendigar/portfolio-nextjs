@@ -21,7 +21,8 @@ export type NpmRegistryDoc = {
   versions?: Record<string, NpmVersion>;
 };
 
-const REVALIDATE = { next: { revalidate: 86400 } } as const;
+// Fetched at build time only; see open-next.config.ts.
+const REVALIDATE = { cache: "force-cache" } as const;
 
 export function npmPackageFromUrl(url: string): string | null {
   const match = url.match(/npmjs\.com\/package\/([^/?#]+)/);

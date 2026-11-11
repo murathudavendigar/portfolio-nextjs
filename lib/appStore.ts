@@ -27,7 +27,7 @@ async function lookup(
   try {
     const res = await fetch(
       `https://itunes.apple.com/lookup?id=${appId}&country=${country}`,
-      { next: { revalidate: 86400 } },
+      { cache: "force-cache" }, // build time only; see open-next.config.ts
     );
     if (!res.ok) return null;
     const data = await res.json();

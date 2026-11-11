@@ -9,8 +9,6 @@ import { workOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
 }
