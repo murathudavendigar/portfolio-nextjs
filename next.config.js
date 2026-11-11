@@ -70,6 +70,13 @@ const nextConfig = {
         destination: "/work/:slug*",
         permanent: true,
       },
+      // Lab placeholders removed 2026-11-11; send visitors to the case studies.
+      { source: "/lab/courai", destination: "/work/courai", permanent: true },
+      {
+        source: "/lab/autoinvoice",
+        destination: "/work/autoinvoice-pro",
+        permanent: true,
+      },
       { source: "/blogs", destination: "/writing", permanent: true },
       {
         source: "/blogs/:slug*",

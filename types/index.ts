@@ -53,4 +53,6 @@ export type BlogPost = {
   readTime: number; // in minutes
   /** Work slugs this post is about (frontmatter `projects`). */
   projects: string[];
+  /** Frontmatter `archived: true`: listed on /writing/archive, URL unchanged. */
+  archived: boolean;
 };

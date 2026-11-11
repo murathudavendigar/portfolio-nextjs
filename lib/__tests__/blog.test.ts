@@ -10,7 +10,7 @@ import {
 describe("blog loader", () => {
   it("loads all 15 exported posts sorted newest first", () => {
     const posts = getPosts();
-    expect(posts.length).toBe(15);
+    expect(posts.length).toBe(17);
     const times = posts.map((p) => p.createdAt);
     expect(times).toEqual([...times].sort((a, b) => b - a));
   });
@@ -33,10 +33,10 @@ describe("blog loader", () => {
 });
 
 describe("flagship/archive split", () => {
-  it("splits all 15 posts into flagship and archived with no overlap", () => {
+  it("splits all 17 posts into flagship and archived with no overlap", () => {
     const flagship = getFlagshipPosts();
     const archived = getArchivedPosts();
-    expect(flagship.length + archived.length).toBe(15);
+    expect(flagship.length + archived.length).toBe(17);
     const archivedSlugs = new Set(archived.map((p) => p.slug));
     for (const post of flagship) {
       expect(archivedSlugs.has(post.slug)).toBe(false);
@@ -54,18 +54,27 @@ describe("flagship/archive split", () => {
     expect(archivedSlugs).toContain("django-views-and-templates");
   });
 
-  it("keeps React/TypeScript posts in flagship", () => {
-    const flagshipSlugs = getFlagshipPosts().map((p) => p.slug);
-    expect(flagshipSlugs).toContain(
+  it("archives posts marked archived: true in frontmatter", () => {
+    const archivedSlugs = getArchivedPosts().map((p) => p.slug);
+    expect(archivedSlugs).toContain(
       "react-hooks-essential-strategies-custom-solutions",
     );
-    expect(flagshipSlugs).toContain(
+    expect(archivedSlugs).toContain(
       "typescript-supercharge-your-javascript-with-type-safety",
     );
+    expect(archivedSlugs).toContain("getting-started-with-responsive-web-design");
+  });
+
+  it("keeps product posts in flagship", () => {
+    const flagshipSlugs = getFlagshipPosts().map((p) => p.slug);
     expect(flagshipSlugs).toContain(
       "how-i-structure-a-nextjs-app-router-product",
     );
     expect(flagshipSlugs).toContain("codebrief-vs-skillbrief");
+    expect(flagshipSlugs).toContain("shipping-daily-skyline-to-android");
+    expect(flagshipSlugs).toContain(
+      "reading-cs2-and-dota-2-with-game-state-integration",
+    );
   });
 });
 

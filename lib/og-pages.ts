@@ -21,7 +21,7 @@ export const PAGE_CARDS = {
   archive: {
     kicker: "Writing · Archive",
     title: "Learning archive",
-    description: "Early notes on Python and Django from when I was starting out.",
+    description: "Early notes on Python, JavaScript and React from when I was starting out.",
   },
   lab: {
     kicker: "Lab",
@@ -37,16 +37,6 @@ export const PAGE_CARDS = {
     kicker: "Lab · Daily Skyline",
     title: "Solve a 5×5 skyline board",
     description: "A full tutorial puzzle from the iOS and Android game.",
-  },
-  "lab-courai": {
-    kicker: "Lab · Courai",
-    title: "Courai, hands-on",
-    description: "Lab demo coming soon. The case study is live.",
-  },
-  "lab-autoinvoice": {
-    kicker: "Lab · AutoInvoice Pro",
-    title: "AutoInvoice Pro, hands-on",
-    description: "Lab demo coming soon. The case study is live.",
   },
   now: {
     kicker: "Now",

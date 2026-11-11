@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "Essential JavaScript Array Methods Every React Developer Should Know"
 description: "A comprehensive guide to the top 10 JavaScript array methods every React developer needs to master, with a strong focus on immutability and state management."
 date: "2023-10-25"

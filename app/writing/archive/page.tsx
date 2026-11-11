@@ -6,13 +6,13 @@ import { getArchivedPosts } from "@/lib/blog";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Learning Archive · Python and Django Notes",
+  title: "Learning Archive · Early Code Notes",
   description:
-    "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing: lists, tuples, sets, dictionaries, views, and templates.",
+    "Early learning notes from Murat Hüdavendigâr Öncü: Python and Django basics, JavaScript objects and arrays, TypeScript types, React hooks, and responsive CSS.",
   alternates: { canonical: "/writing/archive" },
   openGraph: {
-    title: `Learning Archive · Python and Django Notes — ${site.shortName}`,
-    description: "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing: lists, tuples, sets, dictionaries, views, and templates.",
+    title: `Learning Archive · Early Code Notes — ${site.shortName}`,
+    description: "Early learning notes from Murat Hüdavendigâr Öncü: Python and Django basics, JavaScript objects and arrays, TypeScript types, React hooks, and responsive CSS.",
     url: absoluteUrl("/writing/archive"),
     images: pageOgImages("archive"),
   },
@@ -33,8 +33,9 @@ export default function WritingArchivePage() {
           Learning archive
         </h1>
         <p className="max-w-2xl mt-4 text-sm leading-relaxed text-gray-300 dark:text-gray-700 sm:text-base">
-          Early notes written while learning Python and Django. Kept for
-          reference — not representative of current frontend-focused work.
+          Early notes written while learning Python, Django, JavaScript,
+          TypeScript, and React. Kept for reference; the current writing is
+          about shipping products.
         </p>
 
         <div className="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 lg:grid-cols-3">

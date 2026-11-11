@@ -37,24 +37,6 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     productUrl: "https://apps.apple.com/app/id6791111716",
     productLabel: "App Store",
   },
-  {
-    slug: "courai",
-    workSlug: "courai",
-    title: "Courai",
-    eyebrow: "Coming soon",
-    summary:
-      "A sample micro-challenge from the CBT-shaped daily loop — not therapy, just the product rhythm.",
-    status: "soon",
-  },
-  {
-    slug: "autoinvoice",
-    workSlug: "autoinvoice-pro",
-    title: "AutoInvoice Pro",
-    eyebrow: "Coming soon",
-    summary:
-      "Rename a messy invoice filename locally — the privacy-first loop without uploading a PDF.",
-    status: "soon",
-  },
 ];
 
 export function getLabExperiments(): LabExperiment[] {

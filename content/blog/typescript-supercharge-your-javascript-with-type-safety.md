@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "TypeScript: Supercharge Your JavaScript with Type Safety"
 description: "Discover how TypeScript adds robust static typing to JavaScript, preventing runtime errors and drastically improving your developer experience."
 date: "2023-10-16"

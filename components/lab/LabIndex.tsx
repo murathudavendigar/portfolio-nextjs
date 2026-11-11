@@ -467,7 +467,8 @@ export default function LabIndex({
                 />
               </a>
               <span className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
-                {live.length} live · {soon.length} warming up
+                {live.length} live
+                {soon.length > 0 ? ` · ${soon.length} warming up` : null}
               </span>
             </motion.div>
           </div>

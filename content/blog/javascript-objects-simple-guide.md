@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "JavaScript Objects Don’t Have to Be Complicated"
 description: "An expanded beginner's guide to understanding JavaScript objects, featuring code examples and best practices for data organization."
 date: "2025-10-01"

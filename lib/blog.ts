@@ -38,6 +38,7 @@ export function getPosts(): BlogPost[] {
         published: true,
         readTime: (data.readTime as number) ?? 5,
         projects: (data.projects as string[]) ?? [],
+        archived: data.archived === true,
       };
     })
     .sort((a, b) => b.createdAt - a.createdAt);
@@ -49,8 +50,15 @@ export function getPost(slug: string): BlogPost | undefined {
 
 export const ARCHIVE_TAGS = ["python", "django"];
 
+/**
+ * Archived posts leave the /writing list but keep their URL, sitemap entry
+ * and indexing, so search traffic to them is not lost.
+ */
 export function isArchivedPost(post: BlogPost): boolean {
-  return post.tags.some((tag) => ARCHIVE_TAGS.includes(tag.toLowerCase()));
+  return (
+    post.archived ||
+    post.tags.some((tag) => ARCHIVE_TAGS.includes(tag.toLowerCase()))
+  );
 }
 
 export function getFlagshipPosts(): BlogPost[] {

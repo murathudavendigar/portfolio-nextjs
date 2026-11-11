@@ -57,7 +57,7 @@ export default function WritingIndexPage() {
             href="/writing/archive"
             className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors"
           >
-            Looking for the earlier Python/Django learning notes? See the archive →
+            Earlier learning notes (Python, JavaScript, React basics) are in the archive →
           </Link>
         </div>
       </main>

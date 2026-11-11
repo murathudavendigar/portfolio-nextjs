@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "Getting Started with Responsive Web Design"
 description: "A beginner-friendly guide to responsive web design in 2026, covering fluid grids, flexible images, media queries, and CSS Grid with real code examples."
 date: "2026-02-26"

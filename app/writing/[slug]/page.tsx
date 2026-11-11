@@ -11,7 +11,7 @@ import {
 import { getPost, getPosts } from "@/lib/blog";
 import { getRelatedWork } from "@/lib/projects";
 import { blogPostingGraph } from "@/lib/schema";
-import { site } from "@/lib/site";
+import { metaDescription, site } from "@/lib/site";
 import { writingOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!post) return {};
   return {
     title: post.title,
-    description: post.description,
+    description: metaDescription(post.description),
     alternates: { canonical: `/writing/${post.slug}` },
     openGraph: {
       type: "article",

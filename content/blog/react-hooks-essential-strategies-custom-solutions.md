@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "React Hooks Explored: Essential Strategies and Crafting Custom Solutions"
 description: "An in-depth exploration of React Hooks, covering core mechanics, performance optimization with useMemo/useCallback, and a complete guide to building reusable custom hooks."
 date: "2024-01-10"
