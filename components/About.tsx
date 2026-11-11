@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import { getResumeHref } from "@/lib/resume";
-import { site } from "@/lib/site";
+import { site, temcraftTeamUrl, temcraftUrl } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default function About() {
     {
       label: "Company",
       value: "TemCraft Tech",
-      href: "https://temcrafttech.com",
+      href: temcraftUrl,
     },
     { label: "Previously", value: "Frontend instructor (2024–2026)" },
     { label: "Builds with", value: "React, Next.js, TypeScript, React Native, Tauri" },
@@ -48,7 +48,7 @@ export default function About() {
               <p>
                 Murat Hüdavendigâr Öncü is a frontend engineer, co-founder of{" "}
                 <a
-                  href="https://temcrafttech.com"
+                  href={temcraftTeamUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">

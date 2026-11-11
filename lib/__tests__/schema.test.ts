@@ -5,6 +5,7 @@ import {
   contactPageGraph,
   homepageGraph,
   personSchema,
+  temcraftPersonId,
   workIndexSchema,
   workSchema,
 } from "../schema";
@@ -34,7 +35,10 @@ describe("blogPostingGraph", () => {
     expect(posting).toBeDefined();
     expect(posting.author.name).toBe(site.name);
     expect(posting.author.jobTitle).toBe("Frontend Engineer");
-    expect(posting.author.sameAs).toEqual(Object.values(site.socials));
+    expect(posting.author.sameAs).toEqual([
+      ...Object.values(site.socials),
+      temcraftPersonId,
+    ]);
   });
 });
 

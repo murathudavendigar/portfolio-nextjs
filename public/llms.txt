@@ -10,7 +10,7 @@
 
 - Name: Murat Hüdavendigâr Öncü
 - Role: Frontend Engineer
-- Company: TemCraft Tech (co-founder) — https://temcrafttech.com
+- Company: TemCraft Tech (co-founder) — https://www.temcrafttech.com
 - Education: Computer Engineering, Kocaeli University
 - Stack: React, Next.js, TypeScript, React Native / Expo, Django, .NET
 - Languages: English, Turkish

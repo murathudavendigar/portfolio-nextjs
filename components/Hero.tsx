@@ -22,7 +22,7 @@ const Hero = () => {
         <p className="mt-5 max-w-lg text-base leading-relaxed text-gray-300 [text-wrap:pretty] dark:text-gray-700">
           Co-founder of{" "}
           <a
-            href="https://temcrafttech.com"
+            href="https://www.temcrafttech.com"
             target="_blank"
             rel="noopener noreferrer"
             className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">

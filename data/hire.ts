@@ -1,9 +1,13 @@
+import { temcraftUrl } from "@/lib/site";
+
 export type HireEngagement = {
   id: "hire" | "build";
   title: string;
   summary: string;
   fit: string[];
   send: string[];
+  /** Optional outbound link shown under the card. */
+  link?: { label: string; href: string };
 };
 
 export type HireStep = {
@@ -45,6 +49,10 @@ export const HIRE_ENGAGEMENTS: HireEngagement[] = [
       "Rough scope and deadline",
       "Budget range if you have one",
     ],
+    link: {
+      label: "Company website or shop? See TemCraft pricing",
+      href: `${temcraftUrl}/en/pricing`,
+    },
   },
 ];
 

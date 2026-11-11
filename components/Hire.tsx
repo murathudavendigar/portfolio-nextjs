@@ -76,6 +76,16 @@ export default function Hire() {
                   ))}
                 </ul>
               </div>
+              {engagement.link ? (
+                <a
+                  href={engagement.link.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="font-mono-ui mt-6 inline-flex text-[11px] uppercase tracking-wider text-[var(--accent-text)] underline-offset-4 hover:underline">
+                  {engagement.link.label} →
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              ) : null}
             </article>
           </Reveal>
         ))}

@@ -1,11 +1,14 @@
 import { getLabExperiments } from "@/data/lab";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, site, temcraftUrl } from "@/lib/site";
 import type { BlogPost } from "@/types";
 
 export const personId = `${site.url}/#person`;
 export const websiteId = `${site.url}/#website`;
 export const profileImageId = `${site.url}/#profileimage`;
-export const orgId = "https://temcrafttech.com/#organization";
+/** Must match the @id values TemCraft's own site publishes. */
+export const orgId = `${temcraftUrl}/#organization`;
+export const temcraftPersonId = `${temcraftUrl}/#person-murat`;
+const personSameAs = [...Object.values(site.socials), temcraftPersonId];
 
 export function personSchema() {
   return {
@@ -17,7 +20,7 @@ export function personSchema() {
     email: site.email,
     description: site.description,
     image: { "@id": profileImageId },
-    sameAs: Object.values(site.socials),
+    sameAs: personSameAs,
     worksFor: { "@id": orgId },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -63,7 +66,7 @@ export function personStub() {
     name: site.name,
     url: site.url,
     jobTitle: "Frontend Engineer",
-    sameAs: Object.values(site.socials),
+    sameAs: personSameAs,
   };
 }
 
@@ -103,7 +106,7 @@ export function homepageGraph() {
         "@type": "Organization",
         "@id": orgId,
         name: "TemCraft Tech",
-        url: "https://temcrafttech.com",
+        url: temcraftUrl,
         founder: { "@id": personId },
       },
     ],

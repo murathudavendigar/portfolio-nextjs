@@ -1,3 +1,8 @@
+/** TemCraft Tech canonical origin (the bare domain 308-redirects here). */
+export const temcraftUrl = "https://www.temcrafttech.com";
+/** TemCraft team page, which lists Murat with role and languages. */
+export const temcraftTeamUrl = `${temcraftUrl}/en/team`;
+
 export const site = {
   name: "Murat Hüdavendigâr Öncü",
   shortName: "Murat Öncü",
