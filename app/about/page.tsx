@@ -7,15 +7,15 @@ import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About · Frontend Engineer in the Netherlands",
   description:
-    "Murat Hüdavendigâr Öncü — frontend developer and co-founder of TemCraft Tech, based in the Netherlands.",
+    "Murat Hüdavendigâr Öncü is a frontend engineer and co-founder of TemCraft Tech, based in the Netherlands, building web, mobile, and desktop products.",
   alternates: { canonical: "/about" },
   openGraph: {
     images: pageOgImages("about"),
-    title: `About — ${site.shortName}`,
+    title: `About · Frontend Engineer in the Netherlands — ${site.shortName}`,
     description:
-      "Murat Hüdavendigâr Öncü — frontend developer and co-founder of TemCraft Tech, based in the Netherlands.",
+      "Murat Hüdavendigâr Öncü is a frontend engineer and co-founder of TemCraft Tech, based in the Netherlands, building web, mobile, and desktop products.",
     url: `${site.url}/about`,
     type: "profile",
   },

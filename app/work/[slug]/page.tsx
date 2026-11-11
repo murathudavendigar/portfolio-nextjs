@@ -4,7 +4,7 @@ import { getPlayStoreInfo, playStoreIdFromUrl } from "@/lib/playStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getProject, getProjects } from "@/lib/projects";
 import { workSchema } from "@/lib/schema";
-import { site, absoluteUrl } from "@/lib/site";
+import { site, absoluteUrl, metaDescription } from "@/lib/site";
 import { workOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -23,13 +23,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+  const title = `${project.name} · ${project.category ?? "Case Study"}`;
+  const description = metaDescription(project.description);
   return {
-    title: project.name,
-    description: project.description,
+    title,
+    description,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {
-      title: `${project.name} — ${site.shortName}`,
-      description: project.description,
+      title: `${title} — ${site.shortName}`,
+      description,
       url: absoluteUrl(`/work/${slug}`),
       type: "website",
       images: workOgImages(slug, project.name),

@@ -6,13 +6,13 @@ import { getArchivedPosts } from "@/lib/blog";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Learning Archive",
+  title: "Learning Archive · Python and Django Notes",
   description:
-    "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing.",
+    "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing: lists, tuples, sets, dictionaries, views, and templates.",
   alternates: { canonical: "/writing/archive" },
   openGraph: {
-    title: `Learning Archive — ${site.shortName}`,
-    description: "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing.",
+    title: `Learning Archive · Python and Django Notes — ${site.shortName}`,
+    description: "Early learning notes on Python and Django from Murat Hüdavendigâr Öncü's beginner-era writing: lists, tuples, sets, dictionaries, views, and templates.",
     url: absoluteUrl("/writing/archive"),
     images: pageOgImages("archive"),
   },

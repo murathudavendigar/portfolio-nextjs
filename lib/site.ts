@@ -41,6 +41,17 @@ export const site = {
   },
 } as const;
 
+/**
+ * Search snippets get cut around 160 characters. Trim longer text at a word
+ * boundary and end it with an ellipsis.
+ */
+export function metaDescription(text: string, max = 160): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  const end = cut.lastIndexOf(" ");
+  return `${cut.slice(0, end > 0 ? end : cut.length).replace(/[\s,;:.—-]+$/, "")}…`;
+}
+
 /** Builds Next.js `metadata.verification` from `site.searchVerification`. */
 export function verificationMetadata(
   v: Record<keyof typeof site.searchVerification, string> = site.searchVerification,

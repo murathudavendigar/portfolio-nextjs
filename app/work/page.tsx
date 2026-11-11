@@ -6,15 +6,15 @@ import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: "Work · Web, Mobile and Desktop Case Studies",
   description:
-    "Case studies and shipped projects by Murat Hüdavendigâr Öncü — iOS, React, Next.js, and TypeScript.",
+    "Case studies and shipped projects by Murat Hüdavendigâr Öncü: iOS and Android apps, desktop tools, npm packages, and web products in React and Next.js.",
   alternates: { canonical: "/work" },
   openGraph: {
     images: pageOgImages("work"),
-    title: `Work — ${site.shortName}`,
+    title: `Work · Web, Mobile and Desktop Case Studies — ${site.shortName}`,
     description:
-      "Case studies and shipped projects by Murat Hüdavendigâr Öncü — iOS, React, Next.js, and TypeScript.",
+      "Case studies and shipped projects by Murat Hüdavendigâr Öncü: iOS and Android apps, desktop tools, npm packages, and web products in React and Next.js.",
     url: `${site.url}/work`,
     type: "website",
   },

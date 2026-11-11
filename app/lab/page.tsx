@@ -6,13 +6,13 @@ import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lab",
+  title: "Lab · Playable Product Demos",
   description:
-    "Tap first, read later — interactive slices of Murat Öncü’s shipped products.",
+    "Tap first, read later: playable slices of Murat Öncü’s shipped products. Try the core rule of each app in seconds, then open its case study.",
   alternates: { canonical: "/lab" },
   openGraph: {
     images: pageOgImages("lab"),
-    title: `Lab — ${site.shortName}`,
+    title: `Lab · Playable Product Demos — ${site.shortName}`,
     description:
       "Compressed loops from real products. Play the rule, then open the case study.",
     url: `${site.url}/lab`,

@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { experiencesData } from "@/data/experiencesData";
 import robots from "../../app/robots";
 import { getResumeHref } from "../resume";
-import { introBookingHref, site, verificationMetadata } from "../site";
+import { introBookingHref, metaDescription, site, verificationMetadata } from "../site";
 
 describe("getResumeHref", () => {
   it("returns the public PDF path when the résumé file exists", () => {
@@ -92,5 +92,18 @@ describe("verificationMetadata", () => {
         "seznam-wmt": "s",
       },
     });
+  });
+});
+
+describe("metaDescription", () => {
+  it("keeps short text as-is", () => {
+    expect(metaDescription("Short text.")).toBe("Short text.");
+  });
+
+  it("cuts long text at a word boundary under the limit", () => {
+    const long = "word ".repeat(60).trim();
+    const out = metaDescription(long);
+    expect(out.length).toBeLessThanOrEqual(160);
+    expect(out.endsWith("word…")).toBe(true);
   });
 });

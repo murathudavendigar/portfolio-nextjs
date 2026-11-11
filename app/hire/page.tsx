@@ -5,13 +5,13 @@ import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hire",
+  title: "Hire a Frontend Engineer · React, Next.js",
   description:
     "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped React/Next.js work through TemCraft. What to send and what happens next.",
   alternates: { canonical: "/hire" },
   openGraph: {
     images: pageOgImages("hire"),
-    title: `Hire — ${site.shortName}`,
+    title: `Hire a Frontend Engineer · React, Next.js — ${site.shortName}`,
     description:
       "How to work with Murat Hüdavendigâr Öncü — frontend roles and scoped product work.",
     url: `${site.url}/hire`,

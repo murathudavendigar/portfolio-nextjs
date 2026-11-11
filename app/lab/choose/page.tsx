@@ -9,13 +9,13 @@ import { notFound } from "next/navigation";
 const SLUG = "choose";
 
 export const metadata: Metadata = {
-  title: "Lab · CHOOSE",
+  title: "Lab · Play the CHOOSE Quiz Demo",
   description:
-    "Play a timed CHOOSE mini — wrong answers score, timers burn lives. Then read the case study.",
+    "Play a timed CHOOSE mini game: wrong answers score, timers burn lives. A playable slice of the CHOOSE web app, with a link to the full case study.",
   alternates: { canonical: `/lab/${SLUG}` },
   openGraph: {
     images: pageOgImages("lab-choose"),
-    title: `Lab · CHOOSE — ${site.shortName}`,
+    title: `Lab · Play the CHOOSE Quiz Demo — ${site.shortName}`,
     description:
       "Interactive CHOOSE demo: inverted quiz rule with timer and combos.",
     url: `${site.url}/lab/${SLUG}`,

@@ -4,15 +4,15 @@ import { pageOgImages } from "@/lib/og-pages";
 import type { Metadata } from "next";
 
 const description =
-  "What muratoncu.com collects through the contact form and site analytics, and how it's used.";
+  "What muratoncu.com collects through the contact form and site analytics, and how it's used. A personal portfolio: no ads, and no selling of your data.";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy · What This Site Collects",
   description,
   alternates: { canonical: "/privacy" },
   openGraph: {
     images: pageOgImages("privacy"),
-    title: `Privacy Policy — ${site.shortName}`,
+    title: `Privacy Policy · What This Site Collects — ${site.shortName}`,
     description,
     url: `${site.url}/privacy`,
     type: "website",

@@ -4,12 +4,12 @@ import { USES_CATEGORIES } from "@/data/usesData";
 import Reveal from "@/components/Reveal";
 
 export const metadata = {
-  title: "Uses",
-  description: "The hardware and software Murat Hüdavendigâr Öncü uses on a daily basis.",
+  title: "Uses · My Dev Setup, Hardware and Tools",
+  description: "The hardware, editors, terminal tools, and apps Murat Hüdavendigâr Öncü uses every day to design, build, and ship web and mobile products.",
   alternates: { canonical: "/uses" },
   openGraph: {
-    title: `Uses — ${site.shortName}`,
-    description: "The hardware and software Murat Hüdavendigâr Öncü uses on a daily basis.",
+    title: `Uses · My Dev Setup, Hardware and Tools — ${site.shortName}`,
+    description: "The hardware, editors, terminal tools, and apps Murat Hüdavendigâr Öncü uses every day to design, build, and ship web and mobile products.",
     url: absoluteUrl("/uses"),
     images: pageOgImages("uses"),
   },

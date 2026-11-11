@@ -9,13 +9,13 @@ import { notFound } from "next/navigation";
 const SLUG = "daily-skyline";
 
 export const metadata: Metadata = {
-  title: "Lab · Daily Skyline",
+  title: "Lab · Play a Daily Skyline Puzzle",
   description:
-    "Play a full 5×5 Daily Skyline tutorial board — then open the case study or App Store listing.",
+    "Play a full 5×5 Daily Skyline tutorial board in your browser. Learn the skyscraper puzzle rules, then open the case study or the App Store listing.",
   alternates: { canonical: `/lab/${SLUG}` },
   openGraph: {
     images: pageOgImages("lab-daily-skyline"),
-    title: `Lab · Daily Skyline — ${site.shortName}`,
+    title: `Lab · Play a Daily Skyline Puzzle — ${site.shortName}`,
     description:
       "Interactive 5×5 skyscraper tutorial board tied to the Daily Skyline case study.",
     url: `${site.url}/lab/${SLUG}`,

@@ -10,15 +10,15 @@ const LAST_UPDATED = "2026-10-27";
 const LAST_UPDATED_LABEL = "27 Oct 2026";
 
 export const metadata: Metadata = {
-  title: "Now",
+  title: "Now · What I'm Working On",
   description:
-    "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
+    "What Murat Hüdavendigâr Öncü is focused on right now: what he is shipping, what he is learning, and what he is deliberately not doing.",
   alternates: { canonical: "/now" },
   openGraph: {
     images: pageOgImages("now"),
-    title: `Now — ${site.shortName}`,
+    title: `Now · What I'm Working On — ${site.shortName}`,
     description:
-      "What Murat Hüdavendigâr Öncü is focused on right now — shipping, learning, and deliberately not doing.",
+      "What Murat Hüdavendigâr Öncü is focused on right now: what he is shipping, what he is learning, and what he is deliberately not doing.",
     url: `${site.url}/now`,
     type: "website",
   },

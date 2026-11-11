@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description:
     "AutoInvoice Pro lab demo coming soon — read the case study in the meantime.",
   alternates: { canonical: `/lab/${SLUG}` },
+  // Placeholder until the demo ships: keep it out of search results.
+  robots: { index: false, follow: true },
   openGraph: {
     images: pageOgImages("lab-autoinvoice"),
     title: `Lab · AutoInvoice Pro — ${site.shortName}`,
