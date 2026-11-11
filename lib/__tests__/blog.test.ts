@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  getAdjacentPosts,
   getArchivedPosts,
   getFlagshipPosts,
   getPost,
@@ -139,5 +140,23 @@ describe("post ↔ case study links", () => {
     const { getRelatedWork } = await import("../projects");
     const work = getRelatedWork({ projects: [], tags: ["react-native", "expo"] });
     expect(work.length).toBeGreaterThan(0);
+  });
+});
+
+describe("getAdjacentPosts", () => {
+  it("links flagship posts only to flagship posts, newest first", () => {
+    const flagship = getFlagshipPosts();
+    const { newer, older } = getAdjacentPosts(flagship[1].slug);
+    expect(newer?.slug).toBe(flagship[0].slug);
+    expect(older?.slug).toBe(flagship[2].slug);
+    expect(getAdjacentPosts(flagship[0].slug).newer).toBeNull();
+  });
+
+  it("keeps archived posts within the archive", () => {
+    const archivedSlugs = getArchivedPosts().map((p) => p.slug);
+    const { newer, older } = getAdjacentPosts(archivedSlugs[1]);
+    for (const p of [newer, older]) {
+      if (p) expect(archivedSlugs).toContain(p.slug);
+    }
   });
 });

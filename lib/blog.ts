@@ -69,6 +69,24 @@ export function getArchivedPosts(): BlogPost[] {
   return getPosts().filter(isArchivedPost);
 }
 
+/**
+ * Newer and older neighbours of a post, within its own group: flagship posts
+ * link to flagship posts, archived posts to archived ones.
+ */
+export function getAdjacentPosts(slug: string): {
+  newer: BlogPost | null;
+  older: BlogPost | null;
+} {
+  const post = getPost(slug);
+  if (!post) return { newer: null, older: null };
+  const group = isArchivedPost(post) ? getArchivedPosts() : getFlagshipPosts();
+  const index = group.findIndex((p) => p.slug === slug);
+  return {
+    newer: index > 0 ? group[index - 1] : null,
+    older: index >= 0 && index < group.length - 1 ? group[index + 1] : null,
+  };
+}
+
 function normalizeTopic(value: string): string {
   return value.toLowerCase().replace(/[.\s-]/g, "");
 }

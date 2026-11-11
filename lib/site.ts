@@ -37,6 +37,12 @@ export const site = {
    * Google is best verified by a DNS TXT record (Domain property), so it can
    * stay empty. Bing can import from Google Search Console instead.
    */
+  /**
+   * Cloudflare Web Analytics site token (Cloudflare dashboard → Analytics &
+   * Logs → Web Analytics → muratoncu.com → Manage site → JS snippet, the
+   * "token" value). Empty = no analytics script is loaded.
+   */
+  cloudflareAnalyticsToken: "380d2d76928b47dcbf0335b6fca74e92",
   searchVerification: {
     google: "",
     bing: "",

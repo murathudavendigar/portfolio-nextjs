@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         <article className="max-w-3xl px-4 mx-auto prose prose-invert dark:prose sm:px-6 lg:px-8">
           <h1>Privacy Policy</h1>
           <p className="font-mono-ui text-sm text-gray-400 dark:text-gray-600">
-            Last updated: October 2026
+            Last updated: November 2026
           </p>
 
           <p>
@@ -63,10 +63,12 @@ export default function PrivacyPage() {
 
           <h2>Analytics</h2>
           <p>
-            Traffic is monitored through Cloudflare (as the DNS/CDN provider
-            for this domain) and Google Search Console. Both report
-            aggregate, anonymized traffic and search-performance data — they
-            don&apos;t identify individual visitors.
+            Page views are counted with Cloudflare Web Analytics, a small
+            script from Cloudflare that sets no cookies and does not
+            fingerprint or identify you. It reports totals such as page views,
+            referrers, countries, and page load speed. Google Search Console
+            adds aggregate search-performance data. Neither identifies
+            individual visitors.
           </p>
 
           <h2>Cookies</h2>

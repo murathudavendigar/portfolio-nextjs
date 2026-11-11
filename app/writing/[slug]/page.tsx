@@ -1,5 +1,6 @@
 import { formatPostDate } from "@/lib/utils";
 import MarkdownContent from "@/components/MarkdownContent";
+import ShareButtons from "@/components/ShareButtons";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { getPost, getPosts } from "@/lib/blog";
+import { getAdjacentPosts, getPost, getPosts } from "@/lib/blog";
 import { getRelatedWork } from "@/lib/projects";
 import { blogPostingGraph } from "@/lib/schema";
 import { metaDescription, site } from "@/lib/site";
@@ -55,6 +56,7 @@ export default async function WritingPostPage({
 
   const createdDate = formatPostDate(post.createdAt);
   const relatedWork = getRelatedWork(post);
+  const { newer, older } = getAdjacentPosts(post.slug);
 
   const updatedDate = post.updatedAt
     ? formatPostDate(post.updatedAt)
@@ -218,6 +220,28 @@ export default async function WritingPostPage({
             <MarkdownContent content={post.content} />
           </div>
 
+          <ShareButtons
+            url={`${site.url}/writing/${post.slug}`}
+            title={post.title}
+          />
+          <p className="mt-5 text-sm text-gray-300 dark:text-gray-700">
+            Thoughts on this post?{" "}
+            <Link
+              href="/contact"
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] dark:decoration-gray-400">
+              Send me a note
+            </Link>{" "}
+            or reply on{" "}
+            <a
+              href={site.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] dark:decoration-gray-400">
+              LinkedIn
+            </a>
+            .
+          </p>
+
           {relatedWork.length > 0 && (
             <section className="mt-12 border-t border-white/20 pt-8 dark:border-gray-300">
               <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
@@ -246,6 +270,38 @@ export default async function WritingPostPage({
           )}
 
           <footer className="pt-6 mt-12 border-t sm:pt-8 border-white/20 dark:border-gray-300">
+            {newer || older ? (
+              <nav
+                aria-label="More posts"
+                className="mb-8 grid gap-4 sm:grid-cols-2">
+                {newer ? (
+                  <Link
+                    href={`/writing/${newer.slug}`}
+                    className="group block rounded-xl border border-white/10 p-5 transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
+                    <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                      ← Newer
+                    </p>
+                    <p className="mt-2 font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
+                      {newer.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <span className="hidden sm:block" />
+                )}
+                {older ? (
+                  <Link
+                    href={`/writing/${older.slug}`}
+                    className="group block rounded-xl border border-white/10 p-5 text-right transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
+                    <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                      Older →
+                    </p>
+                    <p className="mt-2 font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
+                      {older.title}
+                    </p>
+                  </Link>
+                ) : null}
+              </nav>
+            ) : null}
             <Link
               href="/writing"
               className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-lg bg-[#CA3E47] hover:bg-[#CA3E47]/90 text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#CA3E47]/30 hover:scale-105">

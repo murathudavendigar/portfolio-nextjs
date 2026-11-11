@@ -9,6 +9,7 @@ import { site, verificationMetadata } from "@/lib/site";
 import { homeOgImages } from "@/lib/og-pages";
 import { getResumeHref } from "@/lib/resume";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist_Mono, Nunito_Sans } from "next/font/google";
 import Providers from "./providers";
 import "@/styles/globals.css";
@@ -76,6 +77,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BackToTop />
           <CommandPalette resumeHref={resumeHref} />
         </Providers>
+        {site.cloudflareAnalyticsToken &&
+        process.env.NODE_ENV === "production" ? (
+          // Cookieless page views; no consent banner needed.
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
+            data-cf-beacon={JSON.stringify({
+              token: site.cloudflareAnalyticsToken,
+            })}
+          />
+        ) : null}
       </body>
     </html>
   );
