@@ -4,7 +4,7 @@ import CommandPalette from "@/components/CommandPalette";
 import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
 import DynamicTitle from "@/components/DynamicTitle";
-import { site } from "@/lib/site";
+import { site, verificationMetadata } from "@/lib/site";
 import { homeOgImages } from "@/lib/og-pages";
 import { getResumeHref } from "@/lib/resume";
 import type { Metadata, Viewport } from "next";
@@ -46,6 +46,7 @@ export const metadata: Metadata = {
   alternates: {
     types: { "application/rss+xml": "/feed.xml" },
   },
+  verification: verificationMetadata(),
 };
 
 export const viewport: Viewport = {

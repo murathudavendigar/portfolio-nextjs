@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { experiencesData } from "@/data/experiencesData";
 import robots from "../../app/robots";
 import { getResumeHref } from "../resume";
-import { introBookingHref, site } from "../site";
+import { introBookingHref, site, verificationMetadata } from "../site";
 
 describe("getResumeHref", () => {
   it("returns the public PDF path when the résumé file exists", () => {
@@ -64,5 +64,33 @@ describe("llms.txt", () => {
     expect(text).not.toMatch(/muratoncu\.com\/blogs/);
     expect(text).toContain("Daily Skyline");
     expect(text).toContain("Courai");
+  });
+});
+
+describe("verificationMetadata", () => {
+  const empty = { google: "", bing: "", yandex: "", naver: "", seznam: "" };
+
+  it("renders nothing when no codes are set", () => {
+    expect(verificationMetadata(empty)).toEqual({});
+  });
+
+  it("maps each engine to its meta tag name", () => {
+    expect(
+      verificationMetadata({
+        google: "g",
+        bing: "b",
+        yandex: "y",
+        naver: "n",
+        seznam: "s",
+      }),
+    ).toEqual({
+      google: "g",
+      yandex: "y",
+      other: {
+        "msvalidate.01": "b",
+        "naver-site-verification": "n",
+        "seznam-wmt": "s",
+      },
+    });
   });
 });

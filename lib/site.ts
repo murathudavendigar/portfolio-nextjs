@@ -26,7 +26,36 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/murathudavendigaroncu/",
     medium: "https://medium.com/@murathoncu",
   },
+  /**
+   * Search engine ownership codes. Paste only the `content` value of each
+   * meta tag the webmaster tool gives you. Empty ones are not rendered.
+   * Google is best verified by a DNS TXT record (Domain property), so it can
+   * stay empty. Bing can import from Google Search Console instead.
+   */
+  searchVerification: {
+    google: "",
+    bing: "",
+    yandex: "9ba1531b8a659fca",
+    naver: "a4a82f72db4b4da0ac29897b14014233f2bb5f9b",
+    seznam: "",
+  },
 } as const;
+
+/** Builds Next.js `metadata.verification` from `site.searchVerification`. */
+export function verificationMetadata(
+  v: Record<keyof typeof site.searchVerification, string> = site.searchVerification,
+) {
+  const other: Record<string, string> = {};
+  if (v.bing) other["msvalidate.01"] = v.bing;
+  if (v.naver) other["naver-site-verification"] = v.naver;
+  if (v.seznam) other["seznam-wmt"] = v.seznam;
+
+  return {
+    ...(v.google && { google: v.google }),
+    ...(v.yandex && { yandex: v.yandex }),
+    ...(Object.keys(other).length > 0 && { other }),
+  };
+}
 
 export const absoluteUrl = (path: string) =>
   path.startsWith("http") ? path : `${site.url}${path}`;
