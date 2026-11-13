@@ -19,6 +19,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+// Posts go live only through a build. The .md files are bundled into the
+// worker, so without this a scheduled post could render on demand after its
+// date while the list, sitemap and feed still leave it out.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getPosts().map((p) => ({ slug: p.slug }));
 }

@@ -1,0 +1,53 @@
+# Publishes scheduled blog posts.
+#
+# The site is fully static: a post with a future `date` in content/blog is
+# left out of every build until that date (see getPosts in lib/blog.ts).
+# Each day just after 00:00 UTC this job checks for a post dated today and,
+# if there is one, rebuilds the site through a Cloudflare Workers Builds
+# Deploy Hook. No commit is made.
+#
+# Setup (once):
+#   1. Cloudflare dashboard > Workers & Pages > muratoncu-portfolio >
+#      Settings > Builds > Deploy Hooks: create a hook for branch `main`.
+#   2. GitHub repo > Settings > Secrets and variables > Actions: add the
+#      hook URL as secret CF_DEPLOY_HOOK_URL. Never commit the URL.
+
+name: Scheduled posts
+
+on:
+  schedule:
+    # Two runs a day: GitHub sometimes drops a scheduled run, and a post is
+    # only picked up on its own date. A second build that day is harmless.
+    - cron: "10 0 * * *"
+    - cron: "10 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find posts dated today (UTC)
+        id: due
+        run: |
+          today=$(date -u +%F)
+          due=$(grep -lE "^date: \"?${today}\"?\s*$" content/blog/*.md || true)
+          echo "Today: ${today}"
+          echo "Due: ${due:-none}"
+          if [ -n "$due" ]; then echo "found=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Trigger Cloudflare build
+        if: steps.due.outputs.found == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::CF_DEPLOY_HOOK_URL secret is not set"
+            exit 1
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null
+          echo "Build triggered"

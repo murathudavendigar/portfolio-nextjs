@@ -1,6 +1,9 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   getAdjacentPosts,
+  getAllPosts,
   getArchivedPosts,
   getFlagshipPosts,
   getPost,
@@ -8,9 +11,12 @@ import {
   getRelatedPosts,
 } from "../blog";
 
+// A fixed "now" so post counts don't change when a scheduled post goes live.
+const BEFORE_NO_ACCOUNT_POST = Date.parse("2026-11-13T12:00:00Z");
+
 describe("blog loader", () => {
-  it("loads all 15 exported posts sorted newest first", () => {
-    const posts = getPosts();
+  it("loads the 17 posts published by 13 Nov 2026, newest first", () => {
+    const posts = getPosts(BEFORE_NO_ACCOUNT_POST);
     expect(posts.length).toBe(17);
     const times = posts.map((p) => p.createdAt);
     expect(times).toEqual([...times].sort((a, b) => b - a));
@@ -33,11 +39,37 @@ describe("blog loader", () => {
   });
 });
 
+describe("scheduled and draft posts", () => {
+  const SLUG = "why-daily-skyline-has-no-account";
+
+  it("hides a post until 00:00 UTC on its date", () => {
+    const before = getPosts(Date.parse("2026-11-25T23:59:59Z"));
+    const onTheDay = getPosts(Date.parse("2026-11-26T00:00:00Z"));
+    expect(before.map((p) => p.slug)).not.toContain(SLUG);
+    expect(onTheDay.map((p) => p.slug)).toContain(SLUG);
+  });
+
+  it("never publishes a draft: true post, whatever the date", () => {
+    const far = Date.parse("2100-01-01T00:00:00Z");
+    const drafts = getAllPosts().filter((p) => p.draft);
+    const published = getPosts(far).map((p) => p.slug);
+    for (const draft of drafts) expect(published).not.toContain(draft.slug);
+  });
+
+  it("leaves no [MURAT: …] note in any post file, scheduled or not", () => {
+    const dir = join(process.cwd(), "content/blog");
+    const offenders = readdirSync(dir)
+      .filter((f) => f.endsWith(".md"))
+      .filter((f) => readFileSync(join(dir, f), "utf8").includes("[MURAT:"));
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe("flagship/archive split", () => {
-  it("splits all 17 posts into flagship and archived with no overlap", () => {
+  it("splits all posts into flagship and archived with no overlap", () => {
     const flagship = getFlagshipPosts();
     const archived = getArchivedPosts();
-    expect(flagship.length + archived.length).toBe(17);
+    expect(flagship.length + archived.length).toBe(getPosts().length);
     const archivedSlugs = new Set(archived.map((p) => p.slug));
     for (const post of flagship) {
       expect(archivedSlugs.has(post.slug)).toBe(false);

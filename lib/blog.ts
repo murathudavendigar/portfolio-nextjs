@@ -10,7 +10,21 @@ function getBlogDirectory(): string {
   return fs.existsSync(WORKER_BLOG_DIR) ? WORKER_BLOG_DIR : LOCAL_BLOG_DIR;
 }
 
-export function getPosts(): BlogPost[] {
+/**
+ * Published posts only. A post is left out when its frontmatter has
+ * `draft: true`, or when its `date` is still in the future.
+ *
+ * Scheduling happens at build time: the site is fully static, so a post dated
+ * "2026-11-26" (00:00 UTC) appears with the first build on or after that
+ * moment. The daily workflow in .github/workflows/scheduled-posts.yml triggers
+ * that build through a Cloudflare Deploy Hook.
+ */
+export function getPosts(now: number = Date.now()): BlogPost[] {
+  return getAllPosts().filter((post) => !post.draft && post.createdAt <= now);
+}
+
+/** Every post file, including drafts and scheduled ones. Not for pages. */
+export function getAllPosts(): (BlogPost & { draft: boolean })[] {
   const blogDirectory = getBlogDirectory();
   return fs
     .readdirSync(blogDirectory)
@@ -22,6 +36,7 @@ export function getPosts(): BlogPost[] {
       );
       const createdAt = new Date(data.date as string).getTime();
       return {
+        draft: data.draft === true,
         id: slug,
         title: (data.title as string) ?? "",
         description: (data.description as string) ?? "",

@@ -1,6 +1,10 @@
 import { getPosts } from "@/lib/blog";
 import { absoluteUrl, site } from "@/lib/site";
 
+// Built once per deploy, like the sitemap, so a scheduled post shows up in the
+// feed only when its page exists (see getPosts in lib/blog.ts).
+export const dynamic = "force-static";
+
 function escapeXml(value: string) {
   return value
     .replace(/&/g, "&amp;")
