@@ -3,6 +3,7 @@ title: "Shipping Daily Skyline to Android"
 description: "Porting a daily puzzle from iOS to Google Play took less code than I expected and more process. What the date seed saved me, what Google's 14-day closed test caught, and why every version now ships on both stores."
 metaDescription: "What porting Daily Skyline from iOS to Google Play took: a shared date seed, Google's 14-day closed test, and shipping both stores together."
 date: "2026-11-02"
+updated: "2026-11-14"
 tags: ["react-native", "expo", "android", "google-play"]
 readTime: 6
 projects: ["daily-skyline"]
@@ -25,11 +26,11 @@ The app is Expo and React Native, so the board, the reducer, the streak logic an
 
 ## Where the platforms differ
 
-**Store identity.** Game Center on iOS, Google Play Games on Android. Achievements and boards had to exist twice, and the global leaderboard I built later takes the player's name from whichever one they use.
+**Store identity.** Game Center on iOS, Google Play Games on Android. Achievements and boards had to exist twice. The global leaderboard I built later gives every player a random name, and offers their Game Center or Play Games name with one tap, never without it.
 
 **Purchases.** The paywall read the App Store's introductory offer to show the free trial. Play describes trials differently, so the first Android builds simply did not show the trial. Small fix, but only visible on a real Android device.
 
-**Backups.** Keeping a streak through a reinstall needs iCloud on iOS and Google's Block Store on Android. Same feature, two native APIs.
+**Backups.** Bringing a streak back after a reinstall, which arrives in version 1.32, keeps its recovery key in iCloud on iOS and in Google's Block Store on Android. Same feature, two native APIs.
 
 None of this is hard. It is just work that does not exist until you ship the second platform, and it is easy to underestimate.
 
@@ -37,7 +38,7 @@ None of this is hard. It is just work that does not exist until you ship the sec
 
 The part I did not plan well was the process. A new personal developer account on Google Play cannot go straight to production. You need at least 12 testers in a closed test, kept for 14 consecutive days, and then you apply.
 
-So Android shipped twice: first to a closed test, to a small group of real people I recruited, and only after two weeks to everyone. The closed test ended on 24 October. I applied the next day, and access was granted on 26 October.
+So Android shipped twice: first to a closed test, to a small group of real people I recruited, and only after two weeks to everyone. The test started on 10 October with 12 testers, so the 14 days were up on 24 October. I applied the next day, and access was granted on 26 October.
 
 I expected those two weeks to be a formality. They were not. I shipped seven builds to the testers between 8 and 12 October.
 

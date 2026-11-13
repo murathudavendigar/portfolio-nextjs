@@ -24,7 +24,7 @@ I wrote about that at more length in [Shipping Daily Skyline to Android](/writin
 
 Not everything stays on the device. Game Center on iOS and Google Play Games on Android are optional, if you want achievements or the store leaderboards.
 
-Since 1 November 2026 there is also a global leaderboard of my own: today's fastest times on each difficulty, an overall board by Skyline Points, and the longest streaks, across iPhone and Android. It still has no sign-up. You get a random name, and you can change it, hide it, or remove yourself from the board in your profile.
+Since 1 November 2026 there is also a global leaderboard of my own: today's fastest times on each difficulty, an overall board by Skyline Points, and the longest streaks, across iPhone and Android. It still has no sign-up. You get a random name. You can swap in your Game Center or Play Games name with one tap, change it, hide it, or remove yourself from the board in your profile.
 
 The comparison with other players is the piece that has to live somewhere else. I did not want that to require a Daily Skyline login, and it does not.
 
