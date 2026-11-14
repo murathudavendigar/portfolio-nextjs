@@ -1,41 +1,41 @@
 ---
 archived: true
-title: "React Hooks Explored: Essential Strategies and Crafting Custom Solutions"
+title: "React hooks: the patterns I teach most"
 seoTitle: "React Hooks: Strategies and Custom Hooks"
-description: "An in-depth exploration of React Hooks, covering core mechanics, performance optimization with useMemo/useCallback, and a complete guide to building reusable custom hooks."
+description: "How the core React hooks work, when useMemo and useCallback actually help, how to write custom hooks like useFetch and useDebounce, and the stale closure bug."
 metaDescription: "A guide to React Hooks: how they work, when useMemo and useCallback help performance, and how to build reusable custom hooks."
 date: "2024-01-10"
-updated: "2026-07-18"
+updated: "2026-11-14"
 tags: ["react","javascript","web-development","hooks","frontend"]
-readTime: 9
+readTime: 8
 image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
-React Hooks revolutionized the way we build web applications by allowing us to use state and other React features without writing a class. Since their introduction, they have become the standard for functional components. Understanding the core hooks is only the first step; the real power lies in knowing when to use them and how to extract logic into custom hooks for cleaner, more maintainable code.
+Hooks let function components hold state and run side effects without a class, and they are how React is written now. Knowing what each hook does is the easy part. The harder part is knowing when to use which, and when to pull logic out into a hook of your own.
 
-When I teach React to new frontend developers, hooks are the first place confusion shows up — especially `useEffect` dependency arrays and “when do I need a custom hook?” This guide collects the patterns I repeat most often in class and in production Next.js work at TemCraft Tech.
+When I teach React to new frontend developers, hooks are the first place confusion shows up, especially `useEffect` dependency arrays and "when do I need a custom hook?" This post collects the patterns I repeat most often in class and in production Next.js work at TemCraft Tech.
 
-### What Do the Core Hooks Do Beyond the Basics?
+### The core hooks, past the basics
 
-Most developers start with `useState` and `useEffect`. While they seem simple, they have nuances that can significantly impact performance and bug tracking.
+Most people start with `useState` and `useEffect`. Both look simple, and both have details that cause real bugs.
 
-#### useState: Managing Local State
+#### useState
 
-`useState` is the most common hook. It allows you to add state to functional components. However, a common mistake is not using the functional update pattern when the new state depends on the previous one.
+`useState` adds state to a function component. The common mistake is not using the functional update when the new state depends on the old one:
 
 ```javascript
 // Instead of this:
 setCount(count + 1);
 
-// Use this to ensure accuracy during rapid updates:
+// Use this so rapid updates don't overwrite each other:
 setCount(prevCount => prevCount + 1);
 ```
 
-#### useEffect: Handling Side Effects
+#### useEffect
 
-`useEffect` is where you handle API calls, subscriptions, or manual DOM manipulations. The dependency array is the most critical part of this hook. If you leave it out, the effect runs after every render. If you provide an empty array `[]`, it runs once on mount. If you include variables, it runs whenever those variables change.
+`useEffect` is for side effects: API calls, subscriptions, manual DOM work. The dependency array decides when it runs. Leave it out and the effect runs after every render. Pass `[]` and it runs once on mount. List variables and it runs whenever one of them changes.
 
-Always remember to return a cleanup function to prevent memory leaks, especially when dealing with timers or event listeners:
+Return a cleanup function whenever you start something that keeps running, like a timer or an event listener. Otherwise it leaks:
 
 ```javascript
 useEffect(() => {
@@ -47,30 +47,30 @@ useEffect(() => {
 }, []);
 ```
 
-### Optimization Hooks: useMemo and useCallback
+### useMemo and useCallback
 
-Performance optimization in React often involves preventing unnecessary re-renders. This is where `useMemo` and `useCallback` come into play.
+These two exist to skip work React would otherwise repeat on every render.
 
-- **useMemo**: Memoizes a calculated value. Use it for expensive calculations that don't need to run on every render.
-- **useCallback**: Memoizes a function instance. This is useful when passing functions to memoized child components to prevent them from breaking the child's `React.memo` optimization.
+- `useMemo` remembers a computed value. Use it for an expensive calculation that doesn't need to run every render.
+- `useCallback` remembers a function. Use it when you pass a function to a child wrapped in `React.memo`, so the child doesn't re-render just because it got a new function.
 
-Note: Do not over-optimize. Using these hooks everywhere adds overhead. Only use them when you notice a performance bottleneck or when passing dependencies to other hooks.
+Don't wrap everything in them. They have their own cost. Use them when you can see a slow spot, or when the value goes into another hook's dependency array.
 
-`React.memo` is the third piece of this trio, and it's worth being explicit about what each does, since they're frequently confused:
+`React.memo` is the third piece, and the three get mixed up a lot:
 
-| Tool | Memoizes | Use it when |
+| Tool | Remembers | Use it when |
 |---|---|---|
-| `useMemo` | A computed **value** | An expensive calculation shouldn't re-run every render |
-| `useCallback` | A **function reference** | You're passing a callback prop to a memoized child |
-| `React.memo` | An entire **component** | A component re-renders with the same props too often |
+| `useMemo` | A computed value | An expensive calculation shouldn't re-run every render |
+| `useCallback` | A function reference | You pass a callback prop to a memoized child |
+| `React.memo` | A whole component | A component re-renders with the same props too often |
 
-They work together, not in isolation: wrapping a child in `React.memo` only prevents re-renders if the props passed to it are stable — which is exactly what `useCallback` (for function props) and `useMemo` (for object/array props) provide.
+They only work together. `React.memo` skips a re-render only if the props are the same as last time, and `useCallback` (for functions) and `useMemo` (for objects and arrays) are what keep them the same.
 
-### useRef and useContext: The Other Two You'll Reach For Constantly
+### useRef and useContext
 
-Beyond `useState` and `useEffect`, two more hooks show up in almost every non-trivial component.
+Two more hooks show up in almost every real component.
 
-`useRef` gives you a mutable box that persists across renders **without** triggering a re-render when it changes — unlike `useState`. It has two common uses: holding a reference to a DOM node, and holding any mutable value you want to survive re-renders without causing new ones.
+`useRef` gives you a box that survives re-renders and does not cause one when you change it. That is the difference from `useState`. You use it to hold a DOM node, or any value that should stick around between renders without triggering a new one.
 
 ```javascript
 function TextInputWithFocusButton() {
@@ -89,7 +89,7 @@ function TextInputWithFocusButton() {
 }
 ```
 
-`useContext` solves "prop drilling" — passing a prop down through five layers of components that don't use it themselves, just to get it to a deeply nested child. A context provider makes a value available to any descendant that asks for it:
+`useContext` fixes prop drilling: passing a prop through five components that don't use it, just so a deeply nested child can. A provider makes a value available to every descendant that asks for it:
 
 ```javascript
 const ThemeContext = createContext('light');
@@ -108,21 +108,21 @@ function Toolbar() {
 }
 ```
 
-Reach for `useContext` when a value is genuinely global to a subtree (theme, authenticated user, locale) — not as a blanket replacement for passing props, which is still the simpler and more traceable option for most component communication.
+Use context for values that really belong to a whole subtree, like the theme, the signed-in user or the locale. For everything else, passing props is still simpler and easier to follow.
 
-### The Power of Custom Hooks
+### Custom hooks
 
-Custom hooks are simply JavaScript functions whose names start with 'use' and that may call other hooks. They allow you to extract component logic into reusable functions. This is the ultimate strategy for keeping your components lean and focused on the UI.
+A custom hook is a plain function whose name starts with `use` and that calls other hooks. It lets you move logic out of a component so the component can focus on what it renders.
 
-#### Why Build Custom Hooks?
+Why bother:
 
-1. **Reusability**: Use the same logic across multiple components without duplication.
-2. **Testability**: You can test the logic independently of the UI.
-3. **Clean Code**: It moves complex logic out of your main component body.
+1. **Reuse:** the same logic in several components, written once.
+2. **Testing:** you can test the logic without the UI.
+3. **Smaller components:** the complicated part moves out of the component body.
 
-### Crafting a Custom Solution: useFetch
+### Example: useFetch
 
-Let's build a practical custom hook for fetching data. This hook will handle the loading state, the data itself, and any potential errors.
+A hook that fetches data and tracks loading and errors:
 
 ```javascript
 import { useState, useEffect } from 'react';
@@ -158,7 +158,7 @@ function useFetch(url) {
 export default useFetch;
 ```
 
-Now, you can use this across your entire application like this:
+Using it:
 
 ```javascript
 const { data, loading, error } = useFetch('https://api.example.com/items');
@@ -169,9 +169,9 @@ if (error) return <p>Error: {error}</p>;
 return <div>{/* Render your data here */}</div>;
 ```
 
-### A Second Custom Hook: useDebounce
+### Example: useDebounce
 
-`useFetch` handles data loading, but a lot of real UI work involves reacting to fast-changing input — a search box that shouldn't fire an API call on every keystroke, for example. `useDebounce` is the standard pattern for that:
+A lot of UI work is reacting to input that changes fast. A search box shouldn't call the API on every keystroke. `useDebounce` is the usual answer:
 
 ```javascript
 import { useState, useEffect } from 'react';
@@ -191,7 +191,7 @@ function useDebounce(value, delayMs) {
 }
 ```
 
-Used in a search component, it lets you keep the input responsive while delaying the expensive part (the API call) until the user pauses typing:
+In a search box, the input stays responsive and the API call waits until the user stops typing:
 
 ```javascript
 function SearchBox() {
@@ -207,11 +207,11 @@ function SearchBox() {
 }
 ```
 
-Notice the shape: `query` updates on every keystroke, but `debouncedQuery` only catches up 400ms after typing pauses — because each new keystroke cancels the previous `setTimeout` via the cleanup function before it can fire.
+`query` changes on every keystroke. `debouncedQuery` only catches up 400ms after typing stops, because each keystroke's cleanup cancels the previous `setTimeout` before it fires.
 
-### Common Pitfalls: Stale Closures
+### The stale closure bug
 
-The single most confusing bug in hooks-based React is the **stale closure** — an effect or callback that captures a variable's value from the render it was created in, and keeps using that old value even after state has changed.
+The most confusing bug in hooks code is the stale closure: an effect or callback that captured a value from the render it was created in, and keeps using that old value after state has changed.
 
 ```javascript
 function Counter() {
@@ -229,9 +229,9 @@ function Counter() {
 }
 ```
 
-Because the dependency array is `[]`, the effect runs exactly once, and the function inside it closes over the `count` value from that first render — `0` — forever. Even though `count` updates on screen with every click, the `console.log` inside the interval never sees the new value.
+The dependency array is `[]`, so the effect runs once, and the function inside it holds on to `count` from the first render: `0`. The number on screen goes up with every click. The `console.log` never sees it.
 
-The fix is either to include `count` in the dependency array (which restarts the interval on every count change) or, more often, to use the functional update form so the callback doesn't need to read the stale variable at all:
+There are two fixes. Add `count` to the dependency array, which restarts the interval on every change. Or, more often, use the functional update so the callback doesn't read the old variable at all:
 
 ```javascript
 useEffect(() => {
@@ -243,20 +243,12 @@ useEffect(() => {
 }, []);
 ```
 
-This is exactly the same functional-update pattern from the `useState` section above — it isn't a coincidence. Once you recognize that hooks close over the values present at render time, stale closures stop being mysterious and become a predictable thing to check for whenever an effect reads state without listing it as a dependency.
+That is the same functional update from the `useState` section, and not by accident. Hooks see the values from the render they were created in. Once that clicks, stale closures become something you check for: any effect that reads state without listing it as a dependency.
 
-### Essential Strategies for Success
+### Rules worth keeping
 
-To master hooks, follow these industry-standard rules:
+- **Rules of Hooks:** call hooks only at the top level, never inside loops, conditions or nested functions, and only from components or other hooks.
+- **One job per hook:** if a custom hook does too much, split it.
+- **Honest dependency arrays:** list what the effect reads. The `eslint-plugin-react-hooks` lint rule catches the ones you miss.
 
-- **Rules of Hooks**: Only call hooks at the top level. Don’t call hooks inside loops, conditions, or nested functions. Only call hooks from React function components or custom hooks.
-- **Keep Hooks Focused**: A custom hook should do one thing well. If your custom hook is doing too many things, consider breaking it down into smaller, specialized hooks.
-- **Dependency Accuracy**: Always be honest with your dependency arrays. Tools like ESLint with the `eslint-plugin-react-hooks` can help you catch missing dependencies automatically.
-
-### Conclusion
-
-React Hooks are more than just a syntax change; they represent a shift in how we think about state and side effects. By mastering built-in hooks and learning to architect your own custom solutions, you move from just writing code to designing robust, scalable systems. The key is to start simple, recognize patterns of repetition in your components, and extract those patterns into reusable logic.
-
----
-
-Understanding the lifecycle and mental model of hooks is the hallmark of a senior React developer. Continue experimenting with different custom hook patterns to find what works best for your team's workflow.
+If your effect reads a value, that value belongs in the dependency array. A lot of hooks bugs come back to that one rule.
