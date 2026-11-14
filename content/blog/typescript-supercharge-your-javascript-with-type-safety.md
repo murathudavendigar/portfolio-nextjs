@@ -1,30 +1,28 @@
 ---
 archived: true
-title: "TypeScript: Supercharge Your JavaScript with Type Safety"
+title: "Why I use TypeScript"
 seoTitle: "TypeScript: Type Safety for JavaScript"
-description: "Discover how TypeScript adds robust static typing to JavaScript, preventing runtime errors and drastically improving your developer experience."
+description: "How TypeScript adds static types to JavaScript: basic types, unions, generics, utility types and strict mode, and the mistakes people make when they adopt it."
 date: "2023-10-16"
-updated: "2026-07-18"
+updated: "2026-11-14"
 tags: ["typescript","javascript","web-development","frontend","programming"]
 readTime: 6
 image: ""
 author: "Murat Hüdavendigâr Öncü"
 ---
-JavaScript is fantastic, but as your applications grow, its dynamic nature can sometimes lead to unexpected runtime errors. Enter TypeScript: a strict syntactical superset of JavaScript that adds optional static typing to the language.
+JavaScript lets you pass anything anywhere. That is fine in a small script and painful once an app grows: the mistakes show up at runtime, in front of users. TypeScript is JavaScript with optional static types on top, so many of those mistakes show up in your editor instead.
 
-In production React and Next.js apps I ship, TypeScript is non-negotiable — it catches the same class of bugs students hit when they first move from tutorials to real components. This post is the short “why and how” I give before we type a full feature.
+In production React and Next.js apps I ship, TypeScript is non-negotiable. It catches the same class of bugs students hit when they first move from tutorials to real components. This post is the short "why and how" I give before we type a full feature.
 
-### Why TypeScript?
+### Why bother
 
-If you have ever encountered a `TypeError: Cannot read properties of undefined` in production, you already know why TypeScript is necessary. It catches errors during development (compile-time) before they ever reach your users.
+If you have seen `TypeError: Cannot read properties of undefined` in production, you already know. TypeScript catches that kind of error while you write the code, before it reaches anyone.
 
-- **Type Safety:** Ensure variables hold the exact type of data you expect.
-- **Better IDE Support:** Get robust autocomplete and intelligent code navigation.
-- **Easier Refactoring:** Change code with confidence, knowing the compiler will catch broken references.
+- **Types:** a variable holds the kind of data you expect.
+- **Editor help:** autocomplete and go-to-definition that actually know your code.
+- **Refactoring:** rename or change something, and the compiler lists every place that broke.
 
-### Basic Types
-
-TypeScript provides several basic types that you can assign to your variables.
+### Basic types
 
 ```typescript
 // Defining basic types
@@ -33,9 +31,9 @@ let age: number = 28;
 let isDeveloper: boolean = true;
 ```
 
-### Typing Functions
+### Typing functions
 
-One of the most common sources of bugs in JavaScript is passing the wrong arguments to a function. TypeScript solves this by enforcing parameter types and return types.
+Passing the wrong arguments to a function is one of the most common JavaScript bugs. TypeScript checks parameter and return types:
 
 ```typescript
 // Function with typed parameters and a typed return value
@@ -43,13 +41,13 @@ function greetUser(name: string, age: number): string {
   return `Hello ${name}, you are ${age} years old!`;
 }
 
-greetUser("Murat", 28); // Works perfectly
+greetUser("Murat", 28); // Works
 // greetUser("Murat", "28"); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
 ```
 
-### Interfaces and Custom Types
+### Interfaces and custom types
 
-As we discussed in a previous article, you can define the shape of complex objects using Interfaces or Types. This is where TypeScript truly shines, allowing you to model your business logic accurately.
+You can describe the shape of an object with an interface or a type. I compare the two in [Understanding Interfaces and Types](/writing/typescript-understanding-interfaces-and-types). This is where TypeScript starts to model your actual data:
 
 ```typescript
 interface User {
@@ -64,9 +62,9 @@ const fetchUser = (id: number): User => {
 };
 ```
 
-### Union Types and Narrowing
+### Unions and narrowing
 
-Real data often isn't just one type. A function might accept a `string` or a `number`, or an API response might return either a success payload or an error. TypeScript models this with **union types**, written with a pipe:
+Real data is often one of several types. A function might take a `string` or a `number`, and an API might return a success payload or an error. A union type, written with a pipe, says exactly that:
 
 ```typescript
 function formatId(id: string | number): string {
@@ -74,7 +72,7 @@ function formatId(id: string | number): string {
 }
 ```
 
-Inside a function, before you can use a value in a type-specific way, TypeScript requires you to **narrow** the union down using a runtime check:
+Before you use a union value in a type-specific way, you narrow it with a runtime check:
 
 ```typescript
 function printLength(value: string | string[]) {
@@ -86,11 +84,11 @@ function printLength(value: string | string[]) {
 }
 ```
 
-The `typeof` check isn't just a JavaScript runtime check — the TypeScript compiler tracks it and narrows the type inside each branch accordingly. This is why you can't accidentally call a string-only method on something that might be an array; the compiler stops you before the code ever runs.
+The compiler follows the `typeof` check and narrows the type in each branch. So you can't call a string-only method on something that might be an array: the compiler stops you before the code runs.
 
-### Generics: Writing Reusable, Type-Safe Functions
+### Generics
 
-Without generics, a reusable utility function either loses type information (falling back to `any`) or has to be duplicated for every type you use it with. **Generics** let a function or type be parameterized by a type variable, filled in at the call site:
+Without generics, a reusable helper either loses its types (falls back to `any`) or gets copied once per type. A generic takes a type parameter that is filled in where you call it:
 
 ```typescript
 function firstItem<T>(items: T[]): T | undefined {
@@ -101,11 +99,11 @@ const firstNumber = firstItem([1, 2, 3]);       // inferred as number | undefine
 const firstName = firstItem(["Murat", "Ada"]);  // inferred as string | undefined
 ```
 
-`T` is a placeholder that TypeScript fills in based on what you pass in — no `any`, no duplication, and the return type is still fully checked. Generics show up constantly in real codebases: React's `useState<T>()`, array methods, and most data-fetching utilities are generic for exactly this reason.
+TypeScript fills in `T` from what you pass. No `any`, no copies, and the return type is still checked. You use generics all the time without noticing: React's `useState<T>()`, array methods and most data-fetching helpers are generic for this reason.
 
-### Utility Types: Reshaping Types Without Rewriting Them
+### Utility types
 
-TypeScript ships a set of built-in **utility types** that transform an existing type instead of making you redefine it from scratch. Given the `User` interface from earlier:
+TypeScript comes with utility types that reshape an existing type instead of making you write a new one. With the `User` interface from above:
 
 ```typescript
 interface User {
@@ -114,12 +112,12 @@ interface User {
   isActive: boolean;
 }
 
-type PartialUser = Partial<User>;      // every field becomes optional — useful for update payloads
+type PartialUser = Partial<User>;      // every field becomes optional, useful for update payloads
 type UserPreview = Pick<User, "id" | "name">;  // only id and name
 type UserWithoutId = Omit<User, "id">; // everything except id
 ```
 
-`Partial<User>` is especially common for update functions — a `PATCH /users/:id` endpoint typically accepts any subset of fields, and `Partial<User>` expresses exactly that without a second, hand-maintained interface.
+`Partial<User>` shows up most in update functions. A `PATCH /users/:id` endpoint accepts any subset of fields, and `Partial<User>` says exactly that without a second interface to keep in sync.
 
 ```typescript
 function updateUser(id: number, changes: Partial<User>) {
@@ -127,9 +125,9 @@ function updateUser(id: number, changes: Partial<User>) {
 }
 ```
 
-### Enabling Strict Mode
+### Turn on strict mode
 
-A newly initialized TypeScript project without configuration will let far more slip through than you'd expect — including implicit `any` types on untyped parameters. The single highest-leverage setting in `tsconfig.json` is `strict`:
+Without configuration, TypeScript lets a lot through, including implicit `any` on untyped parameters. The one setting that matters most in `tsconfig.json` is `strict`:
 
 ```json
 {
@@ -139,18 +137,18 @@ A newly initialized TypeScript project without configuration will let far more s
 }
 ```
 
-`strict` bundles several checks, most notably `strictNullChecks` (which forces you to explicitly handle `null`/`undefined` rather than assuming a value is always present) and `noImplicitAny` (which errors on parameters TypeScript can't infer a type for, instead of silently treating them as `any`). Turning this on for a new project costs nothing; turning it on for an existing untyped codebase can surface a lot of latent bugs at once — which is exactly the point.
+`strict` turns on several checks. The two that matter most are `strictNullChecks`, which makes you handle `null` and `undefined` instead of assuming a value is there, and `noImplicitAny`, which errors when TypeScript can't infer a parameter's type instead of quietly treating it as `any`. On a new project it costs nothing. On an existing codebase it can surface a lot of hidden bugs at once, which is the point.
 
-### Common Pitfalls When Adopting TypeScript
+### Common mistakes when adopting TypeScript
 
-- **Overusing `any` to silence errors.** Typing something `any` disables type checking for that value entirely — it's an escape hatch, not a type. Reaching for `any` every time the compiler complains defeats the purpose of adopting TypeScript in the first place. `unknown` is almost always the safer choice when you genuinely don't know the type yet, because it forces you to narrow before using the value.
-- **Typing the return value of `JSON.parse()` and trusting it blindly.** `JSON.parse()` returns `any` by design — TypeScript cannot verify that the JSON string actually matches the shape you're casting it to. Casting the result `as User` doesn't validate anything at runtime; a mismatched API response will pass the type checker and still fail (or misbehave) in production. For real safety at that boundary, pair TypeScript with a runtime validation library.
-- **Confusing compile-time types with runtime behavior.** Types are erased entirely when TypeScript compiles to JavaScript — there is no `typeof user === "User"` check at runtime, because interfaces don't exist once compiled. TypeScript prevents you from writing code that violates its contracts, but it cannot stop malformed data arriving from outside your codebase (an API, `localStorage`, user input) from violating them anyway.
-- **Widening literal types by accident.** `let status = "active"` infers the type as the general `string`, not the literal `"active"`. If you need a variable restricted to a specific set of string values, declare it explicitly: `let status: "active" | "inactive" = "active"`. Otherwise, code elsewhere that expects only those two values will happily accept any string, and the compiler won't catch the mismatch until it's used somewhere stricter.
+- **Using `any` to make errors go away.** `any` turns off type checking for that value. It is an escape hatch, not a type. If you reach for it every time the compiler complains, you lose the reason you adopted TypeScript. When you really don't know the type yet, use `unknown`: it makes you narrow before you use the value.
+- **Trusting `JSON.parse()`.** `JSON.parse()` returns `any`, and TypeScript can't check that the JSON matches the shape you cast it to. `as User` validates nothing at runtime, so a wrong API response passes the type checker and still breaks in production. At that boundary, add a runtime validation library.
+- **Mixing up compile time and runtime.** Types are erased when TypeScript compiles to JavaScript. There is no `typeof user === "User"` at runtime, because interfaces don't exist after compilation. TypeScript stops you from writing code that breaks its rules, but it can't stop bad data coming from outside: an API, `localStorage`, user input.
+- **Widening literal types by accident.** `let status = "active"` is inferred as `string`, not as the literal `"active"`. If a variable should only hold certain values, say so: `let status: "active" | "inactive" = "active"`. Otherwise it accepts any string, and the compiler only notices when the value reaches stricter code.
 
-### TypeScript vs. Plain JSDoc Comments
+### TypeScript vs. JSDoc comments
 
-If your team can't fully adopt a TypeScript build step, JSDoc comments give you a lighter-weight subset of the same benefit — many editors, including VS Code, read JSDoc annotations on plain `.js` files and provide the same autocomplete and basic type checking:
+If your team can't add a TypeScript build step yet, JSDoc gets you part of the way. Editors like VS Code read JSDoc annotations in plain `.js` files and give you autocomplete and basic type checks:
 
 ```javascript
 /**
@@ -163,8 +161,6 @@ function greetUser(name, age) {
 }
 ```
 
-This is a reasonable stepping stone for legacy JavaScript codebases that can't migrate file extensions overnight, but it doesn't get you generics, utility types, or the discipline of a dedicated `tsconfig.json` with `strict` mode enabled. Treat JSDoc as a bridge, not a permanent substitute, if the goal is the full safety net TypeScript provides.
+It is a reasonable step for an older JavaScript codebase that can't rename every file at once. But you don't get generics, utility types, or a `tsconfig.json` with `strict` mode. Use JSDoc as a bridge, not a replacement.
 
-### Conclusion
-
-Adopting TypeScript might feel like a steep learning curve initially, but the long-term benefits are undeniable. By providing a safety net — from basic types through unions, generics, and utility types — it allows developers to write cleaner, more reliable, and self-documenting code. It does not replace JavaScript; it simply supercharges it.
+If you adopt only one thing from this post, make it `"strict": true` on day one. Adding it later is always harder.
