@@ -13,6 +13,14 @@ export type AppData = {
   lastUpdated: string;
 };
 
+/** The same numbers as `stats`, unformatted, for writing them into a sentence. */
+export type LiveFacts = {
+  liveProducts: number;
+  rating: { average: number; count: number } | null;
+  downloads: number | null;
+  latest: { name: string; version: string; date: string } | null;
+};
+
 export type PackageData = {
   name: string;
   version: string;
@@ -38,17 +46,19 @@ export function buildLiveStats({
   apps: AppData[];
   packages: PackageData[];
   liveProducts: number;
-}): { stats: Stat[]; isLive: boolean } {
+}): { stats: Stat[]; isLive: boolean; facts: LiveFacts } {
   let isLive = false;
 
   const rated = apps.filter((a) => a.averageRating && a.ratingCount > 0);
   const ratingCount = rated.reduce((sum, a) => sum + a.ratingCount, 0);
   let rating: Stat;
+  let ratingFact: LiveFacts["rating"] = null;
   if (ratingCount > 0) {
     isLive = true;
     const avg =
       rated.reduce((sum, a) => sum + (a.averageRating ?? 0) * a.ratingCount, 0) /
       ratingCount;
+    ratingFact = { average: avg, count: ratingCount };
     rating = {
       value: `${avg.toFixed(1)}★`,
       label: `App Store rating · ${ratingCount} ${ratingCount === 1 ? "rating" : "ratings"}`,
@@ -92,6 +102,12 @@ export function buildLiveStats({
       latest,
     ],
     isLive,
+    facts: {
+      liveProducts,
+      rating: ratingFact,
+      downloads: downloads > 0 ? downloads : null,
+      latest: releases[0] ?? null,
+    },
   };
 }
 

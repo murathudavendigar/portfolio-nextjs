@@ -118,7 +118,7 @@ export default function WorkDetail({
   return (
     <article className="mx-auto max-w-5xl px-6 py-16 md:px-10 md:py-24">
       <Breadcrumb>
-        <BreadcrumbList className="font-mono-ui gap-1.5 text-xs uppercase tracking-[0.16em] text-[var(--text-muted)] sm:gap-1.5">
+        <BreadcrumbList className="gap-1.5 text-[13px] text-[var(--text-muted)] sm:gap-1.5">
           <BreadcrumbItem>
             <BreadcrumbLink
               asChild
@@ -142,7 +142,7 @@ export default function WorkDetail({
             : ""
         }`}>
         <header className="min-w-0">
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+          <p className="text-[13px] text-[var(--accent-text)]">
             {project.language}
             {project.tier === "selected"
               ? " · Selected work"
@@ -156,7 +156,7 @@ export default function WorkDetail({
           </p>
 
           {ratingLine && (
-            <p className="mt-4 font-mono-ui text-sm tabular-nums text-gray-200 dark:text-gray-800">
+            <p className="mt-4 text-sm tabular-nums text-gray-200 dark:text-gray-800">
               <span aria-hidden>★ </span>
               {ratingLine}
             </p>
@@ -168,7 +168,7 @@ export default function WorkDetail({
                 <li key={item}>
                   <Badge
                     variant="outline"
-                    className="font-mono-ui border-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-gray-300 dark:border-gray-400 dark:text-gray-700">
+ className="border-white/15 px-3 py-1 text-[13px] font-medium text-gray-300 dark:border-gray-400 dark:text-gray-700">
                     {item}
                   </Badge>
                 </li>
@@ -177,19 +177,19 @@ export default function WorkDetail({
           )}
 
           {npmStats.length > 0 && (
-            <p className="mt-4 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+            <p className="mt-4 text-[13px] text-[var(--text-muted)]">
               {npmStats.join(" · ")}
             </p>
           )}
 
           {appStoreMeta.length > 0 && (
-            <p className="mt-2 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+            <p className="mt-2 text-[13px] text-[var(--text-muted)]">
               {appStoreMeta.join(" · ")}
             </p>
           )}
 
           {playStoreLine && (
-            <p className="mt-2 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+            <p className="mt-2 text-[13px] text-[var(--text-muted)]">
               {playStoreLine}
             </p>
           )}
@@ -200,7 +200,7 @@ export default function WorkDetail({
                 href={primary.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 {primary.label}
               </a>
             )}
@@ -261,7 +261,7 @@ export default function WorkDetail({
                 <section id={key} aria-labelledby={`${key}-title`}>
                   <h2
                     id={`${key}-title`}
-                    className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
+ className="text-[13px] text-[var(--accent-text)]">
                     {label}
                   </h2>
                   <CaseParagraphs text={project[key]!} />
@@ -274,7 +274,7 @@ export default function WorkDetail({
 
       {relatedPosts.length > 0 && (
         <div className="mt-16 max-w-3xl border-t border-white/10 pt-10 dark:border-gray-300">
-          <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+          <h2 className="text-[13px] text-[var(--text-muted)]">
             Related writing
           </h2>
           <ul className="mt-4 space-y-3">
@@ -299,7 +299,7 @@ export default function WorkDetail({
             <Link
               href={`/work/${prev.slug}`}
               className="group block min-h-11 hover:text-[var(--accent-text)] transition-colors">
-              <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              <p className="text-[13px] text-[var(--text-muted)]">
                 Previous
               </p>
               <p className="mt-1 text-lg font-semibold group-hover:text-[var(--accent-text)] dark:text-gray-900">
@@ -313,7 +313,7 @@ export default function WorkDetail({
             <Link
               href={`/work/${next.slug}`}
               className="group block min-h-11 text-left sm:text-right hover:text-[var(--accent-text)] transition-colors">
-              <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              <p className="text-[13px] text-[var(--text-muted)]">
                 Next
               </p>
               <p className="mt-1 text-lg font-semibold group-hover:text-[var(--accent-text)] dark:text-gray-900">

@@ -88,7 +88,7 @@ export default async function WritingPostPage({
       <main id="main" className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
         <article className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
           <Breadcrumb className="block mb-8 sm:mb-10 md:mb-12">
-            <BreadcrumbList className="font-mono-ui gap-1.5 text-xs uppercase tracking-[0.16em] text-gray-400 sm:gap-1.5 dark:text-gray-600">
+            <BreadcrumbList className="gap-1.5 text-[13px] text-gray-400 sm:gap-1.5 dark:text-gray-600">
               <BreadcrumbItem>
                 <BreadcrumbLink
                   asChild
@@ -137,7 +137,7 @@ export default async function WritingPostPage({
             </h1>
 
             <div className="flex flex-col items-start gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between sm:mb-8">
-              <div className="flex flex-wrap items-center gap-2 font-mono-ui text-xs text-gray-400 sm:gap-3 sm:text-sm dark:text-gray-600">
+              <div className="flex flex-wrap items-center gap-2 text-[13px] text-gray-400 sm:gap-3 sm:text-sm dark:text-gray-600">
                 {post.author && (
                   <Link
                     href="/about"
@@ -191,7 +191,7 @@ export default async function WritingPostPage({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 font-mono-ui text-xs sm:text-sm font-medium rounded-full bg-[#CA3E47]/10 text-[var(--accent-text)] dark:bg-[#CA3E47]/20 border border-[#CA3E47]/30 dark:border-[#CA3E47]/40 hover:bg-[#CA3E47]/20 dark:hover:bg-[#CA3E47]/30 transition-colors duration-300">
+ className="px-3 py-1.5 text-[13px] sm:text-sm font-medium rounded-full bg-[#CA3E47]/10 text-[var(--accent-text)] dark:bg-[#CA3E47]/20 border border-[#CA3E47]/30 dark:border-[#CA3E47]/40 hover:bg-[#CA3E47]/20 dark:hover:bg-[#CA3E47]/30 transition-colors duration-300">
                     #{tag}
                   </span>
                 ))}
@@ -254,7 +254,7 @@ export default async function WritingPostPage({
 
           {relatedWork.length > 0 && (
             <section className="mt-12 border-t border-white/20 pt-8 dark:border-gray-300">
-              <h2 className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+              <h2 className="text-[13px] text-[var(--text-muted)]">
                 Related work
               </h2>
               <ul className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -263,7 +263,7 @@ export default async function WritingPostPage({
                     <Link
                       href={`/work/${project.slug}`}
                       className="group block h-full rounded-xl border border-white/10 p-5 transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
-                      <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--accent-text)]">
+                      <p className="text-[13px] text-[var(--accent-text)]">
                         {project.category ?? "Case study"}
                       </p>
                       <p className="mt-2 text-lg font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
@@ -288,7 +288,7 @@ export default async function WritingPostPage({
                   <Link
                     href={`/writing/${newer.slug}`}
                     className="group block rounded-xl border border-white/10 p-5 transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
-                    <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                    <p className="text-[13px] text-[var(--text-muted)]">
                       ← Newer
                     </p>
                     <p className="mt-2 font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
@@ -302,7 +302,7 @@ export default async function WritingPostPage({
                   <Link
                     href={`/writing/${older.slug}`}
                     className="group block rounded-xl border border-white/10 p-5 text-right transition-colors hover:border-[#CA3E47]/60 dark:border-gray-300 dark:hover:border-[#CA3E47]">
-                    <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                    <p className="text-[13px] text-[var(--text-muted)]">
                       Older →
                     </p>
                     <p className="mt-2 font-semibold text-white transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">

@@ -41,7 +41,7 @@ export default function CaseToc({ sections }: { sections: Section[] }) {
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
-                className="inline-flex min-h-11 items-center font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
+ className="inline-flex min-h-11 items-center text-[13px] text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
                 {s.label}
               </a>
             </li>
@@ -51,7 +51,7 @@ export default function CaseToc({ sections }: { sections: Section[] }) {
 
       <nav aria-label="On this page" className="hidden h-full lg:block">
         <div className="sticky top-24">
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+          <p className="text-[13px] text-[var(--text-muted)]">
             On this page
           </p>
           <ul className="mt-4 space-y-1 border-l border-white/10 dark:border-gray-300">

@@ -55,7 +55,7 @@ export default function ShareButtons({ url, title }: Props) {
       className="border-t border-white/20 pt-8 dark:border-gray-300">
       <h2
         id="share-heading"
-        className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+ className="text-[13px] text-[var(--text-muted)]">
         Share this post
       </h2>
       <div className="mt-4 flex flex-wrap gap-3">

@@ -56,7 +56,7 @@ export default function WritingIndexPage() {
         <div className="mt-16 text-center">
           <Link
             href="/writing/archive"
-            className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors"
+ className="text-[13px] text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors"
           >
             Earlier learning notes (Python, JavaScript, React basics) are in the archive →
           </Link>

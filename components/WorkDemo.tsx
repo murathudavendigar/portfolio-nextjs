@@ -19,7 +19,7 @@ export default function WorkDemo({ demo }: { demo: WorkDemoData }) {
       id="try-it"
       aria-labelledby="try-it-title"
       className="mt-16 scroll-mt-24 border-t border-white/10 pt-10 dark:border-gray-300">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--accent-text)]">
+      <p className="text-[13px] text-[var(--accent-text)]">
         Try it · {demo.eyebrow}
       </p>
       <h2

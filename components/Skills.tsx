@@ -8,7 +8,7 @@ export default function Skills() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <Reveal>
-        <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+        <p className="text-[13px] text-[var(--accent-text)]">
           Skills
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
@@ -23,7 +23,7 @@ export default function Skills() {
         {skillGroups.map((group, index) => (
           <Reveal key={group.label} delay={Math.min(index, 3) * 0.05}>
             <div>
-              <h3 className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-gray-400 dark:text-gray-600">
+              <h3 className="text-[13px] text-gray-400 dark:text-gray-600">
                 {group.label}
               </h3>
               <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -49,7 +49,7 @@ export default function Skills() {
                       ) : (
                         <span
                           aria-hidden="true"
-                          className="flex h-7 w-7 items-center justify-center rounded bg-white/10 font-mono-ui text-[10px] text-[var(--accent-text)] dark:bg-gray-300/60">
+ className="flex h-7 w-7 items-center justify-center rounded bg-white/10 text-[13px] text-[var(--accent-text)] dark:bg-gray-300/60">
                           {name.slice(0, 2)}
                         </span>
                       )}

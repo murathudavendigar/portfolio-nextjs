@@ -1,10 +1,9 @@
-import Hero from "@/components/Hero";
-import ProofStrip from "@/components/ProofStrip";
-import Reveal from "@/components/Reveal";
-import SocialProof from "@/components/SocialProof";
-import WorkCard from "@/components/WorkCard";
-import WritingPreview from "@/components/WritingPreview";
-import ContactCta from "@/components/ContactCta";
+import HomeHero from "@/components/home/HomeHero";
+import LiveSentence from "@/components/home/LiveSentence";
+import ProofTable from "@/components/home/ProofTable";
+import WorkLedger from "@/components/home/WorkLedger";
+import WriteBand from "@/components/home/WriteBand";
+import WritingList from "@/components/home/WritingList";
 import { getRatingsBySlug } from "@/lib/appStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
 import { getLiveStats } from "@/lib/liveStats";
@@ -13,7 +12,6 @@ import { homepageGraph } from "@/lib/schema";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { homeOgImages } from "@/lib/og-pages";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -30,100 +28,33 @@ export const metadata: Metadata = {
 export default async function Home() {
   // Explicit Featured spine — not “all selected”; HaberAI / Money Guardian stay /work-only.
   const featured = getHomepageFeaturedProjects();
-  const [lead, ...rest] = featured;
 
-  const live = await getLiveStats();
-
-  const projectsToFetch = featured;
-
-  const [ratings, npmStatsArray] = await Promise.all([
-    getRatingsBySlug(projectsToFetch),
+  const [live, ratings, npmInfos] = await Promise.all([
+    getLiveStats(),
+    getRatingsBySlug(featured),
     Promise.all(
-      projectsToFetch.map(async (p) => {
+      featured.map(async (p) => {
         const pkgName = npmPackageFromUrl(p.url);
-        if (!pkgName) return { slug: p.slug, stats: null };
-        const pkgStats = await getNpmInfo(pkgName);
-        return { slug: p.slug, stats: pkgStats };
+        return pkgName ? getNpmInfo(pkgName) : null;
       }),
     ),
   ]);
 
-  const npmStats = Object.fromEntries(
-    npmStatsArray.filter((x) => x.stats).map((x) => [x.slug, x.stats]),
-  );
+  const ledger = featured.map((project, i) => ({
+    project,
+    rating: ratings[project.slug],
+    weeklyDownloads: npmInfos[i]?.weeklyDownloads ?? null,
+  }));
 
   return (
     <div className="min-h-screen bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
       <main id="main">
-        <Hero />
-
-        <ProofStrip stats={live.stats} isLive={live.isLive} />
-
-        {/* Product proof before capability grid — brand → evidence → skills */}
-        <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <Reveal>
-            <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
-              Featured
-            </p>
-            <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-tight sm:text-3xl dark:text-gray-900">
-              Shipped apps and tools
-            </h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-              The products I lead with. Full index — including earlier builds —
-              on{" "}
-              <Link
-                href="/work"
-                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47]">
-                Work
-              </Link>
-              .
-            </p>
-          </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
-            {lead && (
-              <Reveal delay={0.08} className="lg:col-span-2">
-                <WorkCard
-                  project={lead}
-                  lead
-                  quiet
-                  rating={ratings[lead.slug]}
-                  npmStats={npmStats[lead.slug] || undefined}
-                />
-              </Reveal>
-            )}
-            {rest.map((project, i) => {
-              // With an odd count the last card would sit alone: make it wide.
-              const wide = rest.length % 2 === 1 && i === rest.length - 1;
-              return (
-                <Reveal
-                  key={project.slug}
-                  delay={0.06 * (i + 1)}
-                  className={wide ? "lg:col-span-2" : undefined}>
-                  <WorkCard
-                    project={project}
-                    lead={wide}
-                    quiet
-                    rating={ratings[project.slug]}
-                    npmStats={npmStats[project.slug] || undefined}
-                  />
-                </Reveal>
-              );
-            })}
-          </div>
-          <Reveal delay={0.12}>
-            <div className="mt-10">
-              <Link href="/work" className="btn-secondary">
-                View all work
-              </Link>
-            </div>
-          </Reveal>
-        </section>
-
-        <SocialProof />
-
-        <WritingPreview />
-
-        <ContactCta />
+        <HomeHero />
+        <LiveSentence facts={live.facts} isLive={live.isLive} />
+        <WorkLedger items={ledger} />
+        <ProofTable />
+        <WritingList />
+        <WriteBand />
       </main>
 
       <script

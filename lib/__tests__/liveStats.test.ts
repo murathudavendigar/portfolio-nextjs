@@ -33,6 +33,27 @@ describe("buildLiveStats", () => {
     ]);
   });
 
+  it("returns the raw facts the homepage sentence is written from", () => {
+    const { facts } = buildLiveStats({
+      apps: [app(), app({ name: "Courai", averageRating: 4, ratingCount: 1 })],
+      packages: [pkg(), pkg({ name: "skillbrief", totalDownloads: 300 })],
+      liveProducts: 6,
+    });
+    expect(facts.liveProducts).toBe(6);
+    expect(facts.rating).toEqual({ average: 4.75, count: 4 });
+    expect(facts.downloads).toBe(1550);
+    expect(facts.latest).toMatchObject({ name: "codebrief", version: "1.2.0" });
+  });
+
+  it("leaves a fact null when its data is missing", () => {
+    const { facts } = buildLiveStats({
+      apps: [app({ averageRating: null, ratingCount: 0, version: "", lastUpdated: "" })],
+      packages: [pkg({ totalDownloads: null, version: "", publishedAt: "" })],
+      liveProducts: 6,
+    });
+    expect(facts).toEqual({ liveProducts: 6, rating: null, downloads: null, latest: null });
+  });
+
   it("falls back to plain facts when every request failed", () => {
     const { stats, isLive } = buildLiveStats({
       apps: [app({ averageRating: null, ratingCount: 0, version: "", lastUpdated: "" })],

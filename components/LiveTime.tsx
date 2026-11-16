@@ -13,6 +13,8 @@ export default function LiveTime() {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
+        // CET in winter, CEST in summer
+        timeZoneName: "short",
       });
       setTime(formatter.format(now));
     };
@@ -28,12 +30,12 @@ export default function LiveTime() {
   }
 
   return (
-    <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--text-muted)]">
+    <span className="flex items-center gap-2.5 text-[15px] tabular-nums text-[var(--text-muted)]">
       <span className="relative flex h-2 w-2">
         <span className="animate-ping motion-reduce:animate-none absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
-      {time} CEST — Based in the Netherlands
+      {time} in the Netherlands
     </span>
   );
 }

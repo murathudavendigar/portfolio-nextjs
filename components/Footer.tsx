@@ -6,100 +6,109 @@ import LiveTime from "./LiveTime";
 import EmailCopyLink from "./EmailCopyLink";
 
 const linkClass =
-  "inline-block text-sm text-gray-200 transition-colors duration-300 hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] active:scale-[0.98] dark:text-gray-800";
+  "inline-block text-[15px] text-gray-200 transition-colors duration-200 hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] active:scale-[0.98] dark:text-gray-800";
 
+const smallLinkClass =
+  "text-[13px] text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]";
+
+/**
+ * A designed close: the name first at full width, then how to reach me
+ * and where else the work lives. Surfaces are separated by tone, not lines.
+ */
 export default function Footer() {
   const resumeHref = getResumeHref();
 
   return (
-    <footer className="mt-auto border-t border-white/10 bg-inkDeep dark:border-gray-400/40 dark:bg-paperDeep">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] md:items-start md:gap-16 md:py-20">
-        <div>
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
-            {site.shortName}
-          </p>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-            Frontend engineer and co-founder of{" "}
-            <a
-              href={temcraftUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47] dark:decoration-gray-400">
-              TemCraft Tech
-            </a>
-            . React, Next.js, TypeScript, and React Native — from the Netherlands.
-          </p>
-          <EmailCopyLink />
-          <div className="mt-4">
-            <LiveTime />
-          </div>
-          {resumeHref ? (
-            <p className="mt-3">
-              <a href={resumeHref} download className={linkClass}>
-                Résumé (PDF)
-              </a>
-            </p>
-          ) : null}
-        </div>
+    <footer className="mt-auto bg-inkDeep dark:bg-paperDeep">
+      <div className="mx-auto max-w-6xl px-6 pb-8 pt-16 md:px-10 md:pt-24">
+        <p
+          aria-hidden
+          className="whitespace-nowrap text-[clamp(3rem,11.5vw,9.5rem)] font-extrabold leading-[0.85] tracking-[-0.045em] text-white dark:text-gray-900">
+          {site.shortName}
+        </p>
 
-        <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8 dark:border-gray-400/40 md:border-l md:border-t-0 md:pl-10 md:pt-0">
-          <nav aria-label="Footer">
-            <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
-              Pages
+        <div className="mt-14 grid gap-12 md:mt-20 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-16">
+          <div>
+            <p className="max-w-md text-[17px] leading-relaxed text-gray-200 dark:text-gray-800">
+              Frontend engineer and co-founder of{" "}
+              <a
+                href={temcraftUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47] dark:decoration-gray-400">
+                TemCraft Tech
+              </a>
+              . React, Next.js, TypeScript and React Native, from the
+              Netherlands.
             </p>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link href="/" className={linkClass}>
-                  Home
-                </Link>
-              </li>
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className={linkClass}>
-                    {link.label}
+            <EmailCopyLink />
+            <div className="mt-5">
+              <LiveTime />
+            </div>
+            {resumeHref ? (
+              <p className="mt-4">
+                <a href={resumeHref} download className={linkClass}>
+                  Download my résumé (PDF)
+                </a>
+              </p>
+            ) : null}
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <nav aria-label="Footer">
+              <p className="text-[15px] font-semibold text-white dark:text-gray-900">
+                Pages
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                <li>
+                  <Link href="/" className={linkClass}>
+                    Home
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </nav>
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <div>
-            <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
-              Elsewhere
-            </p>
-            <ul className="mt-4 space-y-2">
-              {SOCIAL_LINKS.map((social) => (
-                <li key={social.url}>
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={linkClass}>
-                    {social.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <p className="text-[15px] font-semibold text-white dark:text-gray-900">
+                Elsewhere
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {SOCIAL_LINKS.map((social) => (
+                  <li key={social.url}>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}>
+                      {social.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mx-auto flex max-w-7xl flex-col gap-2 border-t border-white/10 px-4 py-4 dark:border-gray-400/40 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)]">
-          © {new Date().getFullYear()} {site.name}
-        </p>
-        <nav aria-label="Legal" className="flex items-center gap-4">
-          <Link
-            href="/privacy"
-            className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
-            Privacy
-          </Link>
-          <a
-            href="/feed.xml"
-            className="font-mono-ui text-[11px] uppercase tracking-wider text-[var(--text-muted)] transition-colors hover:text-[var(--accent-text)]">
-            RSS
-          </a>
-        </nav>
+        <div className="mt-16 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[13px] text-[var(--text-muted)]">
+            © {new Date().getFullYear()} {site.name}
+          </p>
+          <nav aria-label="Legal" className="flex items-center gap-5">
+            <Link href="/privacy" className={smallLinkClass}>
+              Privacy
+            </Link>
+            <a href="/feed.xml" className={smallLinkClass}>
+              RSS
+            </a>
+          </nav>
+        </div>
       </div>
     </footer>
   );

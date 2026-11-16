@@ -21,7 +21,7 @@ export default function UsesPage() {
     <div className="bg-ink dark:bg-paper text-white dark:text-gray-700 min-h-screen font-custom">
       <main id="main" className="max-w-4xl mx-auto px-6 py-20 sm:py-32">
         <Reveal>
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+          <p className="text-[13px] text-[var(--accent-text)]">
             /uses
           </p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">

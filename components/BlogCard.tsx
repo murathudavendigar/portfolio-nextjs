@@ -33,10 +33,10 @@ export default function BlogCard({
                 <div
                   aria-hidden="true"
                   className="flex h-full flex-col justify-between bg-inkDeep p-6 transition-transform duration-500 group-hover:scale-105 dark:bg-paperDeep">
-                  <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                  <p className="text-[13px] text-[var(--text-muted)]">
                     Writing{readTime ? ` · ${readTime} min` : ""}
                   </p>
-                  <p className="truncate font-mono-ui text-5xl font-semibold lowercase tracking-tight text-[var(--accent-text)]">
+                  <p className="truncate text-5xl font-semibold tracking-tight text-[var(--accent-text)]">
                     <span className="opacity-50">#</span>
                     {tags[0] ?? "notes"}
                   </p>

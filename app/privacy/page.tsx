@@ -29,7 +29,7 @@ export default function PrivacyPage() {
       <main id="main" className="w-full py-16 sm:py-20 md:py-24">
         <article className="max-w-3xl px-4 mx-auto prose prose-invert dark:prose sm:px-6 lg:px-8">
           <h1>Privacy Policy</h1>
-          <p className="font-mono-ui text-sm text-gray-400 dark:text-gray-600">
+          <p className="text-sm text-gray-400 dark:text-gray-600">
             Last updated: November 2026
           </p>
 

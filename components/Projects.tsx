@@ -13,7 +13,7 @@ const Projects = async () => {
   return (
     <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
       <Reveal>
-        <p className="font-mono-ui text-center text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+        <p className="text-center text-[13px] text-[var(--accent-text)]">
           Work
         </p>
         <h1 className="mt-3 text-center text-3xl font-semibold tracking-tight sm:text-4xl dark:text-gray-900">
@@ -28,7 +28,7 @@ const Projects = async () => {
       {groups.map((group, groupIndex) => (
         <Reveal key={group.category} delay={0.04 * Math.min(groupIndex, 3)}>
           <section className="mt-16">
-            <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
+            <h2 className="text-[13px] text-[var(--text-muted)]">
               {group.category}
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -48,7 +48,7 @@ const Projects = async () => {
         <section className="mt-24" aria-labelledby="temcraft-clients">
           <h2
             id="temcraft-clients"
-            className="font-mono-ui text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
+ className="text-[13px] text-[var(--text-muted)]">
             Client sites with TemCraft Tech
           </h2>
           <p className="mt-2 max-w-xl text-sm text-[var(--text-muted)]">
@@ -79,11 +79,11 @@ const Projects = async () => {
                   rel="noopener"
                   className="group flex h-full flex-col gap-1 rounded-lg border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-[#CA3E47]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] dark:border-gray-300 dark:bg-gray-200/30">
                   <span className="flex items-center justify-between gap-2">
-                    <span className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
+                    <span className="text-[13px] text-[var(--accent-text)]">
                       {client.sector}
                     </span>
                     {client.contributed ? (
-                      <span className="font-mono-ui shrink-0 rounded-full border border-[#CA3E47]/40 px-2 py-0.5 text-[9px] uppercase tracking-[0.14em] text-[var(--accent-text)]">
+                      <span className="shrink-0 rounded-full border border-[#CA3E47]/40 px-2 py-0.5 text-[13px] text-[var(--accent-text)]">
                         I worked on this
                       </span>
                     ) : null}
@@ -91,7 +91,7 @@ const Projects = async () => {
                   <span className="text-sm font-semibold transition-colors group-hover:text-[var(--accent-text)] dark:text-gray-900">
                     {client.name}
                   </span>
-                  <span className="font-mono-ui text-[11px] text-[var(--text-muted)]">
+                  <span className="text-[13px] text-[var(--text-muted)]">
                     {new URL(client.url).hostname.replace(/^www\./, "")}
                     {client.stack ? ` · ${client.stack}` : null}
                     <span className="sr-only"> (opens in a new tab)</span>
@@ -105,7 +105,7 @@ const Projects = async () => {
 
       <Reveal>
         <section className="mt-24">
-          <h2 className="font-mono-ui text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
+          <h2 className="text-[13px] text-[var(--text-muted)]">
             Earlier builds
           </h2>
           <p className="mt-2 max-w-xl text-sm text-[var(--text-muted)]">

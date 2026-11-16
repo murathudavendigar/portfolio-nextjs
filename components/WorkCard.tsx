@@ -71,7 +71,7 @@ export default function WorkCard({
       <WorkCover project={project} className={coverHeight} priority={lead} />
       <div className="flex flex-1 flex-col gap-2 p-5 lg:justify-center">
         <div className="flex items-center justify-between gap-2">
-          <p className="font-mono-ui flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
+          <p className="flex items-center gap-2 text-[13px] text-[var(--accent-text)]">
             {project.category || project.language}
             {npmStats?.weeklyDownloads && (
               <span className="lowercase tracking-normal text-[var(--text-muted)]">
@@ -80,7 +80,7 @@ export default function WorkCard({
             )}
           </p>
           {rating && (
-            <p className="shrink-0 font-mono-ui text-[10px] tabular-nums text-[var(--text-muted)]">
+            <p className="shrink-0 text-[13px] tabular-nums text-[var(--text-muted)]">
               <span aria-hidden>★</span>{" "}
               <span className="sr-only">Rated </span>
               {rating.average.toFixed(1)}
@@ -117,7 +117,7 @@ export default function WorkCard({
               ))}
             </ul>
           )}
-          <div className="font-mono-ui text-[10px] uppercase tracking-wider text-[var(--text-muted)] transition-colors group-hover:text-white dark:group-hover:text-gray-900">
+          <div className="text-[13px] text-[var(--text-muted)] transition-colors group-hover:text-white dark:group-hover:text-gray-900">
             {project.tier === "selected"
               ? "View case study →"
               : "View project →"}

@@ -14,7 +14,7 @@ export default function HowWeWork() {
       className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:px-10 md:pb-24">
       <Reveal>
         <div className="border-t border-white/10 pt-16 dark:border-gray-400/40">
-          <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+          <p className="text-[13px] text-[var(--accent-text)]">
             How we work
           </p>
           <h2
@@ -29,7 +29,7 @@ export default function HowWeWork() {
         {HIRE_ENGAGEMENTS.map((engagement, index) => (
           <Reveal key={engagement.id} delay={Math.min(index, 2) * 0.05}>
             <article className="flex h-full flex-col border-t border-white/10 pt-6 dark:border-gray-400/40">
-              <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
+              <p className="text-[13px] text-[var(--accent-text)]">
                 {engagement.id}
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight dark:text-gray-900">
@@ -39,7 +39,7 @@ export default function HowWeWork() {
                 {engagement.summary}
               </p>
               <div className="mt-6">
-                <p className="font-mono-ui text-[10px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                <p className="text-[13px] text-[var(--text-muted)]">
                   Good fit when
                 </p>
                 <ul className="mt-2 space-y-2 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
@@ -49,7 +49,7 @@ export default function HowWeWork() {
                 </ul>
               </div>
               <div className="mt-6">
-                <p className="font-mono-ui text-[10px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                <p className="text-[13px] text-[var(--text-muted)]">
                   Send me
                 </p>
                 <ul className="mt-2 space-y-2 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
@@ -63,7 +63,7 @@ export default function HowWeWork() {
                   href={engagement.link.href}
                   target="_blank"
                   rel="noopener"
-                  className="font-mono-ui mt-6 inline-flex text-[11px] uppercase tracking-wider text-[var(--accent-text)] underline-offset-4 hover:underline">
+ className="mt-6 inline-flex text-[13px] text-[var(--accent-text)] underline-offset-4 hover:underline">
                   {engagement.link.label} →
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
@@ -85,7 +85,7 @@ export default function HowWeWork() {
             <li
               key={item.step}
               className="border-t border-white/10 pt-6 dark:border-gray-400/40">
-              <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
+              <p className="text-[13px] text-[var(--accent-text)]">
                 Step {item.step}
               </p>
               <h4 className="mt-2 text-lg font-semibold dark:text-gray-900">

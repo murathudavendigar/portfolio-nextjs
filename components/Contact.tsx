@@ -9,7 +9,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+      <p className="text-[13px] text-[var(--accent-text)]">
         Contact
       </p>
       <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
@@ -54,13 +54,13 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
             {...(bookingIsCal
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-sm font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            className="inline-flex min-h-11 items-center rounded-lg bg-[#CA3E47] px-5 py-2.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             {introBookingLabel()}
           </a>
 
           <dl className="space-y-4">
             <div>
-              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+              <dt className="text-[13px] text-gray-400 dark:text-gray-600">
                 Email
               </dt>
               <dd className="mt-1">
@@ -72,14 +72,14 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               </dd>
             </div>
             <div>
-              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+              <dt className="text-[13px] text-gray-400 dark:text-gray-600">
                 Location
               </dt>
               <dd className="mt-1 text-lg">Netherlands</dd>
             </div>
             {resumeHref ? (
               <div>
-                <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                <dt className="text-[13px] text-gray-400 dark:text-gray-600">
                   Résumé
                 </dt>
                 <dd className="mt-1">
@@ -93,7 +93,7 @@ const Contact = ({ resumeHref }: { resumeHref?: string | null }) => {
               </div>
             ) : null}
             <div>
-              <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+              <dt className="text-[13px] text-gray-400 dark:text-gray-600">
                 Social
               </dt>
               <dd className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">

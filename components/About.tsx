@@ -40,7 +40,7 @@ export default function About() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <Reveal>
-        <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+        <p className="text-[13px] text-[var(--accent-text)]">
           About
         </p>
         <div className="mt-6 grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -95,7 +95,7 @@ export default function About() {
             <dl className="mt-10 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-2 dark:border-gray-400/40">
               {facts.map((fact) => (
                 <div key={fact.label}>
-                  <dt className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-600">
+                  <dt className="text-[13px] text-gray-400 dark:text-gray-600">
                     {fact.label}
                   </dt>
                   <dd className="mt-1 text-sm dark:text-gray-800">
@@ -124,7 +124,7 @@ export default function About() {
           <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
             Right now
           </h2>
-          <p className="mt-1 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+          <p className="mt-1 text-[13px] text-[var(--text-muted)]">
             Updated <time dateTime={NOW_UPDATED}>{NOW_UPDATED_LABEL}</time>
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">

@@ -132,7 +132,8 @@ const Header = () => {
         Skip to content
       </a>
 
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
+      {/* Same container as the page sections, so the logo and the content share one left edge. */}
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-6 sm:h-16 md:px-10">
         <Link
           href="/"
           data-site-logo
@@ -153,7 +154,7 @@ const Header = () => {
 
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-6 text-sm uppercase tracking-wider md:flex">
+          className="hidden items-center gap-7 text-[15px] md:flex">
           {/* Contact is the button on the right, not a text link. */}
           {PRIMARY_NAV_LINKS.filter((link) => link.href !== "/contact").map((link) => {
             const active = isActive(pathname, link.href);
@@ -199,7 +200,7 @@ const Header = () => {
           <Link
             href="/contact"
             aria-current={isActive(pathname, "/contact") ? "page" : undefined}
-            className="ml-1 hidden h-9 items-center rounded-md bg-[#CA3E47] px-4 text-xs font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] md:inline-flex">
+            className="ml-1 hidden h-9 items-center rounded-md bg-[#CA3E47] px-4 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] md:inline-flex">
             Contact
           </Link>
 
@@ -222,7 +223,7 @@ const Header = () => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`rounded-md px-2 py-3 text-sm uppercase tracking-wider transition-colors ${
+                    className={`rounded-md px-2 py-3 text-lg transition-colors ${
                       isActive(pathname, link.href)
                         ? "text-[var(--accent-text)]"
                         : "text-gray-200 hover:text-[var(--accent-text)] dark:text-gray-800"
@@ -233,14 +234,14 @@ const Header = () => {
               </nav>
 
               <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4 dark:border-gray-400/40">
-                <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                <p className="text-[13px] text-[var(--text-muted)]">
                   Elsewhere
                 </p>
                 <SocialLinks size={40} />
               </div>
 
               <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4 dark:border-gray-400/40">
-                <p className="font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                <p className="text-[13px] text-[var(--text-muted)]">
                   Appearance
                 </p>
                 <ThemeToggle />

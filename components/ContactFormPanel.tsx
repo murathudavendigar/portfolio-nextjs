@@ -433,7 +433,7 @@ function ContactSuccess({
         </span>
       </Item>
       <Item {...itemProps}>
-        <p className="font-mono-ui mt-8 text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+        <p className="mt-8 text-[13px] text-[var(--accent-text)]">
           Message sent
         </p>
         <h2
@@ -458,7 +458,7 @@ function ContactSuccess({
           variant="outline"
           size="lg"
           onClick={onSendAnother}
-          className="w-full rounded-full uppercase tracking-widest">
+          className="w-full rounded-full">
           Send another message
         </Button>
       </Item>
@@ -574,7 +574,7 @@ function ContactFields({
             type="submit"
             size="lg"
             disabled={sending}
-            className="w-full rounded-full uppercase tracking-widest focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+            className="w-full rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
             {sending ? "Sending…" : "Send message"}
           </Button>
         </motion.div>
