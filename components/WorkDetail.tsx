@@ -10,7 +10,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { getLabByWorkSlug } from "@/data/lab";
+import WorkDemo from "@/components/WorkDemo";
+import { getWorkDemo } from "@/data/demos";
 import { getRelatedPosts } from "@/lib/blog";
 import type { AppStoreInfo } from "@/lib/appStore";
 import type { PlayStoreInfo } from "@/lib/playStore";
@@ -89,7 +90,7 @@ export default function WorkDetail({
   const relatedPosts = getRelatedPosts(project.stack, 2, project.slug);
   const npmStats = npmInfo ? npmStatsLine(npmInfo) : [];
   const showMedia = hasWorkMedia(project);
-  const labExperiment = getLabByWorkSlug(project.slug);
+  const demo = getWorkDemo(project.slug);
 
   const ratingLine = appStoreInfo ? formatRatingLine(appStoreInfo) : null;
   const appStoreMeta = appStoreInfo
@@ -212,10 +213,10 @@ export default function WorkDetail({
                 Google Play
               </a>
             )}
-            {labExperiment ? (
-              <Link href={`/lab/${labExperiment.slug}`} className="heroButton min-h-11">
-                {labExperiment.status === "live" ? "Try in Lab" : "Lab preview"}
-              </Link>
+            {demo ? (
+              <a href="#try-it" className="heroButton min-h-11">
+                Play the demo
+              </a>
             ) : null}
             {secondaryLabel && (
               <a
@@ -244,6 +245,8 @@ export default function WorkDetail({
           </div>
         )}
       </div>
+
+      {demo ? <WorkDemo demo={demo} /> : null}
 
       {caseStudy && (
         <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,48rem)_11rem] lg:justify-between lg:gap-12">

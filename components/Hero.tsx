@@ -37,7 +37,7 @@ const Hero = () => {
           <Link href="/work" className="btn-primary">
             View my work
           </Link>
-          <Link href="/hire" className="btn-secondary">
+          <Link href="/contact" className="btn-secondary">
             Hire / work with me
           </Link>
         </div>

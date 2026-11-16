@@ -124,7 +124,9 @@ export function getRelatedPosts(
     : [];
 
   const byStack = getFlagshipPosts()
-    .filter((post) => !explicit.includes(post))
+    // Compare by slug: getPosts() and getFlagshipPosts() can return
+    // different objects for the same post.
+    .filter((post) => !explicit.some((e) => e.slug === post.slug))
     .map((post) => {
       const overlap = post.tags.filter((tag) =>
         topics.has(normalizeTopic(tag)),

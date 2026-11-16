@@ -23,36 +23,11 @@ export const PAGE_CARDS = {
     title: "Learning archive",
     description: "Early notes on Python, JavaScript and React from when I was starting out.",
   },
-  lab: {
-    kicker: "Lab",
-    title: "Tap first, read later",
-    description: "Interactive slices of products I have shipped.",
-  },
-  "lab-choose": {
-    kicker: "Lab · CHOOSE",
-    title: "Play a timed CHOOSE round",
-    description: "Wrong answers score, timers burn lives. Then read the case study.",
-  },
-  "lab-daily-skyline": {
-    kicker: "Lab · Daily Skyline",
-    title: "Solve a 5×5 skyline board",
-    description: "A full tutorial puzzle from the iOS and Android game.",
-  },
-  now: {
-    kicker: "Now",
-    title: "What I am focused on right now",
-    description: "Shipping, learning, and what I am deliberately not doing.",
-  },
-  hire: {
-    kicker: "Hire",
-    title: "Work with me",
-    description:
-      "Frontend roles and scoped React / Next.js work through TemCraft. What to send and what happens next.",
-  },
   contact: {
     kicker: "Contact",
-    title: "Say hello",
-    description: "Open to frontend roles and freelance React / Next.js work.",
+    title: "Hire me or start a project",
+    description:
+      "Frontend roles and scoped React / Next.js work through TemCraft. What to send and what happens next.",
   },
   uses: {
     kicker: "Uses",

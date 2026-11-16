@@ -4,11 +4,8 @@ import { site } from "@/lib/site";
 export const NAV_LINKS = [
   { href: "/work", label: "Work", primary: true },
   { href: "/about", label: "About", primary: true },
-  { href: "/lab", label: "Lab", primary: true },
   { href: "/writing", label: "Writing", primary: true },
-  { href: "/now", label: "Now", primary: false },
   { href: "/uses", label: "Uses", primary: false },
-  { href: "/hire", label: "Hire", primary: false },
   { href: "/contact", label: "Contact", primary: true },
 ] as const;
 

@@ -20,7 +20,7 @@
 - Home / profile: https://muratoncu.com
 - About: https://muratoncu.com/about
 - Work index: https://muratoncu.com/work
-- Now: https://muratoncu.com/now — maintained snapshot of shipped products, teaching, and writing (last updated 2026-09-09)
+- Right now (what I'm working on): https://muratoncu.com/about#now
 - Daily Skyline (iOS): https://muratoncu.com/work/daily-skyline
 - Courai (iOS): https://muratoncu.com/work/courai
 - Choose Game (PWA): https://muratoncu.com/work/choose-game
@@ -31,11 +31,8 @@
 - Writing archive (beginner Python/Django notes): https://muratoncu.com/writing/archive
 - codebrief (npm CLI): https://muratoncu.com/work/codebrief
 - skillbrief (npm CLI): https://muratoncu.com/work/skillbrief
-- Contact: https://muratoncu.com/contact
-- Hire / work with me: https://muratoncu.com/hire
-- Lab (interactive demos): https://muratoncu.com/lab
-- Lab · CHOOSE: https://muratoncu.com/lab/choose
-- Lab · Daily Skyline: https://muratoncu.com/lab/daily-skyline
+- Contact / hire / work with me: https://muratoncu.com/contact
+- Playable demos: https://muratoncu.com/work/choose-game#try-it and https://muratoncu.com/work/daily-skyline#try-it
 - Privacy policy: https://muratoncu.com/privacy
 - Sitemap: https://muratoncu.com/sitemap.xml
 - RSS feed: https://muratoncu.com/feed.xml

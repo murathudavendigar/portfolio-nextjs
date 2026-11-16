@@ -6,7 +6,6 @@ import {
   CHOOSE_LAB_SECONDS,
 } from "@/data/lab-choose";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
@@ -442,16 +441,8 @@ export default function ChooseLab() {
               <button type="button" onClick={start} className="btn-primary">
                 Run it again
               </button>
-              <Link href="/work/choose-game" className="btn-secondary">
-                Case study
-              </Link>
-              <a
-                href="https://choosegame.muratoncu.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary">
-                Play full CHOOSE
-              </a>
+              {/* "Play full CHOOSE" (choosegame.muratoncu.com) removed while
+                  the site is down; add it back when it is live again. */}
             </div>
           </motion.div>
         ) : null}

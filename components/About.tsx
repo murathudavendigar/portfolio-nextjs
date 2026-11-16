@@ -4,6 +4,19 @@ import { site, temcraftTeamUrl, temcraftUrl } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 
+/**
+ * Short "what I'm doing now" list. Replaced the /now page (now a 308 to
+ * /about#now). Update the date with the list.
+ */
+const NOW_UPDATED = "2026-11-16";
+const NOW_UPDATED_LABEL = "16 Nov 2026";
+const NOW_ITEMS = [
+  "Building client websites at TemCraft Tech.",
+  "Maintaining Daily Skyline on the App Store and, since 26 October, Google Play.",
+  "Writing short posts about what I ship.",
+  "Open to frontend roles (NL, EU, remote) and scoped freelance work.",
+];
+
 export default function About() {
   const resumeHref = getResumeHref();
   const facts = [
@@ -107,6 +120,20 @@ export default function About() {
       </Reveal>
 
       <Reveal className="mt-16 max-w-2xl space-y-10 lg:ml-auto lg:w-[min(100%,36rem)]">
+        <div id="now" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
+            Right now
+          </h2>
+          <p className="mt-1 font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+            Updated <time dateTime={NOW_UPDATED}>{NOW_UPDATED_LABEL}</time>
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed [text-wrap:pretty] text-gray-300 dark:text-gray-700">
+            {NOW_ITEMS.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
         <div>
           <h2 className="text-xl font-semibold tracking-tight dark:text-gray-900">
             Teaching & Mentorship

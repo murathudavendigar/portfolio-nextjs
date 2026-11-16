@@ -77,6 +77,21 @@ const nextConfig = {
         destination: "/work/autoinvoice-pro",
         permanent: true,
       },
+      // 2026-11-16: Lab demos moved into their case studies, /now became the
+      // "Right now" list on /about, /hire merged into /contact.
+      {
+        source: "/lab/choose",
+        destination: "/work/choose-game#try-it",
+        permanent: true,
+      },
+      {
+        source: "/lab/daily-skyline",
+        destination: "/work/daily-skyline#try-it",
+        permanent: true,
+      },
+      { source: "/lab", destination: "/work", permanent: true },
+      { source: "/now", destination: "/about#now", permanent: true },
+      { source: "/hire", destination: "/contact#how-we-work", permanent: true },
       { source: "/blogs", destination: "/writing", permanent: true },
       {
         source: "/blogs/:slug*",

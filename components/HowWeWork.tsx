@@ -1,58 +1,40 @@
 import Reveal from "@/components/Reveal";
 import { HIRE_ENGAGEMENTS, HIRE_STEPS } from "@/data/hire";
-import { getResumeHref } from "@/lib/resume";
-import { introBookingHref, site, introBookingLabel } from "@/lib/site";
-import Link from "next/link";
 
-export default function Hire() {
-  const bookingHref = introBookingHref();
-  const bookingIsCal = Boolean(site.calUrl);
-  const resumeHref = getResumeHref();
-
+/**
+ * The two ways to work together and what happens after you write.
+ * Shown under the form on /contact (it was the /hire page; /hire now 308s
+ * to /contact#how-we-work).
+ */
+export default function HowWeWork() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+    <section
+      id="how-we-work"
+      aria-labelledby="how-we-work-title"
+      className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 md:px-10 md:pb-24">
       <Reveal>
-        <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
-          Hire
-        </p>
-        <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight [text-wrap:balance] sm:text-4xl md:text-5xl dark:text-gray-900">
-          How we can work together
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-300 dark:text-gray-700">
-          A frontend role, or scoped product work through TemCraft. Pick the
-          path that matches — then book a short intro or write with
-          what you need.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={bookingHref}
-            {...(bookingIsCal
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-            className="btn-primary">
-            {introBookingLabel()}
-          </a>
-          <Link href="/contact" className="btn-secondary">
-            Send a message
-          </Link>
-          {resumeHref ? (
-            <a href={resumeHref} download className="btn-secondary">
-              Download résumé
-            </a>
-          ) : null}
+        <div className="border-t border-white/10 pt-16 dark:border-gray-400/40">
+          <p className="font-mono-ui text-[11px] uppercase tracking-[0.22em] text-[var(--accent-text)]">
+            How we work
+          </p>
+          <h2
+            id="how-we-work-title"
+            className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight [text-wrap:balance] sm:text-3xl dark:text-gray-900">
+            A frontend role, or scoped product work
+          </h2>
         </div>
       </Reveal>
 
-      <div className="mt-16 grid gap-8 lg:grid-cols-2">
+      <div className="mt-12 grid gap-8 lg:grid-cols-2">
         {HIRE_ENGAGEMENTS.map((engagement, index) => (
           <Reveal key={engagement.id} delay={Math.min(index, 2) * 0.05}>
             <article className="flex h-full flex-col border-t border-white/10 pt-6 dark:border-gray-400/40">
               <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
                 {engagement.id}
               </p>
-              <h2 className="mt-2 text-xl font-semibold tracking-tight dark:text-gray-900">
+              <h3 className="mt-2 text-xl font-semibold tracking-tight dark:text-gray-900">
                 {engagement.title}
-              </h2>
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 {engagement.summary}
               </p>
@@ -92,9 +74,9 @@ export default function Hire() {
       </div>
 
       <Reveal className="mt-20">
-        <h2 className="text-2xl font-semibold tracking-tight dark:text-gray-900">
+        <h3 className="text-2xl font-semibold tracking-tight dark:text-gray-900">
           What happens next
-        </h2>
+        </h3>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-300 dark:text-gray-700">
           A simple process — no forms maze, no fake scarcity.
         </p>
@@ -106,31 +88,15 @@ export default function Hire() {
               <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--accent-text)]">
                 Step {item.step}
               </p>
-              <h3 className="mt-2 text-lg font-semibold dark:text-gray-900">
+              <h4 className="mt-2 text-lg font-semibold dark:text-gray-900">
                 {item.title}
-              </h3>
+              </h4>
               <p className="mt-2 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
                 {item.detail}
               </p>
             </li>
           ))}
         </ol>
-      </Reveal>
-
-      <Reveal className="mt-20 max-w-2xl">
-        <h2 className="text-2xl font-semibold tracking-tight dark:text-gray-900">
-          Based in the Netherlands
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-          Open to NL, EU, and remote. Prefer email or a booked intro over cold
-          LinkedIn pitches with no role context. Reach me at{" "}
-          <a
-            href={`mailto:${site.email}`}
-            className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)]">
-            {site.email}
-          </a>
-          .
-        </p>
       </Reveal>
     </section>
   );

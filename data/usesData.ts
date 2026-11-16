@@ -52,13 +52,13 @@ export const USES_CATEGORIES = [
     name: "Terminal & CLI",
     items: [
       {
-        name: "Warp / iTerm2",
+        name: "Claude Code",
         description:
-          "Warp for the modern AI features, iTerm2 as the reliable fallback.",
+          "My daily AI coding agent, in the terminal and the desktop app.",
       },
       {
         name: "Oh My Zsh",
-        description: "With the standard powerlevel10k theme.",
+        description: "With the default robbyrussell theme.",
       },
       { name: "Homebrew", description: "Mac package management." },
     ],

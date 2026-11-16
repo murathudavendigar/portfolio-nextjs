@@ -1,5 +1,4 @@
 import NotFoundGame from "@/components/NotFoundGame";
-import { LAB_EXPERIMENTS } from "@/data/lab";
 import { getPosts } from "@/lib/blog";
 import { NAV_LINKS } from "@/lib/nav";
 import { getProjects } from "@/lib/projects";
@@ -17,7 +16,6 @@ function knownPaths(): string[] {
     ...NAV_LINKS.map((l) => l.href),
     ...getProjects().map((p) => `/work/${p.slug}`),
     ...getPosts().map((p) => `/writing/${p.slug}`),
-    ...LAB_EXPERIMENTS.map((e) => `/lab/${e.slug}`),
   ];
 }
 
@@ -40,7 +38,7 @@ export default function NotFound() {
           { href: "/", label: "Home" },
           { href: "/work", label: "Work" },
           { href: "/writing", label: "Writing" },
-          { href: "/lab", label: "Lab" },
+          { href: "/contact", label: "Contact" },
         ].map((l) => (
           <Link
             key={l.href}

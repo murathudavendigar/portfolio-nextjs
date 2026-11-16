@@ -29,7 +29,7 @@ export default function ContactCta() {
             {introBookingLabel()}
           </a>
           <Link
-            href="/hire"
+            href="/contact#how-we-work"
             className="font-mono-ui min-h-11 text-[13px] tracking-wider text-[var(--text-muted)] hover:text-[var(--accent-text)] transition-colors py-3 px-6">
             How we work
           </Link>
