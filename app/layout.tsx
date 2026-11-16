@@ -4,7 +4,6 @@ import BackToTop from "@/components/BackToTop";
 import CommandPalette from "@/components/CommandPalette";
 import HomeIntro, { introBootScript } from "@/components/HomeIntro";
 import ConsoleGreeting from "@/components/ConsoleGreeting";
-import DynamicTitle from "@/components/DynamicTitle";
 import { site, verificationMetadata } from "@/lib/site";
 import { homeOgImages } from "@/lib/og-pages";
 import { getResumeHref } from "@/lib/resume";
@@ -69,7 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-screen flex-col bg-ink font-custom text-white dark:bg-paper dark:text-gray-700">
         <Providers>
           <ConsoleGreeting />
-          <DynamicTitle />
           <HomeIntro />
           <Header />
           <div className="flex-1">{children}</div>

@@ -12,7 +12,6 @@ export default function LiveTime() {
         timeZone: "Europe/Amsterdam",
         hour: "2-digit",
         minute: "2-digit",
-        second: "2-digit",
         // CET in winter, CEST in summer
         timeZoneName: "short",
       });
@@ -20,13 +19,14 @@ export default function LiveTime() {
     };
 
     updateTime(); // Initial set
-    const interval = setInterval(updateTime, 1000);
+    // Minutes only, so checking every 10s is plenty.
+    const interval = setInterval(updateTime, 10_000);
     return () => clearInterval(interval);
   }, []);
 
   // Avoid hydration mismatch by not rendering the time on the server
   if (!time) {
-    return <span className="opacity-0">00:00:00</span>;
+    return <span className="opacity-0">00:00 CET</span>;
   }
 
   return (
