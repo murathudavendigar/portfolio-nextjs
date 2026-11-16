@@ -4,6 +4,7 @@ import {
   getAdjacentProjects,
   getEarlierProjects,
   getHomepageFeaturedProjects,
+  getLiveProjects,
   getProject,
   getProjects,
   getSelectedProjects,
@@ -14,6 +15,7 @@ import {
   hasCaseStudy,
   hasWorkMedia,
   HOMEPAGE_FEATURED_SLUGS,
+  isLiveProduct,
   projectPrimaryCta,
 } from "../projects";
 
@@ -49,6 +51,22 @@ describe("selected vs earlier split", () => {
     const earlierSlugs = new Set(earlier.map((p) => p.slug));
     for (const project of selected) {
       expect(earlierSlugs.has(project.slug)).toBe(false);
+    }
+  });
+
+  it("counts store apps, downloads and sites that are up as live", () => {
+    const live = getLiveProjects().map((p) => p.slug);
+    // Courai's website is offline but the App Store app is live.
+    expect(live).toContain("courai");
+    expect(live).toContain("daily-skyline");
+    // Web-only products whose site is down are not live.
+    expect(live).not.toContain("choose-game");
+    expect(live).not.toContain("haberai");
+  });
+
+  it("keeps products that are not live off the homepage Featured spine", () => {
+    for (const project of getHomepageFeaturedProjects()) {
+      expect(isLiveProduct(project)).toBe(true);
     }
   });
 

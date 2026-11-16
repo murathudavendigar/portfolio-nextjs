@@ -3,8 +3,6 @@ import ProofStrip from "@/components/ProofStrip";
 import Reveal from "@/components/Reveal";
 import SocialProof from "@/components/SocialProof";
 import WorkCard from "@/components/WorkCard";
-import Capabilities from "@/components/Capabilities";
-import ExperiencePreview from "@/components/ExperiencePreview";
 import WritingPreview from "@/components/WritingPreview";
 import ContactCta from "@/components/ContactCta";
 import { getRatingsBySlug } from "@/lib/appStore";
@@ -122,10 +120,6 @@ export default async function Home() {
         </section>
 
         <SocialProof />
-
-        <Capabilities />
-
-        <ExperiencePreview />
 
         <WritingPreview />
 

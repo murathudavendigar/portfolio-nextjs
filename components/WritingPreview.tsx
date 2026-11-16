@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 import BlogCard from "./BlogCard";
 
 export default function WritingPreview() {
-  const posts = getFlagshipPosts().slice(0, 3);
+  const posts = getFlagshipPosts().slice(0, 2);
 
   if (posts.length === 0) return null;
 
@@ -29,7 +29,7 @@ export default function WritingPreview() {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {posts.map((post, i) => (
           <Reveal key={post.id} delay={i * 0.1}>
             <BlogCard

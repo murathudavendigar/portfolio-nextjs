@@ -154,7 +154,8 @@ const Header = () => {
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 text-sm uppercase tracking-wider md:flex">
-          {PRIMARY_NAV_LINKS.map((link) => {
+          {/* Contact is the button on the right, not a text link. */}
+          {PRIMARY_NAV_LINKS.filter((link) => link.href !== "/contact").map((link) => {
             const active = isActive(pathname, link.href);
             return (
               <Link
@@ -193,11 +194,14 @@ const Header = () => {
         <div className="flex items-center gap-1 sm:gap-2">
           <CommandHint />
           <div className="hidden sm:block">
-            <SocialLinks />
-          </div>
-          <div className="hidden sm:block">
             <ThemeToggle />
           </div>
+          <Link
+            href="/contact"
+            aria-current={isActive(pathname, "/contact") ? "page" : undefined}
+            className="ml-1 hidden h-9 items-center rounded-md bg-[#CA3E47] px-4 text-xs font-medium uppercase tracking-widest text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47] md:inline-flex">
+            Contact
+          </Link>
 
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger

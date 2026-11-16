@@ -13,7 +13,8 @@ const allProjects = projectsData as ProjectType[];
 export const HOMEPAGE_FEATURED_SLUGS = [
   "daily-skyline",
   "courai",
-  "choose-game",
+  // choose-game left out while its site is offline (2026-11-16); its demo
+  // still plays on /work/choose-game.
   "autoinvoice-pro",
   "codebrief",
   "nodezero",
@@ -35,6 +36,25 @@ export function getProject(slug: string): ProjectType | undefined {
 
 export function getSelectedProjects(): ProjectType[] {
   return allProjects.filter((p) => p.tier === "selected");
+}
+
+/**
+ * True when people can use the product today: it is in a store, has a
+ * download, or its site is up. `offline` only marks the site as down, so an
+ * App Store app with an offline website (Courai) still counts.
+ */
+export function isLiveProduct(project: ProjectType): boolean {
+  return Boolean(
+    project.appStoreUrl ||
+      project.playStoreUrl ||
+      project.downloadUrl ||
+      liveUrl(project),
+  );
+}
+
+/** Selected projects people can use today. */
+export function getLiveProjects(): ProjectType[] {
+  return getSelectedProjects().filter(isLiveProduct);
 }
 
 export function getEarlierProjects(): ProjectType[] {

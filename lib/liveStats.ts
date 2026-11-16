@@ -1,6 +1,6 @@
 import { appStoreIdFromUrl, getAppStoreInfo } from "@/lib/appStore";
 import { getNpmInfo, npmPackageFromUrl } from "@/lib/npm";
-import { getProjects, getSelectedProjects } from "@/lib/projects";
+import { getLiveProjects, getProjects } from "@/lib/projects";
 import { formatPostDate } from "@/lib/utils";
 
 export type Stat = { value: string; label: string };
@@ -132,6 +132,6 @@ export async function getLiveStats() {
   return buildLiveStats({
     apps,
     packages,
-    liveProducts: getSelectedProjects().length,
+    liveProducts: getLiveProjects().length,
   });
 }

@@ -1,6 +1,6 @@
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/nav";
 import { getResumeHref } from "@/lib/resume";
-import { site } from "@/lib/site";
+import { site, temcraftUrl } from "@/lib/site";
 import Link from "next/link";
 import LiveTime from "./LiveTime";
 import EmailCopyLink from "./EmailCopyLink";
@@ -19,8 +19,15 @@ export default function Footer() {
             {site.shortName}
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-gray-300 dark:text-gray-700">
-            Frontend engineer and co-founder of TemCraft Tech.
-            React, Next.js, TypeScript, and React Native — from the Netherlands.
+            Frontend engineer and co-founder of{" "}
+            <a
+              href={temcraftUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-[var(--accent-text)] hover:decoration-[#CA3E47] dark:decoration-gray-400">
+              TemCraft Tech
+            </a>
+            . React, Next.js, TypeScript, and React Native — from the Netherlands.
           </p>
           <EmailCopyLink />
           <div className="mt-4">

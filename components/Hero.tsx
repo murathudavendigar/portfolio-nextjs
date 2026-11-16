@@ -1,12 +1,12 @@
 import { site } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
-import { getSelectedProjects } from "@/lib/projects";
+import { getLiveProjects } from "@/lib/projects";
 import BackgroundCircles from "./BackgroundCircles";
 import PortraitTilt from "./PortraitTilt";
 
 const Hero = () => {
-  const liveProducts = getSelectedProjects().length;
+  const liveProducts = getLiveProjects().length;
   return (
     <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16 lg:py-28">
       <div>
