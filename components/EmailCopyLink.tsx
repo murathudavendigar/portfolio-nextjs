@@ -41,9 +41,9 @@ export default function EmailCopyLink() {
           >
             <span>Copied to clipboard</span>
             <motion.span
-              initial={{ rotate: -90, opacity: 0, scale: 0 }}
+              initial={{ rotate: -45, opacity: 0, scale: 0.6 }}
               animate={{ rotate: 0, opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.1 }}
+              transition={{ type: "spring", duration: 0.35, bounce: 0.2, delay: 0.05 }}
             >
               ✅
             </motion.span>

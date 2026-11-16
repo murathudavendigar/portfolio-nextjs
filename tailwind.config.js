@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
+  // hover: only applies on devices that can hover, so taps don't leave
+  // cards lifted or tinted on phones.
+  future: { hoverOnlyWhenSupported: true },
   content: [
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",

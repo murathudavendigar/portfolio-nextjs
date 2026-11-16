@@ -24,7 +24,7 @@ export default function BlogCard({
 }: BlogCardProps) {
   return (
     <Link href={`/writing/${slug}`}>
-      <article className="h-full flex flex-col overflow-hidden transition-all duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
+      <article className="h-full flex flex-col overflow-hidden transition-[background-color,border-color,box-shadow] duration-300 border rounded-xl cursor-pointer bg-white/5 dark:bg-white/90 backdrop-blur-sm hover:bg-white/10 dark:hover:bg-white hover:shadow-2xl hover:shadow-[#CA3E47]/20 border-white/10 dark:border-gray-200 hover:border-[#CA3E47]/50 dark:hover:border-[#CA3E47] group">
         <div className="relative w-full overflow-hidden h-52">
           {(() => {
             if (!imageUrl) {
@@ -36,7 +36,7 @@ export default function BlogCard({
                   <p className="text-[13px] text-[var(--text-muted)]">
                     Writing{readTime ? ` · ${readTime} min` : ""}
                   </p>
-                  <p className="truncate text-5xl font-semibold tracking-tight text-[var(--accent-text)]">
+                  <p className="line-clamp-2 break-words text-4xl font-semibold leading-tight tracking-tight text-[var(--accent-text)] sm:text-5xl">
                     <span className="opacity-50">#</span>
                     {tags[0] ?? "notes"}
                   </p>
@@ -110,7 +110,7 @@ export default function BlogCard({
               {tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-[#CA3E47]/10 text-[var(--accent-text)] dark:bg-[#CA3E47]/20 dark:text-[var(--accent-text)] border border-[#CA3E47]/20 dark:border-[#CA3E47]/30">
+                  className="px-3 py-1 text-xs font-medium rounded-full text-[var(--text-muted)] border border-white/15 dark:border-gray-300">
                   #{tag}
                 </span>
               ))}
@@ -118,7 +118,7 @@ export default function BlogCard({
           )}
 
           <div className="flex items-center justify-between pt-4 border-t border-white/10 dark:border-gray-200">
-            <div className="flex items-center text-[var(--accent-text)] dark:text-[var(--accent-text)] text-sm font-semibold group-hover:gap-2 gap-1 transition-all">
+            <div className="flex items-center text-[var(--accent-text)] dark:text-[var(--accent-text)] text-sm font-semibold gap-1">
               Read more
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"

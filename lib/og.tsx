@@ -174,7 +174,7 @@ export async function renderOgCard({
 
 /** Home card: name, positioning line, and the same photo as the hero. */
 export async function renderHomeOg() {
-  const photo = await asset("public/img/pp.jpeg");
+  const photo = await asset("public/img/pp-warm.jpeg");
   const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
 
   return new ImageResponse(

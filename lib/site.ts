@@ -14,7 +14,7 @@ export const site = {
   /** Set NEXT_PUBLIC_CAL_URL to a Cal.com (or similar) booking link. */
   calUrl: process.env.NEXT_PUBLIC_CAL_URL?.trim() || "",
   defaultOgImage: "/og/home.png",
-  profileImage: "/img/pp.jpeg",
+  profileImage: "/img/pp-warm.jpeg",
   twitterHandle: "@murathoncu",
   /**
    * Spoken languages. Edit here only: the About page and the Person schema

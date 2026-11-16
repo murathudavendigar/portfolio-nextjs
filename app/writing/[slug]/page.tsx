@@ -191,7 +191,7 @@ export default async function WritingPostPage({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
- className="px-3 py-1.5 text-[13px] sm:text-sm font-medium rounded-full bg-[#CA3E47]/10 text-[var(--accent-text)] dark:bg-[#CA3E47]/20 border border-[#CA3E47]/30 dark:border-[#CA3E47]/40 hover:bg-[#CA3E47]/20 dark:hover:bg-[#CA3E47]/30 transition-colors duration-300">
+ className="px-3 py-1.5 text-[13px] sm:text-sm font-medium rounded-full text-[var(--text-muted)] border border-white/15 dark:border-gray-300 hover:text-[var(--accent-text)] hover:border-[#CA3E47]/50 transition-colors duration-300">
                     #{tag}
                   </span>
                 ))}
@@ -314,7 +314,7 @@ export default async function WritingPostPage({
             ) : null}
             <Link
               href="/writing"
-              className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-lg bg-[#CA3E47] hover:bg-[#CA3E47]/90 text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#CA3E47]/30 hover:scale-105">
+              className="group inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-lg bg-[#CA3E47] hover:bg-[#CA3E47]/90 text-white transition-[color,background-color,border-color,box-shadow,transform] duration-150 shadow-lg hover:shadow-xl hover:shadow-[#CA3E47]/30 active:scale-[0.97]">
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
                 fill="none"

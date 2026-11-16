@@ -35,13 +35,13 @@ export default function Error({
         <button
           type="button"
           onClick={() => reset()}
-          className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-all duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
+          className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
           <ArrowPathIcon className="h-4 w-4" />
           Try again
         </button>
         <Link
           href="/"
-          className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-all duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
+          className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
           <HomeIcon className="h-4 w-4" />
           Back to homepage
         </Link>

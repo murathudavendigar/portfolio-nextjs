@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
@@ -135,22 +134,16 @@ export default function CommandPalette({ resumeHref }: { resumeHref: string | nu
   let currentCategory = "";
 
   return (
-    <AnimatePresence>
+    <>
       {open && (
         <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          {/* Opened from the keyboard (⌘K), so it appears and leaves instantly. */}
+          <div
             onClick={() => setOpen(false)}
             className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
           />
           <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] sm:pt-[20vh] px-4 pointer-events-none">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+            <div
               className="w-full max-w-xl bg-ink dark:bg-paper border border-white/10 dark:border-gray-400/40 rounded-xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col"
             >
               <div className="border-b border-white/10 dark:border-gray-400/40 px-4 py-4 flex items-center">
@@ -222,10 +215,10 @@ export default function CommandPalette({ resumeHref }: { resumeHref: string | nu
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
           </div>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }

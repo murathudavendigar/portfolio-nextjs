@@ -82,11 +82,11 @@
 
 @layer components {
   .heroButton {
-    @apply inline-flex min-h-11 items-center px-6 py-2 border border-[#525252] rounded-lg text-[15px] font-medium text-gray-200 dark:text-gray-900 transition-all hover:border-[#CA3E47]/40;
+    @apply inline-flex min-h-11 items-center px-6 py-2 border border-[#525252] rounded-lg text-[15px] font-medium text-gray-200 dark:text-gray-900 transition-colors hover:border-[#CA3E47]/40;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-[#CA3E47] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#CA3E47]/20 transition-all hover:bg-[#b6353d] hover:shadow-xl hover:shadow-[#CA3E47]/25 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47];
+    @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-[#CA3E47] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#CA3E47]/20 transition-[color,background-color,border-color,box-shadow,transform] duration-150 hover:bg-[#b6353d] hover:shadow-xl hover:shadow-[#CA3E47]/25 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CA3E47];
   }
 
   /* Homepage action: flat fill, no shadow, presses down. */
@@ -151,9 +151,6 @@ html[data-intro] [data-logo-char] {
 .home-line > span {
   display: block;
 }
-.skyline-building {
-  transform-origin: bottom;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   /* While the intro plays, hold the entrance pieces at their start so they
@@ -167,10 +164,6 @@ html[data-intro] [data-logo-char] {
     opacity: 0;
     animation: home-hold 0s linear 4s forwards;
   }
-  html[data-intro] .skyline-building {
-    transform: scaleY(0.04);
-    animation: home-hold 0s linear 4s forwards;
-  }
 
   html:not([data-intro]) .home-line > span {
     animation: home-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -179,15 +172,6 @@ html[data-intro] [data-logo-char] {
   html:not([data-intro]) .home-fade {
     animation: home-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: calc(320ms + var(--i, 0) * 80ms);
-  }
-  html:not([data-intro]) .skyline-building {
-    animation: home-build 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(450ms + var(--i, 0) * 70ms);
-  }
-  /* Windows light and dim slowly, each on its own clock. */
-  .skyline-window[data-lit] {
-    animation: home-window var(--d, 7s) steps(1, end) infinite;
-    animation-delay: var(--w, 0s);
   }
   .home-live-dot {
     animation: home-pulse 2.4s ease-in-out infinite;
@@ -223,24 +207,6 @@ html[data-intro] [data-logo-char] {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-@keyframes home-build {
-  from {
-    transform: scaleY(0.04);
-  }
-  to {
-    transform: none;
-  }
-}
-@keyframes home-window {
-  0%,
-  62% {
-    opacity: 1;
-  }
-  63%,
-  100% {
-    opacity: 0.18;
   }
 }
 @keyframes home-pulse {

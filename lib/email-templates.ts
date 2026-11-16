@@ -75,7 +75,7 @@ export const AUTO_REPLY_HTML = `<!DOCTYPE html>
             <tr>
               <td style="padding: 36px 32px 24px 32px; text-align: center">
                 <img
-                  src="https://muratoncu.com/img/pp.jpeg"
+                  src="https://muratoncu.com/img/pp-warm.jpeg"
                   width="72"
                   height="72"
                   alt="Murat Hüdavendigâr Öncü"

@@ -1,18 +1,14 @@
 import PortraitTilt from "@/components/PortraitTilt";
-import Skyline from "@/components/home/Skyline";
-import { getLiveProjects } from "@/lib/projects";
 import { site, temcraftUrl } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 
 /**
- * First screen: the name at poster size, one statement, two actions, the
- * portrait, and the live products as a Daily Skyline row. Motion lives in
- * styles/globals.css (home-*); everything here is painted on first frame.
+ * First screen: the name at poster size, one statement, two actions and the
+ * portrait. Motion lives in styles/globals.css (home-*); everything here is
+ * painted on first frame.
  */
 export default function HomeHero() {
-  const live = getLiveProjects();
-
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20 pt-14 md:px-10 md:pb-28 md:pt-20">
       <h1 className="text-[clamp(3.5rem,13vw,10.5rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-white dark:text-gray-900">
@@ -54,7 +50,6 @@ export default function HomeHero() {
               Hire me
             </Link>
           </div>
-          <Skyline projects={live} />
         </div>
 
         <PortraitTilt>
