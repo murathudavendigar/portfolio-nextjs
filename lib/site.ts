@@ -11,8 +11,11 @@ export const site = {
   description:
     "Frontend engineer and co-founder at TemCraft Tech. I ship React, Next.js, and React Native products from the Netherlands.",
   email: "contact@muratoncu.com",
-  /** Set NEXT_PUBLIC_CAL_URL to a Cal.com (or similar) booking link. */
-  calUrl: process.env.NEXT_PUBLIC_CAL_URL?.trim() || "",
+  /** Cal.com booking link. It is public, so it lives here rather than only in
+      the build env; NEXT_PUBLIC_CAL_URL still overrides it. */
+  calUrl:
+    process.env.NEXT_PUBLIC_CAL_URL?.trim() ||
+    "https://cal.com/murat-hudavendigar-oncu/15min",
   defaultOgImage: "/og/home.png",
   profileImage: "/img/pp-warm.jpeg",
   twitterHandle: "@murathoncu",

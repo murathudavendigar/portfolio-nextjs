@@ -17,10 +17,9 @@ describe("getResumeHref", () => {
 });
 
 describe("intro booking", () => {
-  it("falls back to a prefilled mailto when Cal.com is not configured", () => {
-    expect(site.calUrl).toBe("");
-    expect(introBookingHref()).toContain(`mailto:${site.email}`);
-    expect(introBookingHref()).toContain("15-min");
+  it("sends the intro button to the Cal.com booking page", () => {
+    expect(site.calUrl).toMatch(/^https:\/\/cal\.com\//);
+    expect(introBookingHref()).toBe(site.calUrl);
   });
 });
 
