@@ -161,9 +161,24 @@ export default function WorkLedger({ items }: { items: LedgerProject[] }) {
                 </motion.div>
               </AnimatePresence>
             </Link>
-            <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-gray-200 dark:text-gray-800">
-              {current.project.description}
-            </p>
+            {/* Every description sits in the same cell so the column keeps
+                the height of the longest one; hovering a row with a longer
+                text doesn't push the "All work" link down. */}
+            <div className="mt-5 grid max-w-lg">
+              {items.map(({ project }) => {
+                const shown = project.slug === current.project.slug;
+                return (
+                  <p
+                    key={project.slug}
+                    aria-hidden={!shown}
+                    className={`col-start-1 row-start-1 text-[17px] leading-relaxed text-gray-200 dark:text-gray-800 ${
+                      shown ? "" : "invisible"
+                    }`}>
+                    {project.description}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

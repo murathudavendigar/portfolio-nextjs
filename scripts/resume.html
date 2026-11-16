@@ -2,186 +2,149 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Build with: node scripts/build-resume.mjs (private details live in the
+         gitignored scripts/resume.private.json; never write them here). -->
     <title>Murat Hüdavendigâr Öncü, Résumé</title>
     <style>
-      @page {
-        size: A4;
-        margin: 14mm 16mm;
-      }
+      @page { size: A4; margin: 14mm 17mm; }
       * { box-sizing: border-box; }
       body {
         margin: 0;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #222;
-        font-size: 10.5pt;
+        color: #1a1a1a;
+        font-size: 9.5pt;
         line-height: 1.4;
       }
-      h1 {
-        margin: 0;
-        font-size: 20pt;
-        letter-spacing: -0.02em;
-      }
-      .lede {
-        margin: 4px 0 0;
-        color: #444;
-      }
-      .meta {
-        margin: 8px 0 0;
-        font-size: 9.5pt;
-        color: #333;
-      }
-      a { color: #CA3E47; text-decoration: none; }
+      p { margin: 0; }
+      a { color: inherit; text-decoration: none; }
+      header { text-align: center; }
+      h1 { margin: 0; font-size: 21pt; font-weight: 600; letter-spacing: 0.01em; }
+      .title { margin: 3px 0 0; font-size: 11pt; color: #444; }
+      .meta { margin: 6px 0 0; font-size: 9pt; color: #444; }
+      .meta span { white-space: nowrap; }
+      .meta span + span::before { content: "|"; margin: 0 7px; color: #aaa; }
       h2 {
-        margin: 16px 0 8px;
-        font-size: 9pt;
-        letter-spacing: 0.14em;
+        margin: 13px 0 6px;
+        font-size: 9.5pt;
+        font-weight: 600;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #CA3E47;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 4px;
+        border-bottom: 0.75pt solid #1a1a1a;
+        padding-bottom: 2px;
       }
-      .job { margin: 0 0 12px; }
-      .job h3 { margin: 0; font-size: 11pt; }
-      .job .co { color: #444; }
-      .job .dates {
-        float: right;
-        font-size: 9pt;
-        color: #666;
-        font-variant-numeric: tabular-nums;
-      }
-      ul { margin: 4px 0 0; padding-left: 16px; }
-      li { margin: 0 0 2px; }
+      .job { margin: 0 0 8px; }
       .row { overflow: hidden; }
+      .job h3 { margin: 0; font-size: 10.5pt; font-weight: 600; display: inline; }
+      .job .co { display: inline; color: #444; }
+      .job .co::before { content: ", "; }
+      .dates { float: right; color: #444; font-variant-numeric: tabular-nums; }
+      ul { margin: 3px 0 0; padding-left: 14px; }
+      li { margin: 0 0 1.5px; }
+      .skills td { padding: 0 0 2px; vertical-align: top; }
+      .skills td:first-child { font-weight: 600; padding-right: 12px; white-space: nowrap; }
+      .meta .first::before { content: none; }
+      .edu { overflow: hidden; margin: 0 0 3px; }
     </style>
   </head>
   <body>
-    <h1>Murat Hüdavendigâr Öncü</h1>
-    <p class="lede">Frontend engineer. Co-founder, TemCraft Tech. Instructor.</p>
-    <p class="meta">
-      Netherlands ·
-      <a href="mailto:contact@muratoncu.com">contact@muratoncu.com</a> ·
-      <a href="https://muratoncu.com">muratoncu.com</a> ·
-      <a href="https://github.com/murathudavendigar">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/murathudavendigaroncu/">LinkedIn</a>
+    <header>
+      <h1>Murat Hüdavendigâr Öncü</h1>
+      <p class="title">Frontend Engineer</p>
+      <p class="meta">
+        <!--private--><span>{{city}}, Netherlands</span><span><a href="tel:{{phoneHref}}">{{phone}}</a></span><!--/private--><!--public--><span>Netherlands</span><!--/public--><span><a href="mailto:contact@muratoncu.com">contact@muratoncu.com</a></span><br /><span class="first"><a href="https://muratoncu.com">muratoncu.com</a></span><span><a href="https://www.linkedin.com/in/murathudavendigaroncu/">linkedin.com/in/murathudavendigaroncu</a></span><span><a href="https://github.com/murathudavendigar">github.com/murathudavendigar</a></span>
+      </p>
+    </header>
+
+    <h2>Summary</h2>
+    <p>
+      Frontend engineer with four years of React and Next.js experience in TypeScript.
+      Co-founder of TemCraft Tech, a web studio for companies in Germany. Built the
+      frontend of AI and RAG products, shipped my own apps to the App Store and Google
+      Play, and taught frontend development for two years.
+      <!--private-->Open to hybrid and on-site roles; Dutch residence permit and BSN, no
+      sponsorship needed.<!--/private--><!--public-->Based in the Netherlands and
+      eligible to work here without sponsorship.<!--/public-->
     </p>
 
-    <h2>Selected work</h2>
-    <ul>
-      <li><strong>Daily Skyline</strong>: daily 5×5 skyscraper puzzle. React Native, Expo. App Store and Google Play.</li>
-      <li><strong>Courai</strong>: CBT social-anxiety iOS app. React Native, Expo, Supabase. App Store.</li>
-      <li><strong>NODEZERO</strong>: Windows second-monitor coach for CS2 and Dota 2. Tauri, Rust, React.</li>
-      <li><strong>codebrief</strong>, <strong>skillbrief</strong> and <strong>Dev Console Kit</strong>: npm packages.</li>
-      <li><strong>HaberAI</strong>, <strong>Money Guardian</strong>, and other Next.js products at muratoncu.com/work.</li>
-    </ul>
+    <h2>Skills</h2>
+    <table class="skills" cellspacing="0">
+      <tr><td>Frontend</td><td>React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Redux, SEO</td></tr>
+      <tr><td>Mobile &amp; desktop</td><td>React Native, Expo, Electron, Tauri</td></tr>
+      <tr><td>Backend</td><td>Node.js, Supabase, Firebase, REST APIs, Django, .NET, Python, Rust</td></tr>
+      <tr><td>Tools</td><td>Git, GitHub, Vercel, Cloudflare, Figma</td></tr>
+      <tr><td>Languages</td><td>Turkish (native), English (B1), Dutch (A2)</td></tr>
+    </table>
 
     <h2>Experience</h2>
 
     <div class="job">
       <div class="row">
-        <span class="dates">May 2025 - Feb 2026</span>
-        <h3>Frontend Instructor</h3>
-        <div class="co">euroTech Study GmbH</div>
+        <span class="dates">Oct 2024 – Present</span>
+        <h3>Frontend Engineer &amp; Co-Founder</h3><div class="co">TemCraft Tech · Germany (remote)</div>
       </div>
       <ul>
-        <li>Taught remote cohorts HTML, CSS, JavaScript, React, and Next.js through project-based curricula.</li>
-        <li>Mentored students one-on-one through capstone projects and code reviews until they could ship on their own.</li>
+        <li>Build websites and web apps for companies in Germany with Next.js and TypeScript, in a team of three.</li>
+        <li>Built the company sites of ERN GmbH and AFR Security, which score 96 and 98 on Google PageSpeed.</li>
+        <li>Own the frontend from design to launch: components, performance, on-page SEO and deployment.</li>
       </ul>
     </div>
 
     <div class="job">
       <div class="row">
-        <span class="dates">Oct 2024 - Present</span>
-        <h3>Co-Founder &amp; Frontend Developer</h3>
-        <div class="co">TemCraft Tech</div>
+        <span class="dates">Oct 2024 – May 2025</span>
+        <h3>Frontend Developer</h3><div class="co">NAGE</div>
       </div>
       <ul>
-        <li>Co-founded TemCraft Tech and shipped client and product work with React and Next.js.</li>
-        <li>Owned the frontend: architecture, code quality, and delivery dates for SaaS and AI-assisted apps.</li>
+        <li>Sole frontend developer in a four-person AI team with a tech lead, a backend developer and a DevOps engineer.</li>
+        <li>Built the Next.js frontend of AI and RAG products: chat with streamed responses, document upload, admin panel.</li>
+        <li>Agreed API contracts with the backend and built reusable components shared across product screens.</li>
       </ul>
     </div>
 
     <div class="job">
       <div class="row">
-        <span class="dates">Oct 2024 - May 2025</span>
-        <h3>Frontend Developer</h3>
-        <div class="co">NAGE</div>
+        <span class="dates">Feb 2024 – Feb 2026</span>
+        <h3>Frontend Instructor</h3><div class="co">euroTech Study GmbH, Wise Quarter, Eypes</div>
       </div>
       <ul>
-        <li>Built TypeScript and Next.js UI features against backend APIs, with an eye on performance.</li>
-        <li>Built reusable components and layouts shared across product screens.</li>
+        <li>Taught remote cohorts HTML, CSS, JavaScript, React, Next.js and Tailwind through project-based curricula.</li>
+        <li>Mentored students through capstone projects and reviewed their pull requests on a shared Git workflow.</li>
       </ul>
     </div>
 
     <div class="job">
       <div class="row">
-        <span class="dates">Jun 2024 - Oct 2024</span>
-        <h3>Frontend Instructor</h3>
-        <div class="co">Wise Quarter</div>
+        <span class="dates">Mar 2023 – Jun 2023</span>
+        <h3>Backend Developer</h3><div class="co">ASSA Teknoloji</div>
       </div>
       <ul>
-        <li>Taught part-time frontend classes, from JavaScript fundamentals to React components.</li>
-        <li>Set up a shared Git workflow (branches, pull requests, commit conventions) and reviewed student PRs line by line.</li>
+        <li>Built REST endpoints in Django REST Framework and ASP.NET, and agreed API contracts with the Next.js team.</li>
       </ul>
     </div>
 
     <div class="job">
       <div class="row">
-        <span class="dates">Feb 2024 - Oct 2024</span>
-        <h3>Frontend Instructor</h3>
-        <div class="co">Eypes</div>
+        <span class="dates">Jul 2022 – Feb 2024</span>
+        <h3>Freelance Frontend Developer</h3><div class="co">self-employed</div>
       </div>
       <ul>
-        <li>Taught remote classes: HTML, CSS, and JavaScript first, then React and Tailwind.</li>
-        <li>Used Firebase for auth and data in lessons and course projects.</li>
+        <li>Built small-business websites with Next.js and Tailwind, including on-page SEO, hosting and image performance.</li>
+        <li>Built responsive pages from client Figma designs, and took over existing sites to fix bugs and add features.</li>
       </ul>
     </div>
 
-    <div class="job">
-      <div class="row">
-        <span class="dates">Aug 2023 - Feb 2024</span>
-        <h3>Frontend Developer</h3>
-        <div class="co">Freelance</div>
-      </div>
-      <ul>
-        <li>Built responsive React and Tailwind pages from client Figma designs.</li>
-        <li>Took over existing sites to fix bugs and add features.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="row">
-        <span class="dates">Mar 2023 - Jun 2023</span>
-        <h3>Backend Developer</h3>
-        <div class="co">ASSA Teknoloji</div>
-      </div>
-      <ul>
-        <li>Built REST endpoints in Django REST Framework and C# on ASP.NET.</li>
-        <li>Agreed API contracts with frontend developers for a Next.js and TypeScript client.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="row">
-        <span class="dates">Jul 2022 - Mar 2023</span>
-        <h3>Freelance Web Developer</h3>
-        <div class="co">Freelance</div>
-      </div>
-      <ul>
-        <li>Built small-business websites from scratch with Next.js and Tailwind.</li>
-        <li>Added basic on-page SEO (meta tags, semantic HTML, sitemaps), set up hosting, and fixed slow images.</li>
-      </ul>
-    </div>
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>Daily Skyline</strong>: daily logic puzzle game. React Native, Expo. App Store and Google Play.</li>
+      <li><strong>Courai</strong>: CBT app for social anxiety, built solo. React Native, Expo, Supabase. App Store.</li>
+      <li><strong>NODEZERO</strong>: Windows second-monitor coach for CS2 and Dota 2. Tauri, Rust, React.</li>
+      <li><strong>AutoInvoice Pro</strong>: macOS and Windows app that renames PDF invoices locally. Electron.</li>
+      <li><strong>codebrief</strong>, <strong>skillbrief</strong>, <strong>Dev Console Kit</strong>: zero-dependency npm tools, 976 downloads.</li>
+      <li>App Store rating 5.0 from 27 ratings. Case studies at <a href="https://muratoncu.com/work">muratoncu.com/work</a>.</li>
+    </ul>
 
     <h2>Education</h2>
-    <div class="job">
-      <h3>Computer Engineering</h3>
-      <div class="co">Kocaeli University</div>
-    </div>
-
-    <h2>Skills</h2>
-    <p>
-      React, Next.js, TypeScript, JavaScript, React Native, Expo, Tailwind CSS,
-      Redux, Firebase, Supabase, HTML, CSS. Supporting: Django, .NET, Python.
-    </p>
+    <div class="edu"><span class="dates">2022</span><strong>Full-Stack Web Development Bootcamp</strong>, Clarusway</div>
+    <div class="edu"><span class="dates">2019 – Present</span><strong>B.Sc. Computer Engineering (in progress)</strong>, Kocaeli University, Turkey</div>
   </body>
 </html>

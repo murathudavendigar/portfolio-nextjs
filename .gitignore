@@ -56,3 +56,7 @@ installation.txt
 
 # design inspector output
 .taste-skill/
+
+# résumé: private details and the applications copy stay local
+scripts/resume.private.json
+/resume-private/
