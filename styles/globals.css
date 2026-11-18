@@ -144,9 +144,10 @@ html[data-intro] [data-logo-char] {
 .home-line {
   display: block;
   overflow: hidden;
-  /* room for descenders and the Ö umlaut inside the mask */
-  padding-block: 0.08em;
-  margin-block: -0.08em;
+  /* Room inside the mask: the Ö dots reach ~0.14em above the 0.9 line box
+     in Nunito Sans 800, so the top needs more than the bottom. */
+  padding-block: 0.2em 0.08em;
+  margin-block: -0.2em -0.08em;
 }
 .home-line > span {
   display: block;
@@ -157,7 +158,7 @@ html[data-intro] [data-logo-char] {
      don't show at rest and then jump back when the intro hands over. Same
      4s failsafe as the logo, in case the intro script never runs. */
   html[data-intro] .home-line > span {
-    transform: translateY(105%);
+    transform: translateY(125%);
     animation: home-hold 0s linear 4s forwards;
   }
   html[data-intro] .home-fade {
@@ -193,7 +194,7 @@ html[data-intro] [data-logo-char] {
 }
 @keyframes home-rise {
   from {
-    transform: translateY(105%);
+    transform: translateY(125%);
   }
   to {
     transform: none;
