@@ -46,6 +46,13 @@ export const site = {
    * "token" value). Empty = no analytics script is loaded.
    */
   cloudflareAnalyticsToken: "380d2d76928b47dcbf0335b6fca74e92",
+  /**
+   * Cloudflare Turnstile on the contact form (widget "muratoncu.com contact
+   * form", domain muratoncu.com). Public site key. The secret lives only in the
+   * Worker as TURNSTILE_SECRET_KEY. Off production, Cloudflare's always-pass
+   * test keys are used instead (lib/turnstile.ts).
+   */
+  turnstileSiteKey: "0x4AAAAAAGGneoC0MXPLq7rN",
   searchVerification: {
     google: "",
     bing: "",

@@ -53,6 +53,18 @@ export default function PrivacyPage() {
             address you entered. It isn&apos;t stored in a database on this
             site, and it&apos;s only used to reply to you.
           </p>
+          <p>
+            To keep bots out, the form uses{" "}
+            <a
+              href="https://www.cloudflare.com/turnstile-privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Cloudflare Turnstile
+            </a>
+            . It checks your browser when the contact page loads and sends
+            Cloudflare technical signals such as your IP address and browser
+            details.
+          </p>
 
           <h2>Theme preference</h2>
           <p>

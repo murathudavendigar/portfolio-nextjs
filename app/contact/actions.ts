@@ -8,14 +8,22 @@ import {
 } from "@/lib/contact-message";
 import { AUTO_REPLY_HTML, NOTIFY_ME_HTML } from "@/lib/email-templates";
 import { site } from "@/lib/site";
+import { verifyTurnstileToken } from "@/lib/turnstile";
+import { headers } from "next/headers";
 import { Resend } from "resend";
 
 export type SendContactResult = { ok: true } | { ok: false };
 
 export async function sendContactMessage(
   input: unknown,
+  turnstileToken: unknown,
 ): Promise<SendContactResult> {
   try {
+    const remoteIp = (await headers()).get("cf-connecting-ip");
+    if (!(await verifyTurnstileToken(turnstileToken, remoteIp))) {
+      return { ok: false };
+    }
+
     const message = parseContactMessage(input);
     const apiKey = process.env.RESEND_API_KEY;
     if (!message || !apiKey) return { ok: false };
@@ -47,7 +55,7 @@ export async function sendContactMessage(
       replyTo: site.email,
       subject: "Thanks for reaching out",
       html: renderEmailTemplate(AUTO_REPLY_HTML, message),
-      text: senderConfirmationText(message),
+      text: senderConfirmationText(),
     });
 
     if (confirmationError) {

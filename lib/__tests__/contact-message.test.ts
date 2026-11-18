@@ -5,6 +5,7 @@ import {
   renderEmailTemplate,
   senderConfirmationText,
 } from "../contact-message";
+import { AUTO_REPLY_HTML } from "../email-templates";
 
 const valid = {
   name: "Ada Lovelace",
@@ -48,12 +49,22 @@ describe("contactEmailText", () => {
 });
 
 describe("senderConfirmationText", () => {
-  it("uses the EmailJS auto-reply copy", () => {
-    const text = senderConfirmationText(valid);
-    expect(text).toContain("Hi Ada Lovelace,");
+  it("confirms receipt without echoing anything the sender typed", () => {
+    const text = senderConfirmationText();
     expect(text).toContain("I got your message");
-    expect(text).toContain("Subject: A short note");
-    expect(text).toContain("Hello from the form.");
+    expect(text).not.toContain("Ada");
+    expect(text).not.toContain("A short note");
+    expect(text).not.toContain("Hello from the form.");
+  });
+});
+
+describe("AUTO_REPLY_HTML", () => {
+  it("has no placeholders for sender input", () => {
+    const html = renderEmailTemplate(AUTO_REPLY_HTML, valid);
+    expect(html).toContain("I got your message");
+    expect(html).not.toContain("Ada");
+    expect(html).not.toContain("A short note");
+    expect(html).not.toContain("Hello from the form.");
   });
 });
 

@@ -112,58 +112,13 @@ export const AUTO_REPLY_HTML = `<!DOCTYPE html>
             <tr>
               <td style="padding: 0 32px 8px 32px">
                 <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #e5e5e5">
-                  Hi {{name}},
+                  Hi,
                 </p>
                 <p style="margin: 0 0 24px 0; font-size: 16px; line-height: 1.6; color: #c4c4c4">
                   I got your message and will get back to you soon. In the meantime,
                   feel free to browse my work or reply to this email if you want to
                   add anything.
                 </p>
-              </td>
-            </tr>
-
-            <tr>
-              <td style="padding: 0 32px 28px 32px">
-                <table
-                  role="presentation"
-                  width="100%"
-                  cellpadding="0"
-                  cellspacing="0"
-                  border="0"
-                  style="
-                    background-color: #3a3a3a;
-                    border: 1px solid #525252;
-                    border-radius: 8px;
-                  ">
-                  <tr>
-                    <td style="padding: 20px 22px">
-                      <p
-                        style="
-                          margin: 0 0 8px 0;
-                          font-size: 11px;
-                          letter-spacing: 0.2em;
-                          text-transform: uppercase;
-                          color: #ca3e47;
-                        ">
-                        Your message
-                      </p>
-                      <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.5; color: #ffffff">
-                        <strong style="color: #a3a3a3; font-weight: 500">Subject</strong><br />
-                        {{subject}}
-                      </p>
-                      <p
-                        style="
-                          margin: 0;
-                          font-size: 15px;
-                          line-height: 1.6;
-                          color: #d4d4d4;
-                          white-space: pre-wrap;
-                        ">
-                        {{message}}
-                      </p>
-                    </td>
-                  </tr>
-                </table>
               </td>
             </tr>
 

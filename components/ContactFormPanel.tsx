@@ -4,6 +4,7 @@ import { sendContactMessage } from "@/app/contact/actions";
 import LetterEnvelopeCinema, {
   type LetterPayload,
 } from "@/components/contact/LetterEnvelopeCinema";
+import TurnstileWidget from "@/components/contact/TurnstileWidget";
 import { Button } from "@/components/ui/button";
 import {
   Field,
@@ -21,6 +22,7 @@ import {
   useId,
   useRef,
   useState,
+  type ReactNode,
   type RefObject,
 } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -140,6 +142,16 @@ export default function ContactFormPanel() {
   const [sending, setSending] = useState(false);
   const [sendFailed, setSendFailed] = useState(false);
   const [payload, setPayload] = useState<LetterPayload | null>(null);
+  const turnstileTokenRef = useRef<string | null>(null);
+  const [turnstileKey, setTurnstileKey] = useState(0);
+  const turnstileFailedRef = useRef(false);
+  const onTurnstileToken = useCallback((token: string | null) => {
+    turnstileTokenRef.current = token;
+    if (token) turnstileFailedRef.current = false;
+  }, []);
+  const onTurnstileError = useCallback(() => {
+    turnstileFailedRef.current = true;
+  }, []);
 
   useEffect(() => {
     if (phase === "success") {
@@ -174,13 +186,26 @@ export default function ContactFormPanel() {
   }, [reset]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const turnstileToken = turnstileTokenRef.current;
+    if (!turnstileToken) {
+      toast.error(
+        turnstileFailedRef.current
+          ? "The spam check could not load (an ad blocker can cause this). Please email contact@muratoncu.com instead."
+          : "Still checking that you're not a bot. Try again in a moment.",
+      );
+      return;
+    }
+    // Tokens are single-use: remount the widget so a retry gets a fresh one.
+    turnstileTokenRef.current = null;
+    setTurnstileKey((key) => key + 1);
+
     abortRef.current = false;
     setSendFailed(false);
     setSending(true);
     setPayload(data);
 
     let emailOk: boolean | null = null;
-    const emailPromise = sendContactMessage(data)
+    const emailPromise = sendContactMessage(data, turnstileToken)
       .then((result) => {
         emailOk = result.ok;
       })
@@ -277,6 +302,13 @@ export default function ContactFormPanel() {
               register={register}
               errors={errors}
               sending={sending}
+              turnstile={
+                <TurnstileWidget
+                  key={turnstileKey}
+                  onToken={onTurnstileToken}
+                  onError={onTurnstileError}
+                />
+              }
             />
           </form>
         ) : (
@@ -313,6 +345,13 @@ export default function ContactFormPanel() {
               register={register}
               errors={errors}
               sending={sending}
+              turnstile={
+                <TurnstileWidget
+                  key={turnstileKey}
+                  onToken={onTurnstileToken}
+                  onError={onTurnstileError}
+                />
+              }
             />
           </motion.form>
         ) : null}
@@ -470,10 +509,12 @@ function ContactFields({
   register,
   errors,
   sending,
+  turnstile,
 }: {
   register: ReturnType<typeof useForm<Inputs>>["register"];
   errors: ReturnType<typeof useForm<Inputs>>["formState"]["errors"];
   sending: boolean;
+  turnstile: ReactNode;
 }) {
   return (
     <FieldGroup className="[&_[aria-invalid=true]]:border-destructive">
@@ -561,6 +602,8 @@ function ContactFields({
           </FieldError>
         )}
       </Field>
+
+      {turnstile}
 
       <Field>
         <motion.div

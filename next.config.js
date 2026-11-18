@@ -1,26 +1,26 @@
-const cspEnforced = [
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'self'",
-  "upgrade-insecure-requests",
-].join("; ");
+// Enforced since 2026-11-18: report-only showed no violations on a production
+// spot check, and a local production build passed with it enforced. A strict
+// script-src broke client JS once (commit 1db1709).
+// `next dev` needs eval and a websocket for React refresh; production does not.
+const isDev = process.env.NODE_ENV !== "production";
 
-const cspReportOnly = [
+const csp = [
   "default-src 'self'",
   // Next.js inlines its RSC payload; static pages cannot carry a nonce.
-  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://static.cloudflareinsights.com https://challenges.cloudflare.com`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://cloudflareinsights.com",
-  "frame-src 'none'",
+  `connect-src 'self' https://cloudflareinsights.com${isDev ? " ws:" : ""}`,
+  // Turnstile on the contact form renders in an iframe from this origin.
+  "frame-src https://challenges.cloudflare.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
 ].join("; ");
 
 /** @type {import('next').NextConfig} */
@@ -109,12 +109,7 @@ const nextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=31536000",
           },
-          // Enforced: directives that cannot block the site's own scripts.
-          { key: "Content-Security-Policy", value: cspEnforced },
-          // Full policy in report-only mode. A strict script-src broke client JS
-          // once (commit 1db1709), so watch the browser console for violations
-          // on production before moving any of this into the enforced header.
-          { key: "Content-Security-Policy-Report-Only", value: cspReportOnly },
+          { key: "Content-Security-Policy", value: csp },
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

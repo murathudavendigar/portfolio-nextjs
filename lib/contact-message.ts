@@ -41,16 +41,16 @@ export function contactEmailText(message: ContactMessage): string {
   );
 }
 
-export function senderConfirmationText(message: ContactMessage): string {
+/**
+ * Auto-reply to the address typed into the form. It must not echo anything the
+ * sender typed: the address is unverified, so echoed text would let anyone send
+ * their own words to any inbox from contact@muratoncu.com.
+ */
+export function senderConfirmationText(): string {
   return [
-    `Hi ${message.name},`,
+    "Hi,",
     "",
     "I got your message and will get back to you soon. In the meantime, feel free to browse my work or reply to this email if you want to add anything.",
-    "",
-    "Your message",
-    `Subject: ${message.subject}`,
-    "",
-    message.message,
     "",
     "Murat Hüdavendigâr Öncü",
     "Frontend engineer · Netherlands",
