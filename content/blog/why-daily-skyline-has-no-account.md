@@ -2,7 +2,7 @@
 title: "Why Daily Skyline has no account"
 description: "Daily Skyline has no sign-up and no ads. The puzzle is generated on the device from the date, and even the leaderboard and the streak backup work without a Daily Skyline login."
 metaDescription: "Why Daily Skyline has no account: a date-seeded puzzle made on the device, a leaderboard with no sign-up, and a streak backup through the phone."
-date: "2026-11-26"
+date: "2026-11-18"
 tags: ["react-native", "expo", "product"]
 readTime: 4
 projects: ["daily-skyline"]
@@ -30,9 +30,9 @@ The comparison with other players is the piece that has to live somewhere else. 
 
 ## Keeping a streak without an account
 
-No account means your progress lives on the phone. So far that has also meant a reinstall can drop a streak. Lower friction beat a cloud account for a daily puzzle, and that risk was part of the trade.
+No account means your progress lives on the phone. Until recently that also meant a reinstall could drop a streak. Lower friction beat a cloud account for a daily puzzle, and that risk was part of the trade.
 
-Version 1.32 closes most of that gap without adding a login. The app keeps a recovery key in the platform's own storage, iCloud on iOS and Google's Block Store on Android, which survives a reinstall and follows the same Apple or Google account to a new phone. On first launch it asks whether to bring back your streak and solved days, instead of restoring silently, because families share Apple IDs. Moving between an iPhone and an Android phone takes a recovery code from your profile, because neither platform can see the other's storage.
+Version 1.32, now on both stores, closes most of that gap without adding a login. The app keeps a recovery key in the platform's own storage, iCloud on iOS and Google's Block Store on Android, which survives a reinstall and follows the same Apple or Google account to a new phone. On first launch it asks whether to bring back your streak and solved days, instead of restoring silently, because families share Apple IDs. Moving between an iPhone and an Android phone takes a recovery code from your profile, because neither platform can see the other's storage.
 
 The streak can also survive a busy day or two. You can hold up to two Streak Freezes at a time, and you earn one for every seven days you keep the streak going. They cover missed days. They do not replace a backup.
 
@@ -46,4 +46,4 @@ The free game has no ads, and it is the same on iPhone and Android. On iOS there
 
 Fixing the board to the calendar date, and refusing an account, removed a lot of product arguments I would otherwise still be having. How to sync progress. When to ask for an email. Whether today's puzzle should live behind a server. Even the leaderboard and the backup had to fit around that rule, and both did. The constraint did more than a longer feature list would have. You open the app, today's skyline is there, and you can start.
 
-Daily Skyline is on the App Store and Google Play, in nine languages. There is also a 5×5 tutorial board in the browser, in the [lab](/lab/daily-skyline): it teaches the rules and does not keep a streak, and the shared daily lives in the app. The case study is on the [work page](/work/daily-skyline).
+Daily Skyline is on the App Store and Google Play, in nine languages. There is also a 5×5 tutorial board you can [try in the browser](/work/daily-skyline#try-it) on the case study page: it teaches the rules and does not keep a streak, and the shared daily lives in the app.

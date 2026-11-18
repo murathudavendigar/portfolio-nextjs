@@ -40,13 +40,14 @@ describe("blog loader", () => {
 });
 
 describe("scheduled and draft posts", () => {
-  const SLUG = "why-daily-skyline-has-no-account";
-
   it("hides a post until 00:00 UTC on its date", () => {
-    const before = getPosts(Date.parse("2026-11-25T23:59:59Z"));
-    const onTheDay = getPosts(Date.parse("2026-11-26T00:00:00Z"));
-    expect(before.map((p) => p.slug)).not.toContain(SLUG);
-    expect(onTheDay.map((p) => p.slug)).toContain(SLUG);
+    // The newest non-draft post, so the check does not depend on one file.
+    const post = getAllPosts()
+      .filter((p) => !p.draft)
+      .sort((a, b) => b.date - a.date)[0];
+    const day = post.date; // 00:00 UTC of the frontmatter date
+    expect(getPosts(day - 1000).map((p) => p.slug)).not.toContain(post.slug);
+    expect(getPosts(day).map((p) => p.slug)).toContain(post.slug);
   });
 
   it("never publishes a draft: true post, whatever the date", () => {
