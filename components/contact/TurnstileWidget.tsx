@@ -54,6 +54,19 @@ function loadTurnstile(): Promise<TurnstileApi> {
 }
 
 /**
+ * The site's `.dark` class means the paper (light) palette, so match the widget
+ * to what is on screen instead of the class name or the OS setting.
+ */
+function pageTheme(): "light" | "dark" {
+  const match = getComputedStyle(document.body).backgroundColor.match(
+    /(\d+(?:\.\d+)?)/g,
+  );
+  if (!match || match.length < 3) return "light";
+  const [r, g, b] = match.slice(0, 3).map(Number);
+  return 0.299 * r + 0.587 * g + 0.114 * b > 128 ? "light" : "dark";
+}
+
+/**
  * Cloudflare Turnstile, shown only when Cloudflare wants an interaction.
  * Tokens are single-use: remount (change the React key) after each submit.
  */
@@ -83,7 +96,7 @@ export default function TurnstileWidget({
           action: "contact",
           appearance: "interaction-only",
           size: "flexible",
-          theme: "auto",
+          theme: pageTheme(),
           callback: (token) => onTokenRef.current(token),
           "expired-callback": () => onTokenRef.current(null),
           "error-callback": () => {
