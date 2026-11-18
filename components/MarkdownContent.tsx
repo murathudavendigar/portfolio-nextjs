@@ -4,6 +4,20 @@ import "highlight.js/styles/github-dark.css";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
+import Link from "next/link";
+import { site } from "@/lib/site";
+
+/** The in-site path for a markdown href, or null when it points elsewhere. */
+export function toSitePath(href: string): string | null {
+  if (href.startsWith("#")) return href;
+  if (href.startsWith("/") && !href.startsWith("//")) return href;
+  const origin = site.url.replace(/\/$/, "");
+  if (href === origin) return "/";
+  if (href.startsWith(`${origin}/`) || href.startsWith(`${origin}#`)) {
+    return href.slice(origin.length);
+  }
+  return null;
+}
 
 export default function MarkdownContent({ content }: { content: string }) {
   return (
@@ -72,14 +86,24 @@ export default function MarkdownContent({ content }: { content: string }) {
             {...props}
           />
         ),
-        a: ({ node, ...props }) => (
-          <a
-            className="text-[var(--accent-text)] hover:underline"
-            {...props}
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-        ),
+        a: ({ node, href = "", ...props }) => {
+          const className = "text-[var(--accent-text)] hover:underline";
+          const local = toSitePath(href);
+          // Links to this site stay in the tab and use the client router;
+          // only other sites open in a new tab.
+          if (local !== null) {
+            return <Link href={local} className={className} {...props} />;
+          }
+          return (
+            <a
+              className={className}
+              href={href}
+              {...props}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          );
+        },
         img: ({ node, ...props }) => (
           // Markdown image URLs are author-controlled and may be external.
           /* eslint-disable-next-line @next/next/no-img-element */

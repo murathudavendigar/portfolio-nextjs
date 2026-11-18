@@ -1,5 +1,6 @@
 "use client";
 
+import { isChunkLoadError, reloadOnceForChunkError } from "@/lib/chunk-error";
 import { site } from "@/lib/site";
 import { ArrowPathIcon, BugAntIcon, HomeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -14,7 +15,13 @@ export default function Error({
 }) {
   useEffect(() => {
     console.error(error);
+    if (isChunkLoadError(error)) reloadOnceForChunkError();
   }, [error]);
+
+  // reset() re-renders with the same missing chunks, so a stale build needs a
+  // full page load instead.
+  const retry = () =>
+    isChunkLoadError(error) ? window.location.reload() : reset();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-ink px-6 py-20 text-center text-white dark:bg-paper dark:text-gray-700">
@@ -26,15 +33,14 @@ export default function Error({
         </h1>
         <p className="text-gray-300 dark:text-gray-700">
           An unexpected error happened while rendering this page on{" "}
-          {site.shortName}&apos;s site. It&apos;s been logged — try again, or
-          head back home.
+          {site.shortName}&apos;s site. Try again, or head back home.
         </p>
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <button
           type="button"
-          onClick={() => reset()}
+          onClick={retry}
           className="group flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors duration-200 hover:border-[#CA3E47] hover:bg-[#CA3E47] hover:text-white dark:border-gray-300 dark:bg-gray-200/50 dark:text-gray-800">
           <ArrowPathIcon className="h-4 w-4" />
           Try again
