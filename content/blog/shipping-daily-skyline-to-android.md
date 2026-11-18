@@ -3,7 +3,7 @@ title: "Shipping Daily Skyline to Android"
 description: "Porting a daily puzzle from iOS to Google Play took less code than I expected and more process. What the date seed saved me, what Google's 14-day closed test caught, and why every version now ships on both stores."
 metaDescription: "What porting Daily Skyline from iOS to Google Play took: a shared date seed, Google's 14-day closed test, and shipping both stores together."
 date: "2026-11-02"
-updated: "2026-11-14"
+updated: "2026-11-18"
 tags: ["react-native", "expo", "android", "google-play"]
 readTime: 6
 projects: ["daily-skyline"]
@@ -30,7 +30,7 @@ The app is Expo and React Native, so the board, the reducer, the streak logic an
 
 **Purchases.** The paywall read the App Store's introductory offer to show the free trial. Play describes trials differently, so the first Android builds simply did not show the trial. Small fix, but only visible on a real Android device.
 
-**Backups.** Bringing a streak back after a reinstall, which arrives in version 1.32, keeps its recovery key in iCloud on iOS and in Google's Block Store on Android. Same feature, two native APIs.
+**Backups.** Bringing a streak back after a reinstall, which shipped in version 1.32, keeps its recovery key in iCloud on iOS and in Google's Block Store on Android. Same feature, two native APIs.
 
 None of this is hard. It is just work that does not exist until you ship the second platform, and it is easy to underestimate.
 
